@@ -1,7 +1,7 @@
 ---
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import CtaDark from '../../../components/CtaDark.astro';
-import { posts } from '../../../data/blog';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaDark from '../../components/CtaDark.astro';
+import { posts } from '../../data/blog';
 
 export function getStaticPaths() {
 	return posts.map((post) => ({
