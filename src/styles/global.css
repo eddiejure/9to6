@@ -401,6 +401,14 @@ body.nav-open .mobile-panel {
 	color: var(--purple);
 }
 
+.glass .phone {
+	display: block;
+	font-size: 24px;
+	font-weight: 500;
+	color: var(--purple);
+	margin: 4px 0 10px;
+}
+
 .glass .phone:hover {
 	color: var(--purple-2);
 }
