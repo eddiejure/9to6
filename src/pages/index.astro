@@ -8,29 +8,29 @@ import { cases, site } from '../data/site';
 
 const pillars = [
 	{
-		title: 'Webdesign, das beeindruckt',
-		text: 'Dein Unternehmen ist einzigartig und verdient eine Website, die das zeigt. Wir verbinden klares Design mit einer ruhigen Benutzerführung und legen damit den Grundstein deiner Onlinepräsenz.',
+		title: 'Webdesign, das überzeugt',
+		text: 'Dein Unternehmen ist einzigartig und verdient eine Website, die das zeigt. Wir verbinden klares Design mit einer ruhigen Benutzerführung und legen damit den Grundstein für Anfragen, Termine und Umsatz.',
 		href: '/leistungen/webdesign/',
 		cta: 'Zu unseren Webdesign Leistungen',
 		visual: 'studio',
 	},
 	{
-		title: 'Webentwicklung mit Astro',
-		text: 'Astro liefert HTML zuerst und JavaScript nur dort, wo es gebraucht wird. Das heißt: kurze Ladezeiten, gute Core Web Vitals und Seiten, die in der Suche bestehen. Ideal für Agentur-, Handwerks- und Markenauftritte.',
-		href: '/leistungen/webentwicklung/#astro',
-		cta: 'Mehr zu Astro',
-		visual: 'astro',
+		title: 'Seiten, die Anfragen bringen',
+		text: 'Besucher sollen nicht nur schauen. Sie sollen anrufen, schreiben oder buchen. Wir bauen den Weg zur Handlung so kurz, dass aus Interesse ein konkreter nächster Schritt wird.',
+		href: '/leistungen/webentwicklung/',
+		cta: 'Zur Webentwicklung',
+		visual: 'leads',
 	},
 	{
-		title: 'Next.js, wenn es komplex wird',
-		text: 'Login, Dashboard, Shop-Logik, häufige Updates: Dann trägt Next.js. Wir bauen die Anwendung so, dass sie wartbar bleibt und sich anfühlt wie ein Produkt, nicht wie ein Baukasten.',
-		href: '/leistungen/webentwicklung/#nextjs',
-		cta: 'Mehr zu Next.js',
-		visual: 'next',
+		title: 'Tempo, das Kunden hält',
+		text: 'Eine langsame Seite kostet Sichtbarkeit und Abschlüsse. Wir liefern Auftritte, die auf dem Smartphone sofort da sind, in der Suche bestehen und messbar mehr Anfragen generieren.',
+		href: '/leistungen/webentwicklung/',
+		cta: 'Mehr zu Performance',
+		visual: 'speed',
 	},
 	{
-		title: 'Technik, die gefunden wird',
-		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Wir setzen semantisches HTML, saubere URLs, Metadaten und interne Verlinkung so, dass Menschen und Suchmaschinen denselben Weg gehen.',
+		title: 'Gefunden werden, dann verkaufen',
+		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Wir setzen Inhalte, URLs und interne Wege so, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen.',
 		href: '/leistungen/webentwicklung/',
 		cta: 'Zur Webentwicklung',
 		visual: 'laptop',
@@ -39,16 +39,16 @@ const pillars = [
 
 const ansatz = [
 	{
-		title: 'Inhalte zuerst',
-		text: 'Bevor ein Raster entsteht, klären wir Ziel, Angebot und die Seiten, die wirklich gebraucht werden.',
+		title: 'Ziele zuerst',
+		text: 'Bevor ein Raster entsteht, klären wir, wen du gewinnen willst und welche Handlung zählt: Anfrage, Termin, Kauf.',
 	},
 	{
 		title: 'Design mit System',
 		text: 'Typografie, Farbe und Abstände sitzen. Die Seite sieht nach dir aus, nicht nach einem Theme.',
 	},
 	{
-		title: 'Astro oder Next.js',
-		text: 'Der Stack folgt der Aufgabe. Wir erklären die Wahl so, dass du sie mittragen kannst.',
+		title: 'Technik, die unsichtbar trägt',
+		text: 'Moderne Webtechnik bleibt im Hintergrund. Du merkst das Ergebnis: Tempo, Stabilität, Formulare, die ankommen.',
 	},
 	{
 		title: 'Messbar schnell',
@@ -56,21 +56,25 @@ const ansatz = [
 	},
 	{
 		title: 'Direkt ansprechbar',
-		text: 'Ein fester Ansprechpartner. Kein Ticket-Pingpong, keine Agentur-Hierarchie zwischen dir und dem Code.',
+		text: 'Ein fester Ansprechpartner. Kein Ticket-Pingpong, keine Agentur-Hierarchie zwischen dir und der fertigen Seite.',
 	},
 ];
 ---
 
 <BaseLayout
 	title="Webdesign und Webentwicklung in Frankfurt | 9to6"
-	description="9to6 gestaltet und entwickelt Websites auf Astro und Next.js. Klar, schnell, suchstark. Agentur in Frankfurt und Rhein-Main, direkter Draht zu Eddie J."
+	description="Agentur für Webdesign und Webentwicklung in Frankfurt und Rhein-Main. Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren."
 	schema="home"
 >
 	<section class="hero">
 		<div class="hero-grid">
 			<header>
-				<h1>Webdesign<br />und<br />Webentwicklung</h1>
-				<p class="lede">Websites auf Astro und Next.js. Schnell, klar und bereit für Anfragen.</p>
+				<h1>
+					<span class="hero-line nowrap">Webdesign &amp;</span>
+					<span class="hero-line nowrap">Webentwicklung</span>
+					<span class="hero-line hero-loc">Agentur aus Frankfurt</span>
+				</h1>
+				<p class="lede">Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.</p>
 			</header>
 			<div class="glass">
 				<svg class="phone-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -91,7 +95,7 @@ const ansatz = [
 			<p class="intro">
 				Zwischen Marke, Kanal und erstem Klick entscheidet die Website. 9to6 gestaltet und entwickelt Auftritte, die dein
 				Angebot verständlich machen, schnell laden und so gebaut sind, dass Interessenten den nächsten Schritt finden.
-				Schwerpunkt Astro und Next.js, Sitz in Frankfurt am Main, Arbeit für Betriebe in der Region und darüber hinaus.
+				Agentur in Frankfurt am Main, Arbeit für Betriebe in der Region und darüber hinaus.
 			</p>
 		</div>
 	</section>
@@ -101,25 +105,29 @@ const ansatz = [
 			<section class="section">
 				<div class={'wrap-wide split' + (i % 2 === 1 ? ' reverse' : '')}>
 					{i % 2 === 0 ? (
-						<div class="media" aria-hidden={p.visual === 'astro' || p.visual === 'next'}>
+						<div class="media" aria-hidden={p.visual === 'leads' || p.visual === 'speed'}>
 							{p.visual === 'studio' ? (
 								<img src="/images/studio.webp" alt="" width="640" height="427" />
 							) : p.visual === 'laptop' ? (
 								<img src="/images/laptop.webp" alt="" width="640" height="427" />
 							) : (
-								<div class="blob">{p.visual === 'astro' ? 'Astro' : 'Next.js'}</div>
+								<div class="blob">{p.visual === 'leads' ? 'Anfragen' : 'Tempo'}</div>
 							)}
 						</div>
 					) : null}
 					<div class="copy">
 						<h2>{p.title}</h2>
 						<p class="body">{p.text}</p>
-						<p><a class="btn" href={p.href} style="margin-top:18px">{p.cta}</a></p>
+						<p>
+							<a class="btn" href={p.href} style="margin-top:18px">
+								{p.cta}
+							</a>
+						</p>
 					</div>
 					{i % 2 === 1 ? (
 						<div class="media">
-							{p.visual === 'astro' || p.visual === 'next' ? (
-								<div class="blob">{p.visual === 'astro' ? 'Astro' : 'Next.js'}</div>
+							{p.visual === 'leads' || p.visual === 'speed' ? (
+								<div class="blob">{p.visual === 'leads' ? 'Anfragen' : 'Tempo'}</div>
 							) : (
 								<img src="/images/workspace.webp" alt="" width="640" height="427" />
 							)}
@@ -136,11 +144,13 @@ const ansatz = [
 		<div class="wrap">
 			<h2>Was macht uns besonders?</h2>
 			<p class="intro">
-				9to6 ist eine Agentur mit Sitz in Frankfurt am Main. Wir helfen Unternehmen mit Webdesign und Webentwicklung
-				auf Astro und Next.js, online klarer aufzutreten und Anfragen zu gewinnen. Jedes Projekt bekommt eine Lösung, die
+				9to6 ist eine Agentur mit Sitz in Frankfurt am Main. Wir helfen Unternehmen mit Webdesign und Webentwicklung,
+				online klarer aufzutreten, schneller zu laden und Anfragen zu gewinnen. Jedes Projekt bekommt eine Lösung, die
 				zu Ziel, Inhalt und Budget passt.
 			</p>
-			<p><a class="btn" href="/kontakt/">Kontakt</a></p>
+			<p>
+				<a class="btn" href="/kontakt/">Kontakt</a>
+			</p>
 		</div>
 	</section>
 
@@ -166,9 +176,11 @@ const ansatz = [
 			<h2>Webdesign und Entwicklung, die zu deinem Alltag passen</h2>
 			<p class="intro">
 				Handwerk, Studio, Produktmarke oder interne Plattform: Wir schauen uns an, was schon da ist, und bauen das, was
-				fehlt. Ohne Theme-Zwang, ohne unnötiges JavaScript.
+				fehlt. Ohne Theme-Zwang, ohne Ballast, der Kunden ausbremst.
 			</p>
-			<p><a class="btn" href="/leistungen/">Leistungen</a></p>
+			<p>
+				<a class="btn" href="/leistungen/">Leistungen</a>
+			</p>
 		</div>
 	</section>
 
@@ -180,7 +192,9 @@ const ansatz = [
 				{
 					cases.map((c) => (
 						<a class="card" href="/referenzen/">
-							<img src={c.image} alt={c.imageAlt} width="640" height="400" />
+							<div class="shot">
+								<img src={c.image} alt={c.imageAlt} width="640" height="400" />
+							</div>
 							<div class="card-body">
 								<div class="meta">{c.place}</div>
 								<h3>{c.name}</h3>

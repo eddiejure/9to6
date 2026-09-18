@@ -31,9 +31,11 @@ import { cases } from '../data/site';
 			<section class="section" id={c.slug}>
 				<article class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
 					<div class="media">
-						<a href={c.url} rel="noopener" target="_blank">
-							<img src={c.image} alt={c.imageAlt} width="800" height="500" />
-						</a>
+						<div class="shot">
+							<a href={c.url} rel="noopener" target="_blank">
+								<img src={c.image} alt={c.imageAlt} width="800" height="500" />
+							</a>
+						</div>
 					</div>
 					<div>
 						<p class="kicker">{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.place}</p>

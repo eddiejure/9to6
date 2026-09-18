@@ -1,26 +1,32 @@
 # 9to6
 
-> Agentur für Webdesign und Webentwicklung auf Astro und Next.js. Sitz: Gelnhausen / Frankfurt am Main, Rhein-Main.
+> Agentur für Webdesign und Webentwicklung in Frankfurt / Rhein-Main. Sitz: Gelnhausen. Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.
 
-9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange, kein unnötiges JavaScript.
+9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange. Die Technik bleibt unsichtbar und zuverlässig im Hintergrund.
 
 ## Angebot
 
 - Webdesign: Struktur, Typografie, Nutzerführung, Texte
-- Webentwicklung mit Astro: HTML zuerst, starke Core Web Vitals
-- Webentwicklung mit Next.js: wenn Login, Dashboard oder Produktlogik dazugehören
-- Relaunch: WordPress- oder Baukasten-Seiten ablösen, Inhalte retten
+- Webentwicklung: schnelle, wartbare Seiten, Formulare, die Anfragen zustellen
+- Conversion: Wege zur Handlung, messbares Wachstum
+- Relaunch: bestehende Seiten ablösen, Inhalte retten, Tempo verbessern
 
 ## Referenzen
 
-- Holzbau Oberlerchner (oberlerchner.de): Website für Zimmerei und Holzbau, Astro
+- Holzbau Oberlerchner (oberlerchner.de): Website für Zimmerei und Holzbau
 - D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen
 - sim.do: eSIM für Reisen, Gründerprodukt von Edvinas Jurevicius
 - Simtasy (simtasy.com): B2B-Wholesale-Plattform für eSIM-Reseller
 
-## Technik
+## Blog
 
-Astro, Next.js, Cloudflare Pages. Semantisches HTML, selbst gehostete Schriften, keine Google Fonts, keine Analytics-Tracker.
+- /blog/warum-deine-website-keine-kunden-bringt/
+- /blog/core-web-vitals-und-google-ranking/
+- /blog/aus-besuchern-werden-anfragen/
+
+## Technik (Hintergrund)
+
+Schlanke, moderne Webtechnik und Cloudflare Pages. Semantisches HTML, selbst gehostete Schriften, keine Google Fonts, keine Analytics-Tracker.
 
 ## Kontakt
 

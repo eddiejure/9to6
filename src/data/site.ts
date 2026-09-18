@@ -21,7 +21,6 @@ export const site = {
 } as const;
 
 export const nav = [
-	{ href: '/', label: 'Home' },
 	{
 		href: '/leistungen/',
 		label: 'Leistungen',
@@ -31,6 +30,7 @@ export const nav = [
 		],
 	},
 	{ href: '/referenzen/', label: 'Referenzen' },
+	{ href: '/blog/', label: 'Blog' },
 	{ href: '/kontakt/', label: 'Kontakt' },
 ] as const;
 
@@ -38,22 +38,17 @@ export const services = [
 	{
 		href: '/leistungen/webdesign/',
 		title: 'Webdesign',
-		teaser: 'Klar, eigenständig, auf Conversion ausgelegt.',
+		teaser: 'Klar, eigenständig, auf Anfragen ausgelegt.',
 	},
 	{
 		href: '/leistungen/webentwicklung/',
 		title: 'Webentwicklung',
-		teaser: 'Astro und Next.js, schnell ausgeliefert.',
+		teaser: 'Schnell, wartbar, gebaut für Conversion und Wachstum.',
 	},
 	{
-		href: '/leistungen/webentwicklung/#astro',
-		title: 'Astro',
-		teaser: 'Insel-Architektur, wenig JavaScript, starke Core Web Vitals.',
-	},
-	{
-		href: '/leistungen/webentwicklung/#nextjs',
-		title: 'Next.js',
-		teaser: 'Wenn die Website zur Anwendung wächst.',
+		href: '/kontakt/',
+		title: 'Relaunch',
+		teaser: 'Alte Seiten ablösen, Inhalte retten, messbar mehr Anfragen.',
 	},
 ] as const;
 
@@ -79,7 +74,7 @@ export const cases: CaseStudy[] = [
 		url: 'https://oberlerchner.de',
 		urlLabel: 'oberlerchner.de',
 		place: 'Gelnhausen, Main-Kinzig-Kreis',
-		stack: 'Astro, performantes Frontend',
+		stack: 'Lokale Sichtbarkeit, schnelle Ladezeit',
 		role: 'Website für Zimmerei und Holzbau',
 		image: '/images/ref-oberlerchner.png',
 		imageAlt: 'Startseite von Holzbau Oberlerchner, Zimmerei in Gelnhausen',
@@ -134,7 +129,7 @@ export const cases: CaseStudy[] = [
 		url: 'https://simtasy.com',
 		urlLabel: 'simtasy.com',
 		place: 'B2B, weltweit',
-		stack: 'Next.js-nahe Produktplattform',
+		stack: 'B2B-Produktplattform',
 		role: 'Wholesale-Plattform für eSIM-Reseller',
 		image: '/images/ref-simtasy.png',
 		imageAlt: 'Startseite von Simtasy, B2B-Plattform für eSIM-Wholesale',
@@ -155,11 +150,11 @@ export const faqs = [
 		items: [
 			{
 				q: 'Mit welcher Art von Unternehmen arbeitet ihr zusammen?',
-				a: 'Mit kleinen Betrieben ebenso wie mit Marken, die schon digital unterwegs sind. Entscheidend ist, dass die Website ein echtes Arbeitsmittel werden soll: Anfragen, Buchungen, Produktverkauf. Wir klären zuerst Ziel, Inhalt und Stack, dann bauen wir.',
+				a: 'Mit kleinen Betrieben ebenso wie mit Marken, die schon digital unterwegs sind. Entscheidend ist, dass die Website ein echtes Arbeitsmittel werden soll: Anfragen, Buchungen, Produktverkauf. Wir klären zuerst Ziel und Inhalt, dann bauen wir.',
 			},
 			{
 				q: 'Welche Leistungen bietet 9to6 an?',
-				a: 'Webdesign und Webentwicklung. Schwerpunkt sind Websites und Web-Apps auf Astro und Next.js: Konzeption, UI, technische Umsetzung, Performance und die Pflege danach. Suchmaschinen, Inhalte und Kampagnen denken wir mit, aber der Kern ist die Website.',
+				a: 'Webdesign und Webentwicklung. Konzeption, Gestaltung, technische Umsetzung, Ladezeit, Formulare und die Pflege danach. Suchmaschinen und Kampagnen denken wir mit, aber der Kern ist eine Website, die Kunden bringt.',
 			},
 			{
 				q: 'Wie funktioniert euer Preismodell?',
@@ -167,7 +162,7 @@ export const faqs = [
 			},
 			{
 				q: 'Welche Vorteile hat 9to6 gegenüber einer reinen Marketingagentur?',
-				a: 'Wir bauen die Seite, die hinterher im Netz steht. Design, Code und Inhalt sitzen in einem Prozess. Kein Theme von der Stange, kein WordPress-Pflichtprogramm, keine Kampagne auf einer langsamen Grundlage.',
+				a: 'Wir bauen die Seite, die hinterher im Netz steht. Design, Code und Inhalt sitzen in einem Prozess. Kein Theme von der Stange, keine Kampagne auf einer langsamen Grundlage.',
 			},
 		],
 	},
@@ -192,12 +187,12 @@ export const faqs = [
 		group: 'Webentwicklung',
 		items: [
 			{
-				q: 'Astro oder Next.js, was ist richtig?',
-				a: 'Astro, wenn Inhalt, Geschwindigkeit und SEO im Vordergrund stehen: Unternehmensseiten, Handwerk, Studios, Markenauftritte. Next.js, wenn Anmeldung, Dashboard, Shop-Logik oder häufige Datenupdates dazugehören. Wir sagen dir im Erstgespräch, welcher Stack trägt.',
+				q: 'Welche Technik setzt ihr ein?',
+				a: 'Moderne, schlanke Webtechnik, die im Hintergrund bleibt. Für dich zählt das Ergebnis: kurze Ladezeiten, saubere Formulare, Seiten, die in der Suche bestehen und Anfragen zustellen. Den Stack wählen wir nach Aufgabe, nicht nach Trend.',
 			},
 			{
 				q: 'Baut ihr noch mit WordPress?',
-				a: 'Nicht als Standard. Viele Relaunches kommen von WordPress. Ziel ist eine schlankere, wartbare Seite auf Astro oder Next.js, mit einem Editor-Workflow, der zu dir passt.',
+				a: 'Nicht als Standard. Viele Relaunches kommen von WordPress. Ziel ist eine schlankere, wartbare Seite mit einem Editor-Workflow, der zu dir passt, und mit Tempo, das Kunden nicht vertreibt.',
 			},
 			{
 				q: 'Übernehmt ihr Hosting?',
@@ -206,4 +201,3 @@ export const faqs = [
 		],
 	},
 ];
-

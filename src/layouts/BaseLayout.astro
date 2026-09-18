@@ -8,7 +8,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
 
-export type SchemaKind = 'home' | 'service' | 'contact' | 'references' | 'legal';
+export type SchemaKind = 'home' | 'service' | 'contact' | 'references' | 'blog' | 'article' | 'legal';
 export type Crumb = { name: string; href: string };
 
 type Props = {
@@ -18,6 +18,7 @@ type Props = {
 	schema?: SchemaKind;
 	breadcrumbs?: Crumb[];
 	serviceName?: string;
+	datePublished?: string;
 };
 
 const {
@@ -27,6 +28,7 @@ const {
 	schema = 'legal',
 	breadcrumbs = [],
 	serviceName,
+	datePublished,
 } = Astro.props;
 
 const canonical = new URL(path, site.url).href;
@@ -53,7 +55,7 @@ const organization = {
 	image: ogImage,
 	logo: new URL('/logos/mark.svg', site.url).href,
 	description:
-		'9to6 ist eine Agentur für Webdesign und Webentwicklung auf Astro und Next.js. Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und darüber hinaus.',
+		'9to6 ist eine Agentur für Webdesign und Webentwicklung. Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und darüber hinaus. Moderne Websites, die Anfragen generieren.',
 	areaServed: ['Frankfurt am Main', 'Rhein-Main', 'Gelnhausen', 'Hessen', 'Deutschland'],
 	address,
 	founder: {
@@ -65,7 +67,7 @@ const organization = {
 		image: ogImage,
 	},
 	sameAs: [site.social.linkedin],
-	knowsAbout: ['Webdesign', 'Webentwicklung', 'Astro', 'Next.js', 'Cloudflare Pages', 'Relaunch'],
+	knowsAbout: ['Webdesign', 'Webentwicklung', 'Conversion', 'Core Web Vitals', 'Relaunch', 'Frankfurt'],
 	priceRange: '€€',
 };
 
@@ -140,15 +142,36 @@ if (schema === 'contact') {
 	});
 }
 
-if (schema === 'references') {
+if (schema === 'references' || schema === 'blog') {
 	graph.push({
-		'@type': 'CollectionPage',
+		'@type': schema === 'blog' ? 'Blog' : 'CollectionPage',
 		'@id': `${canonical}#collection`,
 		url: canonical,
 		name: title,
 		description,
 		isPartOf: { '@id': websiteId },
 		inLanguage: 'de-DE',
+	});
+}
+
+if (schema === 'article') {
+	graph.push({
+		'@type': 'BlogPosting',
+		'@id': `${canonical}#article`,
+		url: canonical,
+		headline: title,
+		description,
+		datePublished: datePublished ?? '2026-09-18',
+		dateModified: datePublished ?? '2026-09-18',
+		inLanguage: 'de-DE',
+		isPartOf: { '@id': websiteId },
+		author: {
+			'@type': 'Person',
+			name: site.person.legal,
+			alternateName: site.person.public,
+		},
+		publisher: { '@id': orgId },
+		mainEntityOfPage: { '@id': `${canonical}#webpage` },
 	});
 }
 

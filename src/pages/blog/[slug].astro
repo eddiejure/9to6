@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CtaDark from '../../../components/CtaDark.astro';
+import { posts } from '../../../data/blog';
+
+export function getStaticPaths() {
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+---
+
+<BaseLayout
+	title={`${post.title} | 9to6`}
+	description={post.description}
+	schema="article"
+	datePublished={post.date}
+	breadcrumbs={[
+		{ name: 'Blog', href: '/blog/' },
+		{ name: post.title, href: `/blog/${post.slug}/` },
+	]}
+>
+	<section class="page-hero article-hero">
+		<div class="wrap">
+			<p class="article-meta">
+				{post.dateLabel} · {post.reading}
+			</p>
+			<h1>{post.title}</h1>
+			<p class="sub">{post.hero}</p>
+		</div>
+	</section>
+
+	<article class="wrap article">
+		{
+			post.sections.map((section) => (
+				<section>
+					<h2>{section.heading}</h2>
+					{section.paragraphs.map((paragraph) => (
+						<p>{paragraph}</p>
+					))}
+					{section.list ? (
+						<ul>
+							{section.list.map((item) => (
+								<li>{item}</li>
+							))}
+						</ul>
+					) : null}
+				</section>
+			))
+		}
+		<p>
+			<a href="/blog/">Alle Artikel</a>
+			{' · '}
+			<a href="/kontakt/">Erstgespräch vereinbaren</a>
+		</p>
+	</article>
+
+	<CtaDark />
+</BaseLayout>

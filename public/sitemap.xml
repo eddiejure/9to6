@@ -26,6 +26,26 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://9to6.de/blog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://9to6.de/blog/warum-deine-website-keine-kunden-bringt/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://9to6.de/blog/core-web-vitals-und-google-ranking/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://9to6.de/blog/aus-besuchern-werden-anfragen/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://9to6.de/kontakt/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

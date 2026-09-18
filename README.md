@@ -1,6 +1,6 @@
 # 9to6
 
-Agentur-Website für **Webdesign und Webentwicklung** auf Astro und Next.js. Sitz: Frankfurt / Rhein-Main. Visuell am Live-Auftritt [9to6.de](https://9to6.de) ausgerichtet, inhaltlich neu auf den Stack Astro und Next.js gestellt.
+Agentur-Website für **Webdesign und Webentwicklung** in Frankfurt / Rhein-Main. Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren. Visuell am Live-Auftritt [9to6.de](https://9to6.de) ausgerichtet.
 
 ## Lokal starten
 
@@ -52,6 +52,6 @@ npx wrangler pages deploy dist
 
 ## Inhalt: übernommen vs. neu
 
-Übernommen (Designsprache): Lila-Verlauf-Hero, Glas-Karte, Montserrat in Versalien, Button `#4E22A8` / Hover `#9644D2`, Lavendel-Band, schwarze Abschlussfläche, Logo, Porträt, Impressum-Stammdaten.
+Übernommen (Designsprache): dunkler Hero mit dezenter Violett-Atmosphäre, Glas-Karte, Montserrat in Versalien, Button `#4E22A8` / Hover `#9644D2`, Lavendel-Band, schwarze Abschlussfläche, Logo, Porträt, Impressum-Stammdaten.
 
-Neu: Fokus Webdesign / Astro / Next.js statt WordPress-Marketing; Referenzen Holzbau Oberlerchner, D&E Elixier (`de-elixier.de`), sim.do, Simtasy. Keine Agentur-Lebenslaufseite.
+Neu: Fokus auf Kundenergebnis (Anfragen, Conversion, Tempo) statt Framework-Pitch. Blog unter `/blog/`. Referenzen Holzbau Oberlerchner, D&E Elixier (`de-elixier.de`), sim.do, Simtasy. Keine Agentur-Lebenslaufseite.
