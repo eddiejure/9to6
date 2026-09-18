@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Accordion from '../components/Accordion.astro';
+import CtaDark from '../components/CtaDark.astro';
+import CtaPhone from '../components/CtaPhone.astro';
+import { faqs, gkkWording, values } from '../data/site';
+---
+
+<BaseLayout
+	title="Agentur 9to6 in Frankfurt | Webdesign und Entwicklung"
+	description="9to6 ist die Agentur von Edvinas Jurevicius in Frankfurt / Rhein-Main. Webdesign und Webentwicklung auf Astro und Next.js, seit Juni 2019."
+>
+	<section class="page-hero">
+		<div class="wrap-wide split" style="align-items:end;width:min(100% - 48px, 1240px);margin-inline:auto">
+			<div>
+				<h1>Eine Agentur wie keine andere</h1>
+				<p class="sub">Der Erfolg unserer Kunden beginnt mit den Regeln, nach denen wir leben:</p>
+				<ul class="icon-list" style="color:#fff">
+					{values.map((v) => <li>{v}</li>)}
+				</ul>
+			</div>
+			<div class="media">
+				<img src="/images/workspace.webp" alt="Arbeitsplatz in der Agentur" width="640" height="427" />
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<p class="intro">
+				Wir sind in eine digitale Welt hineingewachsen. Technologie ist Alltag, nicht Bühne. 9to6 baut Websites, die
+				Marken verständlich machen und im Browser halten, was im Gespräch versprochen wurde.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
+			<div>
+				<h2>Unsere Vision</h2>
+				<p class="body">
+					Unternehmen sollen verstehen, was eine gute Website leistet: Tempo, klare Sprache, ein Weg zur Anfrage. Wir
+					verbinden Menschen, die etwas suchen, mit Anbietern, die liefern können.
+				</p>
+				<h2 style="margin-top:32px">Unsere Mission</h2>
+				<p class="body">
+					Kern ist Webdesign und Webentwicklung auf Astro und Next.js. Darum herum sitzen Inhalt, technische SEO und
+					die Betreuung nach dem Launch. Ziel ist ein Auftritt, der sich rechnet, nicht ein einmaliges Redesign.
+				</p>
+			</div>
+			<div>
+				<h2>Unsere Leute</h2>
+				<p class="body">
+					9to6 ist bewusst klein. Edvinas Jurevicius führt Design und Code selbst und holt Spezialisten dazu, wenn ein
+					Projekt das braucht. Weniger Übergaben, mehr Verantwortung.
+				</p>
+				<h2 style="margin-top:32px">Unsere Werte</h2>
+				<p class="body">
+					Zugänglichkeit, Transparenz, Ehrlichkeit. Du sprichst mit der Person, die die Seite baut. Termine und Umfang
+					stehen im Angebot, nicht in einer nachgeschobenen Extra-Rechnung.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
+			<div class="media" style="max-width:320px">
+				<img class="avatar" style="width:100%;height:auto;aspect-ratio:1" src="/images/eddie.jpg" alt="Edvinas Jurevicius, 9to6" width="400" height="400" />
+			</div>
+			<div>
+				<p class="kicker">Werdegang</p>
+				<h2>Edvinas Jurevicius</h2>
+				<p class="body">
+					Digital Marketing und Web bei 9to6 seit Juni 2019, Frankfurt / Rhein-Main. Gründer von sim.do seit Oktober
+					2025. Studium Online Medien Management an der Hochschule der Medien Stuttgart (2016-2018).
+				</p>
+				<div class="timeline">
+					<article>
+						<div class="when">Seit 10 / 2025</div>
+						<h3>Gründer, sim.do</h3>
+						<p>eSIM-Marke für Reisen. Produkt, Web und Marke.</p>
+					</article>
+					<article>
+						<div class="when">Seit 06 / 2019</div>
+						<h3>9to6, Frankfurt / Rhein-Main</h3>
+						<p>
+							Selbständige Arbeit in Webdesign, Content, Technik und Kundenbetreuung. Konzeption, Umsetzung und Pflege
+							von Websites sowie Entwicklung digitaler Markenauftritte. 9to6 im Lebenslauf: 06 / 2019 bis 10 / 2023 als
+							Jurevicius &amp; Wolf GbR, danach fortgeführt.
+						</p>
+					</article>
+					<article>
+						<div class="when">2016-2018</div>
+						<h3>Hochschule der Medien Stuttgart</h3>
+						<p>Online Medien Management.</p>
+					</article>
+					<article>
+						<div class="when">2012-2013 · nicht 9to6</div>
+						<h3>Creation-Trainee, gkk Dialog Group</h3>
+						<p>{gkkWording}</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<div class="notice">
+				<strong>Hinweis zu früheren Marken</strong>
+				<p style="margin:0">
+					BMW, KIA, Jaguar, Maserati und Land Rover erscheinen nur in der Beschreibung der Trainee-Station bei gkk.
+					Sie sind keine Kunden und keine Referenzen von 9to6.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Die meistgestellten Fragen</h2>
+			{
+				faqs.map((group) => (
+					<div class="faq-block" style="padding:24px 0">
+						<h3 class="center" style="text-transform:uppercase;letter-spacing:2px">
+							{group.group}
+						</h3>
+						<Accordion items={[...group.items]} />
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<CtaPhone />
+	<CtaDark />
+</BaseLayout>

@@ -1,0 +1,26 @@
+---
+import { services } from '../data/site';
+---
+
+<footer class="site-footer">
+	<div class="wrap footer-grid">
+		<div>
+			<h2>Leistungen</h2>
+			{services.map((s) => <a href={s.href}>{s.title}</a>)}
+		</div>
+		<div>
+			<h2>Agentur</h2>
+			<a href="/agentur">Über 9to6</a>
+			<a href="/referenzen">Referenzen</a>
+			<a href="/kontakt">Kontakt</a>
+			<a href="/kontakt">Angebot</a>
+			<a href="/impressum">Impressum</a>
+			<a href="/datenschutz">Datenschutzerklärung</a>
+		</div>
+		<div class="footer-brand">
+			<img src="/logos/wordmark-white.svg" width="72" height="42" alt="9to6" />
+			<p>Wir bauen Websites, die schnell laden und Anfragen bringen.</p>
+		</div>
+	</div>
+	<p class="footer-copy">© 2019-2026 · 9to6 · Webdesign und Webentwicklung, Frankfurt / Rhein-Main</p>
+</footer>

@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaDark from '../../components/CtaDark.astro';
+import CtaPhone from '../../components/CtaPhone.astro';
+---
+
+<BaseLayout
+	title="Webdesign in Frankfurt | 9to6"
+	description="Webdesign von 9to6: klare Seiten für Handwerk, Studios und Marken. Gestaltung, Texte, Nutzerführung. Umsetzung danach auf Astro oder Next.js."
+>
+	<section class="page-hero center">
+		<div class="wrap">
+			<h1>Webdesign</h1>
+			<p class="sub">Ein Auftritt, der nach deinem Betrieb aussieht und zum Handeln führt.</p>
+			<p style="margin-top:28px"><a class="btn" href="/kontakt">Angebot anfordern</a></p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
+			<div>
+				<h2>Deine Website ist oft der erste Mitarbeiter, den jemand trifft</h2>
+				<p class="body">
+					Besucher entscheiden in Sekunden, ob sie bleiben. Layout, Sprache, Tempo und mobile Bedienung gehören
+					zusammen. 9to6 gestaltet Seiten, die Qualität zeigen, ohne laut zu werden, und die den Weg zur Anfrage offen
+					halten.
+				</p>
+			</div>
+			<div class="media">
+				<img src="/images/studio.webp" alt="Gestaltung am Arbeitsplatz" width="640" height="427" />
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<div class="cards">
+				<article class="card"><div class="card-body"><h3>UI und UX</h3><p>Raster, Typografie, Hierarchie. Schön und benutzbar, nicht entweder oder.</p></div></article>
+				<article class="card"><div class="card-body"><h3>Inhalte</h3><p>Überschriften und Texte, die du so sagen würdest. Keine leeren Floskeln, kein Lorem.</p></div></article>
+				<article class="card"><div class="card-body"><h3>Komponenten</h3><p>Header, Formulare, Referenzen, FAQ: Bausteine, die auf jeder Seite gleich gut sitzen.</p></div></article>
+				<article class="card"><div class="card-body"><h3>Übergabe in Code</h3><p>Das Design landet in Astro oder Next.js, pixelgenau, nicht als weggeworfene Folie.</p></div></article>
+			</div>
+		</div>
+	</section>
+
+	<CtaPhone />
+	<CtaDark />
+</BaseLayout>

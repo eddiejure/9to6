@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaDark from '../components/CtaDark.astro';
+import CtaPhone from '../components/CtaPhone.astro';
+import { cases } from '../data/site';
+---
+
+<BaseLayout
+	title="Referenzen: Websites von 9to6"
+	description="Ausgewählte Websites: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Echte Auftritte, gebaut und betreut von 9to6."
+>
+	<section class="page-hero center">
+		<div class="wrap">
+			<h1>Referenzen</h1>
+			<p class="sub">Live im Netz. Keine erfundenen Cases, keine fremden Budgets.</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<p class="intro center">
+				Hier stehen Projekte, die du öffnen kannst. Kundenaufträge und Gründerprodukte sind getrennt gekennzeichnet.
+				Marken aus früheren Anstellungen stehen nicht in dieser Liste.
+			</p>
+		</div>
+	</section>
+
+	{
+		cases.map((c, i) => (
+			<section class="section" id={c.slug}>
+				<div class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
+					<div class="media">
+						<a href={c.url} rel="noopener" target="_blank">
+							<img src={c.image} alt={c.imageAlt} width="800" height="500" />
+						</a>
+					</div>
+					<div>
+						<p class="kicker">{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.place}</p>
+						<h2>{c.name}</h2>
+						<p class="body">{c.summary}</p>
+						<ul class="icon-list">
+							{c.points.map((p) => (
+								<li>{p}</li>
+							))}
+						</ul>
+						<div class="pills">
+							<span class="pill">{c.stack}</span>
+							<span class="pill">{c.role}</span>
+						</div>
+						<p style="margin-top:22px">
+							<a class="btn" href={c.url} rel="noopener" target="_blank">
+								{c.urlLabel} öffnen
+							</a>
+						</p>
+					</div>
+				</div>
+			</section>
+		))
+	}
+
+	<section class="section">
+		<div class="wrap">
+			<div class="notice">
+				<strong>Was hier nicht steht</strong>
+				<p style="margin:0">
+					Tätigkeiten als Creation-Trainee bei der gkk Dialog Group (2012-2013) sind frühe Stationen von Edvinas
+					Jurevicius, keine 9to6-Referenzen. BMW, KIA, Jaguar, Maserati und Land Rover sind keine Kunden von 9to6.
+					Mehr dazu auf der <a href="/agentur">Agentur-Seite</a>.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<CtaPhone />
+	<CtaDark />
+</BaseLayout>

@@ -1,0 +1,109 @@
+---
+type Props = {
+	variant?: 'compact' | 'full';
+	heading?: string;
+};
+
+const { variant = 'full', heading = 'Was können wir für dich tun?' } = Astro.props;
+const isCompact = variant === 'compact';
+---
+
+<form class:list={['form', isCompact && 'form-compact']} data-kontakt-form data-variant={variant} novalidate>
+	{!isCompact && heading ? <p class="lbl" style="font-size:1.05rem;text-align:center;font-weight:600;margin:0 0 4px">{heading}</p> : null}
+
+	<label>
+		<span class="sr-only">Website (leer lassen)</span>
+		<input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
+	</label>
+	<input type="hidden" name="started" value="" data-started />
+
+	{
+		isCompact ? (
+			<>
+				<label>
+					<span class="sr-only">Name</span>
+					<input type="text" name="name" autocomplete="name" required placeholder="Name" />
+				</label>
+				<p class="field-error" data-error-for="name" hidden></p>
+				<label>
+					<span class="sr-only">Telefonnummer</span>
+					<input type="tel" name="phone" autocomplete="tel" required placeholder="Telefonnummer" />
+				</label>
+				<p class="field-error" data-error-for="phone" hidden></p>
+			</>
+		) : (
+			<>
+				<label>
+					Dein Name
+					<input type="text" name="name" autocomplete="name" required placeholder="Dein Name" />
+				</label>
+				<p class="field-error" data-error-for="name" hidden></p>
+				<div class="row-2">
+					<label>
+						Deine E-Mail
+						<input type="email" name="email" autocomplete="email" required placeholder="Deine E-Mail" />
+					</label>
+					<label>
+						Deine Telefonnummer
+						<input type="tel" name="phone" autocomplete="tel" placeholder="Deine Telefonnummer" />
+					</label>
+				</div>
+				<p class="field-error" data-error-for="email" hidden></p>
+				<fieldset class="checks" style="border:0;padding:0;margin:0">
+					<legend class="lbl">Benötigte Dienstleistung</legend>
+					<label><input type="checkbox" name="service" value="Webdesign" /> Webdesign</label>
+					<label><input type="checkbox" name="service" value="Webentwicklung Astro" /> Webentwicklung mit Astro</label>
+					<label><input type="checkbox" name="service" value="Webentwicklung Next.js" /> Webentwicklung mit Next.js</label>
+					<label><input type="checkbox" name="service" value="Relaunch" /> Relaunch einer bestehenden Website</label>
+				</fieldset>
+				<label>
+					Nachricht
+					<textarea name="message" rows="4" placeholder="Ich benötige Unterstützung bei..."></textarea>
+				</label>
+				<label class="consent">
+					<input type="checkbox" name="consent" required />
+					<span>
+						Ich stimme zu, dass meine Angaben zur Beantwortung der Anfrage verarbeitet werden. Details in der
+						<a href="/datenschutz">Datenschutzerklärung</a>.
+					</span>
+				</label>
+				<p class="field-error" data-error-for="consent" hidden></p>
+			</>
+		)
+	}
+
+	{
+		isCompact ? (
+			<p class="form-note">
+				Detaillierte Informationen zum Umgang mit Nutzerdaten finden Sie in unserer
+				<a href="/datenschutz">Datenschutzerklärung</a>.
+			</p>
+		) : (
+			<p class="form-note">
+				Detaillierte Informationen zum Umgang mit Nutzerdaten finden Sie in unserer
+				<a href="/datenschutz">Datenschutzerklärung</a>.
+			</p>
+		)
+	}
+
+	<p class="form-status" data-status hidden></p>
+
+	<button class="btn btn-block" type="submit" data-submit>
+		{isCompact ? 'Rückruf vereinbaren' : 'Senden'}
+	</button>
+</form>
+
+<style>
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0 0 0 0);
+	}
+</style>
+
+<script>
+	import { setupKontaktForms } from '../scripts/kontakt-form';
+	setupKontaktForms();
+</script>

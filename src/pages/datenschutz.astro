@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+	title="Datenschutzerklärung | 9to6"
+	description="Datenschutzerklärung von 9to6. Hosting über Cloudflare Pages, Kontaktformular über Web3Forms, keine nicht notwendigen Tracker."
+>
+	<section class="legal wrap">
+		<h1>Datenschutzerklärung</h1>
+
+		<h2>1. Datenschutz auf einen Blick</h2>
+		<p>
+			Die folgenden Hinweise geben einen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie
+			diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden
+			können.
+		</p>
+		<p>
+			Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem
+			<a href="/impressum">Impressum</a> entnehmen.
+		</p>
+		<p>
+			Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen, zum Beispiel im Kontaktformular. Andere
+			Daten fallen technisch beim Aufruf an (etwa Browsertyp, Zeitpunkt, gekürzte Verbindungsdaten beim Hosting).
+		</p>
+		<p>
+			Ein Teil der Daten wird erhoben, um die Website bereitzustellen. Formularangaben dienen der Beantwortung Ihrer
+			Anfrage. Es findet keine Reichweitenmessung und kein Marketing-Tracking statt.
+		</p>
+		<p>
+			Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und
+			Beschwerde bei einer Aufsichtsbehörde. Eine erteilte Einwilligung können Sie mit Wirkung für die Zukunft
+			widerrufen.
+		</p>
+
+		<h2>2. Verantwortliche Stelle</h2>
+		<p>
+			{site.person.legal}<br />
+			{site.address.street}, {site.address.zip} {site.address.city}<br />
+			Telefon: {site.phoneDisplay}<br />
+			E-Mail: {site.email}
+		</p>
+		<p>
+			Soweit in dieser Erklärung keine andere Speicherdauer genannt ist, bleiben Daten bei uns, bis der Zweck entfällt
+			oder Sie Löschung verlangen und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+		</p>
+
+		<h2>3. Hosting über Cloudflare Pages</h2>
+		<p>
+			Wir hosten diese Website bei Cloudflare Pages. Anbieter: Cloudflare, Inc., 101 Townsend St, San Francisco, CA
+			94107, USA. Cloudflare speichert in Server-Logs üblicherweise IP-Adresse, Zeitpunkt, aufgerufene Datei,
+			Browsertyp und referrer in dem Umfang, der für den Betrieb, die Sicherheit und die Auslieferung über das CDN
+			erforderlich ist.
+		</p>
+		<p>
+			Die Nutzung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer sicheren,
+			schnellen Bereitstellung). Soweit Cloudflare Daten in den USA verarbeitet, stützt sich das auf den
+			EU-US Data Privacy Framework bzw. Standardvertragsklauseln des Anbieters. Wir setzen kein optionales Cloudflare
+			Analytics und keine zusätzlichen Cloudflare-Cookies zu Werbezwecken ein.
+		</p>
+		<p>
+			Mehr dazu: <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener" target="_blank"
+				>Datenschutzhinweise von Cloudflare</a
+			>.
+		</p>
+
+		<h2>4. Keine nicht notwendigen Cookies, keine Analyse</h2>
+		<p>
+			Diese Website setzt keine nicht notwendigen Cookies. Es gibt kein Cookie-Banner, weil kein Marketing-Pixel, kein
+			Google Analytics, keine Google Fonts und keine Social Plugins geladen werden. Schriftarten liegen auf diesem
+			Server. Session- oder Sicherheitscookies von Cloudflare können technisch entstehen; sie sind für den Betrieb
+			erforderlich (Art. 6 Abs. 1 lit. f DSGVO).
+		</p>
+
+		<h2>5. Kontaktformular und Web3Forms</h2>
+		<p>
+			Wenn Sie uns über das Formular schreiben, verarbeiten wir Name, Kontaktdaten, gewünschte Leistung und Nachricht,
+			um die Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Schritte) bzw. Ihre
+			Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, soweit die Checkbox gesetzt wird, sowie Art. 6 Abs. 1 lit. f DSGVO
+			für die organisatorische Bearbeitung.
+		</p>
+		<p>
+			Die Übermittlung erfolgt an Web3Forms (West defero Ltd. bzw. den jeweils aktuellen Betreiber des Dienstes,
+			Erreichbarkeit über web3forms.com). Web3Forms nimmt die Nachricht entgegen und leitet sie an {site.email} weiter.
+			Dabei kann eine Verarbeitung außerhalb der EU stattfinden. Wir wählen den Dienst, weil kein eigenes Backend mit
+			Postfach-Passwort auf der Website liegt. Alternative Zustellung: E-Mail direkt an {site.email} oder Anruf.
+		</p>
+		<p>
+			Ohne konfigurierten Access-Key wird das Formular in der öffentlichen Produktion nicht an Web3Forms gesendet. Im
+			lokalen Entwicklungsserver kann der Erfolg zu Testzwecken simuliert werden, ohne dass Daten an Dritte gehen.
+		</p>
+		<p>
+			Angaben bleiben gespeichert, bis Sie zur Löschung auffordern, die Einwilligung widerrufen oder der Zweck entfällt.
+			Gesetzliche Aufbewahrungspflichten bleiben unberührt. Spam-Felder (Honeypot) und eine kurze Zeitsperre dienen nur
+			der Abwehr automatisierter Zusendungen.
+		</p>
+		<p>
+			Datenschutz des Anbieters: <a href="https://web3forms.com/privacy" rel="noopener" target="_blank"
+				>https://web3forms.com/privacy</a
+			>.
+		</p>
+
+		<h2>6. E-Mail und Telefon</h2>
+		<p>
+			Wenn Sie uns per E-Mail oder Telefon kontaktieren, speichern wir die Angaben zur Bearbeitung. Rechtsgrundlage Art.
+			6 Abs. 1 lit. b oder f DSGVO.
+		</p>
+
+		<h2>7. SSL- bzw. TLS-Verschlüsselung</h2>
+		<p>
+			Diese Seite nutzt eine verschlüsselte Verbindung. Eine verschlüsselte Verbindung erkennen Sie am https in der
+			Adresszeile.
+		</p>
+
+		<h2>8. Ihre Rechte</h2>
+		<p>
+			Sie haben im Rahmen der geltenden Vorschriften Recht auf Auskunft, Berichtigung, Löschung, Einschränkung,
+			Datenübertragbarkeit und Widerspruch. Außerdem ein Beschwerderecht bei der zuständigen Aufsichtsbehörde, für
+			Hessen etwa der Hessische Beauftragte für Datenschutz und Informationsfreiheit.
+		</p>
+		<p>
+			Der Nutzung der im Impressum veröffentlichten Kontaktdaten zur Übersendung nicht ausdrücklich angeforderter
+			Werbung wird widersprochen.
+		</p>
+
+		<h2>9. Was diese Fassung gegenüber der bisherigen WordPress-Seite ändert</h2>
+		<p>
+			Die Vorgängerseite unter 9to6.de (WordPress, Elementor) nannte unter anderem Google Fonts, Google Maps, YouTube,
+			Facebook- und Instagram-Plugins, Newsletter und Analyseprogramme. Dieser Relaunch lädt diese Dienste nicht. Texte
+			zu nicht eingebundenen Tools entfallen deshalb. Kommen später Analyse oder Medien von Dritten hinzu, wird diese
+			Erklärung ergänzt und, soweit nötig, eine Einwilligung eingeholt.
+		</p>
+	</section>
+</BaseLayout>

@@ -1,0 +1,23 @@
+---
+type Props = {
+	title?: string;
+	text?: string;
+	cta?: string;
+	href?: string;
+};
+const {
+	title = 'Lass uns die Dinge ins Laufen bringen',
+	text = 'Erhalte einen kostenlosen Blick auf deine aktuelle Website: Technik, Inhalt, Tempo. Unverbindlich, und ein Vorgeschmack darauf, wie 9to6 arbeitet.',
+	cta = 'kostenloses Erstgespräch',
+	href = '/kontakt',
+} = Astro.props;
+---
+
+<section class="band-black">
+	<div class="wrap">
+		<h2>{title}</h2>
+		<p>{text}</p>
+		<hr class="rule" />
+		<a class="btn" href={href}>{cta}</a>
+	</div>
+</section>
