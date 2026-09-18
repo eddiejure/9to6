@@ -863,25 +863,16 @@ details.acc[open] p {
 }
 
 .shot {
-	background: #f4f4f6;
-	border: 1px solid rgba(15, 12, 40, 0.1);
-	border-radius: 16px;
-	aspect-ratio: 16 / 10;
-	display: flex;
-	align-items: stretch;
-	justify-content: stretch;
-	padding: 14px;
+	background: #eef0f4;
+	border-radius: 12px;
+	padding: 8px 5px;
+	display: block;
 	overflow: hidden;
-	box-shadow: inset 0 1px 2px rgba(15, 12, 40, 0.04);
 }
 
 .shot a {
-	display: flex;
-	align-items: stretch;
+	display: block;
 	width: 100%;
-	height: 100%;
-	min-width: 0;
-	min-height: 0;
 }
 
 .shot img,
@@ -889,18 +880,18 @@ details.acc[open] p {
 .card .shot img,
 img.shot-img {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	aspect-ratio: 16 / 10;
 	object-fit: contain;
 	object-position: center;
-	aspect-ratio: auto;
 	display: block;
 	background: #fff;
 	border-radius: 8px;
-	box-shadow: 0 0 0 1px rgba(15, 12, 40, 0.06);
+	box-shadow: 0 0 0 1px rgba(15, 12, 40, 0.1);
 }
 
 .card .shot {
-	margin: 14px 14px 0;
+	margin: 8px 8px 0;
 	flex-shrink: 0;
 }
 
