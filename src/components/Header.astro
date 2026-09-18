@@ -33,11 +33,11 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 			</nav>
 			<a class="btn header-cta" href="/kontakt/">Angebot</a>
 		</div>
-		<button class="menu-toggle" type="button" aria-expanded="false" aria-label="Menü öffnen">
+		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
 			<span></span>
 		</button>
 	</div>
-	<nav class="mobile-panel" aria-label="Mobiles Menü">
+	<nav class="mobile-panel" id="mobile-menu" aria-label="Mobiles Menü">
 		{
 			nav.map((item) => (
 				<>

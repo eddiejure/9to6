@@ -63,14 +63,15 @@ const ansatz = [
 
 <BaseLayout
 	title="Webdesign und Webentwicklung in Frankfurt | 9to6"
-	description="9to6 baut Websites auf Astro und Next.js. Webdesign und Webentwicklung in Frankfurt und Rhein-Main: schnell, klar, suchstark."
+	description="9to6 gestaltet und entwickelt Websites auf Astro und Next.js. Klar, schnell, suchstark. Agentur in Frankfurt und Rhein-Main, direkter Draht zu Eddie J."
+	schema="home"
 >
 	<section class="hero">
 		<div class="hero-grid">
-			<div>
+			<header>
 				<h1>Webdesign<br />und<br />Webentwicklung</h1>
 				<p class="lede">Websites auf Astro und Next.js. Schnell, klar und bereit für Anfragen.</p>
-			</div>
+			</header>
 			<div class="glass">
 				<svg class="phone-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path
@@ -111,7 +112,7 @@ const ansatz = [
 						</div>
 					) : null}
 					<div class="copy">
-						<h3>{p.title}</h3>
+						<h2>{p.title}</h2>
 						<p class="body">{p.text}</p>
 						<p><a class="btn" href={p.href} style="margin-top:18px">{p.cta}</a></p>
 					</div>
@@ -171,9 +172,9 @@ const ansatz = [
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" aria-labelledby="cases-heading">
 		<div class="wrap">
-			<h2 class="center">Websites, die im Einsatz sind</h2>
+			<h2 id="cases-heading" class="center">Websites, die im Einsatz sind</h2>
 			<p class="intro center">Echte Auftritte, keine Moodboards. Mehr dazu unter Referenzen.</p>
 			<div class="cards" style="margin-top:36px">
 				{

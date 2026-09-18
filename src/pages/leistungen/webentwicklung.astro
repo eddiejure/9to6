@@ -14,6 +14,12 @@ const steps = [
 <BaseLayout
 	title="Webentwicklung mit Astro und Next.js | 9to6"
 	description="Webentwicklung von 9to6 in Frankfurt: Astro für schnelle Auftritte, Next.js für Anwendungen. Relaunch, Performance, Cloudflare Pages."
+	schema="service"
+	serviceName="Webentwicklung"
+	breadcrumbs={[
+		{ name: 'Leistungen', href: '/leistungen/' },
+		{ name: 'Webentwicklung', href: '/leistungen/webentwicklung/' },
+	]}
 >
 	<section class="page-hero center">
 		<div class="wrap">
@@ -35,7 +41,7 @@ const steps = [
 
 	<section class="section" id="astro">
 		<div class="wrap-wide split">
-			<div class="blob">Astro</div>
+			<div class="blob" aria-hidden="true">Astro</div>
 			<div>
 				<h2>Komplette Webentwicklung mit Astro</h2>
 				<p class="body">
@@ -57,7 +63,7 @@ const steps = [
 					nicht aus Prinzip.
 				</p>
 			</div>
-			<div class="blob">Next.js</div>
+			<div class="blob" aria-hidden="true">Next.js</div>
 		</div>
 	</section>
 

@@ -126,9 +126,12 @@ async function sendForm(payload: Record<string, string>) {
 
 function setError(form: HTMLFormElement, name: string, text: string) {
 	const el = form.querySelector<HTMLElement>(`[data-error-for="${name}"]`);
-	if (!el) return;
-	el.hidden = false;
-	el.textContent = text;
+	const field = form.querySelector<HTMLInputElement>(`[name="${name}"]`);
+	if (el) {
+		el.hidden = false;
+		el.textContent = text;
+	}
+	if (field) field.setAttribute('aria-invalid', 'true');
 }
 
 function clearErrors(form: HTMLFormElement) {
@@ -136,6 +139,7 @@ function clearErrors(form: HTMLFormElement) {
 		el.hidden = true;
 		el.textContent = '';
 	});
+	form.querySelectorAll('[aria-invalid]').forEach((el) => el.removeAttribute('aria-invalid'));
 }
 
 function showStatus(el: HTMLElement | null, kind: 'error' | 'success' | 'loading', text: string) {

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Allow: /llms.txt
+Allow: /llms-full.txt
+
 Sitemap: https://9to6.de/sitemap.xml

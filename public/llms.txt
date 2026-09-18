@@ -1,0 +1,34 @@
+# 9to6
+
+> Agentur für Webdesign und Webentwicklung auf Astro und Next.js. Sitz: Gelnhausen / Frankfurt am Main, Rhein-Main.
+
+9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange, kein unnötiges JavaScript.
+
+## Angebot
+
+- Webdesign: Struktur, Typografie, Nutzerführung, Texte
+- Webentwicklung mit Astro: HTML zuerst, starke Core Web Vitals
+- Webentwicklung mit Next.js: wenn Login, Dashboard oder Produktlogik dazugehören
+- Relaunch: WordPress- oder Baukasten-Seiten ablösen, Inhalte retten
+
+## Referenzen
+
+- Holzbau Oberlerchner (oberlerchner.de): Website für Zimmerei und Holzbau, Astro
+- D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen
+- sim.do: eSIM für Reisen, Gründerprodukt von Edvinas Jurevicius
+- Simtasy (simtasy.com): B2B-Wholesale-Plattform für eSIM-Reseller
+
+## Technik
+
+Astro, Next.js, Cloudflare Pages. Semantisches HTML, selbst gehostete Schriften, keine Google Fonts, keine Analytics-Tracker.
+
+## Kontakt
+
+- Web: https://9to6.de/
+- E-Mail: info@9to6.de
+- Telefon: +49 175 4045558
+- Adresse: Rhönstraße 95, 63571 Gelnhausen, Deutschland
+- Gründer: Edvinas Jurevicius (Eddie J.)
+- LinkedIn: https://www.linkedin.com/in/eddiejure
+
+Volltext: https://9to6.de/llms-full.txt

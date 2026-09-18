@@ -8,15 +8,17 @@ import { faqs, site } from '../data/site';
 
 <BaseLayout
 	title="Kontakt und Angebot | 9to6 Frankfurt"
-	description="Erstgespräch mit 9to6: Webdesign und Webentwicklung auf Astro und Next.js. Anrufen unter 0175 404 5558 oder Formular senden."
+	description="Erstgespräch mit 9to6: Webdesign und Webentwicklung auf Astro und Next.js. Anrufen unter 0175 404 5558 oder das Formular auf dieser Seite nutzen."
+	schema="contact"
+	breadcrumbs={[{ name: 'Kontakt', href: '/kontakt/' }]}
 >
-	<section class="page-hero" style="min-height:auto;align-items:stretch;padding:72px 0 80px">
-		<div class="wrap" style="text-align:center;margin-bottom:48px">
+	<section class="page-hero contact-hero">
+		<header class="wrap hero-kicker">
 			<h1>Werde persönlich beraten</h1>
-		</div>
+		</header>
 		<div class="contact-grid">
 			<div class="profile">
-				<img src="/images/eddie.jpg" width="210" height="210" alt="Eddie J." />
+				<img src="/images/eddie.webp" width="210" height="210" alt="Eddie J., Gründer von 9to6" />
 				<h2>{site.person.public}</h2>
 				<p class="role">{site.person.role}</p>
 				<ul class="check-list">
@@ -38,12 +40,12 @@ import { faqs, site } from '../data/site';
 			<p class="intro">Die meistgestellten Fragen und deren Antworten</p>
 			{
 				faqs.map((group) => (
-					<div style="padding:16px 0">
-						<h3 class="center" style="text-transform:uppercase;letter-spacing:2px">
+					<section style="padding:16px 0" aria-labelledby={`faq-${group.group}`}>
+						<h3 class="center" id={`faq-${group.group}`}>
 							{group.group}
 						</h3>
 						<Accordion items={[...group.items]} />
-					</div>
+					</section>
 				))
 			}
 		</div>

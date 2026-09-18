@@ -9,7 +9,7 @@ const isCompact = variant === 'compact';
 ---
 
 <form class:list={['form', isCompact && 'form-compact']} data-kontakt-form data-variant={variant} novalidate>
-	{!isCompact && heading ? <p class="lbl" style="font-size:1.05rem;text-align:center;font-weight:600;margin:0 0 4px">{heading}</p> : null}
+	{!isCompact && heading ? <h2 class="form-heading">{heading}</h2> : null}
 
 	<label>
 		<span class="sr-only">Website (leer lassen)</span>
@@ -22,52 +22,52 @@ const isCompact = variant === 'compact';
 			<>
 				<label>
 					<span class="sr-only">Name</span>
-					<input type="text" name="name" autocomplete="name" required placeholder="Name" />
+					<input id="compact-name" type="text" name="name" autocomplete="name" required placeholder="Name" aria-describedby="compact-name-error" />
 				</label>
-				<p class="field-error" data-error-for="name" hidden></p>
+				<p class="field-error" id="compact-name-error" data-error-for="name" hidden></p>
 				<label>
 					<span class="sr-only">Telefonnummer</span>
-					<input type="tel" name="phone" autocomplete="tel" required placeholder="Telefonnummer" />
+					<input id="compact-phone" type="tel" name="phone" autocomplete="tel" required placeholder="Telefonnummer" aria-describedby="compact-phone-error" />
 				</label>
-				<p class="field-error" data-error-for="phone" hidden></p>
+				<p class="field-error" id="compact-phone-error" data-error-for="phone" hidden></p>
 			</>
 		) : (
 			<>
-				<label>
+				<label for="full-name">
 					Dein Name
-					<input type="text" name="name" autocomplete="name" required placeholder="Dein Name" />
+					<input id="full-name" type="text" name="name" autocomplete="name" required placeholder="Dein Name" aria-describedby="full-name-error" />
 				</label>
-				<p class="field-error" data-error-for="name" hidden></p>
+				<p class="field-error" id="full-name-error" data-error-for="name" hidden></p>
 				<div class="row-2">
-					<label>
+					<label for="full-email">
 						Deine E-Mail
-						<input type="email" name="email" autocomplete="email" required placeholder="Deine E-Mail" />
+						<input id="full-email" type="email" name="email" autocomplete="email" required placeholder="Deine E-Mail" aria-describedby="full-email-error" />
 					</label>
-					<label>
+					<label for="full-phone">
 						Deine Telefonnummer
-						<input type="tel" name="phone" autocomplete="tel" placeholder="Deine Telefonnummer" />
+						<input id="full-phone" type="tel" name="phone" autocomplete="tel" placeholder="Deine Telefonnummer" />
 					</label>
 				</div>
-				<p class="field-error" data-error-for="email" hidden></p>
-				<fieldset class="checks" style="border:0;padding:0;margin:0">
+				<p class="field-error" id="full-email-error" data-error-for="email" hidden></p>
+				<fieldset class="checks">
 					<legend class="lbl">Benötigte Dienstleistung</legend>
 					<label><input type="checkbox" name="service" value="Webdesign" /> Webdesign</label>
 					<label><input type="checkbox" name="service" value="Webentwicklung Astro" /> Webentwicklung mit Astro</label>
 					<label><input type="checkbox" name="service" value="Webentwicklung Next.js" /> Webentwicklung mit Next.js</label>
 					<label><input type="checkbox" name="service" value="Relaunch" /> Relaunch einer bestehenden Website</label>
 				</fieldset>
-				<label>
+				<label for="full-message">
 					Nachricht
-					<textarea name="message" rows="4" placeholder="Ich benötige Unterstützung bei..."></textarea>
+					<textarea id="full-message" name="message" rows="4" placeholder="Ich benötige Unterstützung bei..."></textarea>
 				</label>
-				<label class="consent">
-					<input type="checkbox" name="consent" required />
+				<label class="consent" for="full-consent">
+					<input id="full-consent" type="checkbox" name="consent" required aria-describedby="full-consent-error" />
 					<span>
 						Ich stimme zu, dass meine Angaben zur Beantwortung der Anfrage verarbeitet werden. Details in der
 						<a href="/datenschutz/">Datenschutzerklärung</a>.
 					</span>
 				</label>
-				<p class="field-error" data-error-for="consent" hidden></p>
+				<p class="field-error" id="full-consent-error" data-error-for="consent" hidden></p>
 			</>
 		)
 	}
@@ -81,7 +81,7 @@ const isCompact = variant === 'compact';
 		) : null
 	}
 
-	<p class="form-status" data-status hidden></p>
+	<p class="form-status" data-status hidden role="status"></p>
 
 	<button class="btn btn-block" type="submit" data-submit>
 		{isCompact ? 'Rückruf vereinbaren' : 'Senden'}
@@ -95,6 +95,12 @@ const isCompact = variant === 'compact';
 		height: 1px;
 		overflow: hidden;
 		clip: rect(0 0 0 0);
+	}
+
+	.checks {
+		border: 0;
+		padding: 0;
+		margin: 0;
 	}
 </style>
 

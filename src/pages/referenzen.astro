@@ -7,7 +7,9 @@ import { cases } from '../data/site';
 
 <BaseLayout
 	title="Referenzen: Websites von 9to6"
-	description="Ausgewählte Websites: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Echte Auftritte, gebaut und betreut von 9to6."
+	description="Live-Websites von 9to6: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Kundenprojekte und Gründerprodukte, die du öffnen kannst."
+	schema="references"
+	breadcrumbs={[{ name: 'Referenzen', href: '/referenzen/' }]}
 >
 	<section class="page-hero center">
 		<div class="wrap">
@@ -27,7 +29,7 @@ import { cases } from '../data/site';
 	{
 		cases.map((c, i) => (
 			<section class="section" id={c.slug}>
-				<div class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
+				<article class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
 					<div class="media">
 						<a href={c.url} rel="noopener" target="_blank">
 							<img src={c.image} alt={c.imageAlt} width="800" height="500" />
@@ -52,7 +54,7 @@ import { cases } from '../data/site';
 							</a>
 						</p>
 					</div>
-				</div>
+				</article>
 			</section>
 		))
 	}

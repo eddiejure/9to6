@@ -8,15 +8,168 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../data/site';
 
+export type SchemaKind = 'home' | 'service' | 'contact' | 'references' | 'legal';
+export type Crumb = { name: string; href: string };
+
 type Props = {
 	title: string;
 	description: string;
 	path?: string;
+	schema?: SchemaKind;
+	breadcrumbs?: Crumb[];
+	serviceName?: string;
 };
 
-const { title, description, path = Astro.url.pathname } = Astro.props;
+const {
+	title,
+	description,
+	path = Astro.url.pathname,
+	schema = 'legal',
+	breadcrumbs = [],
+	serviceName,
+} = Astro.props;
+
 const canonical = new URL(path, site.url).href;
 const ogImage = new URL('/images/eddie.jpg', site.url).href;
+const orgId = `${site.url}/#organization`;
+const websiteId = `${site.url}/#website`;
+
+const address = {
+	'@type': 'PostalAddress',
+	streetAddress: site.address.street,
+	postalCode: site.address.zip,
+	addressLocality: site.address.city,
+	addressRegion: 'Hessen',
+	addressCountry: 'DE',
+};
+
+const organization = {
+	'@type': ['ProfessionalService', 'LocalBusiness'],
+	'@id': orgId,
+	name: site.name,
+	url: site.url,
+	email: site.email,
+	telephone: '+491754045558',
+	image: ogImage,
+	logo: new URL('/logos/mark.svg', site.url).href,
+	description:
+		'9to6 ist eine Agentur für Webdesign und Webentwicklung auf Astro und Next.js. Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und darüber hinaus.',
+	areaServed: ['Frankfurt am Main', 'Rhein-Main', 'Gelnhausen', 'Hessen', 'Deutschland'],
+	address,
+	founder: {
+		'@type': 'Person',
+		name: site.person.legal,
+		alternateName: site.person.public,
+		jobTitle: site.person.role,
+		sameAs: site.social.linkedin,
+		image: ogImage,
+	},
+	sameAs: [site.social.linkedin],
+	knowsAbout: ['Webdesign', 'Webentwicklung', 'Astro', 'Next.js', 'Cloudflare Pages', 'Relaunch'],
+	priceRange: '€€',
+};
+
+const website = {
+	'@type': 'WebSite',
+	'@id': websiteId,
+	url: site.url,
+	name: site.name,
+	inLanguage: 'de-DE',
+	publisher: { '@id': orgId },
+	description,
+};
+
+const crumbList =
+	breadcrumbs.length > 0
+		? {
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{
+						'@type': 'ListItem',
+						position: 1,
+						name: 'Startseite',
+						item: `${site.url}/`,
+					},
+					...breadcrumbs.map((crumb, index) => ({
+						'@type': 'ListItem',
+						position: index + 2,
+						name: crumb.name,
+						item: new URL(crumb.href, site.url).href,
+					})),
+				],
+			}
+		: null;
+
+const graph: Record<string, unknown>[] = [organization, website];
+
+if (schema === 'home') {
+	graph.push({
+		'@type': 'WebPage',
+		'@id': `${canonical}#webpage`,
+		url: canonical,
+		name: title,
+		description,
+		isPartOf: { '@id': websiteId },
+		about: { '@id': orgId },
+		inLanguage: 'de-DE',
+	});
+}
+
+if (schema === 'service') {
+	graph.push({
+		'@type': 'Service',
+		name: serviceName ?? title,
+		description,
+		provider: { '@id': orgId },
+		areaServed: 'DE',
+		url: canonical,
+		serviceType: serviceName ?? 'Webdesign und Webentwicklung',
+	});
+}
+
+if (schema === 'contact') {
+	graph.push({
+		'@type': 'ContactPage',
+		'@id': `${canonical}#contact`,
+		url: canonical,
+		name: title,
+		description,
+		isPartOf: { '@id': websiteId },
+		mainEntity: { '@id': orgId },
+		inLanguage: 'de-DE',
+	});
+}
+
+if (schema === 'references') {
+	graph.push({
+		'@type': 'CollectionPage',
+		'@id': `${canonical}#collection`,
+		url: canonical,
+		name: title,
+		description,
+		isPartOf: { '@id': websiteId },
+		inLanguage: 'de-DE',
+	});
+}
+
+if (schema === 'legal') {
+	graph.push({
+		'@type': 'WebPage',
+		'@id': `${canonical}#webpage`,
+		url: canonical,
+		name: title,
+		description,
+		isPartOf: { '@id': websiteId },
+		inLanguage: 'de-DE',
+	});
+}
+
+if (crumbList) graph.push(crumbList);
+
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': graph,
+};
 ---
 
 <!doctype html>
@@ -28,6 +181,8 @@ const ogImage = new URL('/images/eddie.jpg', site.url).href;
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		<meta name="robots" content="index, follow" />
+		<meta name="author" content="Edvinas Jurevicius, 9to6" />
+		<meta name="theme-color" content="#4E22A8" />
 		<meta property="og:locale" content="de_DE" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={site.name} />
@@ -35,36 +190,19 @@ const ogImage = new URL('/images/eddie.jpg', site.url).href;
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
 		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:alt" content="Eddie J., Gründer von 9to6" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="1200" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image:alt" content="Eddie J., Gründer von 9to6" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/logos/mark.svg" />
+		<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-Kurzbeschreibung 9to6" />
 		<slot name="head" />
-		<script type="application/ld+json" set:html={JSON.stringify({
-			'@context': 'https://schema.org',
-			'@type': 'ProfessionalService',
-			name: '9to6',
-			url: site.url,
-			email: site.email,
-			telephone: '+491754045558',
-			image: ogImage,
-			description,
-			areaServed: ['Frankfurt am Main', 'Rhein-Main', 'Gelnhausen', 'Deutschland'],
-			address: {
-				'@type': 'PostalAddress',
-				streetAddress: site.address.street,
-				postalCode: site.address.zip,
-				addressLocality: site.address.city,
-				addressCountry: 'DE',
-			},
-			founder: {
-				'@type': 'Person',
-				name: site.person.legal,
-				jobTitle: site.person.role,
-			},
-			knowsAbout: ['Webdesign', 'Webentwicklung', 'Astro', 'Next.js'],
-		})} />
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 	</head>
 	<body>
 		<a class="skip" href="#content">Zum Inhalt wechseln</a>
@@ -75,9 +213,16 @@ const ogImage = new URL('/images/eddie.jpg', site.url).href;
 		<Footer />
 		<script>
 			const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+			const setOpen = (open: boolean) => {
+				document.body.classList.toggle('nav-open', open);
+				toggle?.setAttribute('aria-expanded', String(open));
+				toggle?.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
+			};
 			toggle?.addEventListener('click', () => {
-				const open = document.body.classList.toggle('nav-open');
-				toggle.setAttribute('aria-expanded', String(open));
+				setOpen(!document.body.classList.contains('nav-open'));
+			});
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape') setOpen(false);
 			});
 		</script>
 	</body>
