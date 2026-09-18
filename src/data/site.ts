@@ -31,7 +31,6 @@ export const nav = [
 		],
 	},
 	{ href: '/referenzen/', label: 'Referenzen' },
-	{ href: '/agentur/', label: 'Agentur' },
 	{ href: '/kontakt/', label: 'Kontakt' },
 ] as const;
 
@@ -208,16 +207,3 @@ export const faqs = [
 	},
 ];
 
-export const values = [
-	'Integrität, Loyalität und Vertrauen',
-	'Freiheit bewahren',
-	'Jedes Problem hat eine Lösung',
-	'Immer innovieren',
-	'Mehr machen als notwendig',
-	'Hab Spaß, nimm dich nicht zu ernst',
-	'Jeder Herausforderung stellen',
-];
-
-/** Frühe Station, nicht 9to6. Wortlaut angelehnt an den Lebenslauf, ohne Gedankenstrich. */
-export const gkkWording =
-	'Noch vor der Gründung von 9to6 war Edvinas Jurevicius 2012-2013 als Creation-Trainee bei der gkk Dialog Group tätig. In dieser frühen Station gehörten unter anderem die Pflege von bmw.de, der Social-Media-Auftritt und die Mobile-App-Gestaltung für KIA Motors sowie die Selfmailer-Gestaltung für Jaguar, Maserati und Land Rover zu den Aufgaben. Diese Arbeiten entstanden im Rahmen des Traineeships bei gkk, nicht als Projekte der Agentur 9to6.';

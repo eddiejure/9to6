@@ -1,36 +1,38 @@
 ---
 import { nav, site } from '../data/site';
 const path = Astro.url.pathname;
+const isCurrent = (href: string) => path === href || (href !== '/' && path.startsWith(href));
 ---
 
 <header class="site-header">
 	<div class="header-inner">
 		<a class="logo" href="/" aria-label="9to6 Startseite">
-			<img src="/logos/wordmark-dark.svg" width="80" height="46" alt="9to6" />
+			<img src="/logos/wordmark-white.svg" width="80" height="46" alt="9to6" />
 		</a>
-		<nav class="nav" aria-label="Hauptnavigation">
-			{
-				nav.map((item) =>
-					'children' in item && item.children ? (
-						<details class="nav-drop">
-							<summary>{item.label}</summary>
-							<div class="sub">
-								<a href={item.href}>Alle Leistungen</a>
-								{item.children.map((child) => (
-									<a href={child.href}>{child.label}</a>
-								))}
-							</div>
-						</details>
-					) : (
-						<a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
-							{item.label}
-						</a>
+		<div class="header-right">
+			<nav class="nav" aria-label="Hauptnavigation">
+				{
+					nav.map((item) =>
+						'children' in item && item.children ? (
+							<details class="nav-drop">
+								<summary>{item.label}</summary>
+								<div class="sub">
+									<a href={item.href}>Alle Leistungen</a>
+									{item.children.map((child) => (
+										<a href={child.href}>{child.label}</a>
+									))}
+								</div>
+							</details>
+						) : (
+							<a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}>
+								{item.label}
+							</a>
+						)
 					)
-				)
-			}
-		</nav>
-		<a class="btn header-cta" href="/kontakt/">Angebot</a>
-		<a class="btn mobile-cta" href="/kontakt/">Angebot</a>
+				}
+			</nav>
+			<a class="btn header-cta" href="/kontakt/">Angebot</a>
+		</div>
 		<button class="menu-toggle" type="button" aria-expanded="false" aria-label="Menü öffnen">
 			<span></span>
 		</button>

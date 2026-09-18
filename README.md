@@ -54,8 +54,4 @@ npx wrangler pages deploy dist
 
 Übernommen (Designsprache): Lila-Verlauf-Hero, Glas-Karte, Montserrat in Versalien, Button `#4E22A8` / Hover `#9644D2`, Lavendel-Band, schwarze Abschlussfläche, Logo, Porträt, Impressum-Stammdaten.
 
-Neu: Fokus Webdesign / Astro / Next.js statt WordPress-Marketing; Referenzen Holzbau Oberlerchner, D&E Elixier (`de-elixier.de`), sim.do, Simtasy; Werdegang inkl. gkk Dialog Group als frühe Trainee-Station, **nicht** als 9to6-Arbeit.
-
-## GKK
-
-Wortlaut auf `/agentur`: Creation-Trainee bei der gkk Dialog Group, 2012-2013. BMW, KIA, Jaguar, Maserati und Land Rover sind keine 9to6-Kunden. 9to6 im Lebenslauf ab 06 / 2019.
+Neu: Fokus Webdesign / Astro / Next.js statt WordPress-Marketing; Referenzen Holzbau Oberlerchner, D&E Elixier (`de-elixier.de`), sim.do, Simtasy. Keine Agentur-Lebenslaufseite.
