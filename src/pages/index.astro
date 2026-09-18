@@ -10,28 +10,28 @@ const pillars = [
 	{
 		title: 'Webdesign, das beeindruckt',
 		text: 'Dein Unternehmen ist einzigartig und verdient eine Website, die das zeigt. Wir verbinden klares Design mit einer ruhigen Benutzerführung und legen damit den Grundstein deiner Onlinepräsenz.',
-		href: '/leistungen/webdesign',
+		href: '/leistungen/webdesign/',
 		cta: 'Zu unseren Webdesign Leistungen',
 		visual: 'studio',
 	},
 	{
 		title: 'Webentwicklung mit Astro',
 		text: 'Astro liefert HTML zuerst und JavaScript nur dort, wo es gebraucht wird. Das heißt: kurze Ladezeiten, gute Core Web Vitals und Seiten, die in der Suche bestehen. Ideal für Agentur-, Handwerks- und Markenauftritte.',
-		href: '/leistungen/webentwicklung#astro',
+		href: '/leistungen/webentwicklung/#astro',
 		cta: 'Mehr zu Astro',
 		visual: 'astro',
 	},
 	{
 		title: 'Next.js, wenn es komplex wird',
 		text: 'Login, Dashboard, Shop-Logik, häufige Updates: Dann trägt Next.js. Wir bauen die Anwendung so, dass sie wartbar bleibt und sich anfühlt wie ein Produkt, nicht wie ein Baukasten.',
-		href: '/leistungen/webentwicklung#nextjs',
+		href: '/leistungen/webentwicklung/#nextjs',
 		cta: 'Mehr zu Next.js',
 		visual: 'next',
 	},
 	{
 		title: 'Technik, die gefunden wird',
 		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Wir setzen semantisches HTML, saubere URLs, Metadaten und interne Verlinkung so, dass Menschen und Suchmaschinen denselben Weg gehen.',
-		href: '/leistungen/webentwicklung',
+		href: '/leistungen/webentwicklung/',
 		cta: 'Zur Webentwicklung',
 		visual: 'laptop',
 	},
@@ -139,7 +139,7 @@ const ansatz = [
 				auf Astro und Next.js, online klarer aufzutreten und Anfragen zu gewinnen. Jedes Projekt bekommt eine Lösung, die
 				zu Ziel, Inhalt und Budget passt.
 			</p>
-			<p><a class="btn" href="/agentur">Über uns</a></p>
+			<p><a class="btn" href="/agentur/">Über uns</a></p>
 		</div>
 	</section>
 
@@ -167,7 +167,7 @@ const ansatz = [
 				Handwerk, Studio, Produktmarke oder interne Plattform: Wir schauen uns an, was schon da ist, und bauen das, was
 				fehlt. Ohne Theme-Zwang, ohne unnötiges JavaScript.
 			</p>
-			<p><a class="btn" href="/leistungen">Leistungen</a></p>
+			<p><a class="btn" href="/leistungen/">Leistungen</a></p>
 		</div>
 	</section>
 
@@ -178,7 +178,7 @@ const ansatz = [
 			<div class="cards" style="margin-top:36px">
 				{
 					cases.map((c) => (
-						<a class="card" href="/referenzen">
+						<a class="card" href="/referenzen/">
 							<img src={c.image} alt={c.imageAlt} width="640" height="400" />
 							<div class="card-body">
 								<div class="meta">{c.place}</div>

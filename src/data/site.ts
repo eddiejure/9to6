@@ -23,36 +23,36 @@ export const site = {
 export const nav = [
 	{ href: '/', label: 'Home' },
 	{
-		href: '/leistungen',
+		href: '/leistungen/',
 		label: 'Leistungen',
 		children: [
-			{ href: '/leistungen/webdesign', label: 'Webdesign' },
-			{ href: '/leistungen/webentwicklung', label: 'Webentwicklung' },
+			{ href: '/leistungen/webdesign/', label: 'Webdesign' },
+			{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung' },
 		],
 	},
-	{ href: '/referenzen', label: 'Referenzen' },
-	{ href: '/agentur', label: 'Agentur' },
-	{ href: '/kontakt', label: 'Kontakt' },
+	{ href: '/referenzen/', label: 'Referenzen' },
+	{ href: '/agentur/', label: 'Agentur' },
+	{ href: '/kontakt/', label: 'Kontakt' },
 ] as const;
 
 export const services = [
 	{
-		href: '/leistungen/webdesign',
+		href: '/leistungen/webdesign/',
 		title: 'Webdesign',
 		teaser: 'Klar, eigenständig, auf Conversion ausgelegt.',
 	},
 	{
-		href: '/leistungen/webentwicklung',
+		href: '/leistungen/webentwicklung/',
 		title: 'Webentwicklung',
 		teaser: 'Astro und Next.js, schnell ausgeliefert.',
 	},
 	{
-		href: '/leistungen/webentwicklung#astro',
+		href: '/leistungen/webentwicklung/#astro',
 		title: 'Astro',
 		teaser: 'Insel-Architektur, wenig JavaScript, starke Core Web Vitals.',
 	},
 	{
-		href: '/leistungen/webentwicklung#nextjs',
+		href: '/leistungen/webentwicklung/#nextjs',
 		title: 'Next.js',
 		teaser: 'Wenn die Website zur Anwendung wächst.',
 	},
