@@ -2,17 +2,35 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaDark from '../components/CtaDark.astro';
 import CtaPhone from '../components/CtaPhone.astro';
+import Related from '../components/Related.astro';
 import { cases } from '../data/site';
+import { related } from '../data/related';
 ---
 
 <BaseLayout
 	title="Referenzen: Websites von 9to6"
-	description="Live-Websites von 9to6: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Kundenprojekte und Gründerprodukte, die du öffnen kannst."
+	description="Live-Websites von 9to6: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Design und Entwicklung, die du im Browser öffnen kannst: Kundenprojekte und Gründerprodukte."
 	schema="references"
 	breadcrumbs={[{ name: 'Referenzen', href: '/referenzen/' }]}
 >
-	<section class="page-hero center">
-		<div class="wrap">
+	<section class="page-hero center refs-hero">
+		<div class="refs-stage" aria-hidden="false">
+			{
+				cases.map((c, i) => (
+					<a class={`refs-card refs-card--${i + 1}`} href={`/referenzen/${c.slug}/`}>
+						<span class="refs-card-float">
+							<span class="refs-card-grow">
+								<span class="refs-card-media">
+									<img src={c.image} alt={c.imageAlt} width="1280" height="800" />
+								</span>
+								<span class="refs-card-name">{c.name}</span>
+							</span>
+						</span>
+					</a>
+				))
+			}
+		</div>
+		<div class="wrap refs-hero-copy">
 			<h1>Referenzen</h1>
 			<p class="sub">Live im Netz. Keine erfundenen Cases, keine fremden Budgets.</p>
 		</div>
@@ -21,46 +39,71 @@ import { cases } from '../data/site';
 	<section class="section">
 		<div class="wrap">
 			<p class="intro center">
-				Hier stehen Projekte, die du öffnen kannst. Kundenaufträge und Gründerprodukte sind getrennt gekennzeichnet.
+				Hier stehen Projekte, die du öffnen kannst. Entstanden aus
+				<a href="/leistungen/webdesign/">Webdesign</a> und
+				<a href="/leistungen/webentwicklung/">Webentwicklung</a>. Kundenaufträge und Gründerprodukte sind getrennt
+				gekennzeichnet.
 			</p>
+			<ul class="project-index">
+				{
+					cases.map((c) => (
+						<li>
+							<a href={`/referenzen/${c.slug}/`}>{c.name}</a>
+							<span>
+								{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.role}
+							</span>
+						</li>
+					))
+				}
+			</ul>
 		</div>
 	</section>
 
-	{
-		cases.map((c, i) => (
-			<section class="section" id={c.slug}>
-				<article class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
-					<div class="media">
-						<div class="shot">
-							<a href={c.url} rel="noopener" target="_blank">
-								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
-							</a>
+	<div class="refs-below">
+		{
+			cases.map((c, i) => (
+				<section class="section" id={c.slug}>
+					<article class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
+						<div class="media">
+							<div class="shot">
+								<a href={`/referenzen/${c.slug}/`} aria-label={`${c.name}: Fall ansehen`}>
+									<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+								</a>
+							</div>
 						</div>
-					</div>
-					<div>
-						<p class="kicker">{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.place}</p>
-						<h2>{c.name}</h2>
-						<p class="body">{c.summary}</p>
-						<ul class="icon-list">
-							{c.points.map((p) => (
-								<li>{p}</li>
-							))}
-						</ul>
-						<div class="pills">
-							<span class="pill">{c.stack}</span>
-							<span class="pill">{c.role}</span>
+						<div>
+							<p class="kicker">{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.place}</p>
+							<h2>{c.name}</h2>
+							<p class="body">{c.summary}</p>
+							<ul class="icon-list">
+								{c.points.map((p) => (
+									<li>{p}</li>
+								))}
+							</ul>
+							<div class="pills">
+								<span class="pill">{c.stack}</span>
+								<span class="pill">{c.role}</span>
+							</div>
+							<p style="margin-top:22px">
+								<a class="btn" href={`/referenzen/${c.slug}/`}>
+									Fall {c.name} ansehen
+								</a>
+							</p>
 						</div>
-						<p style="margin-top:22px">
-							<a class="btn" href={c.url} rel="noopener" target="_blank">
-								{c.urlLabel} öffnen
-							</a>
-						</p>
-					</div>
-				</article>
-			</section>
-		))
-	}
+					</article>
+				</section>
+			))
+		}
 
-	<CtaPhone />
-	<CtaDark />
+	</div>
+
+	<Related links={related.referenzen} />
+	<CtaPhone
+		heading="Erstgespräch zum Webauftritt"
+		text="Bring die Referenz mit, die am nächsten liegt. In 30 Minuten siehst du, was davon auf dich übertragbar ist. Kostenlos."
+	/>
+	<CtaDark
+		title="Ähnliches Vorhaben?"
+		text="Im Call ordnen wir dein Projekt dem Kern zu: Design, Entwicklung, oder beides. Referenzen bleiben das, was live steht, nicht das, was wir uns wünschen."
+	/>
 </BaseLayout>

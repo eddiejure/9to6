@@ -1,0 +1,17 @@
+---
+type Props = {
+	label: string;
+};
+
+const { label } = Astro.props;
+---
+
+<div class="blob" data-blob>
+	<canvas class="blob-canvas" aria-hidden="true"></canvas>
+	<span class="blob-label">{label}</span>
+</div>
+
+<script>
+	import { initBlobs } from '../scripts/blobs';
+	initBlobs();
+</script>

@@ -10,7 +10,6 @@ export type BlogPost = {
 	description: string;
 	date: string;
 	dateLabel: string;
-	reading: string;
 	hero: string;
 	sections: BlogSection[];
 };
@@ -23,7 +22,6 @@ export const posts: BlogPost[] = [
 			'Die meisten Unternehmensseiten sehen anständig aus und verkaufen trotzdem nicht. Was Anfragen blockiert, und wie 9to6 in Frankfurt das ändert.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
-		reading: '6 Min. Lesezeit',
 		hero: 'Schön ist nicht genug. Eine Website muss den nächsten Schritt so klar machen, dass aus Besuch Anfrage wird.',
 		sections: [
 			{
@@ -36,7 +34,7 @@ export const posts: BlogPost[] = [
 			{
 				heading: 'Vier typische Blocker',
 				paragraphs: [
-					'Diese Muster sehen wir in Audits immer wieder. Keines davon braucht einen neuen Slogan. Alle brauchen Struktur, Tempo und klare Handlung.',
+					'Diese Muster sehen wir in Audits immer wieder. Keines davon braucht einen neuen Slogan. Alle brauchen Struktur, Tempo und klare Handlung. Mehr dazu unter [Aus Besuchern werden Anfragen](/blog/aus-besuchern-werden-anfragen/).',
 				],
 				list: [
 					'Die Startseite erzählt die Firmengeschichte, bevor sie das Angebot nennt.',
@@ -55,7 +53,7 @@ export const posts: BlogPost[] = [
 			{
 				heading: 'Nächster Schritt',
 				paragraphs: [
-					'Wenn deine aktuelle Seite Besucher hat, aber keine Anfragen, ist das kein Schicksal. 9to6 schaut sich Technik, Inhalt und Weg zur Handlung an und sagt dir, was sich lohnt, bevor Code geschrieben wird.',
+					'Wenn deine aktuelle Seite Besucher hat, aber keine Anfragen, ist das kein Schicksal. Unter [Webdesign](/leistungen/webdesign/) und [Webentwicklung](/leistungen/webentwicklung/) siehst du, wie wir Struktur und Tempo angehen. Im [30-Minuten-Call](/kontakt/) sagen wir dir, was sich lohnt, bevor Code geschrieben wird.',
 				],
 			},
 		],
@@ -67,7 +65,6 @@ export const posts: BlogPost[] = [
 			'Warum Ladezeit, Stabilität und Bedienung über Sichtbarkeit und Umsatz entscheiden. Ohne Fachchinesisch, mit Blick auf Anfragen.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
-		reading: '7 Min. Lesezeit',
 		hero: 'Google misst, wie sich deine Seite anfühlt. Langsam heißt unsichtbar. Unsichtbar heißt weniger Geschäft.',
 		sections: [
 			{
@@ -87,14 +84,14 @@ export const posts: BlogPost[] = [
 			{
 				heading: 'Ranking folgt der Nutzbarkeit',
 				paragraphs: [
-					'Schnelle Seiten allein machen kein Geschäft, wenn das Angebot unklar ist. Aber langsame Seiten machen gutes Angebot unsichtbar. Sichtbarkeit, Tempo und Conversion gehören zusammen.',
+					'Schnelle Seiten allein machen kein Geschäft, wenn das Angebot unklar ist. Aber langsame Seiten machen gutes Angebot unsichtbar. Sichtbarkeit, Tempo und Conversion gehören zusammen. Den technischen Unterbau beschreibt die [Webentwicklung](/leistungen/webentwicklung/).',
 					'Wir messen nach dem Launch, nicht nur vor dem Pitch. Wenn etwas hakt, schärfen wir nach: Bilder, Schriften, Formulare, interne Links.',
 				],
 			},
 			{
 				heading: 'Was 9to6 konkret ändert',
 				paragraphs: [
-					'Im Relaunch entfernen wir Ballast, setzen klare URLs und Metadaten, und legen Formulare so, dass sie Anfragen wirklich zustellen. Die Technik bleibt unsichtbar. Du siehst kürzere Ladezeiten und mehr abgeschickte Anfragen.',
+					'Im Relaunch entfernen wir Ballast, setzen klare URLs und Metadaten, und legen Formulare so, dass sie Anfragen wirklich zustellen. Die Technik bleibt unsichtbar. Du siehst kürzere Ladezeiten und mehr abgeschickte Anfragen. Ein Beispiel für Tempo plus lokale Auffindbarkeit: [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/).',
 				],
 			},
 		],
@@ -106,7 +103,6 @@ export const posts: BlogPost[] = [
 			'Conversion auf Unternehmenswebsites: klare Angebote, starke Formulare, messbares Wachstum. Praxis aus Frankfurt und Rhein-Main.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
-		reading: '6 Min. Lesezeit',
 		hero: 'Traffic ohne Anfragen ist teure Dekoration. Die Seite muss verkaufen, nicht nur vorhanden sein.',
 		sections: [
 			{
@@ -119,7 +115,7 @@ export const posts: BlogPost[] = [
 				heading: 'Die erste Bildschirmhöhe entscheidet',
 				paragraphs: [
 					'Oben gehören Nutzen, Zielgruppe und Handlung hin. Nicht das Teamfoto von 2014, nicht eine Slider-Show, nicht „Willkommen auf unserer Homepage“.',
-					'Darunter Leistungen, die jemand sucht, Belege aus der Region, und Antworten auf Einwände: Ablauf, Radius, Erstgespräch. Referenzen, die du öffnen kannst, schlagen Behauptungen.',
+					'Darunter Leistungen, die jemand sucht, Belege aus der Region, und Antworten auf Einwände: Ablauf, Radius, Erstgespräch. Die [Referenzen](/referenzen/), die du öffnen kannst, schlagen Behauptungen. Wie die erste Bildschirmhöhe gestaltet wird, steht unter [Webdesign](/leistungen/webdesign/).',
 				],
 			},
 			{
@@ -132,7 +128,7 @@ export const posts: BlogPost[] = [
 			{
 				heading: 'Wachstum, das man zählen kann',
 				paragraphs: [
-					'Nach dem Launch zählen Anfragen, nicht nur Aufrufe. Wenn etwas nicht läuft, ändern wir Überschrift, Reihenfolge oder den Kontaktweg. 9to6 in Frankfurt arbeitet darauf hin, dass die Website ein Vertriebsmitarbeiter ist, der nie Feierabend hat.',
+					'Nach dem Launch zählen Anfragen, nicht nur Aufrufe. Wenn etwas nicht läuft, ändern wir Überschrift, Reihenfolge oder den Kontaktweg. 9to6 in Frankfurt arbeitet darauf hin, dass die Website ein Vertriebsmitarbeiter ist, der nie Feierabend hat. Nächster Schritt: [Termin wählen](/kontakt/).',
 				],
 			},
 		],

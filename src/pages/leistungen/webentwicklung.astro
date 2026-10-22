@@ -2,6 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
 import CtaPhone from '../../components/CtaPhone.astro';
+import Blob from '../../components/Blob.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Related from '../../components/Related.astro';
+import { cases, serviceFaqs } from '../../data/site';
+import { related } from '../../data/related';
 
 const steps = [
 	{ title: 'Analyse', text: 'Technik, Inhalt, Tempo, Wettbewerb. Du bekommst klar, was bleibt und was neu muss.' },
@@ -9,13 +14,16 @@ const steps = [
 	{ title: 'Umsetzung', text: 'Design und Code parallel genug, dass nichts verloren geht. Reviews in kurzen Schleifen.' },
 	{ title: 'Launch', text: 'Redirects, Metadaten, Formular, Hosting. Danach messen und nachschärfen.' },
 ];
+
+const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 'simtasy' || item.slug === 'holzbau-oberlerchner');
 ---
 
 <BaseLayout
 	title="Webentwicklung in Frankfurt | 9to6"
-	description="Webentwicklung von 9to6 in Frankfurt: schnelle, wartbare Websites, die Anfragen zustellen. Relaunch, Performance und messbares Wachstum."
+	description="Webentwicklung von 9to6 in Frankfurt / Rhein-Main: schnelle, wartbare Websites, die Anfragen zustellen. Relaunch, Performance und messbares Wachstum. Kernkompetenz neben Webdesign."
 	schema="service"
 	serviceName="Webentwicklung"
+	faqs={serviceFaqs.webentwicklung}
 	breadcrumbs={[
 		{ name: 'Leistungen', href: '/leistungen/' },
 		{ name: 'Webentwicklung', href: '/leistungen/webentwicklung/' },
@@ -25,29 +33,31 @@ const steps = [
 		<div class="wrap">
 			<h1>Webentwicklung</h1>
 			<p class="sub">Starke Webpräsenz. Schnell, performant, überzeugend.</p>
-			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Angebot anfordern</a></p>
+			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Webentwicklung besprechen</a></p>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="wrap">
 			<h2 class="center">Deine Website ist der sichtbarste Mitarbeiter deines Unternehmens</h2>
-			<p class="intro">
+			<p class="intro center">
 				Design, Texte, Nutzerführung und mobile Performance hängen zusammen. 9to6 baut daraus ein Werkzeug, das deine
-				Arbeit sichtbar macht und Anfragen liefert, statt sie zu verdecken.
+				Arbeit sichtbar macht und Anfragen liefert. Webentwicklung ist Kernkompetenz im Full-Service-Rahmen, nicht
+				ein nachträglich angehängtes Theme.
 			</p>
 		</div>
 	</section>
 
 	<section class="section" id="anfragen">
 		<div class="wrap-wide split">
-			<div class="blob" aria-hidden="true">Anfragen</div>
+			<Blob label="Anfragen" />
 			<div>
 				<h2>Seiten, die verkaufen statt nur existieren</h2>
 				<p class="body">
 					Die technische Grundlage bleibt unsichtbar. Du merkst das Ergebnis: kurze Ladezeiten, Formulare, die
 					ankommen, und Seiten, die auf dem Smartphone sofort lesbar sind. Für die meisten Unternehmenswebsites ist das
-					der Hebel, der Google, Menschen und Umsatz zusammenbringt.
+					der Hebel, der Google, Menschen und Umsatz zusammenbringt. Mehr zum Ranking-Effekt unter
+					<a href="/blog/core-web-vitals-und-google-ranking/">Core Web Vitals und Google Ranking</a>.
 				</p>
 			</div>
 		</div>
@@ -60,10 +70,23 @@ const steps = [
 				<p class="body">
 					Accounts, Kataloge, interne Abläufe, häufige Updates. Dann bauen wir eine Anwendung, die sich wie ein Produkt
 					anfühlt, nicht wie ein Baukasten. Entscheidend bleibt, dass Kunden und Teams damit arbeiten können, ohne auf
-					Ladebalken zu starren.
+					Ladebalken zu starren. Wie das in der Praxis aussieht:
+					<a href="/referenzen/sim-do/">sim.do</a> und
+					<a href="/referenzen/simtasy/">Simtasy</a>.
 				</p>
 			</div>
-			<div class="blob" aria-hidden="true">Wachstum</div>
+			<Blob label="Wachstum" />
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Für wen Webentwicklung von 9to6 passt</h2>
+			<p class="intro center">
+				Relaunch einer trägen WordPress-Seite. Neubau, bei dem
+				<a href="/leistungen/webdesign/">Webdesign</a> und Code zusammengehören. Produktstrecken, die kaufbar sein
+				müssen. Wenn du ein Plugin-Sammelsurium pflegen willst, sind wir die falsche Adresse.
+			</p>
 		</div>
 	</section>
 
@@ -94,9 +117,47 @@ const steps = [
 				<li>Formulare, die Anfragen wirklich zustellen</li>
 				<li>Hosting, das weltweit schnell ausliefert, ohne extra Bühne</li>
 			</ul>
+			<p class="intro center" style="margin-top:28px">
+				Die Erscheinungsseite dazu ist <a href="/leistungen/webdesign/">Webdesign</a>. Beides im Überblick:
+				<a href="/leistungen/">Leistungen</a>.
+			</p>
 		</div>
 	</section>
 
-	<CtaPhone />
-	<CtaDark />
+	<section class="section" aria-labelledby="dev-cases">
+		<div class="wrap">
+			<h2 id="dev-cases" class="center">Gebaut und erreichbar</h2>
+			<p class="intro center">
+				Produkt, Plattform, lokale Unternehmensseite. Alle Cases unter <a href="/referenzen/">Referenzen</a>.
+			</p>
+			<div class="cards" style="margin-top:36px">
+				{
+					devCases.map((c) => (
+						<a class="card" href={`/referenzen/${c.slug}/`}>
+							<div class="shot">
+								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+							</div>
+							<div class="card-body">
+								<div class="meta">{c.place}</div>
+								<h3>{c.name}</h3>
+								<p>{c.role}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<FaqSection items={serviceFaqs.webentwicklung} intro="Technik, WordPress, Hosting, was nach dem Launch zählt." />
+	<Related links={related.webentwicklung} />
+
+	<CtaPhone
+		heading="Erstgespräch Webentwicklung"
+		text="Eddie prüft in 30 Minuten Ladezeit, Formulare und was nach dem Launch messbar wird. Kostenlos."
+	/>
+	<CtaDark
+		title="Technik folgt der Aufgabe"
+		text="Im Call sehen wir uns an, ob ein Relaunch, ein Neubau oder eine Produktstrecke der Hebel ist. Du bekommst eine Einschätzung zu Tempo, Umfang und nächstem Schritt."
+	/>
 </BaseLayout>

@@ -5,7 +5,7 @@ import { site } from '../data/site';
 
 <BaseLayout
 	title="Datenschutzerklärung | 9to6"
-	description="Datenschutzerklärung von 9to6: Hosting über Cloudflare Pages, Kontaktformular über Web3Forms, keine nicht notwendigen Tracker."
+	description="Datenschutzerklärung von 9to6: Hosting über Cloudflare Pages, Terminbuchung über Cal.com, keine nicht notwendigen Tracker."
 	schema="legal"
 	breadcrumbs={[{ name: 'Datenschutz', href: '/datenschutz/' }]}
 >
@@ -23,17 +23,18 @@ import { site } from '../data/site';
 			<a href="/impressum/">Impressum</a> entnehmen.
 		</p>
 		<p>
-			Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen, zum Beispiel im Kontaktformular. Andere
-			Daten fallen technisch beim Aufruf an (etwa Browsertyp, Zeitpunkt, gekürzte Verbindungsdaten beim Hosting).
+			Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen, zum Beispiel bei der Terminbuchung
+			oder per E-Mail. Andere Daten fallen technisch beim Aufruf an (etwa Browsertyp, Zeitpunkt, gekürzte
+			Verbindungsdaten beim Hosting).
 		</p>
 		<p>
-			Ein Teil der Daten wird erhoben, um die Website bereitzustellen. Formularangaben dienen der Beantwortung Ihrer
-			Anfrage. Es findet keine Reichweitenmessung und kein Marketing-Tracking statt.
+			Ein Teil der Daten wird erhoben, um die Website bereitzustellen. Buchungsangaben dienen der Terminvereinbarung.
+			Es findet keine Reichweitenmessung und kein Marketing-Tracking statt.
 		</p>
 		<p>
 			Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und
 			Beschwerde bei einer Aufsichtsbehörde. Eine erteilte Einwilligung können Sie mit Wirkung für die Zukunft
-			widerrufen.
+			widerrufen, etwa über <a href="#cookies">Cookies zurücksetzen</a>.
 		</p>
 
 		<h2>2. Verantwortliche Stelle</h2>
@@ -67,39 +68,39 @@ import { site } from '../data/site';
 			>.
 		</p>
 
-		<h2>4. Keine nicht notwendigen Cookies, keine Analyse</h2>
+		<h2 id="cookies">4. Cookies und Einwilligung</h2>
 		<p>
-			Diese Website setzt keine nicht notwendigen Cookies. Es gibt kein Cookie-Banner, weil kein Marketing-Pixel, kein
-			Google Analytics, keine Google Fonts und keine Social Plugins geladen werden. Schriftarten liegen auf diesem
-			Server. Session- oder Sicherheitscookies von Cloudflare können technisch entstehen; sie sind für den Betrieb
-			erforderlich (Art. 6 Abs. 1 lit. f DSGVO).
+			Diese Website verwendet nur technisch notwendige Cookies und vergleichbare Speicherungen: Betrieb und Sicherheit
+			über Cloudflare, die Speicherung Ihrer Auswahl im Cookie-Banner (localStorage mit Kategorie und Zeitpunkt) und
+			das Cal.com-Widget auf der Kontaktseite. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO bzw. bei der
+			Terminbuchung Art. 6 Abs. 1 lit. b DSGVO. Schriftarten liegen auf diesem Server. Es ist kein Analyse-Pixel und
+			kein Google Analytics eingebunden.
+		</p>
+		<p>
+			Die Website ist in der Google Search Console hinterlegt. Die Zuordnung erfolgt über DNS oder ein Meta-Tag. Search
+			Console setzt keine Cookies auf dieser Website.
+		</p>
+		<p>
+			Ihre Auswahl im Banner gilt, bis Sie sie ändern oder unten zurücksetzen.
+		</p>
+		<p>
+			<button type="button" class="cookie-reset" data-cookie-reset>Cookies zurücksetzen</button>
 		</p>
 
-		<h2>5. Kontaktformular und Web3Forms</h2>
+		<h2>5. Terminbuchung über Cal.com</h2>
 		<p>
-			Wenn Sie uns über das Formular schreiben, verarbeiten wir Name, Kontaktdaten, gewünschte Leistung und Nachricht,
-			um die Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Schritte) bzw. Ihre
-			Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO, soweit die Checkbox gesetzt wird, sowie Art. 6 Abs. 1 lit. f DSGVO
-			für die organisatorische Bearbeitung.
+			Termine für ein 30-minütiges Gespräch buchen Sie über Cal.com. Dabei werden Name, E-Mail-Adresse, Uhrzeit und
+			ggf. weitere Angaben verarbeitet, die Sie im Buchungsdialog eingeben. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b
+			DSGVO (vorvertragliche Schritte) bzw. Art. 6 Abs. 1 lit. f DSGVO für die organisatorische Terminverwaltung.
 		</p>
 		<p>
-			Die Übermittlung erfolgt an Web3Forms (West defero Ltd. bzw. den jeweils aktuellen Betreiber des Dienstes,
-			Erreichbarkeit über web3forms.com). Web3Forms nimmt die Nachricht entgegen und leitet sie an {site.email} weiter.
-			Dabei kann eine Verarbeitung außerhalb der EU stattfinden. Wir wählen den Dienst, weil kein eigenes Backend mit
-			Postfach-Passwort auf der Website liegt. Alternative Zustellung: E-Mail direkt an {site.email} oder Anruf.
+			Anbieter: Cal.com, Inc. Die Buchungsseite bzw. das eingebettete Widget lädt Inhalte von Cal.com und kann dabei
+			eigene Cookies setzen. Das ist für die Terminbuchung auf der Kontaktseite technisch notwendig. Dabei kann eine
+			Verarbeitung außerhalb der EU stattfinden. Alternative: E-Mail an {site.email}.
 		</p>
 		<p>
-			Ohne konfigurierten Access-Key wird das Formular in der öffentlichen Produktion nicht an Web3Forms gesendet. Im
-			lokalen Entwicklungsserver kann der Erfolg zu Testzwecken simuliert werden, ohne dass Daten an Dritte gehen.
-		</p>
-		<p>
-			Angaben bleiben gespeichert, bis Sie zur Löschung auffordern, die Einwilligung widerrufen oder der Zweck entfällt.
-			Gesetzliche Aufbewahrungspflichten bleiben unberührt. Spam-Felder (Honeypot) und eine kurze Zeitsperre dienen nur
-			der Abwehr automatisierter Zusendungen.
-		</p>
-		<p>
-			Datenschutz des Anbieters: <a href="https://web3forms.com/privacy" rel="noopener" target="_blank"
-				>https://web3forms.com/privacy</a
+			Datenschutz des Anbieters: <a href="https://cal.com/privacy" rel="noopener" target="_blank"
+				>https://cal.com/privacy</a
 			>.
 		</p>
 
@@ -131,7 +132,7 @@ import { site } from '../data/site';
 			Die Vorgängerseite unter 9to6.de (WordPress, Elementor) nannte unter anderem Google Fonts, Google Maps, YouTube,
 			Facebook- und Instagram-Plugins, Newsletter und Analyseprogramme. Dieser Relaunch lädt diese Dienste nicht. Texte
 			zu nicht eingebundenen Tools entfallen deshalb. Kommen später Analyse oder Medien von Dritten hinzu, wird diese
-			Erklärung ergänzt und, soweit nötig, eine Einwilligung eingeholt.
+			Erklärung ergänzt.
 		</p>
 	</section>
 </BaseLayout>

@@ -4,4 +4,27 @@ Allow: /
 Allow: /llms.txt
 Allow: /llms-full.txt
 
+# Alte WordPress-Pfade nicht sperren: sie liefern 301 und müssen crawlbar bleiben.
+
+# LLM-Kurzfassung: https://9to6.de/llms.txt
+# LLM-Volltext: https://9to6.de/llms-full.txt
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 Sitemap: https://9to6.de/sitemap.xml

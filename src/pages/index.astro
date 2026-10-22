@@ -1,17 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/ContactForm.astro';
+import BookCall from '../components/BookCall.astro';
 import CtaPhone from '../components/CtaPhone.astro';
 import CtaDark from '../components/CtaDark.astro';
 import Accordion from '../components/Accordion.astro';
+import Blob from '../components/Blob.astro';
 import { cases, site } from '../data/site';
+import { posts } from '../data/blog';
 
 const pillars = [
 	{
 		title: 'Webdesign, das überzeugt',
 		text: 'Dein Unternehmen ist einzigartig und verdient eine Website, die das zeigt. Wir verbinden klares Design mit einer ruhigen Benutzerführung und legen damit den Grundstein für Anfragen, Termine und Umsatz.',
 		href: '/leistungen/webdesign/',
-		cta: 'Zu unseren Webdesign Leistungen',
+		cta: 'Zu Webdesign',
 		visual: 'studio',
 	},
 	{
@@ -24,15 +26,15 @@ const pillars = [
 	{
 		title: 'Tempo, das Kunden hält',
 		text: 'Eine langsame Seite kostet Sichtbarkeit und Abschlüsse. Wir liefern Auftritte, die auf dem Smartphone sofort da sind, in der Suche bestehen und messbar mehr Anfragen generieren.',
-		href: '/leistungen/webentwicklung/',
-		cta: 'Mehr zu Performance',
+		href: '/blog/core-web-vitals-und-google-ranking/',
+		cta: 'Warum Ladezeit zählt',
 		visual: 'speed',
 	},
 	{
 		title: 'Gefunden werden, dann verkaufen',
-		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Wir setzen Inhalte, URLs und interne Wege so, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen.',
-		href: '/leistungen/webentwicklung/',
-		cta: 'Zur Webentwicklung',
+		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Inhalte, URLs und interne Wege so setzen, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen.',
+		href: '/blog/aus-besuchern-werden-anfragen/',
+		cta: 'Wie aus Besuch Anfrage wird',
 		visual: 'laptop',
 	},
 ];
@@ -63,7 +65,7 @@ const ansatz = [
 
 <BaseLayout
 	title="Webdesign und Webentwicklung in Frankfurt | 9to6"
-	description="Agentur für Webdesign und Webentwicklung in Frankfurt und Rhein-Main. Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren."
+	description="9to6 in Frankfurt / Rhein-Main: Full-Service für den Webauftritt, Schwerpunkt Webdesign und Webentwicklung. Websites, die Kunden anziehen und Anfragen bringen."
 	schema="home"
 >
 	<section class="hero">
@@ -72,20 +74,11 @@ const ansatz = [
 				<h1>
 					<span class="hero-line nowrap">Webdesign &amp;</span>
 					<span class="hero-line nowrap">Webentwicklung</span>
-					<span class="hero-line hero-loc">Agentur aus Frankfurt</span>
+					<span class="hero-line hero-loc">Agentur Frankfurt / Rhein-Main</span>
 				</h1>
-				<p class="lede">Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.</p>
+				<p class="lede">{site.tagline}</p>
 			</header>
-			<div class="glass">
-				<svg class="phone-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-					<path
-						d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.8z"
-					></path>
-				</svg>
-				<a class="phone" href={site.phoneHref}>{site.phoneDisplay}</a>
-				<p>Rufe uns an oder vereinbare ein kostenloses Erstgespräch</p>
-				<ContactForm variant="compact" heading="" />
-			</div>
+			<BookCall variant="card" />
 		</div>
 	</section>
 
@@ -93,25 +86,27 @@ const ansatz = [
 		<div class="wrap">
 			<h2 class="grad-title">Websites, die arbeiten</h2>
 			<p class="intro">
-				Zwischen Marke, Kanal und erstem Klick entscheidet die Website. 9to6 gestaltet und entwickelt Auftritte, die dein
-				Angebot verständlich machen, schnell laden und so gebaut sind, dass Interessenten den nächsten Schritt finden.
-				Agentur in Frankfurt am Main, Arbeit für Betriebe in der Region und darüber hinaus.
+				{site.positioning} Sitz in Gelnhausen, Arbeit für Betriebe in Frankfurt am Main, der Region und darüber
+				hinaus. Den Überblick über den Rahmen findest du unter
+				<a href="/leistungen/">Leistungen</a>.
 			</p>
 		</div>
 	</section>
 
 	{
-		pillars.map((p, i) => (
+		pillars.map((p, i) => {
+			const mediaOnRight = p.visual === 'speed';
+			return (
 			<section class="section">
 				<div class={'wrap-wide split' + (i % 2 === 1 ? ' reverse' : '')}>
-					{i % 2 === 0 ? (
+					{i % 2 === 0 && !mediaOnRight ? (
 						<div class="media" aria-hidden={p.visual === 'leads' || p.visual === 'speed'}>
 							{p.visual === 'studio' ? (
 								<img src="/images/studio.webp" alt="" width="640" height="427" />
 							) : p.visual === 'laptop' ? (
 								<img src="/images/laptop.webp" alt="" width="640" height="427" />
 							) : (
-								<div class="blob">{p.visual === 'leads' ? 'Anfragen' : 'Tempo'}</div>
+								<Blob label={p.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
 							)}
 						</div>
 					) : null}
@@ -124,10 +119,10 @@ const ansatz = [
 							</a>
 						</p>
 					</div>
-					{i % 2 === 1 ? (
+					{i % 2 === 1 || mediaOnRight ? (
 						<div class="media">
 							{p.visual === 'leads' || p.visual === 'speed' ? (
-								<div class="blob">{p.visual === 'leads' ? 'Anfragen' : 'Tempo'}</div>
+								<Blob label={p.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
 							) : (
 								<img src="/images/workspace.webp" alt="" width="640" height="427" />
 							)}
@@ -135,21 +130,27 @@ const ansatz = [
 					) : null}
 				</div>
 			</section>
-		))
+			);
+		})
 	}
 
-	<CtaPhone />
+	<CtaPhone
+		heading="Direkt mit Eddie sprechen"
+		text="Eddie nimmt den Call selbst. Kein Vertrieb, keine Weiterleitung."
+		cta="Zum Kalender"
+	/>
 
 	<section class="section center">
 		<div class="wrap">
 			<h2>Was macht uns besonders?</h2>
 			<p class="intro">
-				9to6 ist eine Agentur mit Sitz in Frankfurt am Main. Wir helfen Unternehmen mit Webdesign und Webentwicklung,
-				online klarer aufzutreten, schneller zu laden und Anfragen zu gewinnen. Jedes Projekt bekommt eine Lösung, die
-				zu Ziel, Inhalt und Budget passt.
+				Viele Agenturen verkaufen Kampagnen auf einer schwachen Grundlage. 9to6 baut zuerst die Grundlage:
+				<a href="/leistungen/webdesign/">Webdesign</a> und
+				<a href="/leistungen/webentwicklung/">Webentwicklung</a> in einem Prozess. Relaunch, Hosting und der Weg zur
+				Anfrage gehören dazu, ohne den Kern zu verwässern.
 			</p>
 			<p>
-				<a class="btn" href="/kontakt/">Kontakt</a>
+				<a class="btn" href="/kontakt/">Gespräch vereinbaren</a>
 			</p>
 		</div>
 	</section>
@@ -176,10 +177,11 @@ const ansatz = [
 			<h2>Webdesign und Entwicklung, die zu deinem Alltag passen</h2>
 			<p class="intro">
 				Handwerk, Studio, Produktmarke oder interne Plattform: Wir schauen uns an, was schon da ist, und bauen das, was
-				fehlt. Ohne Theme-Zwang, ohne Ballast, der Kunden ausbremst.
+				fehlt. Ohne Theme-Zwang, ohne Ballast, der Kunden ausbremst. Ablauf und Zielgruppen stehen unter
+				<a href="/leistungen/">Leistungen</a>.
 			</p>
 			<p>
-				<a class="btn" href="/leistungen/">Leistungen</a>
+				<a class="btn" href="/leistungen/">Leistungen ansehen</a>
 			</p>
 		</div>
 	</section>
@@ -187,11 +189,14 @@ const ansatz = [
 	<section class="section" aria-labelledby="cases-heading">
 		<div class="wrap">
 			<h2 id="cases-heading" class="center">Websites, die im Einsatz sind</h2>
-			<p class="intro center">Echte Auftritte, keine Moodboards. Mehr dazu unter Referenzen.</p>
+			<p class="intro center">
+				Echte Auftritte, keine Moodboards. Kundenprojekte und Gründerprodukte sind getrennt gekennzeichnet.
+				<a href="/referenzen/">Alle Referenzen</a>.
+			</p>
 			<div class="cards" style="margin-top:36px">
 				{
 					cases.map((c) => (
-						<a class="card" href="/referenzen/">
+						<a class="card" href={`/referenzen/${c.slug}/`}>
 							<div class="shot">
 								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
 							</div>
@@ -204,6 +209,27 @@ const ansatz = [
 									{c.founder ? <span class="pill">Gründerprojekt</span> : <span class="pill">Kundenprojekt</span>}
 								</div>
 							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="blog-heading">
+		<div class="wrap">
+			<h2 id="blog-heading" class="center">Aus der Praxis</h2>
+			<p class="intro center">
+				Kurze Texte dazu, woran Anfragen scheitern und warum Tempo zählt. Der
+				<a href="/blog/">Blog</a> bleibt absichtlich ohne Framework-Talk.
+			</p>
+			<div class="blog-list">
+				{
+					posts.map((post) => (
+						<a class="blog-card" href={`/blog/${post.slug}/`}>
+							<div class="meta">{post.dateLabel}</div>
+							<h3>{post.title}</h3>
+							<p>{post.description}</p>
 						</a>
 					))
 				}

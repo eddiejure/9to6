@@ -2,13 +2,46 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
 import CtaPhone from '../../components/CtaPhone.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Related from '../../components/Related.astro';
+import { cases, serviceFaqs } from '../../data/site';
+import { related } from '../../data/related';
+
+const designCases = cases.filter((item) => item.slug === 'holzbau-oberlerchner' || item.slug === 'de-elixier');
+
+const steps = [
+	{ title: 'Hören', text: 'Wen du gewinnen willst, was danach passieren soll, was schon da ist. Kein Moodboard vor dem Ziel.' },
+	{ title: 'Struktur', text: 'Seitenbaum, Überschriften, Reihenfolge. Das Angebot steht vorn, die Firmengeschichte danach.' },
+	{ title: 'Gestalt', text: 'Typografie, Farbe, Raster, Komponenten. Eigenständig, ruhig, auf dem Telefon genauso klar wie am Schreibtisch.' },
+	{ title: 'Übergabe', text: 'Das Design landet in der entwickelten Website. Keine weggeworfenen Folien, keine Lücke zwischen Look und Live.' },
+];
+
+const outcomes = [
+	{
+		title: 'Erste Bildschirmhöhe mit Auftrag',
+		text: 'Nutzen, Zielgruppe und Handlung stehen oben. Nicht „Willkommen auf unserer Homepage“.',
+	},
+	{
+		title: 'Texte in deiner Sprache',
+		text: 'Überschriften, die du so sagen würdest. Keine leeren Floskeln, kein Lorem, kein Agentur-Denglisch.',
+	},
+	{
+		title: 'Komponenten, die sitzen',
+		text: 'Header, Formulare, Referenzen, FAQ: Bausteine, die auf jeder Seite gleich gut funktionieren.',
+	},
+	{
+		title: 'Übergabe ins Live-System',
+		text: 'Pixelgenau in der fertigen Seite, umgesetzt über die <a href="/leistungen/webentwicklung/">Webentwicklung</a>.',
+	},
+];
 ---
 
 <BaseLayout
 	title="Webdesign in Frankfurt | 9to6"
-	description="Webdesign von 9to6 in Frankfurt: klare Seiten für Handwerk, Studios und Marken. Gestaltung, Texte und Nutzerführung, die zu Anfragen führen."
+	description="Webdesign von 9to6 in Frankfurt / Rhein-Main: Erscheinungsbild, Texte und Nutzerführung für Handwerk, Studios und Marken. Kernkompetenz neben der Webentwicklung."
 	schema="service"
 	serviceName="Webdesign"
+	faqs={serviceFaqs.webdesign}
 	breadcrumbs={[
 		{ name: 'Leistungen', href: '/leistungen/' },
 		{ name: 'Webdesign', href: '/leistungen/webdesign/' },
@@ -18,7 +51,7 @@ import CtaPhone from '../../components/CtaPhone.astro';
 		<div class="wrap">
 			<h1>Webdesign</h1>
 			<p class="sub">Ein Auftritt, der nach deinem Betrieb aussieht und zum Handeln führt.</p>
-			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Angebot anfordern</a></p>
+			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Webdesign besprechen</a></p>
 		</div>
 	</section>
 
@@ -29,7 +62,7 @@ import CtaPhone from '../../components/CtaPhone.astro';
 				<p class="body">
 					Besucher entscheiden in Sekunden, ob sie bleiben. Layout, Sprache, Tempo und mobile Bedienung gehören
 					zusammen. 9to6 gestaltet Seiten, die Qualität zeigen, ohne laut zu werden, und die den Weg zur Anfrage offen
-					halten.
+					halten. Webdesign ist Kernkompetenz, nicht die Folie vor einer fremden Umsetzung.
 				</p>
 			</div>
 			<div class="media">
@@ -40,15 +73,112 @@ import CtaPhone from '../../components/CtaPhone.astro';
 
 	<section class="section">
 		<div class="wrap">
-			<div class="cards">
-				<article class="card"><div class="card-body"><h3>UI und UX</h3><p>Raster, Typografie, Hierarchie. Schön und benutzbar, nicht entweder oder.</p></div></article>
-				<article class="card"><div class="card-body"><h3>Inhalte</h3><p>Überschriften und Texte, die du so sagen würdest. Keine leeren Floskeln, kein Lorem.</p></div></article>
-				<article class="card"><div class="card-body"><h3>Komponenten</h3><p>Header, Formulare, Referenzen, FAQ: Bausteine, die auf jeder Seite gleich gut sitzen.</p></div></article>
-				<article class="card"><div class="card-body"><h3>Übergabe ins Live-System</h3><p>Das Design landet pixelgenau in der fertigen Website, nicht als weggeworfene Folie.</p></div></article>
+			<h2 class="center">Nutzen statt Feature-Liste</h2>
+			<p class="intro center">
+				Schön allein verkauft nicht. Design bei 9to6 heißt: das Angebot verständlich machen, Vertrauen ohne Floskel,
+				Handlung ohne Hürde. Warum das oft scheitert, steht im Artikel
+				<a href="/blog/warum-deine-website-keine-kunden-bringt/">Warum deine Website keine Kunden bringt</a>.
+			</p>
+			<div class="cards" style="margin-top:36px">
+				{
+					outcomes.map((item) => (
+						<article class="card">
+							<div class="card-body">
+								<h3>{item.title}</h3>
+								<p set:html={item.text} />
+							</div>
+						</article>
+					))
+				}
 			</div>
 		</div>
 	</section>
 
-	<CtaPhone />
-	<CtaDark />
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Für wen Webdesign von 9to6 passt</h2>
+			<p class="intro center">
+				Handwerk, die auf der Baustelle erkennbar bleiben sollen. Studios, die Termine wollen statt Stock-Look.
+				Marken, deren Produktseite suchen und kaufen muss. Wenn du ein Theme nur umlackieren willst, sind wir die
+				falsche Adresse.
+			</p>
+			<ul class="icon-list intro" style="max-width:720px;margin:24px auto 0">
+				<li>Du willst vom Betrieb her denken, nicht von einer Vorlage</li>
+				<li>Texte sollen mitgestaltet werden, nicht „später selbst einfügen“</li>
+				<li>Das Design soll in der entwickelten Seite landen, nicht als PDF sterben</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">So entsteht das Design</h2>
+			<div class="steps">
+				{
+					steps.map((s, i) => (
+						<article>
+							<p class="kicker">0{i + 1}</p>
+							<h3>{s.title}</h3>
+							<p>{s.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split reverse">
+			<div>
+				<p class="kicker">Differenzierung</p>
+				<h2>Kein Theme, keine weggeworfene Folie</h2>
+				<p class="body">
+					Reine Marketingagenturen kaufen oft eine Vorlage und legen Kampagnen darauf. Reine Designstudios übergeben
+					Dateien, die jemand anderes verbauen muss. 9to6 hält Design und
+					<a href="/leistungen/webentwicklung/">Webentwicklung</a> in einem Prozess. Full-Service heißt hier: Konzept
+					und Launch inklusive, ohne den Kern zu verwässern.
+				</p>
+			</div>
+			<div class="media">
+				<img src="/images/workspace.webp" alt="Arbeitsplatz mit Website-Entwürfen" width="640" height="427" />
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="design-cases">
+		<div class="wrap">
+			<h2 id="design-cases" class="center">Ergebnisse, die du öffnen kannst</h2>
+			<p class="intro center">
+				Kundenprojekte, kein Moodboard. Der volle Satz steht unter <a href="/referenzen/">Referenzen</a>.
+			</p>
+			<div class="cards" style="margin-top:36px">
+				{
+					designCases.map((c) => (
+						<a class="card" href={`/referenzen/${c.slug}/`}>
+							<div class="shot">
+								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+							</div>
+							<div class="card-body">
+								<div class="meta">{c.place}</div>
+								<h3>{c.name}</h3>
+								<p>{c.role}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<FaqSection items={serviceFaqs.webdesign} intro="Kosten, Umfang und Abgrenzung zur Entwicklung." />
+	<Related links={related.webdesign} />
+
+	<CtaPhone
+		heading="Erstgespräch Webdesign"
+		text="Eddie prüft in 30 Minuten, ob dein Auftritt zur Anfrage führt oder nur fertig wirkt. Kostenlos."
+	/>
+	<CtaDark
+		title="Erst das Ziel, dann das Raster"
+		text="Im Call klären wir, wen die Seite überzeugen soll und welche Handlung zählt. Danach siehst du, ob Webdesign allein reicht oder die Entwicklung mitziehen muss."
+	/>
 </BaseLayout>

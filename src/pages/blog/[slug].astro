@@ -1,7 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
+import Related from '../../components/Related.astro';
 import { posts } from '../../data/blog';
+import { postRelated } from '../../data/related';
+import { renderInline } from '../../lib/text';
 
 export function getStaticPaths() {
 	return posts.map((post) => ({
@@ -11,6 +14,8 @@ export function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const links = postRelated[post.slug] ?? [];
+const others = posts.filter((item) => item.slug !== post.slug);
 ---
 
 <BaseLayout
@@ -18,6 +23,7 @@ const { post } = Astro.props;
 	description={post.description}
 	schema="article"
 	datePublished={post.date}
+	dateModified={post.date}
 	breadcrumbs={[
 		{ name: 'Blog', href: '/blog/' },
 		{ name: post.title, href: `/blog/${post.slug}/` },
@@ -25,9 +31,7 @@ const { post } = Astro.props;
 >
 	<section class="page-hero article-hero">
 		<div class="wrap">
-			<p class="article-meta">
-				{post.dateLabel} · {post.reading}
-			</p>
+			<p class="article-meta">{post.dateLabel}</p>
 			<h1>{post.title}</h1>
 			<p class="sub">{post.hero}</p>
 		</div>
@@ -39,24 +43,40 @@ const { post } = Astro.props;
 				<section>
 					<h2>{section.heading}</h2>
 					{section.paragraphs.map((paragraph) => (
-						<p>{paragraph}</p>
+						<p set:html={renderInline(paragraph)} />
 					))}
 					{section.list ? (
 						<ul>
 							{section.list.map((item) => (
-								<li>{item}</li>
+								<li set:html={renderInline(item)} />
 							))}
 						</ul>
 					) : null}
 				</section>
 			))
 		}
-		<p>
-			<a href="/blog/">Alle Artikel</a>
-			{' · '}
-			<a href="/kontakt/">Erstgespräch vereinbaren</a>
-		</p>
+
+		<section aria-labelledby="more-posts">
+			<h2 id="more-posts">Weitere Artikel</h2>
+			<ul>
+				{
+					others.map((item) => (
+						<li>
+							<a href={`/blog/${item.slug}/`}>{item.title}</a>
+						</li>
+					))
+				}
+			</ul>
+			<p>
+				<a href="/blog/">Alle Artikel</a>
+				{' · '}
+				<a href="/leistungen/">Leistungen</a>
+				{' · '}
+				<a href="/kontakt/">Termin wählen</a>
+			</p>
+		</section>
 	</article>
 
+	<Related title="Passend zum Thema" links={links} />
 	<CtaDark />
 </BaseLayout>

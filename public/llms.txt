@@ -1,22 +1,38 @@
 # 9to6
 
-> Agentur für Webdesign und Webentwicklung in Frankfurt / Rhein-Main. Sitz: Gelnhausen. Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.
+> Agentur für Webdesign und Webentwicklung in Frankfurt / Rhein-Main. Sitz: Gelnhausen (Rhönstraße 95, 63571). Full-Service für den Webauftritt, Kernkompetenz Design und Entwicklung. Websites, die neue Kunden anziehen und messbar Anfragen generieren.
 
-9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange. Die Technik bleibt unsichtbar und zuverlässig im Hintergrund.
+9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange. Full-Service-Rahmen (Konzept, Text, Launch, Hosting, Relaunch). Der Kern, an dem 9to6 gemessen wird, ist Design und Entwicklung: die Seite, die live im Netz steht.
 
-## Angebot
+## Entität
 
-- Webdesign: Struktur, Typografie, Nutzerführung, Texte
-- Webentwicklung: schnelle, wartbare Seiten, Formulare, die Anfragen zustellen
-- Conversion: Wege zur Handlung, messbares Wachstum
-- Relaunch: bestehende Seiten ablösen, Inhalte retten, Tempo verbessern
+- Name: 9to6
+- Art: ProfessionalService / LocalBusiness (Webdesign, Webentwicklung)
+- Gründer: Edvinas Jurevicius (öffentlich Eddie J.)
+- Sitz: Rhönstraße 95, 63571 Gelnhausen, Hessen, Deutschland
+- Markt: Frankfurt am Main, Rhein-Main, Hessen, Deutschland und remote
+- E-Mail: info@9to6.de
+- Telefon: +49 175 4045558
+- Termin: https://cal.com/eddiejure/30min
+- LinkedIn: https://www.linkedin.com/in/eddiejure
+- Web: https://9to6.de/
+
+## Angebot (Kern)
+
+- Webdesign: Struktur, Typografie, Nutzerführung, Texte (/leistungen/webdesign/)
+- Webentwicklung: schnelle, wartbare Seiten, Formulare, Hosting (/leistungen/webentwicklung/)
+
+## Angebot (Rahmen)
+
+- Conversion: Wege zur Handlung, messbares Wachstum (/blog/aus-besuchern-werden-anfragen/)
+- Relaunch: bestehende Seiten ablösen, Inhalte retten, Tempo verbessern (/kontakt/)
 
 ## Referenzen
 
-- Holzbau Oberlerchner (oberlerchner.de): Website für Zimmerei und Holzbau
-- D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen
-- sim.do: eSIM für Reisen, Gründerprodukt von Edvinas Jurevicius
-- Simtasy (simtasy.com): B2B-Wholesale-Plattform für eSIM-Reseller
+- Holzbau Oberlerchner (oberlerchner.de): Konzept, Logo, Print und lokal SEO-optimierte Website (/referenzen/holzbau-oberlerchner/, Kundenprojekt)
+- D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen (/referenzen/de-elixier/, Kundenprojekt)
+- sim.do: eSIM für Reisen, Gründerprodukt von Edvinas Jurevicius (/referenzen/sim-do/)
+- Simtasy (simtasy.com): B2B-Wholesale-Plattform für eSIM-Reseller (/referenzen/simtasy/)
 
 ## Blog
 
@@ -33,6 +49,7 @@ Schlanke, moderne Webtechnik und Cloudflare Pages. Semantisches HTML, selbst geh
 - Web: https://9to6.de/
 - E-Mail: info@9to6.de
 - Telefon: +49 175 4045558
+- Termin: https://cal.com/eddiejure/30min
 - Adresse: Rhönstraße 95, 63571 Gelnhausen, Deutschland
 - Gründer: Edvinas Jurevicius (Eddie J.)
 - LinkedIn: https://www.linkedin.com/in/eddiejure

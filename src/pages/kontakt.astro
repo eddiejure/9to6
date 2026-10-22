@@ -1,36 +1,55 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ContactForm from '../components/ContactForm.astro';
+import BookCall from '../components/BookCall.astro';
 import Accordion from '../components/Accordion.astro';
 import CtaDark from '../components/CtaDark.astro';
-import { faqs, site } from '../data/site';
+import Related from '../components/Related.astro';
+import { allFaqs, faqs, site } from '../data/site';
+import { related } from '../data/related';
 ---
 
 <BaseLayout
 	title="Kontakt und Angebot | 9to6 Frankfurt"
-	description="Erstgespräch mit 9to6 in Frankfurt: Webdesign und Webentwicklung, die Anfragen bringen. Anrufen unter 0175 404 5558 oder das Formular auf dieser Seite nutzen."
+	description="30-Minuten-Call mit 9to6 in Frankfurt / Rhein-Main: Webdesign und Webentwicklung, die Anfragen bringen. Termin über Cal.com oder per E-Mail."
 	schema="contact"
+	faqs={allFaqs}
 	breadcrumbs={[{ name: 'Kontakt', href: '/kontakt/' }]}
 >
 	<section class="page-hero contact-hero">
 		<header class="wrap hero-kicker">
-			<h1>Werde persönlich beraten</h1>
+			<h1>Erstgespräch Webdesign</h1>
 		</header>
 		<div class="contact-grid">
 			<div class="profile">
-				<img src="/images/eddie.webp" width="210" height="210" alt="Eddie J., Gründer von 9to6" />
+				<img
+					src="/images/eddie.webp"
+					width="210"
+					height="210"
+					alt={`${site.person.public}, ${site.person.role} bei ${site.name}`}
+				/>
 				<h2>{site.person.public}</h2>
 				<p class="role">{site.person.role}</p>
+				<p class="profile-lead">
+					{site.positioning} Vorher ansehen:
+					<a href="/leistungen/">Leistungen</a>
+					oder
+					<a href="/referenzen/">Referenzen</a>.
+				</p>
 				<ul class="check-list">
 					<li>Ziehe Interessenten an und mache den Betrieb im Netz erkennbar.</li>
 					<li>Führe Besucher zu Anfrage, Termin oder Kauf.</li>
 					<li>Bekomme eine Website, die nach dem Launch pflegbar bleibt.</li>
 				</ul>
-				<p><a class="btn" href={site.phoneHref}>{site.phoneDisplay}</a></p>
+				<ul class="profile-links">
+					<li>
+						<a href={`mailto:${site.email}`}>{site.email}</a>
+					</li>
+					<li>
+						<a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>
+					</li>
+				</ul>
 			</div>
-			<div class="white-card">
-				<ContactForm variant="full" />
-			</div>
+			<BookCall />
 		</div>
 	</section>
 
@@ -51,5 +70,11 @@ import { faqs, site } from '../data/site';
 		</div>
 	</section>
 
-	<CtaDark />
+	<Related links={related.kontakt} />
+	<CtaDark
+		title="Lieber schreiben?"
+		text="Erzähl uns kurz, worum es geht. Wir antworten persönlich."
+		cta="Mail schreiben"
+		href={`mailto:${site.email}`}
+	/>
 </BaseLayout>

@@ -1,0 +1,26 @@
+---
+import type { RelatedLink } from '../data/related';
+
+type Props = {
+	title?: string;
+	links: RelatedLink[] | readonly RelatedLink[];
+};
+const { title = 'Weiter im Auftritt', links } = Astro.props;
+---
+
+{
+	links.length > 0 && (
+		<section class="related" aria-labelledby="related-heading">
+			<div class="wrap">
+				<h2 id="related-heading">{title}</h2>
+				<ul>
+					{links.map((link) => (
+						<li>
+							<a href={link.href}>{link.label}</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</section>
+	)
+}

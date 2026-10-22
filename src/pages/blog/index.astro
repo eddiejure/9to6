@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
+import Related from '../../components/Related.astro';
 import { posts } from '../../data/blog';
+import { related } from '../../data/related';
 ---
 
 <BaseLayout
 	title="Blog: Webdesign, Conversion und Tempo | 9to6"
-	description="Artikel von 9to6 aus Frankfurt: warum Websites keine Kunden bringen, wie Ladezeit das Ranking beeinflusst, und wie aus Besuchern Anfragen werden."
+	description="Artikel von 9to6 aus Frankfurt / Rhein-Main: warum Websites keine Kunden bringen, wie Ladezeit das Ranking beeinflusst, und wie aus Besuchern Anfragen werden."
 	schema="blog"
 	breadcrumbs={[{ name: 'Blog', href: '/blog/' }]}
 >
@@ -21,15 +23,15 @@ import { posts } from '../../data/blog';
 		<div class="wrap">
 			<p class="intro center">
 				Kurze Texte aus der Praxis: was Anfragen blockiert, warum Tempo zählt, und wie eine Seite in Frankfurt und
-				Rhein-Main zum Vertriebsmittel wird.
+				Rhein-Main zum Vertriebsmittel wird. Der Unterbau dazu steht unter
+				<a href="/leistungen/webdesign/">Webdesign</a> und
+				<a href="/leistungen/webentwicklung/">Webentwicklung</a>.
 			</p>
 			<div class="blog-list">
 				{
 					posts.map((post) => (
 						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">
-								{post.dateLabel} · {post.reading}
-							</div>
+							<div class="meta">{post.dateLabel}</div>
 							<h2>{post.title}</h2>
 							<p>{post.description}</p>
 						</a>
@@ -39,6 +41,7 @@ import { posts } from '../../data/blog';
 		</div>
 	</section>
 
+	<Related links={related.blog} />
 	<CtaDark
 		title="Website prüfen lassen"
 		text="Wenn deine Seite Besucher hat, aber keine Anfragen, schauen wir uns Inhalt, Tempo und den Weg zur Handlung an."

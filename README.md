@@ -14,21 +14,13 @@ npm run dev
 
 Der Dev-Server läuft auf **http://127.0.0.1:4347** (Port bewusst nicht 3000 / 5173 / 8080).
 
-Ohne `PUBLIC_WEB3FORMS_ACCESS_KEY` simuliert das Kontaktformular im Dev-Modus nach der Validierung den Erfolg. So lassen sich leer, Fehler, Laden und Erfolg prüfen, ohne Daten an Dritte zu schicken.
+## Termine
 
-## Kontaktformular (kein Cloudflare Worker)
-
-Zustellung über [Web3Forms](https://web3forms.com): der Browser sendet das Formular per HTTPS an `https://api.web3forms.com/submit`. Kein eigener Worker, keine Pages Function nur fürs Formular.
-
-1. Konto bei Web3Forms anlegen, Access Key kopieren.
-2. Lokal in `.env` und bei Cloudflare Pages als Umgebungsvariable: `PUBLIC_WEB3FORMS_ACCESS_KEY`.
-3. Zieladresse im Web3Forms-Dashboard auf `info@9to6.de` setzen.
-
-Schutz: Pflichtfelder, Honeypot, kurze Zeitsperre, DSGVO-Hinweis bzw. Einwilligung auf der Kontaktseite. Leere Felder, Validierungsfehler, Ladezustand, Erfolg und Netzfehler haben eigene Texte.
+Erstgespräche laufen über [Cal.com](https://cal.com/eddiejure/30min): 30-Minuten-Call. Auf der Startseite als Button, auf `/kontakt/` als eingebetteter Kalender.
 
 ## DSGVO
 
-- Impressum und Datenschutzerklärung übernommen und an Hosting (Cloudflare Pages) plus Formular (Web3Forms) angepasst.
+- Impressum und Datenschutzerklärung an Hosting (Cloudflare Pages) und Terminbuchung (Cal.com) angepasst.
 - Keine Google Fonts, keine Analytics, keine Social Plugins, kein Cookie-Banner (keine nicht notwendigen Cookies).
 - Schriften: selbst gehostetes Montserrat (lateinischer Schnitt, Schnitte 400/500/600/700).
 
@@ -37,18 +29,17 @@ Schutz: Pflichtfelder, Honeypot, kurze Zeitsperre, DSGVO-Hinweis bzw. Einwilligu
 Im Dashboard:
 
 1. Repository verbinden.
-2. Framework: Astro, Build-Befehl `npm run build`, Ausgabeverzeichnis `dist`.
-3. Umgebungsvariable `PUBLIC_WEB3FORMS_ACCESS_KEY` setzen.
-4. Custom Domain `9to6.de` auf das Projekt zeigen.
+2. Framework: Astro, Build-Befehl `npm run build`, Ausgabeverzeichnis `dist/client`.
+3. Custom Domain `9to6.de` auf das Projekt zeigen.
 
 CLI, wenn wrangler eingeloggt ist:
 
 ```bash
 npm run build
-npx wrangler pages deploy dist
+npx wrangler pages deploy dist/client --project-name 9to6
 ```
 
-`astro.config.mjs` nutzt `@astrojs/cloudflare` mit `output: 'static'`. Das Formular bleibt clientseitig bei Web3Forms, unabhängig vom Adapter.
+`astro.config.mjs` nutzt `@astrojs/cloudflare` mit `output: 'static'`.
 
 ## Inhalt: übernommen vs. neu
 

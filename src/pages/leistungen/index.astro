@@ -2,6 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
 import CtaPhone from '../../components/CtaPhone.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import Related from '../../components/Related.astro';
+import { cases, processSteps, serviceFaqs, site } from '../../data/site';
+import { related } from '../../data/related';
+import { posts } from '../../data/blog';
 
 const items = [
 	{
@@ -25,19 +30,35 @@ const items = [
 		text: 'Bestehende Seiten ablösen, Inhalte retten, Tempo und Anfragen verbessern.',
 	},
 ];
+
+const audience = [
+	{
+		title: 'Handwerk und lokale Betriebe',
+		text: 'Wer auf der Baustelle, im Studio oder vor Ort überzeugen muss, braucht eine Seite, die auf dem Smartphone lesbar ist und lokal gefunden wird.',
+	},
+	{
+		title: 'Studios und Institute',
+		text: 'Behandlungen, Termine, Vertrauen. Der Auftritt soll ruhig wirken und trotzdem zum Buchen führen.',
+	},
+	{
+		title: 'Produktmarken und Plattformen',
+		text: 'Wenn aus der Website ein Produkt wird (Tarife, Kataloge, Accounts), gehören Design und Entwicklung in denselben Prozess.',
+	},
+];
 ---
 
 <BaseLayout
 	title="Leistungen: Webdesign und Webentwicklung | 9to6"
-	description="Webdesign und Webentwicklung in Frankfurt. 9to6 plant, gestaltet und programmiert Websites, die laden, überzeugen und messbar Anfragen bringen."
+	description="Full-Service für den Webauftritt, Schwerpunkt Webdesign und Webentwicklung. 9to6 in Frankfurt / Rhein-Main plant, gestaltet und baut Websites, die Anfragen bringen."
 	schema="service"
 	serviceName="Webdesign und Webentwicklung"
+	faqs={serviceFaqs.hub}
 	breadcrumbs={[{ name: 'Leistungen', href: '/leistungen/' }]}
 >
 	<section class="page-hero center">
 		<div class="wrap">
-			<h1>Leistungen</h1>
-			<p class="sub">Webdesign und Webentwicklung, gebaut für Anfragen, Tempo und Wachstum.</p>
+			<h1>Webdesign und Webentwicklung</h1>
+			<p class="sub">Full-Service-Rahmen. Kernkompetenz: die Seite, die live steht.</p>
 			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Angebot anfordern</a></p>
 		</div>
 	</section>
@@ -46,8 +67,7 @@ const items = [
 		<div class="wrap">
 			<h2 class="center">Was wir bauen</h2>
 			<p class="intro center">
-				9to6 konzentriert sich auf das, was im Browser ankommt und im Kalender landet: Design, Inhalt, Tempo, Formulare.
-				Zuerst steht eine Website, die Kunden bringt.
+				{site.positioning} Conversion und Relaunch gehören dazu, ohne den Kern zu ersetzen.
 			</p>
 			<div class="cards" style="margin-top:48px">
 				{
@@ -65,14 +85,63 @@ const items = [
 	</section>
 
 	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Für wen das gedacht ist</h2>
+			<p class="intro center">
+				Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und für Kunden, die nicht in der Nachbarschaft sitzen müssen.
+				Entscheidend ist, dass die Website ein Arbeitsmittel werden soll, nicht eine Broschüre.
+			</p>
+			<div class="cards" style="margin-top:36px">
+				{
+					audience.map((item) => (
+						<article class="card">
+							<div class="card-body">
+								<h3>{item.title}</h3>
+								<p>{item.text}</p>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Von der ersten Seite bis zum Launch</h2>
+			<p class="intro center">
+				Du siehst Zwischenschritte, keine Überraschung am Ende. Hosting legen wir mit aus, wenn du das willst.
+			</p>
+			<div class="steps process-steps">
+				{
+					processSteps.map((step, i) => (
+						<article>
+							<p class="kicker">0{i + 1}</p>
+							<h3>{step.title}</h3>
+							<p>{step.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
 		<div class="wrap-wide split">
 			<div>
-				<p class="kicker">Ablauf</p>
-				<h2>Von der ersten Seite bis zum Launch</h2>
+				<p class="kicker">Ergebnisse</p>
+				<h2>Was sich nach dem Launch ändert</h2>
 				<p class="body">
-					Analyse, Struktur, Design, Umsetzung, Feinschliff. Du siehst Zwischenschritte, keine Überraschung am Ende.
-					Hosting legen wir mit aus, wenn du das willst. Nach dem Launch messen wir Anfragen und Tempo.
+					Kein versprochenes Prozentwunder aus fremden Branchen. Was wir anstreben, ist konkret: das Angebot ist in der
+					ersten Bildschirmhöhe klar, die Handlung erreichbar, die Seite auf dem Telefon benutzbar, Anfragen kommen an.
+					Belege stehen in den <a href="/referenzen/">Referenzen</a>: live, nicht als Folie.
 				</p>
+				<ul class="icon-list">
+					<li>Eine Sprache, die du so sagen würdest</li>
+					<li>Formulare und Calls, die auf Mobilgeräten mit dem Daumen sitzen</li>
+					<li>Ladezeit, die Google und Menschen nicht vertreibt</li>
+					<li>Ein Ansprechpartner, der Design und Code zusammenhält</li>
+				</ul>
 			</div>
 			<div class="media">
 				<img src="/images/laptop.webp" alt="Laptop mit Website-Entwurf" width="640" height="427" />
@@ -80,6 +149,62 @@ const items = [
 		</div>
 	</section>
 
-	<CtaPhone />
-	<CtaDark />
+	<section class="section" aria-labelledby="hub-cases">
+		<div class="wrap">
+			<h2 id="hub-cases" class="center">Aus der Praxis</h2>
+			<p class="intro center">
+				Zwei Kundenprojekte, zwei Gründerprodukte. Mehr Kontext auf den
+				<a href="/referenzen/">Referenzseiten</a>.
+			</p>
+			<div class="cards" style="margin-top:36px">
+				{
+					cases.slice(0, 2).map((c) => (
+						<a class="card" href={`/referenzen/${c.slug}/`}>
+							<div class="shot">
+								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+							</div>
+							<div class="card-body">
+								<div class="meta">{c.place}</div>
+								<h3>{c.name}</h3>
+								<p>{c.role}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="hub-blog">
+		<div class="wrap">
+			<h2 id="hub-blog" class="center">Lesen, bevor du anrufst</h2>
+			<p class="intro center">
+				Wenn du wissen willst, woran Anfragen scheitern, reicht oft ein Artikel aus dem
+				<a href="/blog/">Blog</a>.
+			</p>
+			<div class="blog-list">
+				{
+					posts.slice(0, 2).map((post) => (
+						<a class="blog-card" href={`/blog/${post.slug}/`}>
+							<div class="meta">{post.dateLabel}</div>
+							<h2>{post.title}</h2>
+							<p>{post.description}</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<FaqSection items={serviceFaqs.hub} intro="Vier Fragen, die vor dem Angebot klären, ob wir zusammenpassen." />
+	<Related links={related.leistungen} />
+
+	<CtaPhone
+		heading="Erstgespräch zum Webauftritt"
+		text="Eddie J. sagt dir in 30 Minuten, ob 9to6 der richtige Bau für dein Vorhaben ist. Kostenlos."
+	/>
+	<CtaDark
+		title="Rahmen klären, dann bauen"
+		text="Im Call trennen wir Kern (Design und Entwicklung) von dem, was nur drumherum nötig ist. Du gehst mit einer Einschätzung raus, nicht mit einem Pitch-Deck."
+	/>
 </BaseLayout>

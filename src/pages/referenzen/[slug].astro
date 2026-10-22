@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CtaDark from '../../components/CtaDark.astro';
+import CtaPhone from '../../components/CtaPhone.astro';
+import Related from '../../components/Related.astro';
+import { cases } from '../../data/site';
+import { caseRelated } from '../../data/related';
+
+export function getStaticPaths() {
+	return cases.map((project) => ({
+		params: { slug: project.slug },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const index = cases.findIndex((item) => item.slug === project.slug);
+const prev = index > 0 ? cases[index - 1] : cases[cases.length - 1];
+const next = index < cases.length - 1 ? cases[index + 1] : cases[0];
+const links = caseRelated[project.slug] ?? [];
+---
+
+<BaseLayout
+	title={`${project.name} | Referenzen | 9to6`}
+	description={project.summary}
+	schema="project"
+	ogImagePath={project.image}
+	ogImageAlt={project.imageAlt}
+	work={{
+		name: project.name,
+		description: project.summary,
+		url: project.url,
+		image: project.image,
+		place: project.place,
+		founder: project.founder,
+	}}
+	breadcrumbs={[
+		{ name: 'Referenzen', href: '/referenzen/' },
+		{ name: project.name, href: `/referenzen/${project.slug}/` },
+	]}
+>
+	<section class="page-hero project-hero">
+		<div class="wrap">
+			<p class="article-meta">{project.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {project.place}</p>
+			<h1>{project.name}</h1>
+			<p class="sub">{project.role}</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
+			<div class="media">
+				<div class="shot">
+					<img class="shot-img" src={project.image} alt={project.imageAlt} width="1280" height="800" />
+				</div>
+			</div>
+			<div>
+				<p class="kicker">{project.stack}</p>
+				<h2>Der Auftritt</h2>
+				<p class="body">{project.summary}</p>
+				<ul class="icon-list">
+					{project.points.map((point) => (
+						<li>{point}</li>
+					))}
+				</ul>
+				<div class="pills">
+					<span class="pill">{project.stack}</span>
+					<span class="pill">{project.role}</span>
+				</div>
+				<p class="body">
+					Entstanden im Rahmen von <a href="/leistungen/webdesign/">Webdesign</a> und
+					<a href="/leistungen/webentwicklung/">Webentwicklung</a>. Weitere Arbeiten unter
+					<a href="/referenzen/">Referenzen</a>.
+				</p>
+				<p style="margin-top:22px">
+					<a class="btn" href={project.url} rel="noopener" target="_blank">
+						{project.urlLabel} öffnen
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<Related title="Passend dazu" links={links} />
+
+	<nav class="section-tight" aria-label="Weitere Referenzen">
+		<div class="wrap project-next">
+			<a href={`/referenzen/${prev.slug}/`}>← {prev.name}</a>
+			<a href="/referenzen/">Alle Referenzen</a>
+			<a href={`/referenzen/${next.slug}/`}>{next.name} →</a>
+		</div>
+	</nav>
+
+	<CtaPhone
+		heading="Erstgespräch zum Webauftritt"
+		text="Du hast ein Live-Beispiel gesehen. In 30 Minuten klären wir den nächsten Schritt für deinen Auftritt. Kostenlos."
+	/>
+	<CtaDark />
+</BaseLayout>

@@ -1,0 +1,24 @@
+---
+import Accordion from './Accordion.astro';
+
+export type FaqItem = { q: string; a: string };
+
+type Props = {
+	title?: string;
+	intro?: string;
+	items: FaqItem[] | readonly FaqItem[];
+};
+const {
+	title = 'Häufige Fragen',
+	intro = 'Kurz beantwortet. Ausführlicher im Gespräch.',
+	items,
+} = Astro.props;
+---
+
+<section class="faq-block" aria-labelledby="faq-heading">
+	<div class="wrap">
+		<h2 id="faq-heading">{title}</h2>
+		{intro ? <p class="intro">{intro}</p> : null}
+		<Accordion items={[...items]} />
+	</div>
+</section>

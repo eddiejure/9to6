@@ -1,15 +1,38 @@
 ---
 import { site } from '../data/site';
+
+type Props = {
+	heading?: string;
+	text?: string;
+	cta?: string;
+	href?: string;
+};
+
+const {
+	heading = 'Erstgespräch zum Webauftritt',
+	text = 'Eddie J. sagt dir in 30 Minuten, ob Design, Entwicklung oder beides dein Hebel ist. Kostenlos.',
+	cta = 'Call buchen',
+	href = '/kontakt/',
+} = Astro.props;
+
+const photoAlt = `${site.person.public}, ${site.person.role} bei ${site.name}`;
 ---
 
-<section class="band-lavender section-tight">
+<section class="band-lavender section-tight" aria-labelledby="cta-phone-heading">
 	<div class="wrap eddie-row">
-		<img class="avatar" src="/images/eddie.webp" width="84" height="84" alt="Eddie J., 9to6" />
+		<img
+			class="avatar"
+			src="/images/eddie.webp"
+			width="84"
+			height="84"
+			alt={photoAlt}
+			loading="lazy"
+			decoding="async"
+		/>
 		<div>
-			<div class="name">{site.person.public}</div>
-			<div class="pot">Nutze dein volles Potenzial</div>
+			<h2 id="cta-phone-heading" class="eddie-heading">{heading}</h2>
+			<p class="eddie-text">{text}</p>
 		</div>
-		<a class="tel" href={site.phoneHref}>{site.phoneDisplay}</a>
-		<a class="btn" href="/kontakt/">Erstgespräch</a>
+		<a class="btn" href={href}>{cta}</a>
 	</div>
 </section>

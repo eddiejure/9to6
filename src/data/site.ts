@@ -4,6 +4,13 @@ export const site = {
 	phoneDisplay: '0175 404 5558',
 	phoneHref: 'tel:+491754045558',
 	email: 'info@9to6.de',
+	calUrl: 'https://cal.com/eddiejure/30min',
+	calLabel: '30 Minuten Call buchen',
+	description:
+		'9to6 ist Full-Service für den Webauftritt in Frankfurt / Rhein-Main. Kernkompetenz: Webdesign und Webentwicklung, Websites, die Anfragen bringen.',
+	tagline: 'Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.',
+	positioning:
+		'Full-Service für den Webauftritt: Konzept, Text, Design, Entwicklung, Launch und Hosting. Der Kern, an dem wir gemessen werden, ist Design und Entwicklung: die Seite, die live im Netz steht.',
 	address: {
 		street: 'Rhönstraße 95',
 		zip: '63571',
@@ -38,7 +45,7 @@ export const services = [
 	{
 		href: '/leistungen/webdesign/',
 		title: 'Webdesign',
-		teaser: 'Klar, eigenständig, auf Anfragen ausgelegt.',
+		teaser: 'Struktur, Sprache und Erscheinungsbild, so dass Besucher bleiben und handeln.',
 	},
 	{
 		href: '/leistungen/webentwicklung/',
@@ -74,16 +81,16 @@ export const cases: CaseStudy[] = [
 		url: 'https://oberlerchner.de',
 		urlLabel: 'oberlerchner.de',
 		place: 'Gelnhausen, Main-Kinzig-Kreis',
-		stack: 'Lokale Sichtbarkeit, schnelle Ladezeit',
-		role: 'Website für Zimmerei und Holzbau',
+		stack: 'Lokale SEO, schnelle Ladezeit',
+		role: 'Konzept, Print und Website für Zimmerei und Holzbau',
 		image: '/images/ref-oberlerchner.png',
 		imageAlt: 'Startseite von Holzbau Oberlerchner, Zimmerei in Gelnhausen',
 		summary:
-			'Auftritt für den Holzbaubetrieb in Gelnhausen: Dachbau, konstruktiver Holzbau, Terrassen und Carports. Klare Leistungsseiten, echte Projekte aus der Region, Kontakt ohne Umwege.',
+			'Kompletter Auftritt für den Holzbaubetrieb in Gelnhausen: Konzept, Logo, Visitenkarten, Baubanner, Wellschaumstoff-Tafeln und Website. Dachbau, konstruktiver Holzbau, Terrassen und Carports, klar sortiert und lokal für die Suche in der Region optimiert.',
 		points: [
-			'Lokales Handwerk sichtbar machen, ohne Show-Effekt',
-			'Leistungen, Ablauf und Projekte so sortiert, dass Anfragen folgen',
-			'Schnelle Seiten, die auf dem Smartphone auf der Baustelle lesbar bleiben',
+			'Konzept und Logo, die den Betrieb auf der Baustelle und im Netz gleich erkennbar machen',
+			'Visitenkarten, Baubanner und Wellschaumstoff-Tafeln aus einer Linie',
+			'Website mit lokaler SEO, schnell und auf dem Smartphone auf der Baustelle lesbar',
 		],
 	},
 	{
@@ -154,11 +161,11 @@ export const faqs = [
 			},
 			{
 				q: 'Welche Leistungen bietet 9to6 an?',
-				a: 'Webdesign und Webentwicklung. Konzeption, Gestaltung, technische Umsetzung, Ladezeit, Formulare und die Pflege danach. Suchmaschinen und Kampagnen denken wir mit, aber der Kern ist eine Website, die Kunden bringt.',
+				a: 'Full-Service für den Webauftritt, mit klarem Schwerpunkt: [Webdesign](/leistungen/webdesign/) und [Webentwicklung](/leistungen/webentwicklung/). Dazu Konzeption, Texte, Ladezeit, Formulare, Hosting und Relaunch. Suchmaschinen und Kampagnen denken wir mit, aber der Kern ist die Website, die Kunden bringt.',
 			},
 			{
 				q: 'Wie funktioniert euer Preismodell?',
-				a: 'Jedes Projekt ist anders, deshalb gibt es keine Standardpreisliste. Du bekommst ein Angebot mit Umfang, Meilensteinen und Zahlungsbedingungen, bevor wir starten. Für einen ersten Eindruck reicht ein Gespräch oder das Formular.',
+				a: 'Jedes Projekt ist anders, deshalb gibt es keine Standardpreisliste. Du bekommst ein Angebot mit Umfang, Meilensteinen und Zahlungsbedingungen, bevor wir starten. Für einen ersten Eindruck reicht ein 30-Minuten-Call.',
 			},
 			{
 				q: 'Welche Vorteile hat 9to6 gegenüber einer reinen Marketingagentur?',
@@ -201,3 +208,85 @@ export const faqs = [
 		],
 	},
 ];
+
+export const allFaqs = faqs.flatMap((group) => group.items);
+
+export const serviceFaqs = {
+	hub: [
+		{
+			q: 'Ist 9to6 Full-Service oder eine reine Designagentur?',
+				a: 'Beides in einem klaren Verhältnis: Full-Service ist der Rahmen (Konzept, Text, Launch, Hosting, Relaunch). Die Stärke ist [Webdesign](/leistungen/webdesign/) und [Webentwicklung](/leistungen/webentwicklung/): die Seite, die live steht und Anfragen bringt.',
+		},
+		{
+			q: 'Für wen sind die Leistungen gedacht?',
+			a: 'Für Handwerk, Studios, Produktmarken und Teams, die eine Website als Arbeitsmittel brauchen. Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und darüber hinaus. Einen Eindruck geben die [Referenzen](/referenzen/).',
+		},
+		{
+			q: 'Wie lange dauert ein Projekt?',
+			a: 'Das hängt von Seitenumfang, Inhalten und ob ein Relaunch mitzieht. Im [30-Minuten-Call](/kontakt/) klären wir Ziel und groben Zeitrahmen, bevor ein Angebot entsteht. Es gibt keinen Standard-Baukasten mit Fixtermin.',
+		},
+		{
+			q: 'Kann ich nur Design oder nur Entwicklung beauftragen?',
+			a: 'Ja, wenn die andere Seite schon steht. Sinnvoll ist meist beides, weil Erscheinungsbild und Technik sonst auseinanderlaufen. Wir sagen im Gespräch ehrlich, ob nur eine Seite den Hebel hat.',
+		},
+	],
+	webdesign: [
+		{
+			q: 'Woher weiß ich, ob Webdesign von 9to6 zu mir passt?',
+			a: 'Wenn du keine Theme-Hülle willst, sondern einen Auftritt, der nach deinem Betrieb aussieht und zur Anfrage, zum Termin oder zum Kauf führt. Wir arbeiten mit dir an Struktur und Text, nicht an einem fertigen Baukasten.',
+		},
+		{
+			q: 'Was ist im Webdesign enthalten, und was nicht?',
+			a: 'Seitenbaum, Texte, Raster, Typografie, Komponenten, mobile Bedienung. Die live geschaltete Seite entsteht in der [Webentwicklung](/leistungen/webentwicklung/). Print (Logo, Banner, Karten) machen wir, wenn es zum Auftritt gehört, wie bei [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/).',
+		},
+		{
+			q: 'Wie berechnet 9to6 Webdesign?',
+			a: 'Nach Aufwand und Ziel. Vor dem Kick-off gibt es ein Angebot mit Designrahmen, Seitenumfang und Terminen. Änderungen nach Freigabe rechnen wir transparent nach. Preise stehen nicht pauschal auf der Website.',
+		},
+		{
+			q: 'Warum kein Baukasten oder Theme?',
+			a: 'Ein Theme sieht schnell „fertig“ aus und verkauft trotzdem nicht. Typografie, Sprache und Handlung folgen bei uns aus dem Angebot, nicht aus einer Vorlage. Mehr dazu im Artikel [Warum deine Website keine Kunden bringt](/blog/warum-deine-website-keine-kunden-bringt/).',
+		},
+	],
+	webentwicklung: [
+		{
+			q: 'Welche Technik setzt ihr ein?',
+			a: 'Schlanke, moderne Webtechnik, die im Hintergrund bleibt. Für dich zählt das Ergebnis: kurze Ladezeiten, Formulare, die ankommen, Seiten, die in der Suche bestehen. Den Stack wählen wir nach Aufgabe, nicht nach Trend.',
+		},
+		{
+			q: 'Baut ihr noch mit WordPress?',
+			a: 'Nicht als Standard. Viele Relaunches kommen von WordPress. Ziel ist eine schlankere, wartbare Seite mit einem Editor-Workflow, der zu dir passt, und mit Tempo, das Kunden nicht vertreibt.',
+		},
+		{
+			q: 'Übernehmt ihr Hosting?',
+			a: 'Ja, typischerweise über Cloudflare Pages: Build, Preview, HTTPS, weltweites CDN. Zugänge und Kosten stehen im Angebot. Alternativ arbeiten wir mit dem Hosting, das du schon hast, wenn es zur Aufgabe passt.',
+		},
+		{
+			q: 'Was ändert sich nach dem Launch messbar?',
+			a: 'Ladezeit, Erreichbarkeit der Handlung, Anfragen, die wirklich ankommen. Wie Tempo Sichtbarkeit beeinflusst, steht unter [Core Web Vitals und Google Ranking](/blog/core-web-vitals-und-google-ranking/). Zahlen aus fremden Cases versprechen wir nicht.',
+		},
+	],
+} as const;
+
+export const processSteps = [
+	{
+		title: 'Gespräch',
+		text: 'Ziel, Inhalt, was schon da ist. Ob Relaunch oder Neubau, klären wir bevor Raster oder Code entsteht.',
+	},
+	{
+		title: 'Struktur',
+		text: 'Seitenbaum, Botschaft, Handlung. Was jemand sucht, steht vorn. Was nur intern wichtig ist, rückt zurück.',
+	},
+	{
+		title: 'Design',
+		text: 'Typografie, Farbe, Komponenten. Die Seite sieht nach dir aus und führt zur Anfrage, nicht nur zum Scrollen.',
+	},
+	{
+		title: 'Entwicklung',
+		text: 'Tempo, Formulare, mobile Bedienung, Metadaten. Design landet in der live Website, nicht in einer weggeworfenen Datei.',
+	},
+	{
+		title: 'Launch',
+		text: 'Redirects, Hosting, Feinschliff. Danach messen wir Anfragen und Ladezeit und schärfen nach, wo es hakt.',
+	},
+] as const;

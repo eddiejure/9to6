@@ -1,3 +1,20 @@
+# 9to6.de — 301-Umzug WordPress → Astro
+# Kanonisch: https://9to6.de/…/  (HTTPS, Apex, Trailing Slash)
+# Statische Regeln stehen vor dynamischen. Erste passende Zeile gewinnt.
+# www → Apex und HTTP → HTTPS gehören ins Cloudflare-Dashboard
+# (Domain-Redirects unterstützt diese Datei nicht).
+
+# Startseiten-Aliase (WP-Startseite hatte Slug /home/)
+/home / 301
+/home/ / 301
+/index.php / 301
+/index.html / 301
+
+# Entfallene Agentur- / Über-uns-Seite
+/agentur / 301
+/agentur/ / 301
+
+# Trailing Slash der kanonischen Seiten
 /referenzen /referenzen/ 301
 /kontakt /kontakt/ 301
 /impressum /impressum/ 301
@@ -9,5 +26,105 @@
 /blog/warum-deine-website-keine-kunden-bringt /blog/warum-deine-website-keine-kunden-bringt/ 301
 /blog/core-web-vitals-und-google-ranking /blog/core-web-vitals-und-google-ranking/ 301
 /blog/aus-besuchern-werden-anfragen /blog/aus-besuchern-werden-anfragen/ 301
-/agentur / 301
-/agentur/ / 301
+/referenzen/holzbau-oberlerchner /referenzen/holzbau-oberlerchner/ 301
+/referenzen/de-elixier /referenzen/de-elixier/ 301
+/referenzen/sim-do /referenzen/sim-do/ 301
+/referenzen/simtasy /referenzen/simtasy/ 301
+
+# Eingestellte Leistungsseiten → Elternseite /leistungen/
+/leistungen/social-media-marketing /leistungen/ 301
+/leistungen/social-media-marketing/ /leistungen/ 301
+/leistungen/seo /leistungen/ 301
+/leistungen/seo/ /leistungen/ 301
+/leistungen/ppc /leistungen/ 301
+/leistungen/ppc/ /leistungen/ 301
+/leistungen/e-mail-marketing /leistungen/ 301
+/leistungen/e-mail-marketing/ /leistungen/ 301
+/leistungen/email-marketing /leistungen/ 301
+/leistungen/email-marketing/ /leistungen/ 301
+/leistungen/content-marketing /leistungen/ 301
+/leistungen/content-marketing/ /leistungen/ 301
+
+# Alte Datums-Permalinks der Blogposts (1:1 wo thematisch passend)
+/2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht /blog/warum-deine-website-keine-kunden-bringt/ 301
+/2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht/ /blog/warum-deine-website-keine-kunden-bringt/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen /leistungen/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/ /leistungen/ 301
+/2021/01/08/google-ads-guide-2-google-ads-grundlagen /blog/ 301
+/2021/01/08/google-ads-guide-2-google-ads-grundlagen/ /blog/ 301
+/2021/01/08/google-ads-guide-1-warum-du-werbung-auf-google-schalten-solltest /blog/ 301
+/2021/01/08/google-ads-guide-1-warum-du-werbung-auf-google-schalten-solltest/ /blog/ 301
+
+# Kategorien, Autor, Feeds, Pagination
+/category/google-ads-guide /blog/ 301
+/category/google-ads-guide/ /blog/ 301
+/category/uncategorized /blog/ 301
+/category/uncategorized/ /blog/ 301
+/author/eddiejure / 301
+/author/eddiejure/ / 301
+/feed /blog/ 301
+/feed/ /blog/ 301
+/comments/feed /blog/ 301
+/comments/feed/ /blog/ 301
+/blog/feed /blog/ 301
+/blog/feed/ /blog/ 301
+
+# Häufige Rechts- und Kontakt-Aliase
+/privacy /datenschutz/ 301
+/privacy/ /datenschutz/ 301
+/privacy-policy /datenschutz/ 301
+/privacy-policy/ /datenschutz/ 301
+/datenschutzerklaerung /datenschutz/ 301
+/datenschutzerklaerung/ /datenschutz/ 301
+/imprint /impressum/ 301
+/imprint/ /impressum/ 301
+/contact /kontakt/ 301
+/contact/ /kontakt/ 301
+
+# Alte WordPress- und Yoast-Sitemaps
+/sitemap_index.xml /sitemap.xml 301
+/wp-sitemap.xml /sitemap.xml 301
+/page-sitemap.xml /sitemap.xml 301
+/post-sitemap.xml /sitemap.xml 301
+/category-sitemap.xml /sitemap.xml 301
+/author-sitemap.xml /sitemap.xml 301
+/wp-sitemap-index.xml /sitemap.xml 301
+/wp-sitemap-posts-page-1.xml /sitemap.xml 301
+/wp-sitemap-posts-post-1.xml /sitemap.xml 301
+/wp-sitemap-posts-attachment-1.xml /sitemap.xml 301
+/wp-sitemap-taxonomies-category-1.xml /sitemap.xml 301
+/wp-sitemap-users-1.xml /sitemap.xml 301
+
+# Medien-Anhangseite unter der alten Startseite
+/video / 301
+/video/ / 301
+
+# --- dynamisch (nach den statischen Regeln) ---
+
+# Trailing Slash für neue Unterseiten
+/referenzen/:slug /referenzen/:slug/ 301
+/blog/:slug /blog/:slug/ 301
+/leistungen/:slug /leistungen/:slug/ 301
+
+# Anhangseiten unter den 1:1-gemappten Posts (vor den Jahres-Fallbacks)
+/2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht/* /blog/warum-deine-website-keine-kunden-bringt/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/* /leistungen/ 301
+/2021/01/08/google-ads-guide-2-google-ads-grundlagen/* /blog/ 301
+/2021/01/08/google-ads-guide-1-warum-du-werbung-auf-google-schalten-solltest/* /blog/ 301
+
+# Restliche Datums-Permalinks und deren Anhangseiten
+/2024/:month/:day/:slug /blog/ 301
+/2024/:month/:day/:slug/ /blog/ 301
+/2024/:month/:day/:slug/* /blog/ 301
+/2021/:month/:day/:slug /blog/ 301
+/2021/:month/:day/:slug/ /blog/ 301
+/2021/:month/:day/:slug/* /blog/ 301
+
+/category/* /blog/ 301
+/author/* / 301
+/home/* / 301
+/agentur/* / 301
+/*/feed /blog/ 301
+/*/feed/ /blog/ 301
+/page/* / 301
+/blog/page/* /blog/ 301
