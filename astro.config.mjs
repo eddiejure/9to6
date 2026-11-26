@@ -10,6 +10,9 @@ export default defineConfig({
 	site: 'https://9to6.de',
 	trailingSlash: 'always',
 	output: 'static',
+	// Keine Sessions: die Seite ist statisch und hätte sonst ein KV-Binding ohne ID,
+	// an dem der Cloudflare-Pages-Build scheitert.
+	session: false,
 	adapter: cloudflare({
 		imageService: 'compile',
 		prerenderEnvironment: 'node',
