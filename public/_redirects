@@ -101,9 +101,8 @@
 /wp-sitemap-taxonomies-category-1.xml /sitemap.xml 301
 /wp-sitemap-users-1.xml /sitemap.xml 301
 
-# Weiche Adresse /404 nicht als 200 ausliefern
-/404 /404.html 404
-/404/ /404.html 404
+# /404 bekommt Status 404 über functions/_middleware.js.
+# _redirects akzeptiert hier keinen Status 404, die Datei würde sonst ignoriert.
 
 # Medien-Anhangseite unter der alten Startseite
 /video / 301

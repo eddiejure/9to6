@@ -7,10 +7,21 @@ export async function onRequest(context) {
 		return context.next();
 	}
 
-	const apex = parsed.hostname === '9to6.de' || parsed.hostname === 'www.9to6.de';
-	const bare = apex && parsed.pathname === '/' && !raw.includes(`${parsed.hostname}/`);
-	if (bare) {
+	// Browsers send GET / for both https://9to6.de and https://9to6.de/.
+	// Redirect only when the raw URL really has no slash after the host.
+	const bareHome =
+		(parsed.hostname === '9to6.de' || parsed.hostname === 'www.9to6.de') &&
+		parsed.pathname === '/' &&
+		!raw.includes(`${parsed.hostname}/`);
+	if (bareHome) {
 		return Response.redirect(`https://9to6.de/${parsed.search}`, 301);
+	}
+
+	if (parsed.pathname === '/404' || parsed.pathname === '/404/') {
+		const response = await context.next();
+		const headers = new Headers(response.headers);
+		headers.set('X-Robots-Tag', 'noindex, follow');
+		return new Response(response.body, { status: 404, headers });
 	}
 
 	return context.next();
