@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4347",
-    "build": "astro build",
+    "build": "astro build && node ./scripts/clean-pages-config.mjs",
     "preview": "astro preview --host 127.0.0.1 --port 4347",
     "astro": "astro"
   },
