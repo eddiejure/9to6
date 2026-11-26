@@ -4,7 +4,8 @@ import CtaDark from '../../components/CtaDark.astro';
 import Picture from '../../components/Picture.astro';
 import Related from '../../components/Related.astro';
 import { images } from '../../data/images';
-import { cases } from '../../data/site';
+import { cases, testimonials } from '../../data/site';
+import Testimonials from '../../components/Testimonials.astro';
 import { caseRelated } from '../../data/related';
 
 export function getStaticPaths() {
@@ -17,9 +18,10 @@ export function getStaticPaths() {
 const { project } = Astro.props;
 const og = images[project.imageName];
 const index = cases.findIndex((item) => item.slug === project.slug);
-const prev = index > 0 ? cases[index - 1] : cases[cases.length - 1];
-const next = index < cases.length - 1 ? cases[index + 1] : cases[0];
+const next = cases[(index + 1) % cases.length];
 const links = caseRelated[project.slug] ?? [];
+const isClient = project.kind === 'client';
+const quote = testimonials.filter((t) => t.slug === project.slug);
 ---
 
 <BaseLayout
@@ -36,7 +38,6 @@ const links = caseRelated[project.slug] ?? [];
 		url: project.url,
 		image: project.image,
 		place: project.place,
-		founder: project.founder,
 	}}
 	breadcrumbs={[
 		{ name: 'Referenzen', href: '/referenzen/' },
@@ -45,67 +46,105 @@ const links = caseRelated[project.slug] ?? [];
 >
 	<section class="page-hero project-hero">
 		<div class="wrap">
-			<p class="article-meta">{project.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {project.place}</p>
-			<h1>{project.kind === 'client' ? project.name : `${project.name}, eigenes Produkt`}</h1>
-			<p class="sub">{project.role}</p>
+			<p class="eyebrow">{isClient ? 'Kundenprojekt' : 'Eigenes Produkt'} · {project.industry}</p>
+			<h1>{project.name}</h1>
+			<p class="sub">{project.teaser}</p>
+			<dl class="project-facts">
+				<div>
+					<dt>{isClient ? 'Kunde' : 'Produkt'}</dt>
+					<dd>{project.name}</dd>
+				</div>
+				<div>
+					<dt>Branche</dt>
+					<dd>{project.industry}</dd>
+				</div>
+				<div>
+					<dt>Ort</dt>
+					<dd>{project.place}</dd>
+				</div>
+				<div>
+					<dt>Website</dt>
+					<dd>
+						<a href={project.url} rel="noopener" target="_blank">{project.urlLabel}</a>
+					</dd>
+				</div>
+			</dl>
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap-wide split">
-			<div class="media">
-				<div class="shot">
+	<section class="section section-tight">
+		<div class="wrap">
+			<div class="project-shot">
+				{project.mockName ? (
+					<Picture
+						name={project.mockName}
+						alt={`${project.imageAlt} – auf Laptop und Smartphone`}
+						sizes="(min-width: 1240px) 1200px, 94vw"
+						width={1200}
+						height={1020}
+						loading="eager"
+					/>
+				) : (
 					<Picture
 						name={project.imageName}
 						alt={project.imageAlt}
-						class="shot-img"
-						sizes="(min-width: 900px) 560px, 92vw"
+						sizes="(min-width: 1240px) 1200px, 94vw"
 						width={1280}
 						height={800}
 						loading="eager"
 					/>
-				</div>
-			</div>
-			<div>
-				<p class="kicker">{project.stack}</p>
-				<h2>{project.kind === 'client' ? 'Ausgangslage und Ergebnis' : 'Eigenes Produkt'}</h2>
-				{project.story.map((paragraph) => <p class="body">{paragraph}</p>)}
-				<p class="body">{project.result}</p>
-				<ul class="icon-list">
-					{project.points.map((point) => (
-						<li>{point}</li>
-					))}
-				</ul>
-				<div class="pills">
-					<span class="pill">{project.stack}</span>
-					<span class="pill">{project.role}</span>
-				</div>
-				<p class="body">
-					Entstanden im Rahmen von <a href="/leistungen/webdesign/">Webdesign</a> und
-					<a href="/leistungen/webentwicklung/">Webentwicklung</a>. Weitere Arbeiten unter
-					<a href="/referenzen/">Referenzen</a>.
-				</p>
-				<p style="margin-top:22px">
-					<a class="btn" href={project.url} rel="noopener" target="_blank">
-						{project.urlLabel} öffnen
-					</a>
-				</p>
+				)}
 			</div>
 		</div>
 	</section>
 
-	<Related title="Passend dazu" links={links} />
+	<section class="section">
+		<div class="wrap project-body">
+			<div class="project-story">
+				<p class="body body-lg">{project.summary}</p>
+				<h2>Ausgangslage</h2>
+				<p class="body">{project.challenge}</p>
+				<h2>Lösung</h2>
+				<p class="body">{project.solution}</p>
+				<h2>Ergebnis</h2>
+				<p class="body">{project.outcome}</p>
+				<p class="cta-row">
+					<a class="btn" href={project.url} rel="noopener" target="_blank">
+						{project.urlLabel} besuchen
+					</a>
+				</p>
+			</div>
+			<aside class="project-aside" aria-labelledby="leistungen-heading">
+				<p class="eyebrow" id="leistungen-heading">Leistungen</p>
+				<ul class="tick-list">
+					{project.deliverables.map((item) => <li>{item}</li>)}
+				</ul>
+				<p class="project-aside-note">
+					Umgesetzt mit <a href="/leistungen/webdesign/">Webdesign</a> und
+					<a href="/leistungen/webentwicklung/">Webentwicklung</a> von 9to6.
+				</p>
+			</aside>
+		</div>
+	</section>
 
-	<nav class="section-tight" aria-label="Weitere Referenzen">
-		<div class="wrap project-next">
-			<a href={`/referenzen/${prev.slug}/`}>← {prev.name}</a>
-			<a href="/referenzen/">Alle Referenzen</a>
-			<a href={`/referenzen/${next.slug}/`}>{next.name} →</a>
+	{quote.length > 0 ? <Testimonials items={quote} eyebrow="Stimme des Kunden" heading="" /> : null}
+
+	<nav class="section section-tight" aria-label="Nächste Referenz">
+		<div class="wrap">
+			<a class="next-case" href={`/referenzen/${next.slug}/`}>
+				<span class="eyebrow">Nächstes Projekt</span>
+				<span class="next-case-name">{next.name}</span>
+				<span class="link-arrow">{next.teaser}</span>
+			</a>
 		</div>
 	</nav>
 
+	<Related title="Passend dazu" links={links} />
+
 	<CtaDark
-		title={project.kind === 'client' ? 'Ähnliches für deinen Betrieb?' : 'Produkt oder Plattform geplant?'}
-		text="Termin oder kurze E-Mail mit Projektart, Budget und Zeitraum. Eddie antwortet selbst."
+		title={isClient ? 'Ähnliches für deinen Betrieb?' : 'Du planst ein eigenes Produkt?'}
+		text={isClient
+			? 'Erzähl uns im kostenlosen Erstgespräch, was du vorhast. Wir zeigen dir, wie deine Website mehr Anfragen bringt.'
+			: 'Shop, Plattform oder Web-App: Im kostenlosen Erstgespräch klären wir Umfang, Technik und nächste Schritte.'}
 	/>
 </BaseLayout>

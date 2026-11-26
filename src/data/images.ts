@@ -43,37 +43,69 @@ export const images = {
 		"ogWidth": 1200,
 		"ogHeight": 750
 	},
-	"studio": {
+	"mock-design": {
 		"widths": [
 			480,
 			768,
-			1024
+			1200
 		],
-		"width": 1024,
-		"height": 683,
-		"ogWidth": 1024,
-		"ogHeight": 683
+		"width": 1200,
+		"height": 1020,
+		"ogWidth": 1200,
+		"ogHeight": 1020
 	},
-	"laptop": {
+	"mock-dev": {
 		"widths": [
 			480,
 			768,
-			1024
+			1200
 		],
-		"width": 1024,
-		"height": 683,
-		"ogWidth": 1024,
-		"ogHeight": 683
+		"width": 1200,
+		"height": 1020,
+		"ogWidth": 1200,
+		"ogHeight": 1020
 	},
-	"workspace": {
+	"visual-seo": {
 		"widths": [
 			480,
-			768
+			768,
+			1200
 		],
-		"width": 800,
-		"height": 533,
-		"ogWidth": 800,
-		"ogHeight": 533
+		"width": 1200,
+		"height": 1020,
+		"ogWidth": 1200,
+		"ogHeight": 1020
+	},
+	"visual-relaunch": {
+		"widths": [
+			480,
+			768,
+			1200
+		],
+		"width": 1200,
+		"height": 1020,
+		"ogWidth": 1200,
+		"ogHeight": 1020
+	},
+	"client-hj": {
+		"widths": [
+			96,
+			192
+		],
+		"width": 192,
+		"height": 192,
+		"ogWidth": 192,
+		"ogHeight": 192
+	},
+	"client-dale": {
+		"widths": [
+			96,
+			192
+		],
+		"width": 192,
+		"height": 192,
+		"ogWidth": 192,
+		"ogHeight": 192
 	},
 	"eddie": {
 		"widths": [

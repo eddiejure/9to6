@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
-import LeadActions from '../../components/LeadActions.astro';
+import Picture from '../../components/Picture.astro';
 import Related from '../../components/Related.astro';
 import { posts } from '../../data/blog';
 import { postRelated } from '../../data/related';
+import { site } from '../../data/site';
 import { renderInline } from '../../lib/text';
 
 export function getStaticPaths() {
@@ -20,26 +21,42 @@ const others = posts.filter((item) => item.slug !== post.slug);
 ---
 
 <BaseLayout
-	title={`${post.title} | 9to6`}
+	title={`${post.title} | 9to6 Blog`}
 	description={post.description}
 	schema="article"
 	datePublished={post.date}
 	dateModified={post.dateModified}
+	ogImagePath={`/images/og-blog-${post.slug}.jpg`}
+	ogImageAlt={post.title}
 	breadcrumbs={[
 		{ name: 'Blog', href: '/blog/' },
 		{ name: post.title, href: `/blog/${post.slug}/` },
 	]}
 >
 	<section class="page-hero article-hero">
-		<div class="wrap">
-			<p class="article-meta">{post.dateLabel} · Aktualisiert {post.dateModifiedLabel}</p>
+		<div class="wrap wrap-narrow">
+			<p class="eyebrow">Blog · {post.readingTime} Min. Lesezeit</p>
 			<h1>{post.title}</h1>
 			<p class="sub">{post.hero}</p>
-			<LeadActions align="center" />
+			<div class="byline">
+				<Picture name="eddie" alt="" width={840} height={840} sizes="44px" loading="eager" />
+				<p>
+					<span>Von {site.person.public}, Gründer von 9to6</span>
+					<span>
+						<time datetime={post.dateModified}>Aktualisiert am {post.dateModifiedLabel}</time>
+					</span>
+				</p>
+			</div>
 		</div>
 	</section>
 
-	<article class="wrap article">
+	<article class="wrap wrap-narrow article">
+		<aside class="summary" aria-labelledby="summary-heading">
+			<p class="summary-title" id="summary-heading">Kurz gesagt</p>
+			<ul>
+				{post.summary.map((item) => <li set:html={renderInline(item)} />)}
+			</ul>
+		</aside>
 		{
 			post.sections.map((section) => (
 				<section>
@@ -57,31 +74,36 @@ const others = posts.filter((item) => item.slug !== post.slug);
 				</section>
 			))
 		}
-
-		<section aria-labelledby="more-posts">
-			<h2 id="more-posts">Weitere Artikel</h2>
-			<ul>
-				{
-					others.map((item) => (
-						<li>
-							<a href={`/blog/${item.slug}/`}>{item.title}</a>
-						</li>
-					))
-				}
-			</ul>
+		<footer class="article-footer">
 			<p>
-				<a href="/blog/">Alle Artikel</a>
-				{' · '}
-				<a href="/leistungen/">Leistungen</a>
-				{' · '}
-				<a href="/kontakt/">Termin wählen</a>
+				<strong>Über den Autor:</strong>
+				{site.person.legal} ist Gründer von 9to6 und gestaltet und entwickelt Websites für Unternehmen im Rhein-Main-Gebiet.
+				<a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>
 			</p>
-		</section>
+		</footer>
 	</article>
 
+	<section class="section section-tight" aria-labelledby="more-posts">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Weiterlesen</p>
+				<h2 id="more-posts">Weitere Artikel</h2>
+			</div>
+			<div class="post-grid post-grid-2">
+				{
+					others.map((item) => (
+						<a class="post-card" href={`/blog/${item.slug}/`}>
+							<p class="post-meta">{item.readingTime} Min. Lesezeit</p>
+							<h3>{item.title}</h3>
+							<p>{item.description}</p>
+							<span class="link-arrow">Weiterlesen</span>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
 	<Related title="Passend zum Thema" links={links} />
-	<CtaDark
-		title="Termin oder kurze E-Mail"
-		text="Projektart, Budgetrahmen und Zeitraum. Eddie sagt dir, ob sich ein Gespräch lohnt."
-	/>
+	<CtaDark />
 </BaseLayout>

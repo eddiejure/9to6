@@ -16,12 +16,12 @@ Der Dev-Server läuft auf **http://127.0.0.1:4347** (Port bewusst nicht 3000 / 5
 
 ## Termine
 
-Erstgespräche laufen über [Cal.com](https://cal.com/eddiejure/30min): 30-Minuten-Call. Auf der Startseite als Button, auf `/kontakt/` als eingebetteter Kalender.
+Erstgespräche laufen über [Cal.com](https://cal.com/eddiejure/30min): 30-Minuten-Call. Auf `/kontakt/` als eingebetteter Kalender mit Zwei-Klick-Lösung: Cal.com lädt erst nach Klick auf „Freie Termine anzeigen“ oder wenn die Seite über einen Termin-Button (`#kalender`) geöffnet wird.
 
 ## DSGVO
 
 - Impressum und Datenschutzerklärung an Hosting (Cloudflare Pages) und Terminbuchung (Cal.com) angepasst.
-- Keine Google Fonts, keine Analytics, keine Social Plugins, kein Cookie-Banner (keine nicht notwendigen Cookies).
+- Keine Google Fonts, keine Analytics, keine Social Plugins, kein Cookie-Banner (die Seite setzt selbst keine Cookies; Cal.com lädt erst nach Klick).
 - Schriften: selbst gehostetes Montserrat (lateinischer Schnitt, Schnitte 400/500/600/700).
 
 ## Cloudflare Pages
@@ -43,6 +43,8 @@ npx wrangler pages deploy dist/client --project-name 9to6
 
 ## Inhalt: übernommen vs. neu
 
-Übernommen (Designsprache): dunkler Hero mit dezenter Violett-Atmosphäre, Glas-Karte, Montserrat in Versalien, Button `#4E22A8` / Hover `#9644D2`, Lavendel-Band, schwarze Abschlussfläche, Logo, Porträt, Impressum-Stammdaten.
+Designsprache: dunkler Grund mit violetter Atmosphäre, Montserrat mit enger Laufweite und Satzschreibung in Überschriften (Versalien nur für kleine Labels), Pill-Buttons im Verlauf `#4E22A8` → `#9644D2`, dunkle Glas-Karten. Alle Tokens stehen oben in `src/styles/global.css`.
+
+SEO/GEO: Jede FAQ steht nur auf einer Seite (keine doppelten FAQPage-Inhalte). `public/llms.txt` und `public/llms-full.txt` fassen die Fakten für KI-Assistenten zusammen. Social-Share-Bild: `public/images/og-9to6.jpg`.
 
 Neu: Fokus auf Kundenergebnis (Anfragen, Conversion, Tempo) statt Framework-Pitch. Blog unter `/blog/`. Referenzen Holzbau Oberlerchner, D&E Elixier (`de-elixier.de`), sim.do, Simtasy. Keine Agentur-Lebenslaufseite.

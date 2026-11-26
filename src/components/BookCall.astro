@@ -4,114 +4,155 @@ import { site } from '../data/site';
 
 type Props = {
 	variant?: 'card' | 'calendar';
-	kicker?: string;
 	heading?: string;
 	text?: string;
-	cta?: string;
-	href?: string;
 };
 
 const {
 	variant = 'calendar',
-	kicker = 'Kostenloses Erstgespräch',
-	heading = '30 Minuten. Unverbindlich.',
-	text = 'Termin im Kalender, oder eine E-Mail mit Projektart, Budget und Zeitraum.',
-	cta = 'Termin wählen',
-	href = '/kontakt/#kalender',
+	heading = '30 Minuten mit Eddie',
+	text = 'Wir sprechen über dein Vorhaben und zeigen dir, wie deine Website mehr Kunden gewinnt. Kostenlos und unverbindlich.',
 } = Astro.props;
 
-const photoAlt = `${site.person.public}, ${site.person.role} bei ${site.name}`;
+const photoAlt = `${site.person.public}, Gründer von ${site.name}`;
 ---
 
 {
 	variant === 'card' ? (
-		<div class="glass book-card">
-			<Picture
-				class="book-card-photo"
-				name="eddie"
-				width="840"
-				height="840"
-				sizes="144px"
-				alt={photoAlt}
-				loading="eager"
-				fetchpriority="high"
-			/>
-			<p class="glass-kicker">{kicker}</p>
-			<h2 class="form-heading">{heading}</h2>
-			<p>{text}</p>
-			<a class="btn btn-block" href={href}>
-				{cta}
+		<aside class="book-card" aria-labelledby="book-card-title">
+			<div class="book-card-head">
+				<Picture
+					class="book-card-photo"
+					name="eddie"
+					width={840}
+					height={840}
+					sizes="72px"
+					alt={photoAlt}
+					loading="eager"
+					fetchpriority="high"
+				/>
+				<div>
+					<p class="book-card-name">{site.person.public}</p>
+					<p class="book-card-role">Gründer von 9to6</p>
+				</div>
+			</div>
+			<p class="eyebrow">Kostenloses Erstgespräch</p>
+			<h2 class="book-card-title" id="book-card-title">
+				{heading}
+			</h2>
+			<p class="book-card-text">{text}</p>
+			<ul class="book-card-list" aria-label="Was du aus dem Gespräch mitnimmst">
+				<li>Kostenloser Check deiner Website</li>
+				<li>Konkrete Hebel für mehr Anfragen</li>
+				<li>Klarer Kosten- und Zeitrahmen</li>
+			</ul>
+			<a class="btn btn-block" href="/kontakt/#kalender">
+				Termin auswählen
 			</a>
-			<a class="btn btn-block btn-line" href="/kontakt/#anfrage">
-				Kurz schreiben
+			<a class="btn btn-block btn-ghost" href="/kontakt/#anfrage">
+				Lieber schreiben
 			</a>
-		</div>
+		</aside>
 	) : (
 		<div class="cal-box">
-			<header class="cal-intro">
+			<div class="cal-intro">
+				<p class="eyebrow">Termin buchen</p>
 				<h2>{heading}</h2>
 				<p>{text}</p>
-			</header>
-			<div class="cal-embed" id="cal-embed" data-cal-link="eddiejure/30min"></div>
+			</div>
+			<div class="cal-embed" id="cal-embed" data-cal-embed>
+				<div class="cal-placeholder" data-cal-placeholder>
+					<p class="cal-placeholder-title">Kalender von Cal.com</p>
+					<p>
+						Beim Laden werden Daten an Cal.com übertragen. Details in der
+						<a href="/datenschutz/#cal">Datenschutzerklärung</a>.
+					</p>
+					<button class="btn" type="button" data-cal-load>
+						Freie Termine anzeigen
+					</button>
+					<a class="cal-direct" href={site.calUrl} rel="noopener" target="_blank">
+						Oder direkt auf cal.com buchen
+					</a>
+				</div>
+			</div>
 		</div>
 	)
 }
 
 {
 	variant === 'calendar' && (
-		<script is:inline>
-			(function (C, A, L) {
-				let p = function (a, ar) {
-					a.q.push(ar);
-				};
-				let d = C.document;
-				C.Cal =
-					C.Cal ||
-					function () {
-						let cal = C.Cal;
-						let ar = arguments;
-						if (!cal.loaded) {
-							cal.ns = {};
-							cal.q = cal.q || [];
-							d.head.appendChild(d.createElement('script')).src = A;
-							cal.loaded = true;
-						}
-						if (ar[0] === L) {
-							const api = function () {
-								p(api, arguments);
+		<script is:inline define:vars={{ calLink: site.calLink }}>
+			(function () {
+				var box = document.querySelector('[data-cal-embed]');
+				if (!box) return;
+				var loaded = false;
+				function load() {
+					if (loaded) return;
+					loaded = true;
+					var placeholder = box.querySelector('[data-cal-placeholder]');
+					if (placeholder) placeholder.remove();
+					box.classList.add('is-loading');
+					(function (C, A, L) {
+						var p = function (a, ar) {
+							a.q.push(ar);
+						};
+						var d = C.document;
+						C.Cal =
+							C.Cal ||
+							function () {
+								var cal = C.Cal;
+								var ar = arguments;
+								if (!cal.loaded) {
+									cal.ns = {};
+									cal.q = cal.q || [];
+									d.head.appendChild(d.createElement('script')).src = A;
+									cal.loaded = true;
+								}
+								if (ar[0] === L) {
+									var api = function () {
+										p(api, arguments);
+									};
+									var namespace = ar[1];
+									api.q = api.q || [];
+									if (typeof namespace === 'string') {
+										cal.ns[namespace] = cal.ns[namespace] || api;
+										p(cal.ns[namespace], ar);
+										p(cal, ['initNamespace', namespace]);
+									} else p(cal, ar);
+									return;
+								}
+								p(cal, ar);
 							};
-							const namespace = ar[1];
-							api.q = api.q || [];
-							if (typeof namespace === 'string') {
-								cal.ns[namespace] = cal.ns[namespace] || api;
-								p(cal.ns[namespace], ar);
-								p(cal, ['initNamespace', namespace]);
-							} else p(cal, ar);
-							return;
-						}
-						p(cal, ar);
-					};
-			})(window, 'https://app.cal.com/embed/embed.js', 'init');
-			Cal('init', 'call30', { origin: 'https://cal.com' });
-			Cal.ns.call30('inline', {
-				elementOrSelector: '#cal-embed',
-				calLink: 'eddiejure/30min',
-				config: { layout: 'month_view', theme: 'dark', 'ui.color-scheme': 'dark' },
-			});
-			Cal.ns.call30('ui', {
-				hideEventTypeDetails: false,
-				layout: 'month_view',
-				theme: 'dark',
-				colorScheme: 'dark',
-				cssVarsPerTheme: {
-					dark: {
-						'cal-bg': '#101010',
-						'cal-border-booker': 'transparent',
-						'cal-border-booker-width': '0px',
-						radius: '1.875rem',
-					},
-				},
-			});
+					})(window, 'https://app.cal.com/embed/embed.js', 'init');
+					Cal('init', 'call30', { origin: 'https://cal.com' });
+					Cal.ns.call30('inline', {
+						elementOrSelector: '#cal-embed',
+						calLink: calLink,
+						config: { layout: 'month_view', theme: 'dark' },
+					});
+					Cal.ns.call30('ui', {
+						hideEventTypeDetails: false,
+						layout: 'month_view',
+						theme: 'dark',
+						cssVarsPerTheme: {
+							dark: {
+								'cal-bg': '#0d0b14',
+								'cal-border-booker': 'transparent',
+								'cal-border-booker-width': '0px',
+								'cal-brand': '#9644d2',
+								radius: '1rem',
+							},
+						},
+					});
+				}
+				var button = box.querySelector('[data-cal-load]');
+				if (button) button.addEventListener('click', load);
+				// Wer über „Termin auswählen“ kommt, hat das Laden bereits angefordert.
+				if (location.hash === '#kalender') load();
+				window.addEventListener('hashchange', function () {
+					if (location.hash === '#kalender') load();
+				});
+			})();
 		</script>
 	)
 }

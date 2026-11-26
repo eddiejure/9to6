@@ -31,13 +31,14 @@ export function sitemapEntries(): SitemapEntry[] {
 		{ path: '/leistungen/webdesign/', lastmod: contentUpdated },
 		{ path: '/leistungen/webentwicklung/', lastmod: contentUpdated },
 		{ path: '/webdesign-gelnhausen/', lastmod: contentUpdated },
+		{ path: '/preise/', lastmod: contentUpdated },
 		{ path: '/referenzen/', lastmod: contentUpdated },
 		...cases.map((item) => ({ path: `/referenzen/${item.slug}/`, lastmod: contentUpdated })),
 		{ path: '/blog/', lastmod: contentUpdated },
 		...posts.map((post) => ({ path: `/blog/${post.slug}/`, lastmod: post.dateModified })),
 		{ path: '/kontakt/', lastmod: contentUpdated },
-		{ path: '/impressum/', lastmod: '2026-09-18' },
-		{ path: '/datenschutz/', lastmod: '2026-09-18' },
+		{ path: '/impressum/', lastmod: contentUpdated },
+		{ path: '/datenschutz/', lastmod: contentUpdated },
 	];
 	return staticPages;
 }

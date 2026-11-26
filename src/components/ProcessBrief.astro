@@ -2,30 +2,35 @@
 import { briefSteps } from '../data/site';
 
 type Props = {
+	eyebrow?: string;
 	heading?: string;
 	intro?: string;
 };
 
 const {
-	heading = 'Drei Schritte bis zur live Seite',
-	intro = 'Gespräch, Rahmen, Launch. Eddie bleibt der Ansprechpartner.',
+	eyebrow = 'Ablauf',
+	heading = 'In vier Schritten zur neuen Website',
+	intro = 'Klare Schritte, ein fester Ansprechpartner und keine Überraschungen bei Zeit oder Kosten.',
 } = Astro.props;
 ---
 
-<section class="section">
+<section class="section" aria-labelledby="ablauf-heading">
 	<div class="wrap">
-		<h2 class="center">{heading}</h2>
-		<p class="intro center">{intro}</p>
-		<div class="steps">
+		<div class="section-head">
+			<p class="eyebrow">{eyebrow}</p>
+			<h2 id="ablauf-heading">{heading}</h2>
+			{intro ? <p class="lead">{intro}</p> : null}
+		</div>
+		<ol class="steps">
 			{
 				briefSteps.map((step, index) => (
-					<article>
-						<p class="kicker">0{index + 1}</p>
+					<li class="step">
+						<span class="step-num">0{index + 1}</span>
 						<h3>{step.title}</h3>
 						<p>{step.text}</p>
-					</article>
+					</li>
 				))
 			}
-		</div>
+		</ol>
 	</div>
 </section>

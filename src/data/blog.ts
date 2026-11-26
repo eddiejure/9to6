@@ -13,186 +13,218 @@ export type BlogPost = {
 	dateModified: string;
 	dateModifiedLabel: string;
 	hero: string;
+	summary: string[];
 	sections: BlogSection[];
+	readingTime: number;
 };
 
-export const posts: BlogPost[] = [
+type PostInput = Omit<BlogPost, 'readingTime'>;
+
+const input: PostInput[] = [
 	{
 		slug: 'warum-deine-website-keine-kunden-bringt',
 		title: 'Warum deine Website keine Kunden bringt',
 		description:
-			'Warum eine fertige Seite in Gelnhausen oder Frankfurt trotzdem keine Anfrage bringt, und was Oberlerchner und Elixier anders machen.',
+			'Die Seite ist online, aber das Telefon bleibt still? Die fünf häufigsten Gründe, warum Websites keine Anfragen bringen – und wie du sie behebst.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
 		dateModified: '2026-11-26',
 		dateModifiedLabel: '26. November 2026',
-		hero: 'Eine Website, die fertig aussieht, ist noch keine, die Arbeit bringt. Der nächste Schritt muss in der ersten Ansicht stehen.',
+		hero: 'Eine Website, die fertig aussieht, ist noch lange keine, die verkauft. Meist liegt es nicht am Design, sondern an fünf vermeidbaren Fehlern.',
+		summary: [
+			'Besucher entscheiden in wenigen Sekunden, ob sie bleiben. Angebot, Zielgruppe und nächster Schritt gehören deshalb in den ersten Bildschirm.',
+			'Die häufigsten Bremsen: Firmengeschichte statt Angebot, fehlender Ortsbezug, unklare Buttons, lange Formulare und langsame Ladezeiten.',
+			'Jede Leistung, nach der Kunden suchen, braucht eine eigene, klar benannte Seite.',
+		],
 		sections: [
 			{
-				heading: 'Fertig ist nicht dasselbe wie brauchbar',
+				heading: 'Online sein reicht nicht',
 				paragraphs: [
-					'Viele Betriebe im Main-Kinzig-Kreis und in Frankfurt haben eine Website mit Foto, Leistungsliste und Impressum. Sie wirkt abgeschlossen. Trotzdem bleibt die Anfrage aus. Der Grund liegt selten an einem fehlenden Effekt. Die Seite hat nicht entschieden, wen sie überzeugen will und was dieser Mensch als Nächstes tun soll.',
-					'Wer über die Suche kommt, hat schon eine Frage. In Gelnhausen ist das oft ein konkretes Gewerk, ein Termin vor Ort oder ein Angebot für ein Haus. In Frankfurt-Sachsenhausen ist es eine Behandlung, ein Standort, ein freier Termin. Wer die Antwort nicht in den ersten Sekunden sieht, geht zur nächsten Seite. Wer die Antwort sieht und keinen Weg zur Nachricht oder zum Termin findet, geht ebenfalls.',
+					'Viele Betriebe haben eine Website mit Foto, Leistungsliste und Impressum. Sie wirkt fertig, aber Anfragen kommen kaum. Das liegt selten an fehlenden Effekten. Meist hat die Seite nie entschieden, wen sie überzeugen will und was dieser Mensch als Nächstes tun soll.',
+					'Wer über Google kommt, hat eine konkrete Frage: Wer baut mir einen Carport? Wo bekomme ich diese Woche einen Termin? Findet die Person die Antwort nicht sofort, klickt sie zurück zum nächsten Treffer. Findet sie die Antwort, aber keinen einfachen Weg zur Anfrage, ebenfalls.',
 				],
 			},
 			{
-				heading: 'Was in der Region immer wieder fehlt',
-				paragraphs: [
-					'Lokale Seiten erzählen gern die Geschichte des Betriebs, bevor sie das Angebot nennen. Das Gebiet fehlt oder steht nur im Footer. Die Leistung, die jemand sucht, liegt in einem Fließtext ohne Überschrift. Auf dem Handy, zwischen zwei Terminen auf der Baustelle oder in der Bahn nach Hanau, ist die Seite eng, langsam oder unklar.',
-					'Dazu kommt ein Kontaktweg, der nach einem internen Ablauf aussieht: acht Felder, ein Button mit „mehr erfahren“, eine Adresse ohne Zusammenhang zur Leistung. Für einen Betrieb in Gelnhausen, Offenbach oder Frankfurt reicht ein klarer Satz und ein kurzer Weg. Der Rest kann darunter stehen.',
-				],
-			},
-			{
-				heading: 'Holzbau Oberlerchner in Gelnhausen',
-				paragraphs: [
-					'Beim Holzbaubetrieb Oberlerchner war der Auftritt die Aufgabe, nicht ein einzelnes Bild. Konzept, Logo, Visitenkarten, Baubanner, Tafeln und die Website sollten dieselbe Linie haben. Auf der Seite stehen Dachbau, konstruktiver Holzbau, Terrassen und Carports so, dass jemand aus Gelnhausen und dem Main-Kinzig-Kreis sie ohne Umweg findet.',
-					'Das Ergebnis ist kein erfundener Prozentsatz. Es ist eine erreichbare Seite: Leistungen und Gebiet in der ersten Ansicht, lesbar auf dem Handy. Wer den Fall im Detail sehen will, öffnet [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/). Genau diese Klarheit fehlt vielen Seiten, die schon „online“ sind und trotzdem keine Anfrage erzeugen.',
-				],
-			},
-			{
-				heading: 'D&E Elixier in Frankfurt-Sachsenhausen',
-				paragraphs: [
-					'Ein Kosmetikinstitut verkauft Vertrauen und einen Termin. D&E Elixier in Frankfurt-Sachsenhausen brauchte eine Website, die Behandlungen und den Weg dorthin ruhig erklärt. Ein austauschbarer Look hätte nach einer Vorlage ausgesehen, nicht nach dem Institut.',
-					'Im Relaunch sitzen Leistungen, Standort und Buchungsweg vorn. Gesichtsbehandlungen und Fußpflege sind für Menschen auffindbar, die in Frankfurt und der näheren Umgebung suchen. Der Fall steht unter [D&E Elixier](/referenzen/de-elixier/). Dasselbe Muster gilt für Studios in Offenbach oder Hanau: erst das Angebot, dann die Atmosphäre, dann ein kurzer nächster Schritt.',
-				],
-			},
-			{
-				heading: 'Vier Blocker, die wir in Audits sehen',
-				paragraphs: [
-					'Keiner dieser Punkte braucht einen neuen Slogan. Alle brauchen eine Reihenfolge, Tempo und eine Handlung. Wie aus dem Besuch eine Anfrage wird, steht unter [Aus Besuchern werden Anfragen](/blog/aus-besuchern-werden-anfragen/).',
-				],
+				heading: 'Die fünf häufigsten Gründe',
+				paragraphs: ['In fast jeder Website, die wir vor einem Relaunch analysieren, finden wir mindestens drei dieser Punkte:'],
 				list: [
-					'Die Startseite erzählt die Firmengeschichte, bevor sie sagt, was du anbietest und für wen.',
-					'Leistungen stehen im Fließtext. Gebiet, Ort und Umkreis fehlen in der Überschrift.',
-					'Der nächste Schritt heißt „mehr erfahren“ und führt auf eine weitere Seite ohne Nachricht und ohne Termin.',
-					'Die Seite lädt auf dem Smartphone so langsam, dass Menschen abspringen, bevor der Inhalt da ist. Dazu mehr unter [Ladezeit und Ranking](/blog/core-web-vitals-und-google-ranking/).',
+					'**Die Startseite erzählt die Firmengeschichte**, bevor sie sagt, was du anbietest und für wen.',
+					'**Der Ort fehlt.** Leistung und Einzugsgebiet stehen nicht in der Überschrift, sondern höchstens im Footer.',
+					'**Der nächste Schritt ist unklar.** Buttons heißen „Mehr erfahren“ und führen auf weitere Seiten statt zur Anfrage.',
+					'**Das Formular schreckt ab.** Acht Pflichtfelder vor dem ersten Satz sind eine Hürde, keine Einladung.',
+					'**Die Seite ist zu langsam.** Auf dem Smartphone springen Besucher ab, bevor der Inhalt geladen ist. Mehr dazu unter [Ladezeit und Core Web Vitals](/blog/core-web-vitals-und-google-ranking/).',
 				],
 			},
 			{
-				heading: 'Was eine Seite ändern muss',
+				heading: 'Beispiel: Holzbau Oberlerchner in Gelnhausen',
 				paragraphs: [
-					'Drei Dinge nacheinander: das Angebot in der ersten Bildschirmhöhe, ein Weg zur Handlung, Tempo genug, dass niemand wartet. Texte in der Sprache des Betriebs. Eine Seite für jede Leistung, die jemand wirklich sucht. Für 9to6 ist der Weg zum Gespräch ein Termin oder eine kurze E-Mail mit Projektart, Budget und Zeitraum. Auf deiner eigenen Seite kann der Weg ein Termin, eine Nachricht oder ein Kauf sein. Er muss mit dem Daumen erreichbar sein.',
-					'Wie das Erscheinungsbild entsteht, steht unter [Webdesign](/leistungen/webdesign/). Wie Tempo und der technische Unterbau dazukommen, unter [Webentwicklung](/leistungen/webentwicklung/). Der Sitz von 9to6 ist Gelnhausen, die Projekte liegen im Main-Kinzig-Kreis und in Frankfurt, Hanau und Offenbach. Mehr zum Einzugsgebiet: [Webdesign Gelnhausen](/webdesign-gelnhausen/).',
+					'Die Zimmerei Oberlerchner hatte vor dem Projekt gar keine Website. Fragte ein Interessent nach Referenzen, gab es nur Fotos auf dem Handy. Wir haben den ganzen Auftritt aufgebaut: Logo, Visitenkarten, Baubanner und eine Website, auf der Dachbau, konstruktiver Holzbau, Terrassen und Carports klar gegliedert sind.',
+					'Leistungen und Einzugsgebiet stehen im ersten Bildschirm, Referenzen zeigen echte Projekte, die Anfrage ist von jeder Seite aus erreichbar. Heute kommen Aufträge über die Website. Das ganze Projekt: [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/).',
 				],
 			},
 			{
-				heading: 'Nächster Schritt',
+				heading: 'Beispiel: D&E Elixier in Frankfurt-Sachsenhausen',
 				paragraphs: [
-					'Wenn deine Seite Besucher hat und keine Anfragen, lässt sich das anschauen, bevor etwas gebaut wird. Im [Termin](/kontakt/#kalender) oder per [kurzer E-Mail](/kontakt/#anfrage) reichen Projektart, ungefährer Rahmen und Zeitraum. Eddie antwortet selbst. Eine Preisliste steht hier nicht, weil der Umfang vorher unklar wäre.',
+					'Ein Kosmetikinstitut verkauft Vertrauen und einen Termin. Beim Redesign von D&E Elixier stand deshalb im Mittelpunkt, die Atmosphäre des Instituts zu transportieren und gleichzeitig den Weg zur Buchung zu verkürzen.',
+					'Behandlungen sind klar gegliedert, Standort und Terminbuchung stehen auf jeder Seite griffbereit. Das Projekt im Detail: [D&E Elixier](/referenzen/de-elixier/).',
+				],
+			},
+			{
+				heading: 'So machst du deine Website zur Anfragequelle',
+				paragraphs: ['Keiner dieser Punkte braucht einen neuen Slogan. Sie brauchen Reihenfolge, Tempo und einen klaren nächsten Schritt:'],
+				list: [
+					'Schreib in die erste Überschrift, was du anbietest, für wen und wo.',
+					'Gib jeder wichtigen Leistung eine eigene Seite mit eigener Überschrift.',
+					'Biete einen eindeutigen nächsten Schritt an: Termin, Anruf oder kurze Nachricht.',
+					'Halte Formulare kurz und teste sie selbst auf dem Smartphone.',
+					'Zeig Beweise: Referenzen, Fotos echter Arbeiten, Bewertungen.',
+				],
+			},
+			{
+				heading: 'Fazit',
+				paragraphs: [
+					'Eine Website bringt Kunden, wenn sie in Sekunden klar macht, was du anbietest, und den Weg zur Anfrage so kurz wie möglich hält. Wie wir das gestalten, steht unter [Webdesign](/leistungen/webdesign/). Wie Tempo und Technik dazukommen, unter [Webentwicklung](/leistungen/webentwicklung/).',
+					'Du willst wissen, woran es bei deiner Seite hakt? Im [kostenlosen Erstgespräch](/kontakt/#kalender) schauen wir gemeinsam drauf.',
 				],
 			},
 		],
 	},
 	{
 		slug: 'core-web-vitals-und-google-ranking',
-		title: 'Ladezeit, Core Web Vitals und lokale Sichtbarkeit',
+		title: 'Ladezeit, Core Web Vitals und Google-Ranking',
 		description:
-			'Was Ladezeit für Betriebe in Gelnhausen, Hanau und Frankfurt bedeutet. Ohne Scores aus fremden Konten, mit dem, was ein Relaunch wirklich ändert.',
+			'Was die Core Web Vitals LCP, INP und CLS bedeuten, welche Grenzwerte Google ansetzt und wie du deine Website für lokale Suchen schneller machst.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
 		dateModified: '2026-11-26',
 		dateModifiedLabel: '26. November 2026',
-		hero: 'Eine träge Seite verliert Menschen, bevor sie das Angebot lesen. Sichtbarkeit und Anfragen hängen an demselben Tempo.',
+		hero: 'Eine langsame Seite verliert Besucher, bevor sie dein Angebot sehen. Was hinter den Core Web Vitals steckt und was du konkret tun kannst.',
+		summary: [
+			'Core Web Vitals sind drei Messwerte, mit denen Google die Nutzererfahrung bewertet: LCP für das Laden, INP für die Reaktion und CLS für die visuelle Stabilität.',
+			'Gute Werte: LCP bis 2,5 Sekunden, INP bis 200 Millisekunden, CLS bis 0,1 – gemessen an echten Besuchern.',
+			'Die größten Bremsen sind zu große Bilder, schwere Themes, Slider und zu viele Skripte von Drittanbietern.',
+		],
 		sections: [
 			{
-				heading: 'Drei Messwerte, in Alltagssprache',
+				heading: 'Die drei Core Web Vitals einfach erklärt',
 				paragraphs: [
-					'Core Web Vitals sind drei Werte, mit denen Google einschätzt, ob eine Seite für Menschen brauchbar ist. Der erste: wie schnell der Hauptinhalt erscheint. Der zweite: wie schnell die Seite auf eine Eingabe reagiert. Der dritte: ob das Layout beim Laden springt und du danebentippst.',
-					'Du musst die Kürzel nicht auswendig. Du musst wissen, dass eine springende, schwere Seite in der Suche schlechter dasteht und im Alltag Leute verliert. Wer in der S-Bahn zwischen Hanau und Frankfurt auf dem Handy sucht, wartet nicht auf ein Theme, das Dutzende Skripte nachlädt.',
+					'Google misst mit den Core Web Vitals, wie sich eine Seite für echte Besucher anfühlt. Die Werte stammen aus Daten des Chrome-Browsers und sind in der Google Search Console einsehbar.',
+				],
+				list: [
+					'**LCP (Largest Contentful Paint):** Wie schnell erscheint der Hauptinhalt? Gut sind bis zu 2,5 Sekunden.',
+					'**INP (Interaction to Next Paint):** Wie schnell reagiert die Seite auf Klicks und Eingaben? Gut sind bis zu 200 Millisekunden.',
+					'**CLS (Cumulative Layout Shift):** Springt das Layout beim Laden, sodass man danebentippt? Gut ist ein Wert bis 0,1.',
 				],
 			},
 			{
-				heading: 'Warum das im Main-Kinzig-Kreis und in Frankfurt zählt',
+				heading: 'Warum Ladezeit bei lokalen Suchen besonders zählt',
 				paragraphs: [
-					'Eine lokale Suche ist ungeduldig. „Holzbau Gelnhausen“, „Kosmetik Sachsenhausen“, „Webdesign Offenbach“: die Person vergleicht drei Treffer in einer Minute. Der Treffer, der erst ein großes Bild und dann den Text zeigt, ist schon verloren, auch wenn die Leistung die richtige wäre.',
-					'Für Handwerk kommt dazu das Gerät. Auf der Baustelle ist das Netz wechselhaft, das Display klein, die Zeit kurz. Eine Seite, die auf dem Schreibtisch noch „geht“, ist dort schon zu spät. Dasselbe gilt für ein Studio, dessen Termin auf dem Weg gebucht werden soll.',
+					'Lokale Suchen sind ungeduldig. Wer „Zimmerei Gelnhausen“ oder „Kosmetik Sachsenhausen“ sucht, vergleicht drei Treffer in einer Minute – meist auf dem Smartphone, oft unterwegs mit schwankendem Netz. Die Seite, die zuerst eine klare Antwort zeigt, gewinnt die Anfrage.',
+					'Für Google sind die Core Web Vitals ein Rankingfaktor unter vielen. Inhalt und Relevanz bleiben wichtiger. Aber bei ähnlich guten Seiten kann Tempo den Ausschlag geben – und für deine Besucher ist eine schnelle Seite immer besser.',
 				],
 			},
 			{
-				heading: 'Was Seiten schwer macht',
-				paragraphs: [
-					'Die üblichen Gewichte sind vorhersehbar. Ein Screenshot oder ein Foto als unkomprimiertes PNG, oft über ein Megabyte, obwohl es auf dem Handy nur ein paar hundert Pixel breit ist. Ein Baukasten, der Schriften, Slider und Tracker lädt, bevor die Überschrift da ist. Dieselben Bilder ohne Breite und Höhe, sodass die Seite nach dem Laden nach unten springt.',
-					'Bei [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/) war Tempo Teil des Auftrags, zusammen mit der lokalen Sortierung. Die Seite soll auf dem Smartphone sofort lesbar sein. Wir veröffentlichen dafür keine Laborwerte aus einem fremden Konto. Sichtbar ist, dass Bilder in der richtigen Größe ankommen und der Inhalt nicht hinter einem Theme wartet. Wie aus Tempo eine Anfrage wird, steht unter [Warum Websites keine Kunden bringen](/blog/warum-deine-website-keine-kunden-bringt/).',
+				heading: 'Was Websites langsam macht',
+				paragraphs: ['Die üblichen Verdächtigen sind fast immer dieselben:'],
+				list: [
+					'**Zu große Bilder:** Fotos mit mehreren Megabyte, obwohl sie am Handy nur wenige hundert Pixel breit angezeigt werden.',
+					'**Schwere Themes und Baukästen:** Sie laden Schriften, Slider, Animationen und Funktionen, die niemand nutzt.',
+					'**Skripte von Drittanbietern:** Tracking, Chat-Widgets und Social-Media-Einbindungen, die vor dem eigentlichen Inhalt laden.',
+					'**Fehlende Bildmaße:** Ohne feste Breite und Höhe verschiebt sich die Seite beim Laden – schlecht für CLS.',
 				],
 			},
 			{
-				heading: 'Was ein Relaunch anfasst',
+				heading: 'So wird deine Website schneller',
 				paragraphs: [
-					'Ballast weg, Bilder in passenden Größen, klare URLs, Metadaten, Weiterleitungen von alten Adressen. Der Anfrageweg so gelegt, dass er auf dem Telefon ausfüllbar ist und die Nachricht wirklich ankommt. Der technische Unterbau bleibt unsichtbar. Du merkst kürzere Wartezeit und eine Seite, die nicht springt.',
-					'Hosting über ein Netz, das nah am Besucher ausliefert, gehört dazu. Den Rahmen beschreibt die [Webentwicklung](/leistungen/webentwicklung/). Erscheinungsbild und Reihenfolge davor beschreibt das [Webdesign](/leistungen/webdesign/). Beides aus Gelnhausen, für Betriebe im Main-Kinzig-Kreis und in Frankfurt, Hanau und Offenbach.',
+					'Bilder in modernen Formaten wie AVIF und WebP und in passenden Größen ausliefern. Schriften selbst hosten und auf die nötigen Schnitte beschränken. Auf Slider und überflüssige Skripte verzichten. Die Seite über ein Netz ausliefern, das nah am Besucher steht.',
+					'Genau so bauen wir Websites bei 9to6: schlanker Code statt schwerem Theme, optimierte Bilder und statisches Hosting über Cloudflare. Bei [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/) war Tempo deshalb von Anfang an Teil des Konzepts. Mehr zur Technik unter [Webentwicklung](/leistungen/webentwicklung/).',
 				],
 			},
 			{
-				heading: 'Was wir nicht behaupten',
+				heading: 'Tempo allein verkauft nicht',
 				paragraphs: [
-					'Schnelle Seiten allein machen kein Geschäft, wenn das Angebot unklar ist. Langsame Seiten machen ein gutes Angebot unsichtbar. Sichtbarkeit, Tempo und der nächste Schritt gehören zusammen. Wir messen nach dem Launch an deiner Seite. Wir setzen keine Ranglisten-Versprechen aus anderen Branchen auf deine Startseite.',
-					'Feldwerte aus der Search Console gehören dem Betreiber der jeweiligen Website. 9to6 zitiert sie nicht als Werbung. Wenn etwas hakt, schärfen wir Bilder, Schriften, interne Links und den Weg zur Anfrage nach.',
-				],
-			},
-			{
-				heading: 'Nächster Schritt',
-				paragraphs: [
-					'Wenn deine aktuelle Seite schwer wirkt oder alte WordPress-Adressen noch im Index stehen, lässt sich das im Gespräch eingrenzen. [Termin wählen](/kontakt/#kalender) oder [kurz schreiben](/kontakt/#anfrage): Projektart, Budgetrahmen, Zeitraum. Danach siehst du, ob ein Relaunch der Hebel ist oder ob zuerst die Struktur fehlt.',
+					'Eine schnelle Seite mit unklarem Angebot bringt trotzdem keine Kunden. Tempo, klare Struktur und ein einfacher Weg zur Anfrage gehören zusammen. Warum das so ist, steht im Artikel [Warum deine Website keine Kunden bringt](/blog/warum-deine-website-keine-kunden-bringt/).',
+					'Du willst wissen, wie schnell deine Seite wirklich ist? Im [kostenlosen Erstgespräch](/kontakt/#kalender) schauen wir uns die Werte gemeinsam an.',
 				],
 			},
 		],
 	},
 	{
 		slug: 'aus-besuchern-werden-anfragen',
-		title: 'Aus Besuchern werden Anfragen',
+		title: 'Aus Besuchern werden Anfragen: so geht’s',
 		description:
-			'Wie aus einem Besuch eine Anfrage wird: Angebot, Beweis, Termin oder kurze E-Mail. Beispiele aus Gelnhausen und Frankfurt-Sachsenhausen.',
+			'Wie du mehr Anfragen über deine Website bekommst: klares Angebot im ersten Bildschirm, sichtbare Beweise und ein kurzer Weg zum Kontakt.',
 		date: '2026-09-18',
 		dateLabel: '18. September 2026',
 		dateModified: '2026-11-26',
 		dateModifiedLabel: '26. November 2026',
-		hero: 'Besuch ohne Anfrage ist teure Dekoration. Die Seite muss den nächsten Schritt anbieten, nicht nur vorhanden sein.',
+		hero: 'Besucher ohne Anfrage sind teure Dekoration. So führt deine Website Interessenten Schritt für Schritt zum Kontakt.',
+		summary: [
+			'Eine Anfrage entsteht, wenn drei Dinge zusammenkommen: ein verständliches Angebot, ein glaubwürdiger Beweis und ein kurzer nächster Schritt.',
+			'Der erste Bildschirm entscheidet: Nutzen, Zielgruppe, Ort und Handlung gehören nach oben.',
+			'Kurze Formulare mit wenigen, sinnvollen Feldern bringen mehr und bessere Anfragen als lange Pflichtformulare.',
+		],
 		sections: [
 			{
-				heading: 'Eine Anfrage ist eine konkrete Handlung',
+				heading: 'Was eine Anfrage auslöst',
 				paragraphs: [
-					'Eine Anfrage heißt: ein Mensch tut das, wofür die Seite da ist. Er schreibt, bucht einen Termin oder kauft. Dafür braucht es kein dunkles Muster. Es braucht ein Angebot in einem Satz, einen Beleg, der ohne Floskel auskommt, und einen Weg, der auf dem Telefon so kurz ist wie am Schreibtisch.',
-					'Für 9to6 sind das zwei Wege. Ein Termin über den Kalender, wenn du schon 30 Minuten sprechen willst. Eine E-Mail, wenn du zuerst Projektart, Budget und Zeitraum schicken willst. Beides führt zu Eddie. Ein anonymer Anruf ist kein Weg, den wir in den Vordergrund stellen.',
+					'Eine Anfrage ist eine konkrete Handlung: Jemand schreibt, ruft an oder bucht einen Termin. Dafür braucht es keine Tricks, sondern drei Dinge: ein Angebot, das man in einem Satz versteht, einen Beweis, dass du das kannst, und einen Weg zum Kontakt, der auf dem Smartphone genauso kurz ist wie am Desktop.',
 				],
 			},
 			{
-				heading: 'Die erste Ansicht entscheidet',
+				heading: '1. Der erste Bildschirm entscheidet',
 				paragraphs: [
-					'Oben gehören Nutzen, für wen die Seite ist, und die Handlung hin. Für einen Betrieb in Gelnhausen ist das die Leistung plus das Gebiet. Für ein Institut in Frankfurt ist es die Behandlung plus der Standort. Eine Begrüßung ohne Inhalt verbraucht die einzige Stelle, an der noch alle lesen.',
-					'Darunter kommen die Leistungen, die jemand sucht, und die Antworten auf die üblichen Einwände: Ablauf, Radius, was der erste Schritt kostet an Zeit. Wie diese erste Ansicht gestaltet wird, steht unter [Webdesign](/leistungen/webdesign/).',
+					'Ganz oben gehören hin: was du anbietest, für wen, wo – und ein Button zum nächsten Schritt. Für einen Handwerksbetrieb ist das die Leistung plus das Einzugsgebiet. Für ein Studio die Behandlung plus der Standort. Ein „Herzlich willkommen auf unserer Homepage“ verschenkt die wertvollste Fläche der ganzen Website.',
+					'Direkt darunter folgen die Leistungen, nach denen Kunden suchen, und Antworten auf typische Fragen: Ablauf, Einzugsgebiet, erster Schritt. Wie wir diesen Bereich gestalten, steht unter [Webdesign](/leistungen/webdesign/).',
 				],
 			},
 			{
-				heading: 'Beweis vor dem Termin',
+				heading: '2. Beweise vor dem Kontakt',
 				paragraphs: [
-					'Wer einen Termin buchen soll, will vorher sehen, dass Vergleichbares schon live ist. Zwei Kundenprojekte tragen das bei 9to6. [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/) in Gelnhausen: Logo, Print und eine Website, die Leistungen und Gebiet sortiert. [D&E Elixier](/referenzen/de-elixier/) in Frankfurt-Sachsenhausen: ein Relaunch, bei dem Behandlung und Terminweg vorn stehen.',
-					'Diese beiden stehen bewusst vor dem Kalender. Wer nur die eigenen Produkte sehen will: sim.do und Simtasy gehören Eddie. Sie zeigen, wie eine Produktstrecke gebaut ist. Sie sind keine Kundenreferenz aus dem Main-Kinzig-Kreis oder aus Frankfurt und stehen deshalb in einer eigenen Gruppe unter [Referenzen](/referenzen/).',
+					'Bevor jemand anfragt, will er sehen, dass du Vergleichbares schon gemacht hast. Echte Projekte mit Ort und Ergebnis wirken stärker als jede Behauptung. Bei 9to6 sind das zum Beispiel [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/) in Gelnhausen und [D&E Elixier](/referenzen/de-elixier/) in Frankfurt.',
+					'Platziere Referenzen deshalb nicht versteckt auf einer Unterseite, sondern dort, wo die Entscheidung fällt: auf der Startseite und direkt vor dem Kontaktformular.',
 				],
 			},
 			{
-				heading: 'Drei Angaben, damit die Anfrage echt ist',
+				heading: '3. Ein kurzer Weg zum Kontakt',
 				paragraphs: [
-					'Eine Nachricht ohne Kontext ist schwer zu beantworten. Drei Angaben reichen: was gebaut werden soll, welcher Budgetrahmen ungefähr passt, wann es losgehen soll. Das ist keine Preisliste. Es filtert Vorhaben, die noch keine sind, und spart beiden Seiten ein leeres Gespräch.',
-					'Auf der Kundenseite gilt dasselbe Prinzip, nur mit den Feldern, die der Betrieb wirklich braucht. Ein langes Pflichtformular vor dem ersten Satz ist eine Hürde. Ein klares Feld, das auf dem Handy ausfüllbar ist und dessen Nachricht ankommt, ist der Weg. Fehler müssen sichtbar sein. Nach dem Senden darf niemand im Leeren landen.',
-					'Den Text dazu, warum Seiten trotz Besuch leer bleiben, findest du unter [Warum deine Website keine Kunden bringt](/blog/warum-deine-website-keine-kunden-bringt/).',
+					'Biete zwei Wege an: einen schnellen (Termin buchen oder anrufen) und einen bequemen (kurze Nachricht). Frag im Formular nur, was du für eine gute Antwort wirklich brauchst – meist sind das Name, Kontakt, Vorhaben und ein grober Zeitrahmen.',
+					'Teste dein Formular selbst auf dem Smartphone. Fehlermeldungen müssen verständlich sein, und nach dem Absenden sollte klar sein, was als Nächstes passiert.',
 				],
 			},
 			{
-				heading: 'Gebiet nennen, ohne eine Stadtseite pro Ort zu bauen',
+				heading: '4. Den Ort klar benennen',
 				paragraphs: [
-					'9to6 sitzt in der Rhönstraße 95 in Gelnhausen. Der Kern ist Gelnhausen und der Main-Kinzig-Kreis. Frankfurt, Hanau und Offenbach sind die weitere Umgebung, kein zweites Büro. Eine eigene dünne Seite für jeden Ort würde dasselbe versprechen und nichts belegen.',
-					'Stattdessen steht das Gebiet in den Leistungsseiten, in den Fällen und auf einer Seite, die den Radius erklärt: [Webdesign in Gelnhausen](/webdesign-gelnhausen/). Hanau und Offenbach kommen dort vor, weil die Zusammenarbeit dorthin reicht, nicht weil jede Stadt eine Kopie braucht.',
+					'Wer lokal arbeitet, sollte das auch sagen: in Überschriften, auf Leistungsseiten und in den Referenzen. So verstehen Besucher und Suchmaschinen gleichermaßen, wo du tätig bist. Wie wir das für unsere eigene Region lösen, siehst du unter [Webdesign in Gelnhausen](/webdesign-gelnhausen/).',
 				],
 			},
 			{
-				heading: 'Nächster Schritt',
+				heading: 'Fazit',
 				paragraphs: [
-					'Wenn du einen Auftritt willst, der Anfragen erzeugt, bring die drei Angaben mit. [Termin wählen](/kontakt/#kalender) oder [kurz schreiben](/kontakt/#anfrage). Eddie sagt dir, ob Design, Entwicklung oder beides der Hebel ist, bevor Code entsteht.',
+					'Mehr Anfragen entstehen nicht durch mehr Inhalte, sondern durch die richtige Reihenfolge: Angebot, Beweis, nächster Schritt. Mehr über typische Fehler liest du in [Warum deine Website keine Kunden bringt](/blog/warum-deine-website-keine-kunden-bringt/).',
+					'Du willst deine Seite in eine Anfragequelle verwandeln? [Buch dir ein kostenloses Erstgespräch](/kontakt/#kalender) mit Eddie.',
 				],
 			},
 		],
 	},
 ];
+
+const wordsIn = (text: string) => text.split(/\s+/).filter(Boolean).length;
+
+export const posts: BlogPost[] = input.map((post) => {
+	const words =
+		wordsIn(post.hero) +
+		post.summary.reduce((sum, item) => sum + wordsIn(item), 0) +
+		post.sections.reduce(
+			(sum, section) =>
+				sum +
+				wordsIn(section.heading) +
+				section.paragraphs.reduce((acc, p) => acc + wordsIn(p), 0) +
+				(section.list ?? []).reduce((acc, item) => acc + wordsIn(item), 0),
+			0,
+		);
+	return { ...post, readingTime: Math.max(2, Math.ceil(words / 200)) };
+});
 
 export function getPost(slug: string) {
 	return posts.find((post) => post.slug === slug);

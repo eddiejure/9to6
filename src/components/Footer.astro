@@ -1,36 +1,49 @@
 ---
 import { site } from '../data/site';
+const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
-	<div class="wrap footer-grid">
-		<div>
+	<div class="wrap footer-top">
+		<div class="footer-brand">
+			<a href="/" aria-label="9to6 Startseite">
+				<img src="/logos/wordmark-white.svg" width="80" height="46" alt="9to6" loading="lazy" />
+			</a>
+			<p>
+				Webdesign und Webentwicklung aus Gelnhausen. Für Unternehmen im Main-Kinzig-Kreis, in Frankfurt und im
+				Rhein-Main-Gebiet.
+			</p>
+			<a class="btn btn-sm" href="/kontakt/#kalender">Erstgespräch buchen</a>
+		</div>
+		<nav class="footer-col" aria-label="Leistungen">
 			<p class="footer-label">Leistungen</p>
-			<a href="/leistungen/">Alle Leistungen</a>
 			<a href="/leistungen/webdesign/">Webdesign</a>
 			<a href="/leistungen/webentwicklung/">Webentwicklung</a>
+			<a href="/leistungen/#relaunch">Relaunch</a>
+			<a href="/leistungen/#seo">SEO und KI-Sichtbarkeit</a>
+			<a href="/preise/">Preise</a>
 			<a href="/webdesign-gelnhausen/">Webdesign Gelnhausen</a>
-		</div>
-		<div>
-			<p class="footer-label">9to6</p>
+		</nav>
+		<nav class="footer-col" aria-label="Agentur">
+			<p class="footer-label">Agentur</p>
 			<a href="/referenzen/">Referenzen</a>
 			<a href="/blog/">Blog</a>
 			<a href="/kontakt/">Kontakt</a>
-			<a href="/impressum/">Impressum</a>
-			<a href="/datenschutz/">Datenschutzerklärung</a>
-		</div>
-		<div class="footer-brand">
-			<a href="/" aria-label="9to6 Startseite">
-				<img src="/logos/wordmark-white.svg" width="72" height="42" alt="9to6" />
-			</a>
-			<p>{site.positioning}</p>
-			<p class="footer-nap">
-				9to6<br />
-				{site.address.street}<br />
-				{site.address.zip} {site.address.city}<br />
-				<a href={`mailto:${site.email}`}>{site.email}</a>
-			</p>
-		</div>
+		</nav>
+		<address class="footer-col footer-nap">
+			<p class="footer-label">Kontakt</p>
+			<span>9to6 aus Gelnhausen</span>
+			<span>Für Rhein-Main und deutschlandweit</span>
+			<a href={`mailto:${site.email}`}>{site.email}</a>
+			<a href="/kontakt/#kalender">Termin buchen</a>
+		</address>
 	</div>
-	<p class="footer-copy">© 2019-2026 · 9to6 · Webdesign aus Gelnhausen für Frankfurt und Umgebung</p>
+	<div class="wrap footer-bottom">
+		<p>© {site.foundingYear}–{year} 9to6</p>
+		<p class="footer-legal">
+			<a href="/impressum/">Impressum</a>
+			<a href="/datenschutz/">Datenschutz</a>
+			<a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>
+		</p>
+	</div>
 </footer>

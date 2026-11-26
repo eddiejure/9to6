@@ -1,0 +1,48 @@
+---
+// Stilisierte, nicht maßstabsgetreue Karte des Einzugsgebiets.
+const places = [
+	{ name: 'Frankfurt', x: 96, y: 286, anchor: 'end', dx: -14, dy: 5 },
+	{ name: 'Offenbach', x: 162, y: 306, anchor: 'middle', dx: 0, dy: 30 },
+	{ name: 'Hanau', x: 282, y: 262, anchor: 'middle', dx: 0, dy: 30 },
+];
+const home = { name: 'Gelnhausen', x: 470, y: 168 };
+---
+
+<figure class="hero-visual region-map">
+	<svg viewBox="0 0 560 420" role="img" aria-labelledby="region-map-title">
+		<title id="region-map-title">Einzugsgebiet von 9to6: Gelnhausen, Hanau, Offenbach und Frankfurt am Main</title>
+		<defs>
+			<radialGradient id="rm-area" cx="0.62" cy="0.45" r="0.6">
+				<stop offset="0" stop-color="#9644d2" stop-opacity="0.35"></stop>
+				<stop offset="1" stop-color="#9644d2" stop-opacity="0"></stop>
+			</radialGradient>
+			<linearGradient id="rm-line" x1="0" x2="1">
+				<stop offset="0" stop-color="#c9a8ff" stop-opacity="0.25"></stop>
+				<stop offset="1" stop-color="#c9a8ff" stop-opacity="0.9"></stop>
+			</linearGradient>
+			<pattern id="rm-dots" width="16" height="16" patternUnits="userSpaceOnUse">
+				<circle cx="2" cy="2" r="1.2" fill="rgba(255,255,255,0.12)"></circle>
+			</pattern>
+		</defs>
+		<rect width="560" height="420" fill="url(#rm-dots)"></rect>
+		<ellipse cx="350" cy="220" rx="230" ry="150" fill="url(#rm-area)"></ellipse>
+		<text x="360" y="92" class="rm-region">Main-Kinzig-Kreis</text>
+		<path class="rm-river" d="M10 300 C 70 292, 110 300, 162 310 S 250 280, 282 268 S 380 220, 470 168 S 530 130, 556 118"></path>
+		{
+			places.map((p) => (
+				<g>
+					<path class="rm-route" d={`M${home.x} ${home.y} Q ${(home.x + p.x) / 2} ${Math.min(home.y, p.y) - 70} ${p.x} ${p.y}`}></path>
+					<circle cx={p.x} cy={p.y} r="7" class="rm-dot"></circle>
+					<text x={p.x + p.dx} y={p.y + p.dy} text-anchor={p.anchor} class="rm-label">
+						{p.name}
+					</text>
+				</g>
+			))
+		}
+		<circle cx={home.x} cy={home.y} r="16" class="rm-pulse"></circle>
+		<circle cx={home.x} cy={home.y} r="16" class="rm-pulse rm-pulse-2"></circle>
+		<circle cx={home.x} cy={home.y} r="10" class="rm-home"></circle>
+		<text x={home.x} y={home.y - 26} text-anchor="middle" class="rm-label rm-label-home">{home.name}</text>
+	</svg>
+	<figcaption>Unsere Heimat: Gelnhausen. Unser Einzugsgebiet: der Main-Kinzig-Kreis bis Frankfurt.</figcaption>
+</figure>

@@ -5,19 +5,17 @@ import { site } from '../data/site';
 
 <BaseLayout
 	title="Impressum | 9to6"
-	description="Impressum von 9to6: Edvinas Jurevicius, Rhönstraße 95, 63571 Gelnhausen. Kontakt, Hosting und Angaben nach TMG."
+	description="Impressum von 9to6, Agentur für Webdesign und Webentwicklung aus Gelnhausen: Angaben gemäß § 5 DDG, Kontakt und Hosting."
 	schema="legal"
 	breadcrumbs={[{ name: 'Impressum', href: '/impressum/' }]}
 >
 	<section class="legal wrap">
 		<h1>Impressum</h1>
+		<h2>Angaben gemäß § 5 DDG</h2>
 		<p>
-			<strong>9to6.de</strong><br />
+			<strong>9to6</strong><br />
+			Inhaber: {site.person.legal}<br />
 			{site.address.street}, {site.address.zip} {site.address.city}
-		</p>
-		<p>
-			Vertreten durch:<br />
-			{site.person.legal}
 		</p>
 		<h2>Kontakt</h2>
 		<p>
@@ -30,12 +28,6 @@ import { site } from '../data/site';
 			San Francisco, CA 94107, USA. In der EU erreichbar über Cloudflare Germany GmbH. Serverstandorte wählt Cloudflare
 			nach Anfrage. Details stehen in der <a href="/datenschutz/">Datenschutzerklärung</a>.
 		</p>
-		<h2>EU-Streitschlichtung</h2>
-		<p>
-			Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-			<a href="https://ec.europa.eu/consumers/odr" rel="noopener" target="_blank">https://ec.europa.eu/consumers/odr</a>.
-			Unsere E-Mail-Adresse finden Sie oben im Impressum.
-		</p>
 		<h2>Verbraucherstreitbeilegung / Universalschlichtungsstelle</h2>
 		<p>
 			Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
@@ -43,8 +35,8 @@ import { site } from '../data/site';
 		</p>
 		<h2>Haftung für Inhalte</h2>
 		<p>
-			Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
-			Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte
+			Als Diensteanbieter sind wir gemäß § 7 Abs. 1 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+			Gesetzen verantwortlich. Nach §§ 8 bis 10 DDG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte
 			oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
 			Tätigkeit hinweisen.
 		</p>

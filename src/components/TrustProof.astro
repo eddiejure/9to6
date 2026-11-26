@@ -1,40 +1,54 @@
 ---
 import Picture from './Picture.astro';
+import type { CaseStudy } from '../data/site';
 import { clientCases } from '../data/site';
 
 type Props = {
+	eyebrow?: string;
 	heading?: string;
 	intro?: string;
+	items?: CaseStudy[];
+	headingLevel?: 'h2' | 'h3';
+	id?: string;
 };
 
 const {
-	heading = 'Zwei Kundenprojekte, bevor es um den Termin geht',
-	intro = 'Holzbau Oberlerchner in Gelnhausen und D&E Elixier in Frankfurt-Sachsenhausen. sim.do und Simtasy sind eigene Produkte und stehen nicht in dieser Reihe.',
+	eyebrow = 'Ausgewählte Arbeiten',
+	heading = 'Websites, die für ihre Betriebe arbeiten',
+	intro = 'Zwei Kundenprojekte aus der Region – live und zum Anklicken.',
+	items = clientCases,
+	id = 'arbeiten',
 } = Astro.props;
 ---
 
-<section class="section" aria-labelledby="trust-heading">
+<section class="section" aria-labelledby={`${id}-heading`} id={id}>
 	<div class="wrap">
-		<h2 id="trust-heading" class="center">{heading}</h2>
-		<p class="intro center">{intro}</p>
-		<div class="cards" style="margin-top:36px">
+		<div class="section-head">
+			<p class="eyebrow">{eyebrow}</p>
+			<h2 id={`${id}-heading`}>{heading}</h2>
+			{intro ? <p class="lead">{intro}</p> : null}
+		</div>
+		<div class="work-grid">
 			{
-				clientCases.map((item) => (
-					<a class="card" href={`/referenzen/${item.slug}/`}>
-						<div class="shot">
+				items.map((item) => (
+					<a class="work-card" href={`/referenzen/${item.slug}/`}>
+						<div class="work-shot">
 							<Picture
 								name={item.imageName}
 								alt={item.imageAlt}
-								class="shot-img"
-								sizes="(min-width: 900px) 540px, 92vw"
+								sizes="(min-width: 900px) 580px, 92vw"
 								width={1280}
 								height={800}
 							/>
 						</div>
-						<div class="card-body">
-							<div class="meta">Kundenprojekt · {item.place}</div>
+						<div class="work-body">
+							<p class="work-meta">
+								<span>{item.industry}</span>
+								<span>{item.place}</span>
+							</p>
 							<h3>{item.name}</h3>
-							<p>{item.result}</p>
+							<p>{item.teaser}</p>
+							<span class="link-arrow">{item.kind === 'client' ? 'Projekt ansehen' : 'Produkt ansehen'}</span>
 						</div>
 					</a>
 				))

@@ -5,65 +5,72 @@ import { site } from '../data/site';
 const directMail = mailHref();
 ---
 
-<form class="form" id="lead-form" action={directMail} method="post" enctype="text/plain">
+<form class="form" id="lead-form" action={directMail} method="post" enctype="text/plain" data-mail={site.email}>
 	<div class="row-2">
 		<label>
 			Name
 			<input name="name" required autocomplete="name" maxlength="80" />
 		</label>
 		<label>
-			Betrieb
+			<span>Unternehmen <span class="optional">(optional)</span></span>
 			<input name="business" autocomplete="organization" maxlength="80" />
 		</label>
 	</div>
 	<label>
-		Projektart
+		Worum geht es?
 		<select name="type" required>
 			<option value="">Bitte wählen</option>
 			<option>Neue Website</option>
-			<option>Relaunch</option>
-			<option>Webdesign</option>
-			<option>Webentwicklung</option>
-			<option>Noch unklar, aber ein konkretes Vorhaben</option>
+			<option>Relaunch einer bestehenden Website</option>
+			<option>Nur Webdesign</option>
+			<option>Nur Webentwicklung</option>
+			<option>Online-Shop oder Web-App</option>
+			<option>SEO, Texte oder KI-Sichtbarkeit</option>
+			<option>Monatliche Partnerschaft mit Kontingent</option>
+			<option>Noch offen</option>
 		</select>
 	</label>
 	<div class="row-2">
 		<label>
-			Budget
+			Budgetrahmen
 			<select name="budget" required>
 				<option value="">Bitte wählen</option>
-				<option>unter 2.500 Euro</option>
-				<option>2.500 bis 6.000 Euro</option>
-				<option>6.000 bis 12.000 Euro</option>
-				<option>über 12.000 Euro</option>
-				<option>noch offen, Rahmen klären wir im Gespräch</option>
+				<option>3.000 bis 6.000 Euro</option>
+				<option>6.000 bis 15.000 Euro</option>
+				<option>Über 15.000 Euro</option>
+				<option>Lieber in monatlichen Raten</option>
+				<option>Noch offen</option>
 			</select>
 		</label>
 		<label>
-			Zeitraum
+			Wann soll es losgehen?
 			<select name="when" required>
 				<option value="">Bitte wählen</option>
-				<option>in den nächsten 4 Wochen</option>
-				<option>in 1 bis 3 Monaten</option>
-				<option>später im Jahr</option>
-				<option>noch offen</option>
+				<option>So bald wie möglich</option>
+				<option>In 1 bis 3 Monaten</option>
+				<option>Später in diesem Jahr</option>
+				<option>Noch offen</option>
 			</select>
 		</label>
 	</div>
 	<label>
-		Worum geht es
-		<textarea name="message" required minlength="20" maxlength="800" placeholder="Zwei, drei Sätze zum Vorhaben"></textarea>
+		Deine Nachricht
+		<textarea
+			name="message"
+			required
+			minlength="20"
+			maxlength="1200"
+			placeholder="Was machst du, was soll die Website leisten, und gibt es schon eine Seite?"></textarea>
 	</label>
+	<button class="btn btn-block btn-lg" type="submit">Anfrage per E-Mail senden</button>
 	<p class="form-note">
-		Keine Preisliste. Budget und Zeitraum zeigen nur, ob der Rahmen passt. Es öffnet sich dein E-Mail-Programm, die
-		Nachricht geht an {site.email}.
+		Beim Absenden öffnet sich dein E-Mail-Programm mit der fertigen Nachricht an {site.email}. Es werden keine Daten auf
+		dieser Website gespeichert.
 	</p>
-	<button class="btn btn-block" type="submit">E-Mail vorbereiten</button>
 	<p class="form-status" id="lead-status" hidden></p>
 </form>
-<p class="form-note">
-	Ohne das Feld direkt schreiben:
-	<a href={directMail}>{site.email}</a>
+<p class="form-note form-alt">
+	Lieber direkt? Schreib an <a href={directMail}>{site.email}</a>.
 </p>
 
 <script>
@@ -82,19 +89,19 @@ const directMail = mailHref();
 		const subject = `Projektanfrage: ${type}`;
 		const body = [
 			`Name: ${name}`,
-			business ? `Betrieb: ${business}` : null,
-			`Projektart: ${type}`,
-			`Budget: ${budget}`,
-			`Zeitraum: ${when}`,
+			business ? `Unternehmen: ${business}` : null,
+			`Vorhaben: ${type}`,
+			`Budgetrahmen: ${budget}`,
+			`Start: ${when}`,
 			'',
 			message,
 		]
 			.filter((line) => line !== null)
 			.join('\n');
-		const href = `mailto:info@9to6.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+		const href = `mailto:${form.dataset.mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 		if (status) {
 			status.hidden = false;
-			status.textContent = 'Dein E-Mail-Programm sollte sich jetzt öffnen. Wenn nichts aufgeht, schreib an info@9to6.de.';
+			status.textContent = 'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht. Falls nicht, schreib bitte direkt an info@9to6.de.';
 		}
 		window.location.href = href;
 	});

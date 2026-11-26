@@ -4,22 +4,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
 	title="Seite nicht gefunden | 9to6"
-	description="Diese Adresse gibt es auf 9to6.de nicht. Zurück zur Startseite, zu den Leistungen oder direkt zum Kontakt."
+	description="Diese Seite gibt es auf 9to6.de nicht (mehr). Hier geht es zur Startseite, zu den Leistungen und zum Kontakt."
 	schema="error"
 	noindex={true}
 >
 	<section class="page-hero center">
 		<div class="wrap">
-			<h1>Seite nicht gefunden</h1>
-			<p class="sub">Die Adresse führt ins Leere. Wähle einen der Wege unten.</p>
-			<p class="notfound-actions">
-				<a class="btn" href="/">Zur Startseite</a>
-				<a class="btn btn-ghost" href="/kontakt/#anfrage">E-Mail schreiben</a>
-			</p>
-			<ul class="icon-list notfound-links">
-				<li><a href="/leistungen/">Leistungen: Webdesign und Webentwicklung</a></li>
-				<li><a href="/referenzen/">Referenzen, die du öffnen kannst</a></li>
-				<li><a href="/blog/">Blog zu Conversion und Tempo</a></li>
+			<p class="eyebrow">Fehler 404</p>
+			<h1>Diese Seite gibt es nicht.</h1>
+			<p class="sub">Vielleicht wurde sie verschoben, oder die Adresse hat einen Tippfehler. Hier geht es weiter:</p>
+			<div class="cta-row cta-row-center">
+				<a class="btn btn-lg" href="/">Zur Startseite</a>
+				<a class="btn btn-lg btn-ghost" href="/kontakt/">Kontakt</a>
+			</div>
+			<ul class="notfound-links">
+				<li><a class="link-arrow" href="/leistungen/">Leistungen</a></li>
+				<li><a class="link-arrow" href="/referenzen/">Referenzen</a></li>
+				<li><a class="link-arrow" href="/blog/">Blog</a></li>
 			</ul>
 		</div>
 	</section>

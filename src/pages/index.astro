@@ -2,205 +2,256 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCall from '../components/BookCall.astro';
 import CtaDark from '../components/CtaDark.astro';
-import Accordion from '../components/Accordion.astro';
-import Blob from '../components/Blob.astro';
+import FaqSection from '../components/FaqSection.astro';
 import Picture from '../components/Picture.astro';
 import TrustProof from '../components/TrustProof.astro';
+import Testimonials from '../components/Testimonials.astro';
 import ProcessBrief from '../components/ProcessBrief.astro';
-import { productCases, site } from '../data/site';
+import { homeFaqs, pricing, productCases, services, site } from '../data/site';
 import { posts } from '../data/blog';
 
-const pillars = [
+const reasons = [
 	{
-		title: 'Webdesign, das zum Betrieb passt',
-		text: 'Struktur, Sprache und Erscheinungsbild für Handwerk, Studios und lokale Marken. Die Seite soll in Gelnhausen, Frankfurt oder der Umgebung nach dir aussehen und zur Anfrage führen.',
-		href: '/leistungen/webdesign/',
-		cta: 'Zu Webdesign',
-		visual: 'studio' as const,
+		title: 'Ein Ansprechpartner, ein ganzes Team',
+		text: 'Eddie führt dein Projekt vom ersten Gespräch bis zum Launch. Dahinter arbeitet ein eingespieltes Netzwerk aus Designern, Textern und SEO-Spezialisten.',
 	},
 	{
-		title: 'Seiten, die Anfragen bringen',
-		text: 'Besucher sollen schreiben oder einen Termin buchen. Der Weg dorthin ist kurz: ein klares Angebot und eine Handlung, die auf dem Handy erreichbar ist.',
-		href: '/leistungen/webentwicklung/',
-		cta: 'Zur Webentwicklung',
-		visual: 'leads' as const,
+		title: 'Design und Code aus einem Guss',
+		text: 'Gestaltung, Text und Entwicklung laufen in einem Prozess statt über fremde Dienstleister. Die fertige Seite sieht aus wie der Entwurf und lädt trotzdem schnell.',
 	},
 	{
-		title: 'Tempo, das Leute hält',
-		text: 'Eine schwere Seite kostet Sichtbarkeit und Abschlüsse. Bilder in der richtigen Größe, wenig Ballast, auf dem Smartphone sofort lesbar.',
-		href: '/blog/core-web-vitals-und-google-ranking/',
-		cta: 'Warum Ladezeit zählt',
-		visual: 'speed' as const,
+		title: 'Texte von Spezialisten',
+		text: 'Unsere Texter schreiben für Menschen, Google und KI-Assistenten zugleich. Klare Überschriften statt Floskeln, ein klarer nächster Schritt statt „Mehr erfahren“.',
 	},
 	{
-		title: 'Gefunden werden, dann handeln',
-		text: 'Inhalte, URLs und interne Wege so setzen, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen. Gebiet inklusive: Main-Kinzig-Kreis, Frankfurt, Hanau, Offenbach.',
-		href: '/webdesign-gelnhausen/',
-		cta: 'Einzugsgebiet ansehen',
-		visual: 'laptop' as const,
+		title: 'Flexibel bezahlen',
+		text: 'Als Einmalpreis oder in monatlichen Raten mit festem Kontingent für Änderungen – an Website, Visitenkarten, Bannern und mehr.',
 	},
 ];
 
-const ansatz = [
-	{
-		title: 'Ziele zuerst',
-		text: 'Bevor ein Raster entsteht, klären wir, wen du gewinnen willst und welche Handlung zählt: Nachricht, Termin, Kauf.',
-	},
-	{
-		title: 'Design mit System',
-		text: 'Typografie, Farbe und Abstände sitzen. Die Seite sieht nach dir aus, nicht nach einem Theme.',
-	},
-	{
-		title: 'Technik, die trägt',
-		text: 'Moderne Webtechnik bleibt im Hintergrund. Du merkst Tempo, Stabilität und einen Anfrageweg, der ankommt.',
-	},
-	{
-		title: 'Nach dem Launch',
-		text: 'Ladezeit, mobile Bedienung, echte Anfragen. Was sich beobachten lässt, schärfen wir nach.',
-	},
-	{
-		title: 'Ein Ansprechpartner',
-		text: 'Eddie führt das Gespräch selbst. Kein Ticket-Pingpong zwischen dir und der fertigen Seite.',
-	},
-];
+
 ---
 
 <BaseLayout
-	title="Webdesign aus Gelnhausen für Frankfurt | 9to6"
-	description="Webdesign und Webentwicklung aus Gelnhausen. Für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach. Termin buchen oder per E-Mail schreiben."
+	title="Webdesign Agentur Gelnhausen & Frankfurt | 9to6"
+	description="Webdesign und Webentwicklung aus Gelnhausen: schnelle Websites, die Anfragen bringen – für Unternehmen im Main-Kinzig-Kreis, in Frankfurt und Rhein-Main."
 	schema="home"
-	ogImagePath="/images/ref-oberlerchner-og.jpg"
-	ogImageAlt="Website von Holzbau Oberlerchner, Kundenprojekt in Gelnhausen"
-	ogImageWidth={1200}
-	ogImageHeight={750}
+	faqs={homeFaqs}
 >
 	<section class="hero">
 		<div class="hero-grid">
-			<header>
+			<div class="hero-copy">
 				<h1>
-					<span class="hero-line">Webdesign &amp;</span>
-					<span class="hero-line">Webentwicklung</span>
-					<span class="hero-line hero-loc">aus Gelnhausen für Frankfurt und Umgebung</span>
+					<span class="hero-eyebrow">Webdesign &amp; Webentwicklung aus Gelnhausen</span>
+					<span class="hero-title">Websites, die neue Kunden gewinnen.</span>
 				</h1>
-				<p class="lede">
-					Sitz in Gelnhausen. Seiten für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.
+				<p class="hero-lede">
+					Wir gestalten und entwickeln Websites für Unternehmen im Main-Kinzig-Kreis, in Frankfurt und im
+					Rhein-Main-Gebiet. Schnell, klar und so gebaut, dass Besucher anfragen statt weiterzuklicken.
 				</p>
-			</header>
+				<div class="cta-row">
+					<a class="btn btn-lg" href="/kontakt/#kalender">Erstgespräch buchen</a>
+					<a class="btn btn-lg btn-ghost" href="#arbeiten">Arbeiten ansehen</a>
+				</div>
+				<ul class="hero-proof" aria-label="Auf einen Blick">
+					<li>Persönliche Projektleitung</li>
+					<li>Experten für Design &amp; SEO</li>
+					<li>Flexible Monatsraten</li>
+				</ul>
+			</div>
 			<BookCall variant="card" />
 		</div>
 	</section>
 
 	<TrustProof />
-	<ProcessBrief />
 
-	{
-		pillars.map((pillar, index) => (
-			<section class="section">
-				<div class={'wrap-wide split' + (index % 2 === 1 ? ' reverse' : '')}>
-					<div class="copy">
-						<h2>{pillar.title}</h2>
-						<p class="body">{pillar.text}</p>
-						<p>
-							<a class="btn" href={pillar.href} style="margin-top:18px">
-								{pillar.cta}
-							</a>
-						</p>
-					</div>
-					<div class="media" aria-hidden={pillar.visual === 'leads' || pillar.visual === 'speed'}>
-						{pillar.visual === 'studio' ? (
-							<Picture name="studio" alt="" sizes="(min-width: 900px) 560px, 92vw" />
-						) : pillar.visual === 'laptop' ? (
-							<Picture name="laptop" alt="" sizes="(min-width: 900px) 560px, 92vw" />
-						) : (
-							<Blob label={pillar.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
-						)}
-					</div>
-				</div>
-			</section>
-		))
-	}
+	<Testimonials />
 
-	<section class="section center">
+	<section class="section" aria-labelledby="leistungen-heading">
 		<div class="wrap">
-			<h2>Was den Kern ausmacht</h2>
-			<p class="intro">
-				{site.positioning} Der Sitz ist Gelnhausen. Die Arbeit gilt Betrieben im Main-Kinzig-Kreis und in Frankfurt,
-				Hanau und Offenbach. Den Rahmen findest du unter <a href="/leistungen/">Leistungen</a>.
-			</p>
+			<div class="section-head">
+				<p class="eyebrow">Leistungen</p>
+				<h2 id="leistungen-heading">Alles, was deine Website braucht. Aus einer Hand.</h2>
+				<p class="lead">
+					Von der ersten Skizze bis zur Empfehlung in Google und KI-Suche: Unser Team übernimmt Konzept, Texte, Design,
+					Entwicklung und Hosting.
+				</p>
+			</div>
+			<div class="service-grid">
+				{
+					services.map((service, index) => (
+						<a class="service-card" href={service.href}>
+							<span class="service-num">0{index + 1}</span>
+							<h3>{service.title}</h3>
+							<p>{service.teaser}</p>
+							<ul class="tick-list">
+								{service.points.map((point) => (
+									<li>{point}</li>
+								))}
+							</ul>
+							<span class="link-arrow">Mehr zu {service.title}</span>
+						</a>
+					))
+				}
+			</div>
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap-wide split">
-			<div class="media">
+	<section class="section" aria-labelledby="warum-heading">
+		<div class="wrap split">
+			<div class="media media-frame">
 				<Picture
-					name="ref-elixier"
-					alt="Startseite von D&E Elixier, Kosmetikinstitut in Frankfurt-Sachsenhausen"
-					class="shot-img"
+					name="mock-design"
+					alt="Von 9to6 gestaltete Website von D&E Elixier auf Laptop und Smartphone"
 					sizes="(min-width: 900px) 560px, 92vw"
-					width={1280}
-					height={800}
+					width={1200}
+					height={1020}
 				/>
 			</div>
 			<div>
-				<h2>Ein Ansprechpartner, live Beispiele</h2>
-				<Accordion
-					items={ansatz.map((item) => ({
-						q: item.title,
-						a: item.text,
-					}))}
-				/>
+				<p class="eyebrow">Warum 9to6</p>
+				<h2 id="warum-heading">Weniger Agentur. Mehr Ergebnis.</h2>
+				<div class="reason-list">
+					{
+						reasons.map((item) => (
+							<div class="reason">
+								<h3>{item.title}</h3>
+								<p>{item.text}</p>
+							</div>
+						))
+					}
+				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section" aria-labelledby="products-heading">
-		<div class="wrap">
-			<h2 id="products-heading" class="center">Eigene Produkte</h2>
-			<p class="intro center">
-				sim.do und Simtasy gehören Eddie. Sie sind kein Kundenauftrag aus Gelnhausen oder Frankfurt. Die Kundenprojekte
-				stehen oben.
-			</p>
-			<div class="cards" style="margin-top:36px">
-				{
-					productCases.map((item) => (
-						<a class="card" href={`/referenzen/${item.slug}/`}>
-							<div class="shot">
-								<Picture
-									name={item.imageName}
-									alt={item.imageAlt}
-									class="shot-img"
-									sizes="(min-width: 900px) 540px, 92vw"
-									width={1280}
-									height={800}
-								/>
-							</div>
-							<div class="card-body">
-								<div class="meta">Eigenes Produkt · {item.place}</div>
-								<h3>{item.name}</h3>
-								<p>{item.result}</p>
-							</div>
-						</a>
-					))
-				}
+	<section class="section" aria-labelledby="preise-heading">
+		<div class="wrap invest-teaser">
+			<div>
+				<p class="eyebrow">Investition</p>
+				<h2 id="preise-heading">Eine Website, die sich bezahlt macht.</h2>
+				<p class="body">
+					Projekte starten üblicherweise bei {pricing.typicalRange} – einmalig oder in monatlichen Raten, deren Höhe sich
+					nach der Laufzeit richtet. Große Vorhaben kalkulieren wir individuell. Entscheidend ist nicht der Preis, sondern
+					was deine Website dir einbringt.
+				</p>
+				<div class="cta-row">
+					<a class="btn" href="/preise/#rechner">Rendite berechnen</a>
+					<a class="link-arrow" href="/preise/">Preise und Modelle</a>
+				</div>
+			</div>
+			<div class="invest-example">
+				<p class="price-label">Beispielrechnung</p>
+				<p class="roi-big">5 Monate</p>
+				<p class="roi-sub">bis sich eine Website für 5.000 € bezahlt gemacht hat</p>
+				<dl class="roi-stats">
+					<div>
+						<dt>Gewinn pro neuem Auftrag</dt>
+						<dd>1.000 €</dd>
+					</div>
+					<div>
+						<dt>Zusätzliche Aufträge pro Monat</dt>
+						<dd>1</dd>
+					</div>
+					<div>
+						<dt>Mehrgewinn nach 3 Jahren</dt>
+						<dd>31.000 €</dd>
+					</div>
+				</dl>
+				<p class="form-note" style="margin-top:14px">Beispiel mit angenommenen Werten, keine Zusage.</p>
 			</div>
 		</div>
 	</section>
+
+	<ProcessBrief />
+
+
+
+
+
+	<section class="section" aria-labelledby="ueber-heading">
+		<div class="wrap about">
+			<div class="about-photo">
+				<Picture
+					name="eddie"
+					alt={`${site.person.public} (${site.person.legal}), Gründer von 9to6`}
+					width={840}
+					height={840}
+					sizes="(min-width: 900px) 640px, 90vw"
+				/>
+			</div>
+			<div>
+				<p class="eyebrow">Über 9to6</p>
+				<h2 id="ueber-heading">Agentur-Expertise ohne Agentur-Overhead.</h2>
+				<p class="body">
+					9to6 wurde {site.foundingYear} in Gelnhausen von Edvinas „Eddie“ Jurevicius gegründet. Eddie leitet jedes
+					Projekt und ist dein fester Ansprechpartner. Für Design, Texte und Sichtbarkeit in Google und KI-Suche arbeitet er
+					mit einem festen Netzwerk aus spezialisierten Designern und Textern zusammen.
+				</p>
+				<p class="body">
+					Mit sim.do und Simtasy betreibt das Team außerdem eigene Online-Produkte. Du bekommst also Leute, die Websites
+					nicht nur bauen, sondern aus eigener Erfahrung wissen, wie sie verkaufen.
+				</p>
+				<ul class="mini-products" aria-label="Eigene Produkte">
+					{
+						productCases.map((item) => (
+							<li>
+								<a href={`/referenzen/${item.slug}/`}>
+									<Picture name={item.imageName} alt="" sizes="96px" width={1280} height={800} />
+									<span>
+										<strong>{item.name}</strong>
+										<span>{item.industry}</span>
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+				<dl class="facts">
+					<div>
+						<dt>Team</dt>
+						<dd>Projektleitung, Design, Text, SEO und Entwicklung</dd>
+					</div>
+					<div>
+						<dt>Region</dt>
+						<dd>
+							<a href="/webdesign-gelnhausen/">Gelnhausen</a>, Main-Kinzig-Kreis, Hanau, Offenbach, Frankfurt
+						</dd>
+					</div>
+					<div>
+						<dt>Für</dt>
+						<dd>Handwerk, Studios, Dienstleister und Produktmarken</dd>
+					</div>
+					<div>
+						<dt>Kontakt</dt>
+						<dd>
+							<a href={`mailto:${site.email}`}>{site.email}</a>
+						</dd>
+					</div>
+				</dl>
+			</div>
+		</div>
+	</section>
+
+
 
 	<section class="section" aria-labelledby="blog-heading">
 		<div class="wrap">
-			<h2 id="blog-heading" class="center">Aus der Praxis</h2>
-			<p class="intro center">
-				Woran Anfragen scheitern, warum Tempo zählt, und wie aus einem Besuch eine Nachricht wird. Der
-				<a href="/blog/">Blog</a>.
-			</p>
-			<div class="blog-list">
+			<div class="section-head section-head-row">
+				<div>
+					<p class="eyebrow">Wissen</p>
+					<h2 id="blog-heading">Aus dem Blog</h2>
+				</div>
+				<a class="link-arrow" href="/blog/">Alle Artikel</a>
+			</div>
+			<div class="post-grid">
 				{
 					posts.map((post) => (
-						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">Aktualisiert {post.dateModifiedLabel}</div>
+						<a class="post-card" href={`/blog/${post.slug}/`}>
+							<p class="post-meta">{post.readingTime} Min. Lesezeit</p>
 							<h3>{post.title}</h3>
 							<p>{post.description}</p>
+							<span class="link-arrow">Weiterlesen</span>
 						</a>
 					))
 				}
@@ -208,8 +259,7 @@ const ansatz = [
 		</div>
 	</section>
 
-	<CtaDark
-		title="Termin oder kurze E-Mail"
-		text="Projektart, Budgetrahmen und Zeitraum reichen für den ersten Schritt. Eddie meldet sich selbst."
-	/>
+	<FaqSection items={homeFaqs} title="Häufige Fragen zu 9to6" />
+
+	<CtaDark />
 </BaseLayout>

@@ -1,30 +1,26 @@
 User-agent: *
 Allow: /
 
-Allow: /llms.txt
-Allow: /llms-full.txt
+# Alte WordPress-Pfade bleiben crawlbar: Sie liefern 301-Weiterleitungen.
 
-# Alte WordPress-Pfade nicht sperren: sie liefern 301 und müssen crawlbar bleiben.
-
-# LLM-Kurzfassung: https://9to6.de/llms.txt
-# LLM-Volltext: https://9to6.de/llms-full.txt
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
+# Suchmaschinen und KI-Assistenten sind ausdrücklich willkommen.
+User-agent: Googlebot
+User-agent: Bingbot
 User-agent: Google-Extended
-Allow: /
-
-User-agent: Anthropic-ai
-Allow: /
-
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
 User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: CCBot
 Allow: /
 
-User-agent: PerplexityBot
-Allow: /
+# Kurzfassung für KI-Systeme: https://9to6.de/llms.txt
+# Ausführliche Fassung: https://9to6.de/llms-full.txt
 
 Sitemap: https://9to6.de/sitemap.xml

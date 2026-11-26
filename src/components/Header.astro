@@ -47,16 +47,13 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 					)
 				}
 			</nav>
-			<a class="header-mail" href="/kontakt/#anfrage">E-Mail</a>
-			<a class="btn header-cta" href="/kontakt/#kalender">Termin wählen</a>
+			<a class="btn btn-sm header-cta" href="/kontakt/#kalender">Erstgespräch buchen</a>
 		</div>
 		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
 			<span></span>
 		</button>
 	</div>
 	<nav class="mobile-panel" id="mobile-menu" aria-label="Mobiles Menü">
-		<a class="mobile-cta" href="/kontakt/#kalender">Termin wählen</a>
-		<a href="/kontakt/#anfrage">E-Mail schreiben</a>
 		{
 			nav.map((item) =>
 				'children' in item && item.children ? (
@@ -92,5 +89,9 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 				)
 			)
 		}
+		<div class="mobile-actions">
+			<a class="btn btn-block" href="/kontakt/#kalender">Erstgespräch buchen</a>
+			<a class="btn btn-block btn-ghost" href="/kontakt/#anfrage">Nachricht schreiben</a>
+		</div>
 	</nav>
 </header>

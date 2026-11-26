@@ -1,39 +1,55 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
-import Related from '../../components/Related.astro';
 import { posts } from '../../data/blog';
-import { related } from '../../data/related';
 ---
 
 <BaseLayout
-	title="Blog: Webdesign, Anfragen und Tempo | 9to6"
-	description="Warum Seiten keine Anfragen bringen, was Ladezeit in Gelnhausen und Frankfurt ändert, und wie aus Besuch eine Nachricht wird."
+	title="Blog: Websites, die Anfragen bringen | 9to6"
+	description="Praxiswissen zu Webdesign, Ladezeit und Conversion: Warum Websites keine Kunden bringen und wie du mehr Anfragen bekommst."
 	schema="blog"
 	breadcrumbs={[{ name: 'Blog', href: '/blog/' }]}
+	itemList={posts.map((post) => ({ name: post.title, url: `/blog/${post.slug}/`, description: post.description }))}
 >
-	<section class="page-hero center">
-		<div class="wrap">
-			<h1>Blog: Webdesign, Anfragen und Tempo</h1>
-			<p class="sub">Praxis aus Gelnhausen, dem Main-Kinzig-Kreis und Frankfurt. Ohne Framework-Talk.</p>
+	<section class="page-hero">
+		<div class="wrap page-hero-grid">
+			<div>
+			<p class="eyebrow">Blog</p>
+			<h1>Wissen für bessere Websites.</h1>
+			<p class="sub">
+				Praxisnahe Artikel zu Webdesign, Ladezeit und Conversion – ohne Fachchinesisch, mit Beispielen aus echten
+				Projekten.
+			</p>
+			</div>
+			<div class="hero-visual post-stack" aria-hidden="true">
+				{
+					posts.map((post, i) => (
+						<img
+							src={`/images/og-blog-${post.slug}-720.webp`}
+							alt=""
+							width="720"
+							height="378"
+							loading={i === 0 ? 'eager' : 'lazy'}
+							style={`--i:${i}`}
+						/>
+					))
+				}
+			</div>
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="wrap">
-			<p class="intro center">
-				Kurze Texte aus der Praxis: was Anfragen blockiert, warum Tempo zählt, und wie eine Seite in Frankfurt und
-				Rhein-Main zum Vertriebsmittel wird. Der Unterbau dazu steht unter
-				<a href="/leistungen/webdesign/">Webdesign</a> und
-				<a href="/leistungen/webentwicklung/">Webentwicklung</a>.
-			</p>
-			<div class="blog-list">
+			<div class="post-grid">
 				{
 					posts.map((post) => (
-						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">Aktualisiert {post.dateModifiedLabel}</div>
+						<a class="post-card" href={`/blog/${post.slug}/`}>
+							<p class="post-meta">
+								<time datetime={post.dateModified}>{post.dateModifiedLabel}</time> · {post.readingTime} Min.
+							</p>
 							<h2>{post.title}</h2>
 							<p>{post.description}</p>
+							<span class="link-arrow">Weiterlesen</span>
 						</a>
 					))
 				}
@@ -41,9 +57,8 @@ import { related } from '../../data/related';
 		</div>
 	</section>
 
-	<Related links={related.blog} />
 	<CtaDark
-		title="Website prüfen lassen"
-		text="Wenn deine Seite Besucher hat, aber keine Anfragen, schauen wir uns Inhalt, Tempo und den Weg zur Handlung an."
+		title="Deine Website bringt keine Anfragen?"
+		text="Im kostenlosen Erstgespräch schauen wir uns Inhalt, Tempo und den Weg zur Anfrage gemeinsam an."
 	/>
 </BaseLayout>

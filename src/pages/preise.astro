@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaDark from '../components/CtaDark.astro';
+import FaqSection from '../components/FaqSection.astro';
+import LeadActions from '../components/LeadActions.astro';
+import Testimonials from '../components/Testimonials.astro';
+import RoiChart from '../components/RoiChart.astro';
+import { pricing } from '../data/site';
+import type { Faq } from '../data/site';
+
+const value = [
+	{
+		title: 'Arbeitet rund um die Uhr',
+		text: 'Deine Website beantwortet Fragen, zeigt Referenzen und nimmt Anfragen an – auch abends, am Wochenende und während du auf der Baustelle oder beim Kunden bist.',
+	},
+	{
+		title: 'Wirkt über Jahre',
+		text: 'Eine Anzeige hört auf zu wirken, sobald das Budget aufgebraucht ist. Eine gut gebaute Website bringt jahrelang Anfragen – ohne laufende Klickkosten.',
+	},
+	{
+		title: 'Bringt die richtigen Kunden',
+		text: 'Klare Leistungen und Preise vorab filtern unpassende Anfragen heraus. Du sprichst mit Interessenten, die wirklich zu dir passen.',
+	},
+	{
+		title: 'Stärkt deinen Preis',
+		text: 'Ein hochwertiger Auftritt rechtfertigt hochwertige Preise. Wer professionell auftritt, muss seltener über Rabatte verhandeln.',
+	},
+];
+
+const faqs: Faq[] = [
+	{
+		q: 'Was kostet eine Website bei 9to6?',
+		a: 'Projekte starten üblicherweise bei 3.000 bis 6.000 Euro für ein Redesign oder eine neue Unternehmenswebsite. Große Vorhaben wie Online-Shops, Plattformen oder Websites für mehrere Standorte kalkulieren wir individuell – nach oben gibt es keine feste Grenze. Den genauen Betrag bekommst du nach dem Erstgespräch schriftlich, bevor die Arbeit beginnt.',
+	},
+	{
+		q: 'Warum gibt es keine festen Pakete?',
+		a: 'Weil kein Unternehmen wie das andere ist. Ein Paket zwingt dich in Seitenzahlen und Leistungen, die nicht zu deinem Ziel passen. Wir kalkulieren genau das, was deine Website braucht, um Anfragen zu bringen – nicht mehr und nicht weniger.',
+	},
+	{
+		q: 'Kann ich in monatlichen Raten bezahlen?',
+		a: 'Ja. Statt einer Einmalzahlung verteilst du die Investition auf eine längere Laufzeit. Die Höhe der Rate richtet sich nach Laufzeit und Umfang. Hosting, Wartung und ein festes Kontingent für Änderungen an Website, Visitenkarten, Bannern und mehr sind inklusive. Alles ist vertraglich klar geregelt.',
+	},
+	{
+		q: 'Was genau ist das monatliche Kontingent?',
+		a: 'Ein vertraglich vereinbarter Zeitrahmen pro Monat, den du für Änderungen nutzen kannst – an der Website, aber auch an Print und Werbemitteln. Du schreibst uns, was du brauchst, unser Team setzt es um. Was darüber hinausgeht, stimmen wir vorher mit dir ab und rechnen es zum vereinbarten Stundensatz ab.',
+	},
+	{
+		q: 'Wann hat sich die Investition bezahlt gemacht?',
+		a: 'Das hängt davon ab, was ein neuer Kunde für dich wert ist. Bei vielen Betrieben reichen wenige zusätzliche Aufträge, um die Website zu refinanzieren. Mit dem [ROI-Rechner](#rechner) kannst du das mit deinen eigenen Zahlen durchspielen; im Erstgespräch schauen wir gemeinsam, was realistisch ist.',
+	},
+	{
+		q: 'Gibt es versteckte Kosten?',
+		a: 'Nein. Leistungen, Laufzeit und Preis stehen schriftlich im Angebot und im Vertrag. Zusätzliche Wünsche besprechen wir immer vorher – es wird nichts ohne deine Zustimmung berechnet.',
+	},
+];
+---
+
+<BaseLayout
+	title="Was kostet eine Website? Preise & ROI | 9to6"
+	description="Websites bei 9to6 starten üblicherweise bei 3.000 bis 6.000 €, einmalig oder in monatlichen Raten. So rechnet sich die Investition für dein Unternehmen."
+	schema="service"
+	serviceName="Website-Erstellung als Investition, einmalig oder in monatlichen Raten"
+	faqs={faqs}
+	breadcrumbs={[{ name: 'Preise', href: '/preise/' }]}
+>
+	<section class="page-hero">
+		<div class="wrap page-hero-grid">
+			<div>
+			<p class="eyebrow">Preise und Investition</p>
+			<h1>Eine Website, die sich bezahlt macht.</h1>
+			<p class="sub">
+				Deine Website ist kein Kostenpunkt, sondern dein bester Vertriebsmitarbeiter. Projekte starten üblicherweise bei
+				{pricing.typicalRange} – einmalig oder in monatlichen Raten. Entscheidend ist, was sie dir einbringt.
+			</p>
+			<LeadActions secondaryHref="#rechner" secondaryLabel="Rendite berechnen" />
+			</div>
+			<RoiChart />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="wert-heading">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Investition statt Kosten</p>
+				<h2 id="wert-heading">Warum sich eine gute Website rechnet.</h2>
+				<p class="lead">
+					Eine Website kostet einmal – und arbeitet danach jeden Tag für dich. Darum betrachten wir jedes Projekt von der
+					Rendite her, nicht vom Preisschild.
+				</p>
+			</div>
+			<div class="feature-grid feature-grid-4">
+				{
+					value.map((item) => (
+						<article class="feature">
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<section class="section" id="rechner" aria-labelledby="rechner-heading">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">ROI-Rechner</p>
+				<h2 id="rechner-heading">Rechne selbst nach.</h2>
+				<p class="lead">
+					Setz deine eigenen Zahlen ein und sieh, ab wann sich deine neue Website bezahlt gemacht hat.
+				</p>
+			</div>
+			<form class="roi" data-roi aria-describedby="roi-note" onsubmit="return false">
+				<div class="roi-inputs">
+					<label class="roi-field">
+						<span class="roi-label">Investition in die Website</span>
+						<output class="roi-value" data-out="invest">5.000 €</output>
+						<input type="range" name="invest" min="3000" max="30000" step="500" value="5000" />
+					</label>
+					<label class="roi-field">
+						<span class="roi-label">Gewinn pro neuem Auftrag</span>
+						<output class="roi-value" data-out="profit">1.000 €</output>
+						<input type="range" name="profit" min="100" max="10000" step="100" value="1000" />
+					</label>
+					<label class="roi-field">
+						<span class="roi-label">Zusätzliche Aufträge pro Monat</span>
+						<output class="roi-value" data-out="orders">1</output>
+						<input type="range" name="orders" min="1" max="20" step="1" value="1" />
+					</label>
+				</div>
+				<div class="roi-result" aria-live="polite">
+					<p class="price-label">Deine Rechnung</p>
+					<p class="roi-big"><span data-out="payback">5 Monate</span></p>
+					<p class="roi-sub">bis sich die Website bezahlt gemacht hat</p>
+					<dl class="roi-stats">
+						<div>
+							<dt>Mehrgewinn im 1. Jahr</dt>
+							<dd data-out="year1">7.000 €</dd>
+						</div>
+						<div>
+							<dt>Mehrgewinn nach 3 Jahren</dt>
+							<dd data-out="year3">31.000 €</dd>
+						</div>
+						<div>
+							<dt>Rendite nach 3 Jahren</dt>
+							<dd data-out="roi">620 %</dd>
+						</div>
+					</dl>
+					<a class="btn btn-block" href="/kontakt/#kalender">Realistische Zahlen besprechen</a>
+				</div>
+			</form>
+			<p class="price-footnote" id="roi-note">
+				Beispielrechnung mit deinen Annahmen, keine Zusage. Wie viele zusätzliche Anfragen für deinen Betrieb realistisch
+				sind, schätzen wir im kostenlosen Erstgespräch gemeinsam ein.
+			</p>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="modelle-heading">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">So investierst du</p>
+				<h2 id="modelle-heading">Einmalig oder monatlich. Immer individuell.</h2>
+				<p class="lead">
+					Keine Standardpakete, sondern ein Angebot, das zu deinem Ziel passt. Du entscheidest nur, wie du investieren
+					möchtest.
+				</p>
+			</div>
+			<div class="model-grid">
+				<article class="price-card">
+					<p class="price-label">{pricing.oneTime.title}</p>
+					<p class="price">{pricing.typicalRange}</p>
+					<p class="price-note">Üblicher Rahmen, große Projekte nach oben offen</p>
+					<p>{pricing.oneTime.text}</p>
+				</article>
+				<article class="price-card is-featured">
+					<p class="price-label">{pricing.monthly.title}</p>
+					<p class="price price-text">Monatliche Rate</p>
+					<p class="price-note">Höhe abhängig von Laufzeit und Umfang</p>
+					<p>{pricing.monthly.text}</p>
+				</article>
+			</div>
+			<div class="factors">
+				<p class="price-label">Was den Preis bestimmt</p>
+				<ul class="chips">
+					{pricing.factors.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="kontingent-heading">
+		<div class="wrap region">
+			<div>
+				<p class="eyebrow">Monatliche Partnerschaft</p>
+				<h2 id="kontingent-heading">Ein Team auf Abruf. Jeden Monat.</h2>
+				<p class="body">
+					Wer monatlich investiert, bekommt mehr als eine Website: ein festes Kontingent, mit dem unser Team dein
+					Unternehmen online und offline aktuell hält. Du sagst, was sich ändern soll – Designer, Texter und Entwickler
+					setzen es um. Umfang und Laufzeit regelt der Vertrag.
+				</p>
+			</div>
+			<ul class="tick-list">
+				{pricing.contingentExamples.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</section>
+
+	<Testimonials eyebrow="Investitionen, die arbeiten" heading="Das sagen Betriebe, die investiert haben." />
+
+	<FaqSection items={faqs} title="Fragen zu Preisen und Investition" />
+
+	<CtaDark
+		title="Lass uns ausrechnen, was deine Website bringen kann."
+		text="Im kostenlosen Erstgespräch schätzen wir gemeinsam ein, welche Wirkung realistisch ist – und welche Investition sich dafür lohnt."
+	/>
+</BaseLayout>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>('[data-roi]');
+	if (form) {
+		const fmt = new Intl.NumberFormat('de-DE', { maximumFractionDigits: 0 });
+		const euro = (n: number) => `${fmt.format(Math.round(n))} €`;
+		const out = (key: string) => form.querySelector<HTMLElement>(`[data-out="${key}"]`);
+		const val = (name: string) => Number((form.elements.namedItem(name) as HTMLInputElement).value);
+		const set = (key: string, text: string) => {
+			const el = out(key);
+			if (el) el.textContent = text;
+		};
+		const update = () => {
+			const invest = val('invest');
+			const profit = val('profit');
+			const orders = val('orders');
+			const monthly = profit * orders;
+			const months = Math.ceil(invest / monthly);
+			set('invest', euro(invest));
+			set('profit', euro(profit));
+			set('orders', String(orders));
+			set('payback', months <= 1 ? '1 Monat' : `${months} Monate`);
+			set('year1', euro(monthly * 12 - invest));
+			set('year3', euro(monthly * 36 - invest));
+			set('roi', `${fmt.format(((monthly * 36 - invest) / invest) * 100)} %`);
+			form.querySelectorAll<HTMLInputElement>('input[type="range"]').forEach((input) => {
+				const pct = ((Number(input.value) - Number(input.min)) / (Number(input.max) - Number(input.min))) * 100;
+				input.style.setProperty('--fill', `${pct}%`);
+			});
+		};
+		form.addEventListener('input', update);
+		update();
+	}
+</script>

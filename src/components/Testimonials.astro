@@ -1,0 +1,68 @@
+---
+import Picture from './Picture.astro';
+import { testimonials } from '../data/site';
+import type { Testimonial } from '../data/site';
+
+type Props = {
+	eyebrow?: string;
+	heading?: string;
+	items?: Testimonial[];
+	compact?: boolean;
+};
+
+const {
+	eyebrow = 'Kundenstimmen',
+	heading = 'Was unsere Kunden sagen.',
+	items = testimonials,
+	compact = false,
+} = Astro.props;
+---
+
+<section class:list={['section', compact && 'section-tight']} aria-labelledby="stimmen-heading">
+	<div class="wrap">
+		{
+			heading ? (
+				<div class="section-head">
+					<p class="eyebrow">{eyebrow}</p>
+					<h2 id="stimmen-heading">{heading}</h2>
+				</div>
+			) : (
+				<h2 id="stimmen-heading" class="visually-hidden">
+					{eyebrow}
+				</h2>
+			)
+		}
+		<div class:list={['quote-grid', items.length === 1 && 'quote-grid-single']}>
+			{
+				items.map((item) => (
+					<figure class="quote-card">
+						<svg class="quote-mark" viewBox="0 0 48 36" aria-hidden="true">
+							<path d="M0 36V20C0 8.7 6.2 2 18 0l2 5.6C13.3 7.4 10.4 11 10 16h9v20H0Zm28 0V20C28 8.7 34.2 2 46 0l2 5.6c-6.7 1.8-9.6 5.4-10 10.4h9v20H28Z" />
+						</svg>
+						<blockquote>
+							<p>{item.quote}</p>
+						</blockquote>
+						<figcaption>
+							<Picture class="quote-avatar" name={item.photo} alt={`${item.author}, ${item.role} von ${item.company}`} width={192} height={192} sizes="56px" />
+							<span>
+								<span class="quote-author">{item.author}</span>
+								<span class="quote-role">
+									{item.role}, {item.company}
+								</span>
+								<span class="quote-place">
+									{item.place}
+									{items.length > 1 ? (
+										<>
+											{' · '}
+											<a href={`/referenzen/${item.slug}/`}>Projekt ansehen</a>
+										</>
+									) : null}
+								</span>
+							</span>
+						</figcaption>
+					</figure>
+				))
+			}
+		</div>
+	</div>
+</section>

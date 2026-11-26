@@ -3,27 +3,52 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
 import LeadActions from '../../components/LeadActions.astro';
 import Picture from '../../components/Picture.astro';
-import Blob from '../../components/Blob.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Related from '../../components/Related.astro';
-import { cases, serviceFaqs } from '../../data/site';
+import TrustProof from '../../components/TrustProof.astro';
+import { productCases, serviceFaqs } from '../../data/site';
 import { related } from '../../data/related';
 
-const steps = [
-	{ title: 'Analyse', text: 'Technik, Inhalt, Tempo, Wettbewerb. Du bekommst klar, was bleibt und was neu muss.' },
-	{ title: 'Strategie', text: 'Seitenbaum, Ziele, Handlung. Was messbar mehr Anfragen bringt, kommt nach vorn.' },
-	{ title: 'Umsetzung', text: 'Design und Code parallel genug, dass nichts verloren geht. Reviews in kurzen Schleifen.' },
-	{ title: 'Launch', text: 'Redirects, Metadaten, Anfrageweg, Hosting. Danach beobachten und nachschärfen.' },
+const pillars = [
+	{
+		title: 'Schnelle Ladezeiten',
+		text: 'Schlanker Code, optimierte Bilder in AVIF und WebP, selbst gehostete Schriften. Deine Seite lädt auch unterwegs am Handy zügig.',
+	},
+	{
+		title: 'Technische SEO',
+		text: 'Saubere Überschriften, Metadaten, strukturierte Daten, Sitemap und Weiterleitungen. Google versteht von Anfang an, worum es geht.',
+	},
+	{
+		title: 'Sicher und wartungsarm',
+		text: 'Statisches Hosting ohne angreifbare Plugins. Weniger Updates, weniger Risiko, weniger laufender Aufwand.',
+	},
+	{
+		title: 'Formulare, die ankommen',
+		text: 'Kontakt- und Buchungswege, die auf jedem Gerät funktionieren und Anfragen zuverlässig zustellen.',
+	},
+	{
+		title: 'Datenschutz eingebaut',
+		text: 'Keine Google Fonts von fremden Servern, kein unnötiges Tracking. DSGVO-freundlich ab der ersten Zeile.',
+	},
+	{
+		title: 'Bereit zu wachsen',
+		text: 'Neue Seiten, ein Blog, ein Shop oder Kundenkonten lassen sich später ergänzen, ohne neu anzufangen.',
+	},
 ];
 
-const devCases = cases.filter((item) => item.kind === 'client');
+const steps = [
+	{ title: 'Analyse', text: 'Technik, Inhalte, Tempo und Rankings der aktuellen Seite. Du erfährst, was bleibt und was neu muss.' },
+	{ title: 'Planung', text: 'Seitenstruktur, Funktionen und Technik, abgestimmt auf dein Ziel und dein Budget.' },
+	{ title: 'Entwicklung', text: 'Umsetzung in kurzen Schleifen mit Vorschau-Links. Du siehst den Fortschritt live.' },
+	{ title: 'Launch', text: 'Weiterleitungen, Metadaten, Search Console, Hosting. Danach beobachten und nachschärfen.' },
+];
 ---
 
 <BaseLayout
-	title="Webentwicklung Frankfurt und Umgebung | 9to6"
-	description="Schnelle Websites und Relaunch aus Gelnhausen für Frankfurt und Rhein-Main. Ladezeit, die Anfragen nicht vertreibt. Termin oder E-Mail."
+	title="Webentwicklung Frankfurt & Rhein-Main | 9to6"
+	description="Schnelle, sichere Websites und Relaunches für Unternehmen in Frankfurt und Rhein-Main. Technische SEO, kurze Ladezeiten und wenig Wartungsaufwand."
 	ogImagePath="/images/ref-oberlerchner-og.jpg"
-	ogImageAlt="Website von Holzbau Oberlerchner, schnelle lokale Seite aus Gelnhausen"
+	ogImageAlt="Website von Holzbau Oberlerchner, entwickelt von 9to6"
 	ogImageWidth={1200}
 	ogImageHeight={750}
 	schema="service"
@@ -34,77 +59,40 @@ const devCases = cases.filter((item) => item.kind === 'client');
 		{ name: 'Webentwicklung', href: '/leistungen/webentwicklung/' },
 	]}
 >
-	<section class="page-hero center">
-		<div class="wrap">
-			<h1>Webentwicklung für Frankfurt und Umgebung</h1>
-			<p class="sub">Aus Gelnhausen. Schnelle, wartbare Seiten für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.</p>
-			<LeadActions align="center" terminLabel="Webentwicklung besprechen" />
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">Deine Website ist der sichtbarste Mitarbeiter deines Unternehmens</h2>
-			<p class="intro center">
-				Design, Texte, Nutzerführung und mobile Performance hängen zusammen. 9to6 baut daraus ein Werkzeug, das deine
-				Arbeit sichtbar macht und Anfragen liefert. Webentwicklung ist Kernkompetenz im Full-Service-Rahmen, nicht
-				ein nachträglich angehängtes Theme.
-			</p>
-		</div>
-	</section>
-
-	<section class="section" id="anfragen">
-		<div class="wrap-wide split">
-			<Blob label="Anfragen" />
+	<section class="page-hero">
+		<div class="wrap page-hero-grid">
 			<div>
-				<h2>Seiten, die verkaufen statt nur existieren</h2>
-				<p class="body">
-					Die technische Grundlage bleibt unsichtbar. Du merkst das Ergebnis: kurze Ladezeiten, ein Anfrageweg, der
-					ankommt, und Seiten, die auf dem Smartphone sofort lesbar sind. Für die meisten Unternehmenswebsites ist das
-					der Hebel, der Sichtbarkeit und Anfragen zusammenbringt. Mehr dazu unter
-					<a href="/blog/core-web-vitals-und-google-ranking/">Ladezeit und lokale Sichtbarkeit</a>.
-					Der lokale Beleg ist <a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a> in Gelnhausen.
-				</p>
+			<p class="eyebrow">Webentwicklung · Frankfurt und Rhein-Main</p>
+			<h1>Webentwicklung, die schnell ist und bleibt.</h1>
+			<p class="sub">
+				Wir entwickeln Websites und Web-Anwendungen, die schnell laden, bei Google technisch sauber dastehen
+				und kaum Wartung brauchen.
+			</p>
+			<LeadActions primaryLabel="Projekt besprechen" />
+			</div>
+			<div class="hero-visual hero-visual-img">
+				<Picture name="mock-dev" alt="Von 9to6 entwickelte Website von Holzbau Oberlerchner auf Laptop und Smartphone" sizes="(min-width: 900px) 520px, 92vw" width={1200} height={1020} loading="eager" fetchpriority="high" />
 			</div>
 		</div>
 	</section>
 
-	<section class="section" id="anwendungen">
-		<div class="wrap-wide split reverse">
-			<div>
-				<h2>Wenn aus der Website ein Produkt wird</h2>
-				<p class="body">
-					Accounts, Kataloge, interne Abläufe, häufige Updates. Dann bauen wir eine Anwendung, die sich wie ein Produkt
-					anfühlt. Entscheidend bleibt, dass Menschen damit arbeiten können, ohne auf einen Ladebalken zu starren.
-					sim.do und Simtasy sind eigene Produkte von Eddie und stehen unter
-					<a href="/referenzen/">Referenzen</a> getrennt von den Kundenaufträgen.
+	<section class="section" aria-labelledby="technik-heading">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Was du bekommst</p>
+				<h2 id="technik-heading">Technik, die du nicht siehst, aber merkst.</h2>
+				<p class="lead">
+					Für dich zählt das Ergebnis: eine Seite, die schnell lädt, gefunden wird und Anfragen zustellt. Warum Tempo so
+					wichtig ist, erklärt der Artikel
+					<a href="/blog/core-web-vitals-und-google-ranking/">Ladezeit, Core Web Vitals und Google-Ranking</a>.
 				</p>
 			</div>
-			<Blob label="Wachstum" />
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">Für wen Webentwicklung von 9to6 passt</h2>
-			<p class="intro center">
-				Relaunch einer trägen WordPress-Seite. Neubau, bei dem
-				<a href="/leistungen/webdesign/">Webdesign</a> und Code zusammengehören. Produktstrecken, die kaufbar sein
-				müssen. Wenn du ein Plugin-Sammelsurium pflegen willst, sind wir die falsche Adresse.
-			</p>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">So laufen Projekte</h2>
-			<div class="steps">
+			<div class="feature-grid">
 				{
-					steps.map((s, i) => (
-						<article>
-							<p class="kicker">0{i + 1}</p>
-							<h3>{s.title}</h3>
-							<p>{s.text}</p>
+					pillars.map((item) => (
+						<article class="feature">
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
 						</article>
 					))
 				}
@@ -112,54 +100,61 @@ const devCases = cases.filter((item) => item.kind === 'client');
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">Du bekommst Klarheit über</h2>
-			<ul class="icon-list intro" style="max-width:720px;margin:24px auto 0">
-				<li>ob die aktuelle Seite Anfragen kostet, weil sie langsam oder unklar ist</li>
-				<li>Ladezeiten und was sie den Umsatz kosten</li>
-				<li>Struktur und Navigation, an denen Besucher hängen bleiben</li>
-				<li>Ein Anfrageweg, der Nachrichten wirklich zustellt</li>
-				<li>Hosting, das weltweit schnell ausliefert, ohne extra Bühne</li>
-			</ul>
-			<p class="intro center" style="margin-top:28px">
-				Die Erscheinungsseite dazu ist <a href="/leistungen/webdesign/">Webdesign</a>. Beides im Überblick:
-				<a href="/leistungen/">Leistungen</a>.
-			</p>
-		</div>
-	</section>
-
-	<section class="section" aria-labelledby="dev-cases">
-		<div class="wrap">
-			<h2 id="dev-cases" class="center">Kundenprojekte, die live sind</h2>
-			<p class="intro center">
-				Oberlerchner in Gelnhausen und Elixier in Frankfurt. Eigene Produkte stehen getrennt unter
-				<a href="/referenzen/">Referenzen</a>.
-			</p>
-			<div class="cards" style="margin-top:36px">
-				{
-					devCases.map((c) => (
-						<a class="card" href={`/referenzen/${c.slug}/`}>
-							<div class="shot">
-								<Picture name={c.imageName} alt={c.imageAlt} class="shot-img" sizes="(min-width: 900px) 540px, 92vw" width={1280} height={800} />
-							</div>
-							<div class="card-body">
-								<div class="meta">{c.place}</div>
-								<h3>{c.name}</h3>
-								<p>{c.result}</p>
-							</div>
-						</a>
-					))
-				}
+	<section class="section" aria-labelledby="wordpress-heading">
+		<div class="wrap split">
+			<div>
+				<p class="eyebrow">Relaunch</p>
+				<h2 id="wordpress-heading">Raus aus dem langsamen WordPress.</h2>
+				<p class="body">
+					Viele unserer Projekte starten mit einer WordPress-Seite, die über die Jahre langsam und wartungsintensiv
+					geworden ist: zu viele Plugins, ein schweres Theme, ständige Updates. Wir bauen sie schlank neu, übernehmen
+					alle wichtigen Inhalte und leiten jede alte URL sauber um – damit deine Rankings den Umzug überstehen.
+				</p>
+				<p class="body">
+					Alles zum Ablauf unter <a href="/leistungen/#relaunch">Relaunch</a>.
+				</p>
+			</div>
+			<div class="media media-frame">
+				<Picture name="visual-relaunch" alt="Grafik: alte WordPress-URLs werden per 301 auf die neue Website umgeleitet" sizes="(min-width: 900px) 560px, 92vw" width={1200} height={1020} />
 			</div>
 		</div>
 	</section>
 
-	<FaqSection items={serviceFaqs.webentwicklung} intro="Technik, WordPress, Hosting, was nach dem Launch zählt." />
+	<section class="section" aria-labelledby="prozess-heading">
+		<div class="wrap">
+			<div class="section-head">
+				<p class="eyebrow">Prozess</p>
+				<h2 id="prozess-heading">So entwickeln wir deine Website.</h2>
+			</div>
+			<ol class="steps">
+				{
+					steps.map((s, i) => (
+						<li class="step">
+							<span class="step-num">0{i + 1}</span>
+							<h3>{s.title}</h3>
+							<p>{s.text}</p>
+						</li>
+					))
+				}
+			</ol>
+		</div>
+	</section>
+
+	<TrustProof
+		id="produkte"
+		eyebrow="Mehr als Websites"
+		heading="Auch Shops, Plattformen und Schnittstellen."
+		intro="Wenn deine Website zum Produkt wird, mit Kaufstrecke, Kundenkonten oder API, entwickeln wir auch das. Unsere eigenen Produkte zeigen, wie."
+		items={productCases}
+	/>
+
+	<TrustProof heading="Kundenprojekte, die live sind" intro="" />
+
+	<FaqSection items={serviceFaqs.webentwicklung} title="Fragen zur Webentwicklung" />
 	<Related links={related.webentwicklung} />
 
 	<CtaDark
-		title="Technik folgt der Aufgabe"
-		text="Im Call sehen wir uns an, ob ein Relaunch, ein Neubau oder eine Produktstrecke der Hebel ist. Du bekommst eine Einschätzung zu Tempo, Umfang und nächstem Schritt."
+		title="Deine Website soll schneller werden?"
+		text="Im kostenlosen Erstgespräch schauen wir uns deine aktuelle Seite an und zeigen dir, wo es hakt."
 	/>
 </BaseLayout>

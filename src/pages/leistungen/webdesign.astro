@@ -5,41 +5,40 @@ import LeadActions from '../../components/LeadActions.astro';
 import Picture from '../../components/Picture.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Related from '../../components/Related.astro';
-import { cases, serviceFaqs } from '../../data/site';
+import TrustProof from '../../components/TrustProof.astro';
+import { serviceFaqs } from '../../data/site';
 import { related } from '../../data/related';
-
-const designCases = cases.filter((item) => item.kind === 'client');
-
-const steps = [
-	{ title: 'Hören', text: 'Wen du gewinnen willst, was danach passieren soll, was schon da ist. Kein Moodboard vor dem Ziel.' },
-	{ title: 'Struktur', text: 'Seitenbaum, Überschriften, Reihenfolge. Das Angebot steht vorn, die Firmengeschichte danach.' },
-	{ title: 'Gestalt', text: 'Typografie, Farbe, Raster, Komponenten. Eigenständig, ruhig, auf dem Telefon genauso klar wie am Schreibtisch.' },
-	{ title: 'Übergabe', text: 'Das Design landet in der entwickelten Website. Keine weggeworfenen Folien, keine Lücke zwischen Look und Live.' },
-];
 
 const outcomes = [
 	{
-		title: 'Erste Bildschirmhöhe mit Auftrag',
-		text: 'Nutzen, Zielgruppe und Handlung stehen oben. Nicht „Willkommen auf unserer Homepage“.',
+		title: 'Klarer erster Eindruck',
+		text: 'Im ersten Bildschirm steht, was du anbietest, für wen und wo – plus ein klarer nächster Schritt.',
 	},
 	{
 		title: 'Texte in deiner Sprache',
-		text: 'Überschriften, die du so sagen würdest. Keine leeren Floskeln, kein Lorem, kein Agentur-Denglisch.',
+		text: 'Überschriften, die deine Kunden verstehen. Keine Floskeln, kein Agentur-Denglisch, kein Platzhaltertext.',
 	},
 	{
-		title: 'Komponenten, die sitzen',
-		text: 'Header, Formulare, Referenzen, FAQ: Bausteine, die auf jeder Seite gleich gut funktionieren.',
+		title: 'Design mit System',
+		text: 'Farben, Schriften und Bausteine, die auf jeder Seite zusammenpassen und sich leicht erweitern lassen.',
 	},
 	{
-		title: 'Übergabe ins Live-System',
-		text: 'Pixelgenau in der fertigen Seite, umgesetzt über die <a href="/leistungen/webentwicklung/">Webentwicklung</a>.',
+		title: 'Mobil zuerst',
+		text: 'Die meisten Besucher kommen über das Smartphone. Wir gestalten zuerst für den Daumen, dann für den Desktop.',
 	},
+];
+
+const steps = [
+	{ title: 'Zuhören', text: 'Wen willst du gewinnen, was soll danach passieren, was gibt es schon? Ziel vor Moodboard.' },
+	{ title: 'Struktur', text: 'Seitenaufbau, Überschriften, Reihenfolge. Das Angebot steht vorn, die Geschichte danach.' },
+	{ title: 'Gestaltung', text: 'Typografie, Farben, Bildsprache und Bausteine – eigenständig und auf jedem Gerät klar.' },
+	{ title: 'Umsetzung', text: 'Das Design wird pixelgenau zur fertigen Website. Ohne Übergabe an Dritte, ohne Qualitätsverlust.' },
 ];
 ---
 
 <BaseLayout
-	title="Webdesign Frankfurt und Umgebung | 9to6"
-	description="Webdesign aus Gelnhausen für Frankfurt, Hanau, Offenbach und den Main-Kinzig-Kreis. Für Handwerk und Studios. Termin oder E-Mail."
+	title="Webdesign Frankfurt & Rhein-Main | 9to6"
+	description="Webdesign für Unternehmen in Frankfurt, Hanau, Offenbach und dem Main-Kinzig-Kreis: Struktur, Texte und Gestaltung, die Besucher zu Kunden machen."
 	ogImagePath="/images/ref-elixier-og.jpg"
 	ogImageAlt="Website von D&E Elixier, Webdesign für ein Kosmetikinstitut in Frankfurt"
 	ogImageWidth={1200}
@@ -52,49 +51,58 @@ const outcomes = [
 		{ name: 'Webdesign', href: '/leistungen/webdesign/' },
 	]}
 >
-	<section class="page-hero center">
-		<div class="wrap">
-			<h1>Webdesign für Frankfurt und die Umgebung</h1>
-			<p class="sub">Aus Gelnhausen. Für Handwerk, Studios und Betriebe in Frankfurt, Hanau, Offenbach und im Main-Kinzig-Kreis.</p>
-			<LeadActions align="center" terminLabel="Webdesign besprechen" />
+	<section class="page-hero">
+		<div class="wrap page-hero-grid">
+			<div>
+			<p class="eyebrow">Webdesign · Frankfurt und Rhein-Main</p>
+			<h1>Webdesign, das aus Besuchern Kunden macht.</h1>
+			<p class="sub">
+				Wir gestalten Websites für Handwerk, Studios und Dienstleister in Frankfurt, Hanau, Offenbach und dem
+				Main-Kinzig-Kreis. Eigenständig, klar strukturiert und mit einem kurzen Weg zur Anfrage.
+			</p>
+			<LeadActions primaryLabel="Webdesign besprechen" />
+			</div>
+			<div class="hero-visual hero-visual-img">
+				<Picture name="mock-design" alt="Webdesign für D&E Elixier in Frankfurt auf Laptop und Smartphone" sizes="(min-width: 900px) 520px, 92vw" width={1200} height={1020} loading="eager" fetchpriority="high" />
+			</div>
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap-wide split">
+	<section class="section" aria-labelledby="intro-heading">
+		<div class="wrap split split-text">
 			<div>
-				<h2>Deine Website ist oft der erste Mitarbeiter, den jemand trifft</h2>
+				<p class="eyebrow">Warum Design zählt</p>
+				<h2 id="intro-heading">Deine Website ist oft der erste Kontakt mit einem Kunden.</h2>
+			</div>
+			<div>
 				<p class="body">
-					Besucher entscheiden in Sekunden, ob sie bleiben. Layout, Sprache, Tempo und mobile Bedienung gehören
-					zusammen. 9to6 sitzt in Gelnhausen und gestaltet Seiten für Frankfurt und die Umgebung: Qualität ohne
-					Lautstärke, mit einem offenen Weg zur Anfrage. Ein Beispiel aus Sachsenhausen ist
-					<a href="/referenzen/de-elixier/">D&E Elixier</a>, eines aus dem Main-Kinzig-Kreis ist
-					<a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a>. Das Gebiet im Überblick:
-					<a href="/webdesign-gelnhausen/">Webdesign Gelnhausen</a>.
+					Besucher entscheiden in Sekunden, ob sie bleiben. Gutes Webdesign sorgt dafür, dass sie sofort verstehen, was du
+					anbietest, dir vertrauen und wissen, wie es weitergeht. Schön allein reicht nicht – es muss funktionieren.
+				</p>
+				<p class="body">
+					Wie das in der Praxis aussieht, zeigen <a href="/referenzen/de-elixier/">D&E Elixier</a> in
+					Frankfurt-Sachsenhausen und <a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a> in Gelnhausen.
 				</p>
 			</div>
-			<div class="media">
-				<Picture name="studio" alt="Gestaltung am Arbeitsplatz" sizes="(min-width: 900px) 560px, 92vw" />
-			</div>
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" aria-labelledby="ergebnis-heading">
 		<div class="wrap">
-			<h2 class="center">Nutzen statt Feature-Liste</h2>
-			<p class="intro center">
-				Schön allein verkauft nicht. Design bei 9to6 heißt: das Angebot verständlich machen, Vertrauen ohne Floskel,
-				Handlung ohne Hürde. Warum das oft scheitert, steht im Artikel
-				<a href="/blog/warum-deine-website-keine-kunden-bringt/">Warum deine Website keine Kunden bringt</a>.
-			</p>
-			<div class="cards" style="margin-top:36px">
+			<div class="section-head">
+				<p class="eyebrow">Was du bekommst</p>
+				<h2 id="ergebnis-heading">Design, das verkauft – nicht nur gefällt.</h2>
+				<p class="lead">
+					Warum viele schöne Websites trotzdem keine Kunden bringen, steht im Artikel
+					<a href="/blog/warum-deine-website-keine-kunden-bringt/">Warum deine Website keine Kunden bringt</a>.
+				</p>
+			</div>
+			<div class="feature-grid feature-grid-4">
 				{
 					outcomes.map((item) => (
-						<article class="card">
-							<div class="card-body">
-								<h3>{item.title}</h3>
-								<p set:html={item.text} />
-							</div>
+						<article class="feature">
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
 						</article>
 					))
 				}
@@ -102,87 +110,53 @@ const outcomes = [
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" aria-labelledby="prozess-heading">
 		<div class="wrap">
-			<h2 class="center">Für wen Webdesign von 9to6 passt</h2>
-			<p class="intro center">
-				Handwerk, die auf der Baustelle erkennbar bleiben sollen. Studios, die Termine wollen statt Stock-Look.
-				Marken, deren Produktseite suchen und kaufen muss. Wenn du ein Theme nur umlackieren willst, sind wir die
-				falsche Adresse.
-			</p>
-			<ul class="icon-list intro" style="max-width:720px;margin:24px auto 0">
-				<li>Du willst vom Betrieb her denken, nicht von einer Vorlage</li>
-				<li>Texte sollen mitgestaltet werden, nicht „später selbst einfügen“</li>
-				<li>Das Design soll in der entwickelten Seite landen, nicht als PDF sterben</li>
-			</ul>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">So entsteht das Design</h2>
-			<div class="steps">
+			<div class="section-head">
+				<p class="eyebrow">Prozess</p>
+				<h2 id="prozess-heading">So entsteht dein Webdesign.</h2>
+			</div>
+			<ol class="steps">
 				{
 					steps.map((s, i) => (
-						<article>
-							<p class="kicker">0{i + 1}</p>
+						<li class="step">
+							<span class="step-num">0{i + 1}</span>
 							<h3>{s.title}</h3>
 							<p>{s.text}</p>
-						</article>
+						</li>
 					))
 				}
-			</div>
+			</ol>
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap-wide split reverse">
+	<section class="section" aria-labelledby="unterschied-heading">
+		<div class="wrap split split-reverse">
 			<div>
-				<p class="kicker">Differenzierung</p>
-				<h2>Kein Theme, keine weggeworfene Folie</h2>
+				<p class="eyebrow">Der Unterschied</p>
+				<h2 id="unterschied-heading">Kein Theme. Keine Übergabe-Lücke.</h2>
 				<p class="body">
-					Reine Marketingagenturen kaufen oft eine Vorlage und legen Kampagnen darauf. Reine Designstudios übergeben
-					Dateien, die jemand anderes verbauen muss. 9to6 hält Design und
-					<a href="/leistungen/webentwicklung/">Webentwicklung</a> in einem Prozess. Full-Service heißt hier: Konzept
-					und Launch inklusive, ohne den Kern zu verwässern.
+					Viele Agenturen kaufen eine Vorlage und färben sie um. Reine Designstudios liefern Entwürfe, die jemand anderes
+					umsetzen muss – und dabei geht Qualität verloren. Bei 9to6 arbeiten Design, Text und Entwicklung in einem Team
+					und einem Prozess. Was du im Entwurf freigibst, siehst du genau so auf der fertigen Seite.
+				</p>
+				<p class="body">
+					Die technische Seite beschreibt die <a href="/leistungen/webentwicklung/">Webentwicklung</a>.
 				</p>
 			</div>
-			<div class="media">
-				<Picture name="workspace" alt="Arbeitsplatz mit Website-Entwürfen" sizes="(min-width: 900px) 560px, 92vw" />
+			<div class="media media-frame">
+				<Picture name="mock-dev" alt="Fertige Website von Holzbau Oberlerchner auf Laptop und Smartphone" sizes="(min-width: 900px) 560px, 92vw" width={1200} height={1020} />
 			</div>
 		</div>
 	</section>
 
-	<section class="section" aria-labelledby="design-cases">
-		<div class="wrap">
-			<h2 id="design-cases" class="center">Ergebnisse, die du öffnen kannst</h2>
-			<p class="intro center">
-				Kundenprojekte, kein Moodboard. Der volle Satz steht unter <a href="/referenzen/">Referenzen</a>.
-			</p>
-			<div class="cards" style="margin-top:36px">
-				{
-					designCases.map((c) => (
-						<a class="card" href={`/referenzen/${c.slug}/`}>
-							<div class="shot">
-								<Picture name={c.imageName} alt={c.imageAlt} class="shot-img" sizes="(min-width: 900px) 540px, 92vw" width={1280} height={800} />
-							</div>
-							<div class="card-body">
-								<div class="meta">{c.place}</div>
-								<h3>{c.name}</h3>
-								<p>{c.result}</p>
-							</div>
-						</a>
-					))
-				}
-			</div>
-		</div>
-	</section>
+	<TrustProof heading="Webdesign aus der Praxis" intro="" />
 
-	<FaqSection items={serviceFaqs.webdesign} intro="Kosten, Umfang und Abgrenzung zur Entwicklung." />
+	<FaqSection items={serviceFaqs.webdesign} title="Fragen zum Webdesign" />
 	<Related links={related.webdesign} />
 
 	<CtaDark
-		title="Erst das Ziel, dann das Raster"
-		text="Im Call klären wir, wen die Seite überzeugen soll und welche Handlung zählt. Danach siehst du, ob Webdesign allein reicht oder die Entwicklung mitziehen muss."
+		title="Lass uns über dein Design sprechen."
+		text="Im kostenlosen Erstgespräch klären wir, wen deine Website überzeugen soll und was dafür nötig ist."
 	/>
 </BaseLayout>

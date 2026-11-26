@@ -8,17 +8,19 @@ type Props = {
 	intro?: string;
 	items: FaqItem[] | readonly FaqItem[];
 };
-const {
-	title = 'Häufige Fragen',
-	intro = 'Kurz beantwortet. Ausführlicher im Gespräch.',
-	items,
-} = Astro.props;
+const { title = 'Häufige Fragen', intro, items } = Astro.props;
 ---
 
-<section class="faq-block" aria-labelledby="faq-heading">
-	<div class="wrap">
-		<h2 id="faq-heading">{title}</h2>
-		{intro ? <p class="intro">{intro}</p> : null}
+<section class="section faq-block" aria-labelledby="faq-heading">
+	<div class="wrap faq-grid">
+		<div class="section-head">
+			<p class="eyebrow">FAQ</p>
+			<h2 id="faq-heading">{title}</h2>
+			{intro ? <p class="lead">{intro}</p> : null}
+			<p class="faq-more">
+				Deine Frage ist nicht dabei? <a href="/kontakt/#anfrage">Schreib uns.</a>
+			</p>
+		</div>
 		<Accordion items={[...items]} />
 	</div>
 </section>

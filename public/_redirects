@@ -29,6 +29,11 @@
 /leistungen/webentwicklung /leistungen/webentwicklung/ 301
 /webdesign-gelnhausen /webdesign-gelnhausen/ 301
 /blog /blog/ 301
+/preise /preise/ 301
+/kosten /preise/ 301
+/kosten/ /preise/ 301
+/website-abo /preise/ 301
+/website-abo/ /preise/ 301
 /blog/warum-deine-website-keine-kunden-bringt /blog/warum-deine-website-keine-kunden-bringt/ 301
 /blog/core-web-vitals-und-google-ranking /blog/core-web-vitals-und-google-ranking/ 301
 /blog/aus-besuchern-werden-anfragen /blog/aus-besuchern-werden-anfragen/ 301
@@ -54,8 +59,8 @@
 # Alte Datums-Permalinks der Blogposts (1:1 wo thematisch passend)
 /2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht /blog/warum-deine-website-keine-kunden-bringt/ 301
 /2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht/ /blog/warum-deine-website-keine-kunden-bringt/ 301
-/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen /leistungen/ 301
-/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/ /leistungen/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen /preise/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/ /preise/ 301
 /2021/01/08/google-ads-guide-2-google-ads-grundlagen /blog/ 301
 /2021/01/08/google-ads-guide-2-google-ads-grundlagen/ /blog/ 301
 /2021/01/08/google-ads-guide-1-warum-du-werbung-auf-google-schalten-solltest /blog/ 301
@@ -117,7 +122,7 @@
 
 # Anhangseiten unter den 1:1-gemappten Posts (vor den Jahres-Fallbacks)
 /2024/04/12/warum-dein-unternehmen-auch-2024-eine-webseite-braucht/* /blog/warum-deine-website-keine-kunden-bringt/ 301
-/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/* /leistungen/ 301
+/2024/04/12/monatlich-bezahlbare-websites-die-clevere-wahl-fuer-dein-unternehmen/* /preise/ 301
 /2021/01/08/google-ads-guide-2-google-ads-grundlagen/* /blog/ 301
 /2021/01/08/google-ads-guide-1-warum-du-werbung-auf-google-schalten-solltest/* /blog/ 301
 

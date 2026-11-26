@@ -1,58 +1,45 @@
 # 9to6
 
-> Webdesign und Webentwicklung aus Gelnhausen (Rhönstraße 95, 63571). Kern: Main-Kinzig-Kreis. Weitere Umgebung: Frankfurt, Hanau, Offenbach. Anfragen über Termin (Cal.com) oder E-Mail an info@9to6.de.
+> 9to6 ist eine Agentur für Webdesign und Webentwicklung aus Gelnhausen (Main-Kinzig-Kreis, Hessen). Gründer, Projektleiter und fester Ansprechpartner ist Edvinas „Eddie“ Jurevicius; er arbeitet mit einem festen Netzwerk aus Designern, Textern und Spezialisten für SEO und KI-Suche. 9to6 baut schnelle Websites für kleine und mittlere Unternehmen in Gelnhausen, Hanau, Offenbach, Frankfurt am Main, im Rhein-Main-Gebiet und deutschlandweit. Projekte starten üblicherweise bei 3.000 bis 6.000 Euro, große Vorhaben individuell; alternativ in monatlichen Raten, deren Höhe von der Laufzeit abhängt.
 
-9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange. Full-Service-Rahmen (Konzept, Text, Launch, Hosting, Relaunch). Der Kern, an dem 9to6 gemessen wird, ist Design und Entwicklung: die Seite, die live im Netz steht.
+## Kurzprofil
 
-## Entität
+- Name: 9to6 (auch: 9to6 Webdesign)
+- Typ: Agentur für Webdesign und Webentwicklung
+- Gegründet: 2019
+- Gründer und Projektleiter: Edvinas Jurevicius („Eddie J.“)
+- Team: Netzwerk aus Designern, Textern und Spezialisten für SEO und KI-Suche (GEO)
+- Herkunft: Gelnhausen, Hessen, Deutschland
+- Einzugsgebiet: Gelnhausen, Main-Kinzig-Kreis, Hanau, Offenbach, Frankfurt am Main, Rhein-Main
+- Zielgruppe: Handwerk, Studios, Praxen, Dienstleister, Produktmarken
+- Investition: Projekte üblicherweise ab 3.000–6.000 €, große Projekte individuell und nach oben offen; keine Standardpakete
+- Monatliche Partnerschaft: Rate abhängig von Laufzeit und Umfang, inkl. Hosting, Wartung und monatlichem Änderungskontingent für Website, Print (z. B. Visitenkarten, Banner) und Texte – vertraglich geregelt
+- Kontakt: info@9to6.de · https://9to6.de/kontakt/
+- Erstgespräch: kostenlos, 30 Minuten per Video – https://cal.com/eddiejure/30min
 
-- Name: 9to6
-- Art: ProfessionalService / LocalBusiness (Webdesign, Webentwicklung)
-- Gründer: Edvinas Jurevicius (öffentlich Eddie J.)
-- Sitz: Rhönstraße 95, 63571 Gelnhausen, Hessen, Deutschland
-- Markt: Gelnhausen und Main-Kinzig-Kreis, dazu Frankfurt, Hanau, Offenbach, Rhein-Main
-- E-Mail: info@9to6.de
-- Telefon: +49 175 4045558
-- Termin: https://cal.com/eddiejure/30min
-- LinkedIn: https://www.linkedin.com/in/eddiejure
-- Web: https://9to6.de/
+## Leistungen
 
-## Angebot (Kern)
-
-- Webdesign: Struktur, Typografie, Nutzerführung, Texte (/leistungen/webdesign/)
-- Webentwicklung: schnelle, wartbare Seiten, Formulare, Hosting (/leistungen/webentwicklung/)
-
-## Angebot (Rahmen)
-
-- Conversion: Wege zur Handlung, messbares Wachstum (/blog/aus-besuchern-werden-anfragen/)
-- Relaunch: bestehende Seiten ablösen, Inhalte retten, Tempo verbessern (/kontakt/)
+- [Webdesign](https://9to6.de/leistungen/webdesign/): Seitenstruktur, Texte, Gestaltung, mobile Nutzerführung
+- [Webentwicklung](https://9to6.de/leistungen/webentwicklung/): schnelle, sichere Websites, technische SEO, Hosting über Cloudflare
+- [Relaunch](https://9to6.de/leistungen/#relaunch): Modernisierung bestehender Websites mit 301-Weiterleitungen, ohne Ranking-Verlust
+- [SEO, Texte und KI-Sichtbarkeit](https://9to6.de/leistungen/#seo): SEO-Texte, lokale SEO, Optimierung für ChatGPT, Perplexity und Gemini
+- [Webdesign Gelnhausen](https://9to6.de/webdesign-gelnhausen/): lokale Websites für den Main-Kinzig-Kreis
+- [Preise und ROI-Rechner](https://9to6.de/preise/): einmalige Investition oder monatliche Raten mit Kontingent
 
 ## Referenzen
 
-- Holzbau Oberlerchner (oberlerchner.de): Konzept, Logo, Print und lokal SEO-optimierte Website (/referenzen/holzbau-oberlerchner/, Kundenprojekt)
-- D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen (/referenzen/de-elixier/, Kundenprojekt)
-- sim.do: eigenes Produkt, keine Kundenarbeit (/referenzen/sim-do/)
-- Simtasy (simtasy.com): eigenes B2B-Produkt, keine Kundenarbeit (/referenzen/simtasy/)
-- Gebiet: /webdesign-gelnhausen/
+- [Holzbau Oberlerchner](https://9to6.de/referenzen/holzbau-oberlerchner/): Kundenprojekt, Zimmerei in Gelnhausen. Kompletter Launch: Logo, Print und erste Website.
+- [D&E Elixier](https://9to6.de/referenzen/de-elixier/): Kundenprojekt, Kosmetikinstitut in Frankfurt-Sachsenhausen. Redesign.
+- [sim.do](https://9to6.de/referenzen/sim-do/): eigenes Produkt des Gründers, eSIM-Tarife für Reisende.
+- [Simtasy](https://9to6.de/referenzen/simtasy/): eigenes Produkt des Gründers, B2B-Plattform für eSIM-Reseller.
 
-## Blog
+## Ratgeber
 
-- /blog/warum-deine-website-keine-kunden-bringt/
-- /blog/core-web-vitals-und-google-ranking/
-- /blog/aus-besuchern-werden-anfragen/
+- [Warum deine Website keine Kunden bringt](https://9to6.de/blog/warum-deine-website-keine-kunden-bringt/)
+- [Ladezeit, Core Web Vitals und Google-Ranking](https://9to6.de/blog/core-web-vitals-und-google-ranking/)
+- [Aus Besuchern werden Anfragen](https://9to6.de/blog/aus-besuchern-werden-anfragen/)
 
-## Technik (Hintergrund)
+## Optional
 
-Schlanke, moderne Webtechnik und Cloudflare Pages. Semantisches HTML, selbst gehostete Schriften, keine Google Fonts, keine Analytics-Tracker.
-
-## Kontakt
-
-- Web: https://9to6.de/
-- E-Mail: info@9to6.de
-- Telefon: +49 175 4045558
-- Termin: https://cal.com/eddiejure/30min
-- Adresse: Rhönstraße 95, 63571 Gelnhausen, Deutschland
-- Gründer: Edvinas Jurevicius (Eddie J.)
-- LinkedIn: https://www.linkedin.com/in/eddiejure
-
-Volltext: https://9to6.de/llms-full.txt
+- [Ausführliche Fassung](https://9to6.de/llms-full.txt)
+- [Impressum](https://9to6.de/impressum/)

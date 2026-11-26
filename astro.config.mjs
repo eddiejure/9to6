@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import cloudflare from '@astrojs/cloudflare';
+import noWidows from './integrations/no-widows.mjs';
 
 // Cloudflare Pages: Adapter baut das Projekt so, dass es im Pages-Dashboard
 // (oder via wrangler) deploybar ist. Termine laufen über Cal.com, nicht über
@@ -14,6 +15,7 @@ export default defineConfig({
 		prerenderEnvironment: 'node',
 	}),
 	compressHTML: true,
+	integrations: [noWidows()],
 	devToolbar: { enabled: false },
 	server: {
 		host: true,

@@ -4,17 +4,19 @@ import '@fontsource/montserrat/latin-500.css';
 import '@fontsource/montserrat/latin-600.css';
 import '@fontsource/montserrat/latin-700.css';
 import '../styles/global.css';
+import font700 from '@fontsource/montserrat/files/montserrat-latin-700-normal.woff2?url';
+import font400 from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import CookieBanner from '../components/CookieBanner.astro';
 import Crumbs from '../components/Crumbs.astro';
-import { site } from '../data/site';
+import { pricing, site } from '../data/site';
 import { canonicalUrl } from '../lib/urls';
 import { plainText } from '../lib/text';
 
 export type SchemaKind = 'home' | 'service' | 'contact' | 'references' | 'blog' | 'article' | 'legal' | 'project' | 'error';
 export type Crumb = { name: string; href: string };
 export type FaqItem = { q: string; a: string };
+export type ListEntry = { name: string; url: string; description?: string };
 export type WorkMeta = {
 	name: string;
 	description: string;
@@ -41,6 +43,7 @@ type Props = {
 	ogImageWidth?: number;
 	ogImageHeight?: number;
 	work?: WorkMeta;
+	itemList?: ListEntry[];
 };
 
 const {
@@ -54,11 +57,12 @@ const {
 	dateModified,
 	faqs = [],
 	noindex = false,
-	ogImagePath = '/images/eddie-og.jpg',
-	ogImageAlt = 'Eddie J., Gründer von 9to6',
-	ogImageWidth = 840,
-	ogImageHeight = 840,
+	ogImagePath = '/images/og-9to6.jpg',
+	ogImageAlt = '9to6 – Webdesign und Webentwicklung aus Gelnhausen',
+	ogImageWidth = 1200,
+	ogImageHeight = 630,
 	work,
+	itemList = [],
 } = Astro.props;
 
 const ogType = Astro.props.ogType ?? (schema === 'article' ? 'article' : 'website');
@@ -75,83 +79,103 @@ const modified = dateModified ?? datePublished;
 
 const address = {
 	'@type': 'PostalAddress',
-	streetAddress: site.address.street,
 	postalCode: site.address.zip,
 	addressLocality: site.address.city,
-	addressRegion: 'Hessen',
+	addressRegion: site.address.state,
 	addressCountry: 'DE',
 };
 
+const areaServed = [
+	...site.cities.map((name) => ({ '@type': 'City', name })),
+	...site.regions.map((name) => ({ '@type': 'AdministrativeArea', name })),
+];
+
+const founderId = `${homeUrl}#eddie`;
+
 const organization = {
-	'@type': ['ProfessionalService', 'LocalBusiness'],
+	'@type': 'ProfessionalService',
 	'@id': orgId,
 	name: site.name,
+	alternateName: '9to6 Webdesign',
 	legalName: site.person.legal,
+	slogan: site.slogan,
 	url: homeUrl,
 	email: site.email,
-	telephone: '+491754045558',
-	image: new URL('/logos/mark.svg', site.url).href,
-	logo: new URL('/logos/mark.svg', site.url).href,
-	description: site.description,
-	foundingDate: '2019',
-	areaServed: [...site.areaServed],
-	geo: {
-		'@type': 'GeoCoordinates',
-		latitude: site.geo.latitude,
-		longitude: site.geo.longitude,
+	telephone: site.phoneIntl,
+	image: new URL('/images/og-9to6.jpg', site.url).href,
+	logo: {
+		'@type': 'ImageObject',
+		url: new URL('/logos/logo-512.png', site.url).href,
+		width: 512,
+		height: 512,
 	},
+	description: site.description,
+	foundingDate: site.foundingYear,
+	areaServed,
 	address,
 	founder: {
 		'@type': 'Person',
-		'@id': `${homeUrl}#eddie`,
+		'@id': founderId,
 		name: site.person.legal,
 		alternateName: site.person.public,
 		jobTitle: site.person.role,
-		sameAs: site.social.linkedin,
+		url: canonicalUrl('/kontakt/'),
+		sameAs: [site.social.linkedin],
 		image: new URL('/images/eddie-og.jpg', site.url).href,
 		worksFor: { '@id': orgId },
+		knowsAbout: ['Webdesign', 'Webentwicklung', 'Projektleitung', 'Conversion-Optimierung', 'E-Commerce'],
 	},
 	contactPoint: {
 		'@type': 'ContactPoint',
-		telephone: '+491754045558',
+		telephone: site.phoneIntl,
 		email: site.email,
-		contactType: 'sales',
+		contactType: 'customer service',
 		areaServed: 'DE',
-		availableLanguage: 'German',
+		availableLanguage: ['German', 'English'],
 		url: canonicalUrl('/kontakt/'),
 	},
 	sameAs: [site.social.linkedin],
 	knowsAbout: [
 		'Webdesign',
 		'Webentwicklung',
-		'Relaunch',
-		'Gelnhausen',
-		'Main-Kinzig-Kreis',
-		'Hanau',
-		'Offenbach',
-		'Frankfurt am Main',
-		'Rhein-Main',
+		'Website-Relaunch',
+		'Technische SEO',
+		'Lokale SEO',
+		'SEO-Texte',
+		'Generative Engine Optimization',
+		'Conversion-Optimierung',
+		'Branding und Print',
 	],
 	priceRange: '€€',
+	currenciesAccepted: 'EUR',
 	hasOfferCatalog: {
 		'@type': 'OfferCatalog',
-		name: 'Leistungen',
+		name: 'Leistungen von 9to6',
 		itemListElement: [
-			{
+			...[
+				{ name: 'Webdesign', path: '/leistungen/webdesign/' },
+				{ name: 'Webentwicklung', path: '/leistungen/webentwicklung/' },
+				{ name: 'SEO, Texte und KI-Sichtbarkeit', path: '/leistungen/#seo' },
+			].map((item) => ({
 				'@type': 'Offer',
 				itemOffered: {
 					'@type': 'Service',
-					name: 'Webdesign',
-					url: canonicalUrl('/leistungen/webdesign/'),
+					name: item.name,
+					url: canonicalUrl(item.path),
+					provider: { '@id': orgId },
 				},
-			},
+			})),
 			{
 				'@type': 'Offer',
-				itemOffered: {
-					'@type': 'Service',
-					name: 'Webentwicklung',
-					url: canonicalUrl('/leistungen/webentwicklung/'),
+				name: 'Website-Redesign oder neue Unternehmenswebsite',
+				description: 'Üblicher Rahmen 3.000 bis 6.000 Euro, große Projekte individuell. Alternativ in monatlichen Raten, abhängig von der Laufzeit.',
+				url: canonicalUrl('/preise/'),
+				priceSpecification: {
+					'@type': 'PriceSpecification',
+					minPrice: pricing.min,
+					priceCurrency: 'EUR',
 				},
+				itemOffered: { '@type': 'Service', name: 'Website-Relaunch', provider: { '@id': orgId } },
 			},
 		],
 	},
@@ -162,6 +186,7 @@ const website = {
 	'@id': websiteId,
 	url: homeUrl,
 	name: site.name,
+	alternateName: '9to6 Webdesign',
 	inLanguage: 'de-DE',
 	publisher: { '@id': orgId },
 	description: site.description,
@@ -227,12 +252,12 @@ if (schema === 'service') {
 		name: serviceName ?? title,
 		description,
 		provider: { '@id': orgId },
-		areaServed: [...site.areaServed],
+		areaServed,
 		url: canonical,
 		serviceType: serviceName ?? 'Webdesign und Webentwicklung',
 		audience: {
-			'@type': 'Audience',
-			audienceType: 'Unternehmen in Frankfurt, Rhein-Main und Deutschland',
+			'@type': 'BusinessAudience',
+			audienceType: 'Kleine und mittlere Unternehmen im Rhein-Main-Gebiet',
 		},
 	});
 }
@@ -251,7 +276,7 @@ if (schema === 'article') {
 		inLanguage: 'de-DE',
 		isPartOf: { '@id': websiteId },
 		image: ogImage,
-		author: { '@id': `${homeUrl}#eddie` },
+		author: { '@id': founderId },
 		publisher: { '@id': orgId },
 		mainEntityOfPage: { '@id': webpageId },
 	});
@@ -268,11 +293,28 @@ if (schema === 'project' && work) {
 		url: work.url,
 		image: new URL(work.image, site.url).href,
 		creator: { '@id': orgId },
-		author: { '@id': `${homeUrl}#eddie` },
+		author: { '@id': founderId },
 		inLanguage: 'de-DE',
 		contentLocation: work.place,
 		about: ['Webdesign', 'Webentwicklung'],
 		isPartOf: { '@id': webpageId },
+	});
+}
+
+if (itemList.length > 0) {
+	const listId = `${canonical}#list`;
+	if (!webpage.mainEntity) webpage.mainEntity = { '@id': listId };
+	graph.push({
+		'@type': 'ItemList',
+		'@id': listId,
+		numberOfItems: itemList.length,
+		itemListElement: itemList.map((entry, index) => ({
+			'@type': 'ListItem',
+			position: index + 1,
+			url: canonicalUrl(entry.url),
+			name: entry.name,
+			...(entry.description ? { description: entry.description } : {}),
+		})),
 	});
 }
 
@@ -335,9 +377,11 @@ const jsonLd = {
 		{isError ? null : <meta name="twitter:url" content={canonical} />}
 		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:image:alt" content={ogImageAlt} />
+		<link rel="preload" href={font700} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={font400} as="font" type="font/woff2" crossorigin />
 		<link rel="icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="apple-touch-icon" href="/logos/mark.svg" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="sitemap" type="application/xml" href="/sitemap.xml" />
 		<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-Kurzbeschreibung 9to6" />
 		<link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM-Volltext 9to6" />
@@ -365,7 +409,40 @@ const jsonLd = {
 			document.addEventListener('keydown', (event) => {
 				if (event.key === 'Escape') setOpen(false);
 			});
+			document.querySelectorAll('.mobile-panel a').forEach((link) => {
+				link.addEventListener('click', () => setOpen(false));
+			});
+			const revealTargets =
+				'.section-head, .work-card, .service-card, .feature, .step, .price-card, .quote-card, .post-card, .reason, .case-row, .roi, .invest-teaser, .cta-panel, .media-frame, .about-photo, .facts, .next-case';
+			if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				document.documentElement.classList.add('reveal-on');
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (!entry.isIntersecting) return;
+							const el = entry.target;
+							el.classList.add('is-in');
+							observer.unobserve(el);
+							// Danach aufräumen, damit Hover-Übergänge wieder greifen
+							el.addEventListener(
+								'transitionend',
+								() => el.classList.remove('reveal', 'is-in'),
+								{ once: true },
+							);
+						});
+					},
+					{ rootMargin: '0px 0px -6% 0px' },
+				);
+				document.querySelectorAll(revealTargets).forEach((el) => {
+					if (el.closest('.hero')) return;
+					el.classList.add('reveal');
+					observer.observe(el);
+				});
+			}
+			const header = document.querySelector('.site-header');
+			const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
+			onScroll();
+			window.addEventListener('scroll', onScroll, { passive: true });
 		</script>
-		<CookieBanner />
 	</body>
 </html>

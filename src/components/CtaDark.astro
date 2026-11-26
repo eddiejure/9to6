@@ -8,23 +8,25 @@ type Props = {
 	secondaryHref?: string;
 };
 const {
-	title = 'Aus der Website werden Anfragen',
-	text = 'Bring Projektart, Budgetrahmen und Zeitraum mit. Eddie antwortet persönlich.',
-	cta = 'Termin wählen',
+	title = 'Bereit für eine Website, die Kunden bringt?',
+	text = 'Buch dir ein kostenloses Erstgespräch mit Eddie. In 30 Minuten weißt du, was deine Website braucht und wie der Weg dorthin aussieht.',
+	cta = 'Erstgespräch buchen',
 	href = '/kontakt/#kalender',
-	secondary = 'Kurz schreiben',
+	secondary = 'Nachricht schreiben',
 	secondaryHref = '/kontakt/#anfrage',
 } = Astro.props;
 ---
 
-<section class="band-black">
+<section class="cta-band" aria-labelledby="cta-heading">
 	<div class="wrap">
-		<h2>{title}</h2>
-		<p>{text}</p>
-		<hr class="rule" />
-		<div class="cta-row cta-row-center">
-			<a class="btn" href={href}>{cta}</a>
-			{secondary ? <a class="btn btn-ghost" href={secondaryHref}>{secondary}</a> : null}
+		<div class="cta-panel">
+			<img class="brand-orb" src="/logos/mark.svg" alt="" aria-hidden="true" width="466" height="466" loading="lazy" />
+			<h2 id="cta-heading">{title}</h2>
+			<p>{text}</p>
+			<div class="cta-row cta-row-center">
+				<a class="btn btn-lg" href={href}>{cta}</a>
+				{secondary ? <a class="btn btn-lg btn-ghost" href={secondaryHref}>{secondary}</a> : null}
+			</div>
 		</div>
 	</div>
 </section>

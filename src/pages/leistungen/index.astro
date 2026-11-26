@@ -4,84 +4,84 @@ import CtaDark from '../../components/CtaDark.astro';
 import LeadActions from '../../components/LeadActions.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Picture from '../../components/Picture.astro';
-import Related from '../../components/Related.astro';
-import { clientCases, processSteps, serviceFaqs, site } from '../../data/site';
-import { related } from '../../data/related';
-import { posts } from '../../data/blog';
-
-const items = [
-	{
-		title: 'Webdesign',
-		href: '/leistungen/webdesign/',
-		text: 'Struktur, Sprache und Erscheinungsbild. Die Seite soll nach dir aussehen und zum Handeln auffordern.',
-	},
-	{
-		title: 'Webentwicklung',
-		href: '/leistungen/webentwicklung/',
-		text: 'Seiten, die schnell laden, in der Suche bestehen und Anfragen wirklich zustellen.',
-	},
-	{
-		title: 'Anfragen',
-		href: '/blog/aus-besuchern-werden-anfragen/',
-		text: 'Wege zur Handlung: klares Angebot, Beweis, Termin oder kurze Nachricht.',
-	},
-	{
-		title: 'Relaunch',
-		href: '/kontakt/',
-		text: 'Bestehende Seiten ablösen, Inhalte retten, Tempo und Anfragen verbessern.',
-	},
-];
+import TrustProof from '../../components/TrustProof.astro';
+import { processSteps, serviceFaqs, services } from '../../data/site';
 
 const audience = [
 	{
 		title: 'Handwerk und lokale Betriebe',
-		text: 'Wer auf der Baustelle, im Studio oder vor Ort überzeugen muss, braucht eine Seite, die auf dem Smartphone lesbar ist und lokal gefunden wird.',
+		text: 'Du überzeugst auf der Baustelle oder vor Ort. Deine Website sollte das auch tun: klar, schnell am Handy und in der Region gut gefunden.',
 	},
 	{
-		title: 'Studios und Institute',
-		text: 'Behandlungen, Termine, Vertrauen. Der Auftritt soll ruhig wirken und trotzdem zum Buchen führen.',
+		title: 'Studios, Praxen und Institute',
+		text: 'Hier zählen Vertrauen und ein kurzer Weg zum Termin. Wir gestalten ruhig und hochwertig und machen die Buchung so einfach wie möglich.',
 	},
 	{
 		title: 'Produktmarken und Plattformen',
-		text: 'Wenn aus der Website ein Produkt wird (Tarife, Kataloge, Accounts), gehören Design und Entwicklung in denselben Prozess.',
+		text: 'Shop, Tarife, Kundenkonten oder Schnittstellen: Wenn die Website zum Produkt wird, gehören Design und Entwicklung in einen Prozess.',
 	},
+];
+
+const seo = [
+	'Keyword- und Themenrecherche für deine Region und Branche',
+	'Seitenplanung, die zu echten Suchanfragen passt',
+	'SEO-Texte von spezialisierten Textern',
+	'Strukturierte Daten und Inhalte, die KI-Assistenten wie ChatGPT verstehen und zitieren',
+	'Lokale Sichtbarkeit inklusive Google-Unternehmensprofil',
+];
+
+const relaunch = [
+	'Analyse der bestehenden Seite: Inhalte, Rankings, Ladezeit',
+	'Übernahme und Überarbeitung aller wichtigen Inhalte',
+	'301-Weiterleitungen für jede alte URL, damit Rankings erhalten bleiben',
+	'Prüfung in der Google Search Console nach dem Launch',
 ];
 ---
 
 <BaseLayout
-	title="Webdesign und Webentwicklung vor Ort | 9to6"
-	description="Seiten für Betriebe in Gelnhausen, im Main-Kinzig-Kreis, in Frankfurt, Hanau und Offenbach. Termin buchen oder kurz schreiben."
-	ogImagePath="/images/ref-elixier-og.jpg"
-	ogImageAlt="Website von D&E Elixier in Frankfurt-Sachsenhausen"
-	ogImageWidth={1200}
-	ogImageHeight={750}
+	title="Leistungen: Webdesign, Relaunch, SEO & KI-Suche | 9to6"
+	description="Webdesign, Webentwicklung, Relaunch, SEO-Texte und KI-Sichtbarkeit aus einer Hand – für Unternehmen in Gelnhausen, Frankfurt und Rhein-Main."
 	schema="service"
-	serviceName="Webdesign und Webentwicklung"
+	serviceName="Webdesign, Webentwicklung und Website-Relaunch"
 	faqs={serviceFaqs.hub}
 	breadcrumbs={[{ name: 'Leistungen', href: '/leistungen/' }]}
 >
-	<section class="page-hero center">
-		<div class="wrap">
-			<h1>Webdesign und Webentwicklung für Rhein-Main</h1>
-			<p class="sub">Aus Gelnhausen. Für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.</p>
-			<LeadActions align="center" />
+	<section class="page-hero">
+		<div class="wrap page-hero-grid">
+			<div>
+			<p class="eyebrow">Leistungen</p>
+			<h1>Alles für deine Website. Aus einer Hand.</h1>
+			<p class="sub">
+				Webdesign, Entwicklung, Relaunch, SEO-Texte und Sichtbarkeit in der KI-Suche – umgesetzt von einem Team aus
+				Designern, Textern und Entwicklern, koordiniert von einem festen Ansprechpartner.
+			</p>
+			<LeadActions />
+			</div>
+			<div class="hero-visual hero-visual-img">
+				<Picture name="mock-design" alt="Von 9to6 gestaltete Website von D&E Elixier auf Laptop und Smartphone" sizes="(min-width: 900px) 520px, 92vw" width={1200} height={1020} loading="eager" fetchpriority="high" />
+			</div>
 		</div>
 	</section>
 
-	<section class="section">
+	<section class="section" aria-labelledby="angebot-heading">
 		<div class="wrap">
-			<h2 class="center">Was wir bauen</h2>
-			<p class="intro center">
-				{site.positioning} Conversion und Relaunch gehören dazu, ohne den Kern zu ersetzen.
-			</p>
-			<div class="cards" style="margin-top:48px">
+			<div class="section-head">
+				<p class="eyebrow">Angebot</p>
+				<h2 id="angebot-heading">Vier Leistungen, ein Ziel: mehr Anfragen.</h2>
+			</div>
+			<div class="service-grid">
 				{
-					items.map((item) => (
-						<a class="card" href={item.href}>
-							<div class="card-body">
-								<h3>{item.title}</h3>
-								<p>{item.text}</p>
-							</div>
+					services.map((service, index) => (
+						<a class="service-card" href={service.href}>
+							<span class="service-num">0{index + 1}</span>
+							<h3>{service.title}</h3>
+							<p>{service.teaser}</p>
+							<ul class="tick-list">
+								{service.points.map((point) => (
+									<li>{point}</li>
+								))}
+							</ul>
+							<span class="link-arrow">Mehr erfahren</span>
 						</a>
 					))
 				}
@@ -89,123 +89,92 @@ const audience = [
 		</div>
 	</section>
 
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">Für wen das gedacht ist</h2>
-			<p class="intro center">
-				Sitz in Gelnhausen. Der Kern ist der Main-Kinzig-Kreis, die weitere Umgebung ist Frankfurt, Hanau und Offenbach.
-				Die Website soll ein Arbeitsmittel werden: Anfragen, Termine, ein klares Angebot.
-			</p>
-			<div class="cards" style="margin-top:36px">
-				{
-					audience.map((item) => (
-						<article class="card">
-							<div class="card-body">
-								<h3>{item.title}</h3>
-								<p>{item.text}</p>
-							</div>
-						</article>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap">
-			<h2 class="center">Von der ersten Seite bis zum Launch</h2>
-			<p class="intro center">
-				Du siehst Zwischenschritte, keine Überraschung am Ende. Hosting legen wir mit aus, wenn du das willst.
-			</p>
-			<div class="steps process-steps">
-				{
-					processSteps.map((step, i) => (
-						<article>
-							<p class="kicker">0{i + 1}</p>
-							<h3>{step.title}</h3>
-							<p>{step.text}</p>
-						</article>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap-wide split">
+	<section class="section" id="relaunch" aria-labelledby="relaunch-heading">
+		<div class="wrap split">
 			<div>
-				<p class="kicker">Ergebnisse</p>
-				<h2>Was sich nach dem Launch ändert</h2>
+				<p class="eyebrow">Relaunch</p>
+				<h2 id="relaunch-heading">Neue Website, ohne Rankings zu verlieren.</h2>
 				<p class="body">
-					Kein versprochenes Prozentwunder aus fremden Branchen. Was wir anstreben, ist konkret: das Angebot ist in der
-					ersten Bildschirmhöhe klar, die Handlung erreichbar, die Seite auf dem Telefon benutzbar, Anfragen kommen an.
-					Belege stehen in den <a href="/referenzen/">Referenzen</a>: live, nicht als Folie.
+					Deine bestehende Seite ist langsam, veraltet oder schwer zu pflegen? Wir bauen sie neu und sorgen dafür, dass
+					Inhalte, Google-Rankings und alte Links den Umzug überstehen. Viele unserer Projekte sind Relaunches von
+					WordPress-Seiten. Ein Redesign kostet typischerweise 3.000 bis 6.000 Euro, auf Wunsch auch in
+					<a href="/preise/">monatlichen Raten</a>.
 				</p>
-				<ul class="icon-list">
-					<li>Eine Sprache, die du so sagen würdest</li>
-					<li>Ein Anfrageweg, der auf dem Handy mit dem Daumen erreichbar ist</li>
-					<li>Ladezeit, die Google und Menschen nicht vertreibt</li>
-					<li>Ein Ansprechpartner, der Design und Code zusammenhält</li>
+				<ul class="tick-list">
+					{relaunch.map((item) => <li>{item}</li>)}
 				</ul>
 			</div>
-			<div class="media">
-				<Picture name="laptop" alt="Laptop mit einem Website-Entwurf" sizes="(min-width: 900px) 560px, 92vw" />
+			<div class="media media-frame">
+				<Picture name="visual-relaunch" alt="Grafik: alte URLs werden per 301-Weiterleitung auf die neue Website umgeleitet" sizes="(min-width: 900px) 560px, 92vw" width={1200} height={1020} />
 			</div>
 		</div>
 	</section>
 
-	<section class="section" aria-labelledby="hub-cases">
+	<section class="section" id="seo" aria-labelledby="seo-heading">
+		<div class="wrap split split-reverse">
+			<div>
+				<p class="eyebrow">SEO, Texte und KI-Sichtbarkeit</p>
+				<h2 id="seo-heading">Gefunden werden – bei Google und in der KI-Suche.</h2>
+				<p class="body">
+					Immer mehr Kunden fragen nicht nur Google, sondern auch ChatGPT, Perplexity oder Gemini. Unsere Texter und
+					SEO-Spezialisten sorgen dafür, dass deine Website in beiden Welten gefunden, verstanden und empfohlen wird.
+				</p>
+				<ul class="tick-list">
+					{seo.map((item) => <li>{item}</li>)}
+				</ul>
+			</div>
+			<div class="media media-frame">
+				<Picture name="visual-seo" alt="Grafik: Website erscheint in der Google-Suche und wird von einem KI-Assistenten empfohlen" sizes="(min-width: 900px) 560px, 92vw" width={1200} height={1020} />
+			</div>
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="zielgruppe-heading">
 		<div class="wrap">
-			<h2 id="hub-cases" class="center">Aus der Praxis</h2>
-			<p class="intro center">
-				Zwei Kundenprojekte, zwei Gründerprodukte. Mehr Kontext auf den
-				<a href="/referenzen/">Referenzseiten</a>.
-			</p>
-			<div class="cards" style="margin-top:36px">
+			<div class="section-head">
+				<p class="eyebrow">Für wen</p>
+				<h2 id="zielgruppe-heading">Für Unternehmen, die online wachsen wollen.</h2>
+			</div>
+			<div class="feature-grid">
 				{
-					clientCases.map((c) => (
-						<a class="card" href={`/referenzen/${c.slug}/`}>
-							<div class="shot">
-								<Picture name={c.imageName} alt={c.imageAlt} class="shot-img" sizes="(min-width: 900px) 540px, 92vw" width={1280} height={800} />
-							</div>
-							<div class="card-body">
-								<div class="meta">{c.place}</div>
-								<h3>{c.name}</h3>
-								<p>{c.role}</p>
-							</div>
-						</a>
+					audience.map((item) => (
+						<article class="feature">
+							<h3>{item.title}</h3>
+							<p>{item.text}</p>
+						</article>
 					))
 				}
 			</div>
 		</div>
 	</section>
 
-	<section class="section" aria-labelledby="hub-blog">
+	<section class="section" aria-labelledby="prozess-heading">
 		<div class="wrap">
-			<h2 id="hub-blog" class="center">Lesen, bevor du schreibst</h2>
-			<p class="intro center">
-				Wenn du wissen willst, woran Anfragen scheitern, reicht oft ein Artikel aus dem
-				<a href="/blog/">Blog</a>.
-			</p>
-			<div class="blog-list">
+			<div class="section-head">
+				<p class="eyebrow">Prozess</p>
+				<h2 id="prozess-heading">Vom ersten Gespräch bis zum Launch.</h2>
+				<p class="lead">Du siehst jeden Zwischenschritt. Keine große Enthüllung am Ende, keine Überraschungen.</p>
+			</div>
+			<ol class="steps steps-5">
 				{
-					posts.slice(0, 2).map((post) => (
-						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">{post.dateLabel}</div>
-							<h2>{post.title}</h2>
-							<p>{post.description}</p>
-						</a>
+					processSteps.map((step, i) => (
+						<li class="step">
+							<span class="step-num">0{i + 1}</span>
+							<h3>{step.title}</h3>
+							<p>{step.text}</p>
+						</li>
 					))
 				}
-			</div>
+			</ol>
 		</div>
 	</section>
 
-	<FaqSection items={serviceFaqs.hub} intro="Vier Fragen, die vor dem Angebot klären, ob wir zusammenpassen." />
-	<Related links={related.leistungen} />
+	<TrustProof heading="Ergebnisse, die du anklicken kannst" />
+
+	<FaqSection items={serviceFaqs.hub} title="Fragen zu unseren Leistungen" />
 
 	<CtaDark
-		title="Rahmen klären, dann bauen"
-		text="Im Call trennen wir Kern (Design und Entwicklung) von dem, was nur drumherum nötig ist. Du gehst mit einer Einschätzung raus, nicht mit einem Pitch-Deck."
+		title="Welche Leistung passt zu deinem Projekt?"
+		text="Im kostenlosen Erstgespräch klären wir, ob du Webdesign, Entwicklung, einen Relaunch oder alles zusammen brauchst."
 	/>
 </BaseLayout>

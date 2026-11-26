@@ -1,128 +1,81 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCall from '../components/BookCall.astro';
-import Accordion from '../components/Accordion.astro';
-import LeadActions from '../components/LeadActions.astro';
+import FaqSection from '../components/FaqSection.astro';
 import LeadForm from '../components/LeadForm.astro';
-import TrustProof from '../components/TrustProof.astro';
-import ProcessBrief from '../components/ProcessBrief.astro';
+import Testimonials from '../components/Testimonials.astro';
 import Picture from '../components/Picture.astro';
-import Related from '../components/Related.astro';
-import { faqs, site } from '../data/site';
-import { related } from '../data/related';
-import { mailHref } from '../lib/mail';
+import { contactFaqs, site } from '../data/site';
 ---
 
 <BaseLayout
-	title="Termin buchen oder E-Mail schreiben | 9to6"
-	description="30 Minuten mit Eddie, oder eine E-Mail mit Projektart, Budget und Zeitraum. Sitz Gelnhausen, Projekte in Frankfurt und Umgebung."
+	title="Kontakt & kostenloses Erstgespräch | 9to6"
+	description="Buch dir 30 Minuten mit Eddie, dem Gründer von 9to6, oder schreib eine kurze Nachricht. Kostenlos, unverbindlich, mit ehrlicher Einschätzung."
 	schema="contact"
-	faqs={faqs.flatMap((group) => group.items)}
-	ogImagePath="/images/ref-elixier-og.jpg"
-	ogImageAlt="Website von D&E Elixier, Kundenprojekt in Frankfurt-Sachsenhausen"
-	ogImageWidth={1200}
-	ogImageHeight={750}
+	faqs={contactFaqs}
 	breadcrumbs={[{ name: 'Kontakt', href: '/kontakt/' }]}
 >
 	<section class="page-hero contact-hero">
-		<header class="wrap hero-kicker">
-			<h1>Erstgespräch zu Webdesign und Webentwicklung</h1>
-			<p class="sub">
-				Sitz in Gelnhausen. Eddie führt das Gespräch selbst. Termin im Kalender, oder eine kurze E-Mail.
-			</p>
-			<LeadActions align="center" />
-		</header>
-	</section>
-
-	<TrustProof
-		heading="Zuerst die Aufträge, dann der Kalender"
-		intro="Zwei Kundenprojekte mit Ort und Ergebnis. Danach der Termin oder die E-Mail."
-	/>
-	<ProcessBrief intro="Dasselbe in kurz, bevor du einen Slot buchst oder schreibst." />
-
-	<section class="section" id="termin">
-		<div class="wrap">
-			<h2 class="center">Termin oder E-Mail</h2>
-			<p class="intro center">
-				Vorher ansehen:
-				<a href="/referenzen/holzbau-oberlerchner/">Oberlerchner in Gelnhausen</a>
-				und
-				<a href="/referenzen/de-elixier/">Elixier in Frankfurt-Sachsenhausen</a>.
-				Für die E-Mail reichen Projektart, Budget und Zeitraum.
-			</p>
-			<div class="lead-grid" style="margin-top:36px">
-				<div class="lead-panel" id="anfrage">
-					<h2>Kurz schreiben</h2>
-					<p class="body">
-						Die Angaben öffnen dein E-Mail-Programm. Empfänger ist
-						<a href={mailHref()}>{site.email}</a>.
-					</p>
-					<LeadForm />
-				</div>
-				<div id="kalender">
-					<BookCall
-						heading="30 Minuten. Unverbindlich."
-						text="Eddie nimmt den Termin selbst. Kein Vertrieb dazwischen."
-					/>
+		<div class="wrap contact-hero-grid">
+			<div>
+				<p class="eyebrow">Kontakt</p>
+				<h1>Lass uns über dein Projekt sprechen.</h1>
+				<p class="sub">
+					Buch dir 30 Minuten mit Eddie oder schreib eine kurze Nachricht. Du bekommst eine ehrliche Einschätzung und
+					konkrete nächste Schritte – kostenlos und unverbindlich.
+				</p>
+				<div class="cta-row">
+					<a class="btn btn-lg" href="#kalender">Termin auswählen</a>
+					<a class="btn btn-lg btn-ghost" href="#anfrage">Nachricht schreiben</a>
 				</div>
 			</div>
-		</div>
-	</section>
-
-	<section class="section">
-		<div class="wrap-wide split">
-			<div class="profile">
+			<div class="contact-card">
 				<Picture
 					name="eddie"
-					alt={`${site.person.public}, ${site.person.role} bei ${site.name}`}
+					alt={`${site.person.public}, Gründer von 9to6`}
 					width={840}
 					height={840}
-					sizes="210px"
-					loading="lazy"
+					sizes="96px"
+					loading="eager"
+					fetchpriority="high"
 				/>
-				<h2>{site.person.public}</h2>
-				<p class="role">{site.person.role}</p>
-				<p class="profile-lead">
-					{site.address.street}, {site.address.zip} {site.address.city}. Projekte im Main-Kinzig-Kreis und in
-					Frankfurt, Hanau und Offenbach.
-				</p>
-				<ul class="profile-links">
-					<li>
-						<a href={mailHref()}>{site.email}</a>
-					</li>
-					<li>
-						<a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>
-					</li>
-				</ul>
-			</div>
-			<div>
-				<p class="body">
-					Vor dem Gespräch lohnt ein Blick auf
-					<a href="/leistungen/">Leistungen</a>
-					oder die
-					<a href="/referenzen/">Referenzen</a>.
-					sim.do und Simtasy sind eigene Produkte und stehen dort getrennt.
-				</p>
+				<div>
+					<p class="contact-card-name">{site.person.public}</p>
+					<p class="contact-card-role">Gründer und Projektleiter<br />Dein fester Ansprechpartner</p>
+				</div>
+				<dl class="facts facts-compact">
+					<div>
+						<dt>E-Mail</dt>
+						<dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+					</div>
+					<div>
+						<dt>Region</dt>
+						<dd>Gelnhausen und Rhein-Main<br />Per Video oder vor Ort</dd>
+					</div>
+					<div>
+						<dt>LinkedIn</dt>
+						<dd><a href={site.social.linkedin} rel="noopener" target="_blank">eddiejure</a></dd>
+					</div>
+				</dl>
 			</div>
 		</div>
 	</section>
 
-	<section class="faq-block">
-		<div class="wrap">
-			<h2>FAQ</h2>
-			<p class="intro">Die meistgestellten Fragen und deren Antworten</p>
-			{
-				faqs.map((group) => (
-					<section style="padding:16px 0" aria-labelledby={`faq-${group.group}`}>
-						<h3 class="center" id={`faq-${group.group}`}>
-							{group.group}
-						</h3>
-						<Accordion items={[...group.items]} />
-					</section>
-				))
-			}
+	<section class="section" aria-label="Termin buchen oder Nachricht schreiben">
+		<div class="wrap lead-grid">
+			<div id="kalender" class="lead-panel">
+				<BookCall />
+			</div>
+			<div id="anfrage" class="lead-panel">
+				<p class="eyebrow">Nachricht</p>
+				<h2>Lieber schreiben?</h2>
+				<p class="body">Ein paar Angaben genügen. Du bekommst eine persönliche Antwort, kein Standardangebot.</p>
+				<LeadForm />
+			</div>
 		</div>
 	</section>
 
-	<Related links={related.kontakt} />
+	<Testimonials eyebrow="Kundenstimmen" heading="Was Kunden über uns sagen." />
+
+	<FaqSection items={contactFaqs} title="Fragen vor dem ersten Gespräch" />
 </BaseLayout>

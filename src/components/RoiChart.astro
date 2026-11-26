@@ -1,0 +1,54 @@
+---
+// Beispielkurve: 5.000 € Investition, 1.000 € Gewinn pro Monat, 36 Monate.
+const invest = 5000;
+const perMonth = 1000;
+const months = 36;
+const w = 520;
+const h = 300;
+const pad = { l: 16, r: 16, t: 24, b: 40 };
+const minV = -invest;
+const maxV = perMonth * months - invest;
+const x = (m: number) => pad.l + (m / months) * (w - pad.l - pad.r);
+const y = (v: number) => pad.t + (1 - (v - minV) / (maxV - minV)) * (h - pad.t - pad.b);
+const points = Array.from({ length: months + 1 }, (_, m) => `${x(m).toFixed(1)},${y(m * perMonth - invest).toFixed(1)}`);
+const line = `M${points.join(' L')}`;
+const area = `${line} L${x(months)},${y(minV)} L${x(0)},${y(minV)} Z`;
+const be = invest / perMonth;
+const fmt = (n: number) => n.toLocaleString('de-DE');
+---
+
+<figure class="hero-visual roi-chart">
+	<div class="roi-chart-head">
+		<p class="price-label">Beispielrechnung</p>
+		<p class="roi-chart-value">+{fmt(maxV)} €</p>
+		<p class="roi-chart-sub">Mehrgewinn nach 3 Jahren bei {fmt(invest)} € Investition</p>
+	</div>
+	<svg viewBox={`0 0 ${w} ${h}`} role="img" aria-labelledby="roi-chart-title">
+		<title id="roi-chart-title">
+			Beispiel: Eine Website für {fmt(invest)} € hat sich bei {fmt(perMonth)} € Mehrgewinn pro Monat nach {be} Monaten
+			bezahlt gemacht.
+		</title>
+		<defs>
+			<linearGradient id="rc-fill" x1="0" x2="0" y1="0" y2="1">
+				<stop offset="0" stop-color="#9644d2" stop-opacity="0.45"></stop>
+				<stop offset="1" stop-color="#9644d2" stop-opacity="0"></stop>
+			</linearGradient>
+			<linearGradient id="rc-line" x1="0" x2="1">
+				<stop offset="0" stop-color="#7b35c9"></stop>
+				<stop offset="1" stop-color="#d9c2ff"></stop>
+			</linearGradient>
+		</defs>
+		{[0, 12, 24, 36].map((m) => <line x1={x(m)} x2={x(m)} y1={pad.t} y2={h - pad.b} class="rc-grid"></line>)}
+		<line x1={pad.l} x2={w - pad.r} y1={y(0)} y2={y(0)} class="rc-zero"></line>
+		<path d={area} fill="url(#rc-fill)"></path>
+		<path d={line} class="rc-line" pathLength="1"></path>
+		<circle cx={x(be)} cy={y(0)} r="7" class="rc-be"></circle>
+		<text x={x(be) + 14} y={y(0) + 24} class="rc-label">Bezahlt nach {be} Monaten</text>
+		{[0, 12, 24, 36].map((m) => (
+			<text x={x(m)} y={h - 14} text-anchor={m === 0 ? 'start' : m === 36 ? 'end' : 'middle'} class="rc-axis">
+				{m === 0 ? 'Start' : `${m / 12}. Jahr`}
+			</text>
+		))}
+	</svg>
+	<figcaption>Annahme: 1.000 € Gewinn pro Monat durch neue Aufträge. Keine Zusage – rechne unten mit deinen Zahlen.</figcaption>
+</figure>
