@@ -4,6 +4,9 @@
 # www → Apex und HTTP → HTTPS gehören ins Cloudflare-Dashboard
 # (Domain-Redirects unterstützt diese Datei nicht).
 
+# Search Console: Pages entfernt .html per 308. 200 liefert die Datei an der exakten URL.
+/googlef70d7bc56918aef5.html /googlef70d7bc56918aef5 200
+
 # Startseiten-Aliase (WP-Startseite hatte Slug /home/)
 /home / 301
 /home/ / 301
