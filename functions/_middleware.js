@@ -19,6 +19,7 @@ export async function onRequest(context) {
 
 	if (parsed.pathname === '/404' || parsed.pathname === '/404/') {
 		const response = await context.next();
+		if (response.status >= 300 && response.status < 400) return response;
 		const headers = new Headers(response.headers);
 		headers.set('X-Robots-Tag', 'noindex, follow');
 		return new Response(response.body, { status: 404, headers });
