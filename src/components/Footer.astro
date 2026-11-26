@@ -5,13 +5,14 @@ import { site } from '../data/site';
 <footer class="site-footer">
 	<div class="wrap footer-grid">
 		<div>
-			<h2>Leistungen</h2>
+			<p class="footer-label">Leistungen</p>
 			<a href="/leistungen/">Alle Leistungen</a>
 			<a href="/leistungen/webdesign/">Webdesign</a>
 			<a href="/leistungen/webentwicklung/">Webentwicklung</a>
+			<a href="/webdesign-gelnhausen/">Webdesign Gelnhausen</a>
 		</div>
 		<div>
-			<h2>9to6</h2>
+			<p class="footer-label">9to6</p>
 			<a href="/referenzen/">Referenzen</a>
 			<a href="/blog/">Blog</a>
 			<a href="/kontakt/">Kontakt</a>
@@ -23,7 +24,13 @@ import { site } from '../data/site';
 				<img src="/logos/wordmark-white.svg" width="72" height="42" alt="9to6" />
 			</a>
 			<p>{site.positioning}</p>
+			<p class="footer-nap">
+				9to6<br />
+				{site.address.street}<br />
+				{site.address.zip} {site.address.city}<br />
+				<a href={`mailto:${site.email}`}>{site.email}</a>
+			</p>
 		</div>
 	</div>
-	<p class="footer-copy">© 2019-2026 · 9to6 · Webdesign und Webentwicklung, Frankfurt / Rhein-Main</p>
+	<p class="footer-copy">© 2019-2026 · 9to6 · Webdesign aus Gelnhausen für Frankfurt und Umgebung</p>
 </footer>

@@ -1,8 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
-import CtaPhone from '../../components/CtaPhone.astro';
+import Picture from '../../components/Picture.astro';
 import Related from '../../components/Related.astro';
+import { images } from '../../data/images';
 import { cases } from '../../data/site';
 import { caseRelated } from '../../data/related';
 
@@ -14,6 +15,7 @@ export function getStaticPaths() {
 }
 
 const { project } = Astro.props;
+const og = images[project.imageName];
 const index = cases.findIndex((item) => item.slug === project.slug);
 const prev = index > 0 ? cases[index - 1] : cases[cases.length - 1];
 const next = index < cases.length - 1 ? cases[index + 1] : cases[0];
@@ -21,11 +23,13 @@ const links = caseRelated[project.slug] ?? [];
 ---
 
 <BaseLayout
-	title={`${project.name} | Referenzen | 9to6`}
-	description={project.summary}
+	title={project.seoTitle}
+	description={project.seoDescription}
 	schema="project"
 	ogImagePath={project.image}
 	ogImageAlt={project.imageAlt}
+	ogImageWidth={og.ogWidth}
+	ogImageHeight={og.ogHeight}
 	work={{
 		name: project.name,
 		description: project.summary,
@@ -42,7 +46,7 @@ const links = caseRelated[project.slug] ?? [];
 	<section class="page-hero project-hero">
 		<div class="wrap">
 			<p class="article-meta">{project.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {project.place}</p>
-			<h1>{project.name}</h1>
+			<h1>{project.kind === 'client' ? project.name : `${project.name}, eigenes Produkt`}</h1>
 			<p class="sub">{project.role}</p>
 		</div>
 	</section>
@@ -51,13 +55,22 @@ const links = caseRelated[project.slug] ?? [];
 		<div class="wrap-wide split">
 			<div class="media">
 				<div class="shot">
-					<img class="shot-img" src={project.image} alt={project.imageAlt} width="1280" height="800" />
+					<Picture
+						name={project.imageName}
+						alt={project.imageAlt}
+						class="shot-img"
+						sizes="(min-width: 900px) 560px, 92vw"
+						width={1280}
+						height={800}
+						loading="eager"
+					/>
 				</div>
 			</div>
 			<div>
 				<p class="kicker">{project.stack}</p>
-				<h2>Der Auftritt</h2>
-				<p class="body">{project.summary}</p>
+				<h2>{project.kind === 'client' ? 'Ausgangslage und Ergebnis' : 'Eigenes Produkt'}</h2>
+				{project.story.map((paragraph) => <p class="body">{paragraph}</p>)}
+				<p class="body">{project.result}</p>
 				<ul class="icon-list">
 					{project.points.map((point) => (
 						<li>{point}</li>
@@ -91,9 +104,8 @@ const links = caseRelated[project.slug] ?? [];
 		</div>
 	</nav>
 
-	<CtaPhone
-		heading="Erstgespräch zum Webauftritt"
-		text="Du hast ein Live-Beispiel gesehen. In 30 Minuten klären wir den nächsten Schritt für deinen Auftritt. Kostenlos."
+	<CtaDark
+		title={project.kind === 'client' ? 'Ähnliches für deinen Betrieb?' : 'Produkt oder Plattform geplant?'}
+		text="Termin oder kurze E-Mail mit Projektart, Budget und Zeitraum. Eddie antwortet selbst."
 	/>
-	<CtaDark />
 </BaseLayout>

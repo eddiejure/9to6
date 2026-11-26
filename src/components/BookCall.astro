@@ -1,4 +1,5 @@
 ---
+import Picture from './Picture.astro';
 import { site } from '../data/site';
 
 type Props = {
@@ -14,9 +15,9 @@ const {
 	variant = 'calendar',
 	kicker = 'Kostenloses Erstgespräch',
 	heading = '30 Minuten. Unverbindlich.',
-	text = 'Wir klären, was dein Webauftritt braucht und wie es weitergeht.',
+	text = 'Termin im Kalender, oder eine E-Mail mit Projektart, Budget und Zeitraum.',
 	cta = 'Termin wählen',
-	href = '/kontakt/',
+	href = '/kontakt/#kalender',
 } = Astro.props;
 
 const photoAlt = `${site.person.public}, ${site.person.role} bei ${site.name}`;
@@ -25,18 +26,24 @@ const photoAlt = `${site.person.public}, ${site.person.role} bei ${site.name}`;
 {
 	variant === 'card' ? (
 		<div class="glass book-card">
-			<img
+			<Picture
 				class="book-card-photo"
-				src="/images/eddie.webp"
-				width="144"
-				height="144"
+				name="eddie"
+				width="840"
+				height="840"
+				sizes="144px"
 				alt={photoAlt}
+				loading="eager"
+				fetchpriority="high"
 			/>
 			<p class="glass-kicker">{kicker}</p>
 			<h2 class="form-heading">{heading}</h2>
 			<p>{text}</p>
 			<a class="btn btn-block" href={href}>
 				{cta}
+			</a>
+			<a class="btn btn-block btn-line" href="/kontakt/#anfrage">
+				Kurz schreiben
 			</a>
 		</div>
 	) : (

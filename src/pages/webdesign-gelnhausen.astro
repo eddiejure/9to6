@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaDark from '../components/CtaDark.astro';
+import LeadActions from '../components/LeadActions.astro';
+import Picture from '../components/Picture.astro';
+import ProcessBrief from '../components/ProcessBrief.astro';
+import FaqSection from '../components/FaqSection.astro';
+import { clientCases, site } from '../data/site';
+
+const faqs = [
+	{
+		q: 'Arbeitet 9to6 nur in Gelnhausen?',
+		a: 'Der Sitz ist die Rhönstraße 95 in Gelnhausen. Der Kern der Arbeit ist Gelnhausen und der Main-Kinzig-Kreis. Frankfurt, Hanau und Offenbach gehören zur weiteren Umgebung. Ein zweites Büro gibt es nicht.',
+	},
+	{
+		q: 'Wie läuft ein Projekt in Hanau, Offenbach oder Frankfurt?',
+		a: 'Zuerst ein Termin oder eine E-Mail mit Projektart, Budget und Zeitraum. Das Gespräch ist per Video, der Termin steht im Kalender. Vor Ort treffen wir uns, wenn es dem Projekt hilft, zum Beispiel bei einem Betrieb, dessen Auftritt auf der Baustelle und im Netz zusammenpassen muss.',
+	},
+	{
+		q: 'Was kostet eine Website für einen Betrieb im Main-Kinzig-Kreis?',
+		a: 'Eine Preisliste steht hier nicht. Umfang, Seiten und ob ein Relaunch mitzieht, ändern den Rahmen. Im Gespräch wird daraus ein Angebot, bevor etwas gebaut wird.',
+	},
+];
+---
+
+<BaseLayout
+	title="Webdesign Gelnhausen und Main-Kinzig-Kreis | 9to6"
+	description="Sitz in Gelnhausen. Websites für Betriebe im Main-Kinzig-Kreis und in Frankfurt, Hanau, Offenbach. Termin oder E-Mail an Eddie."
+	schema="service"
+	serviceName="Webdesign in Gelnhausen und im Main-Kinzig-Kreis"
+	faqs={faqs}
+	ogImagePath="/images/ref-oberlerchner-og.jpg"
+	ogImageAlt="Website von Holzbau Oberlerchner, Kundenprojekt in Gelnhausen"
+	ogImageWidth={1200}
+	ogImageHeight={750}
+	breadcrumbs={[
+		{ name: 'Leistungen', href: '/leistungen/' },
+		{ name: 'Webdesign Gelnhausen', href: '/webdesign-gelnhausen/' },
+	]}
+>
+	<section class="page-hero center">
+		<div class="wrap">
+			<h1>Webdesign in Gelnhausen und im Main-Kinzig-Kreis</h1>
+			<p class="sub">
+				Ein Sitz in der {site.address.street}, {site.address.zip} {site.address.city}. Projekte für Betriebe hier und
+				in Frankfurt, Hanau und Offenbach.
+			</p>
+			<LeadActions align="center" />
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2>Für wen diese Seite gedacht ist</h2>
+			<p class="body">
+				Für Handwerk, Studios und lokale Dienstleister, die eine Website brauchen, die ihr Gebiet nennt und eine
+				Anfrage möglich macht. In Gelnhausen und im Main-Kinzig-Kreis ist das oft ein Betrieb, den man auf der
+				Baustelle und in der Suche wiedererkennen soll. In Frankfurt, Hanau und Offenbach ist es derselbe Anspruch,
+				nur mit einem weiteren Einzugsgebiet.
+			</p>
+			<p class="body">
+				9to6 baut dafür keine eigene dünne Seite pro Stadt. Hanau und Offenbach stehen hier, weil die Zusammenarbeit
+				dorthin reicht und die Suche sie mit Frankfurt und dem Kreis zusammen nennt. Der Beleg bleibt ein live
+				Projekt, kein Textbaustein mit ausgetauschtem Ortsnamen.
+			</p>
+			<p class="body">
+				Den Leistungsrahmen dazu findest du unter <a href="/leistungen/webdesign/">Webdesign</a> und
+				<a href="/leistungen/webentwicklung/">Webentwicklung</a>.
+			</p>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
+			<div class="media">
+				<Picture
+					name="ref-oberlerchner"
+					alt="Startseite von Holzbau Oberlerchner, Zimmerei in Gelnhausen"
+					class="shot-img"
+					sizes="(min-width: 900px) 560px, 92vw"
+					width={1280}
+					height={800}
+				/>
+			</div>
+			<div>
+				<h2>Was ein lokaler Auftritt tragen muss</h2>
+				<p class="body">
+					Die Leistung in der ersten Ansicht. Das Gebiet, in dem du arbeitest, in derselben Ansicht. Ein Weg zur
+					Nachricht oder zum Termin, der auf dem Handy zwischen zwei Einsätzen erreichbar ist. Bilder, die nicht
+					größer sind als die Fläche, in der sie stehen. Eine alte Adresse, die auf die neue Seite weiterleitet,
+					wenn du schon einmal online warst.
+				</p>
+				<p class="body">
+					<a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a> in Gelnhausen zeigt das an einem
+					Holzbaubetrieb: Logo, Print und Website aus einer Linie, Leistungen sortiert, auf dem Smartphone lesbar.
+					<a href="/referenzen/de-elixier/">D&E Elixier</a> zeigt dasselbe Muster in Frankfurt-Sachsenhausen, für ein
+					Kosmetikinstitut, bei dem Behandlung und Terminweg vorn stehen.
+				</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap">
+			<h2 class="center">Zwei Kundenprojekte, zwei Orte</h2>
+			<div class="cards" style="margin-top:36px">
+				{
+					clientCases.map((item) => (
+						<a class="card" href={`/referenzen/${item.slug}/`}>
+							<div class="card-body">
+								<div class="meta">{item.place}</div>
+								<h3>{item.name}</h3>
+								<p>{item.result}</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+			<p class="intro center" style="margin-top:28px">
+				sim.do und Simtasy sind eigene Produkte von Eddie und kein Nachweis für einen Auftrag in der Region. Sie stehen
+				unter <a href="/referenzen/#eigene-produkte">Referenzen</a> in einer eigenen Gruppe.
+			</p>
+		</div>
+	</section>
+
+	<ProcessBrief
+		heading="So läuft ein Projekt aus Gelnhausen"
+		intro="Gespräch, Rahmen, Launch. Der Ansprechpartner bleibt Eddie."
+	/>
+
+	<section class="section">
+		<div class="wrap">
+			<h2>Frankfurt, Hanau, Offenbach</h2>
+			<p class="body">
+				Frankfurt ist die Stadt, in der viele Betriebe aus dem Kreis mitmischen, und der Ort des Elixier-Projekts in
+				Sachsenhausen. Hanau und Offenbach liegen dazwischen. Wer dort einen Betrieb führt, bekommt dieselbe Arbeit
+				wie in Gelnhausen: eine Seite, die Leistung und Gebiet sagt, und einen kurzen Weg zur Anfrage.
+			</p>
+			<p class="body">
+				Wenn du wissen willst, warum eine vorhandene Seite trotzdem leer bleibt, liegt das unter
+				<a href="/blog/warum-deine-website-keine-kunden-bringt/">Warum deine Website keine Kunden bringt</a>.
+				Zum Tempo: <a href="/blog/core-web-vitals-und-google-ranking/">Ladezeit und lokale Sichtbarkeit</a>.
+			</p>
+		</div>
+	</section>
+
+	<FaqSection items={faqs} intro="Sitz, Umgebung und warum hier keine Preisliste steht." />
+	<CtaDark
+		title="Projekt aus der Umgebung?"
+		text="Termin oder E-Mail mit Projektart, Budget und Zeitraum. Sitz Gelnhausen, Antwort von Eddie."
+	/>
+</BaseLayout>

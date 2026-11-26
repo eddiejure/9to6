@@ -1,0 +1,31 @@
+---
+import { briefSteps } from '../data/site';
+
+type Props = {
+	heading?: string;
+	intro?: string;
+};
+
+const {
+	heading = 'Drei Schritte bis zur live Seite',
+	intro = 'Gespräch, Rahmen, Launch. Eddie bleibt der Ansprechpartner.',
+} = Astro.props;
+---
+
+<section class="section">
+	<div class="wrap">
+		<h2 class="center">{heading}</h2>
+		<p class="intro center">{intro}</p>
+		<div class="steps">
+			{
+				briefSteps.map((step, index) => (
+					<article>
+						<p class="kicker">0{index + 1}</p>
+						<h3>{step.title}</h3>
+						<p>{step.text}</p>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>

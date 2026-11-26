@@ -1,6 +1,6 @@
 # 9to6
 
-> Agentur für Webdesign und Webentwicklung in Frankfurt / Rhein-Main. Sitz: Gelnhausen (Rhönstraße 95, 63571). Full-Service für den Webauftritt, Kernkompetenz Design und Entwicklung. Websites, die neue Kunden anziehen und messbar Anfragen generieren.
+> Webdesign und Webentwicklung aus Gelnhausen (Rhönstraße 95, 63571). Kern: Main-Kinzig-Kreis. Weitere Umgebung: Frankfurt, Hanau, Offenbach. Anfragen über Termin (Cal.com) oder E-Mail an info@9to6.de.
 
 9to6 baut Websites, die schnell laden, klar erzählen und Anfragen bringen. Kein Theme von der Stange. Full-Service-Rahmen (Konzept, Text, Launch, Hosting, Relaunch). Der Kern, an dem 9to6 gemessen wird, ist Design und Entwicklung: die Seite, die live im Netz steht.
 
@@ -10,7 +10,7 @@
 - Art: ProfessionalService / LocalBusiness (Webdesign, Webentwicklung)
 - Gründer: Edvinas Jurevicius (öffentlich Eddie J.)
 - Sitz: Rhönstraße 95, 63571 Gelnhausen, Hessen, Deutschland
-- Markt: Frankfurt am Main, Rhein-Main, Hessen, Deutschland und remote
+- Markt: Gelnhausen und Main-Kinzig-Kreis, dazu Frankfurt, Hanau, Offenbach, Rhein-Main
 - E-Mail: info@9to6.de
 - Telefon: +49 175 4045558
 - Termin: https://cal.com/eddiejure/30min
@@ -31,8 +31,9 @@
 
 - Holzbau Oberlerchner (oberlerchner.de): Konzept, Logo, Print und lokal SEO-optimierte Website (/referenzen/holzbau-oberlerchner/, Kundenprojekt)
 - D&E Elixier (de-elixier.de): Website für Kosmetikinstitut in Frankfurt-Sachsenhausen (/referenzen/de-elixier/, Kundenprojekt)
-- sim.do: eSIM für Reisen, Gründerprodukt von Edvinas Jurevicius (/referenzen/sim-do/)
-- Simtasy (simtasy.com): B2B-Wholesale-Plattform für eSIM-Reseller (/referenzen/simtasy/)
+- sim.do: eigenes Produkt, keine Kundenarbeit (/referenzen/sim-do/)
+- Simtasy (simtasy.com): eigenes B2B-Produkt, keine Kundenarbeit (/referenzen/simtasy/)
+- Gebiet: /webdesign-gelnhausen/
 
 ## Blog
 

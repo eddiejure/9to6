@@ -1,3 +1,12 @@
+precision mediump float;
+
+attribute vec3 position;
+attribute vec3 normal;
+
+uniform mat4 modelMatrix;
+uniform mat4 viewMatrix;
+uniform mat4 projectionMatrix;
+uniform mat3 normalMatrix;
 uniform float uTime;
 uniform float uDistort;
 uniform float uHover;

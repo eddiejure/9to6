@@ -2,21 +2,34 @@ export const site = {
 	name: '9to6',
 	url: 'https://9to6.de',
 	phoneDisplay: '0175 404 5558',
-	phoneHref: 'tel:+491754045558',
 	email: 'info@9to6.de',
 	calUrl: 'https://cal.com/eddiejure/30min',
-	calLabel: '30 Minuten Call buchen',
+	calLabel: '30 Minuten Termin buchen',
 	description:
-		'9to6 ist Full-Service für den Webauftritt in Frankfurt / Rhein-Main. Kernkompetenz: Webdesign und Webentwicklung, Websites, die Anfragen bringen.',
-	tagline: 'Moderne Websites, die neue Kunden anziehen und messbar Anfragen generieren.',
+		'Webdesign und Webentwicklung aus Gelnhausen für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.',
+	tagline: 'Websites, die in Gelnhausen und Frankfurt Anfragen bringen.',
 	positioning:
-		'Full-Service für den Webauftritt: Konzept, Text, Design, Entwicklung, Launch und Hosting. Der Kern, an dem wir gemessen werden, ist Design und Entwicklung: die Seite, die live im Netz steht.',
+		'Full-Service für den Webauftritt: Konzept, Text, Design, Entwicklung, Launch und Hosting. Der Kern ist die Seite, die live steht und Anfragen bringt.',
 	address: {
 		street: 'Rhönstraße 95',
 		zip: '63571',
 		city: 'Gelnhausen',
-		region: 'Frankfurt / Rhein-Main',
+		region: 'Gelnhausen, Main-Kinzig-Kreis, Frankfurt und Umgebung',
 	},
+	geo: {
+		latitude: 50.1765139,
+		longitude: 9.1461715,
+	},
+	areaServed: [
+		'Gelnhausen',
+		'Main-Kinzig-Kreis',
+		'Hanau',
+		'Offenbach',
+		'Frankfurt am Main',
+		'Rhein-Main',
+		'Hessen',
+		'Deutschland',
+	],
 	person: {
 		legal: 'Edvinas Jurevicius',
 		public: 'Eddie J.',
@@ -62,15 +75,21 @@ export const services = [
 export type CaseStudy = {
 	slug: string;
 	name: string;
+	kind: 'client' | 'product';
 	url: string;
 	urlLabel: string;
 	place: string;
 	stack: string;
 	role: string;
+	imageName: 'ref-oberlerchner' | 'ref-elixier' | 'ref-simdo' | 'ref-simtasy';
 	image: string;
 	imageAlt: string;
 	summary: string;
+	result: string;
+	story: string[];
 	points: string[];
+	seoTitle: string;
+	seoDescription: string;
 	founder?: boolean;
 };
 
@@ -78,78 +97,127 @@ export const cases: CaseStudy[] = [
 	{
 		slug: 'holzbau-oberlerchner',
 		name: 'Holzbau Oberlerchner',
+		kind: 'client',
 		url: 'https://oberlerchner.de',
 		urlLabel: 'oberlerchner.de',
 		place: 'Gelnhausen, Main-Kinzig-Kreis',
-		stack: 'Lokale SEO, schnelle Ladezeit',
+		stack: 'Lokale Auffindbarkeit, schnelle Ladezeit',
 		role: 'Konzept, Print und Website für Zimmerei und Holzbau',
-		image: '/images/ref-oberlerchner.png',
+		imageName: 'ref-oberlerchner',
+		image: '/images/ref-oberlerchner-og.jpg',
 		imageAlt: 'Startseite von Holzbau Oberlerchner, Zimmerei in Gelnhausen',
 		summary:
-			'Kompletter Auftritt für den Holzbaubetrieb in Gelnhausen: Konzept, Logo, Visitenkarten, Baubanner, Wellschaumstoff-Tafeln und Website. Dachbau, konstruktiver Holzbau, Terrassen und Carports, klar sortiert und lokal für die Suche in der Region optimiert.',
-		points: [
-			'Konzept und Logo, die den Betrieb auf der Baustelle und im Netz gleich erkennbar machen',
-			'Visitenkarten, Baubanner und Wellschaumstoff-Tafeln aus einer Linie',
-			'Website mit lokaler SEO, schnell und auf dem Smartphone auf der Baustelle lesbar',
+			'Auftritt für den Holzbaubetrieb in Gelnhausen: Konzept, Logo, Visitenkarten, Baubanner, Tafeln und Website. Leistungen klar sortiert, auf dem Handy auf der Baustelle lesbar.',
+		result:
+			'Leistungen, Gebiet und Kontakt stehen auf einer schnellen Seite. Wer im Main-Kinzig-Kreis einen Holzbaubetrieb sucht, sieht das Angebot, bevor er weiterklickt.',
+		story: [
+			'Ausgangslage: Der Betrieb brauchte eine Linie, die auf der Baustelle und im Netz dieselbe ist. Visitenkarte, Banner und Website sollten zusammengehören. Dachbau, konstruktiver Holzbau, Terrassen und Carports mussten so sortiert sein, dass jemand aus Gelnhausen und dem Main-Kinzig-Kreis sie ohne Umweg findet.',
+			'Live gegangen sind Konzept und Logo, Visitenkarten, Baubanner, Wellschaumstoff-Tafeln und die Website oberlerchner.de. Die Seite nennt Leistungen und Einzugsgebiet in der ersten Ansicht und bleibt auf dem Smartphone lesbar.',
+			'Für den Betrieb heißt das: ein Auftritt, den man auf der Baustelle in der Hand hat und den die Suche in der Umgebung einer klaren Seite zuordnen kann. Zahlen aus fremden Konten veröffentlichen wir nicht. Sichtbar ist der live Auftritt.',
 		],
+		points: [
+			'Konzept und Logo, auf der Baustelle und im Netz wiedererkennbar',
+			'Visitenkarten, Baubanner und Tafeln aus derselben Linie',
+			'Website für Gelnhausen und den Main-Kinzig-Kreis, schnell auf dem Handy',
+		],
+		seoTitle: 'Website für Holzbau in Gelnhausen | 9to6',
+		seoDescription:
+			'Website, Logo und Print für die Zimmerei Oberlerchner in Gelnhausen. Schnell auf dem Handy, klar für den Main-Kinzig-Kreis.',
 	},
 	{
 		slug: 'de-elixier',
 		name: 'D&E Elixier',
+		kind: 'client',
 		url: 'https://www.de-elixier.de',
 		urlLabel: 'de-elixier.de',
 		place: 'Frankfurt-Sachsenhausen',
 		stack: 'Webdesign und Relaunch',
 		role: 'Website für Kosmetikinstitut',
-		image: '/images/ref-elixier.png',
-		imageAlt: 'Startseite von D&E Elixier, Kosmetikinstitut in Frankfurt',
+		imageName: 'ref-elixier',
+		image: '/images/ref-elixier-og.jpg',
+		imageAlt: 'Startseite von D&E Elixier, Kosmetikinstitut in Frankfurt-Sachsenhausen',
 		summary:
 			'Website für das Kosmetikinstitut in Frankfurt-Sachsenhausen. Behandlungen, Terminweg und Standort so erzählt, dass aus Interesse ein Besuch wird.',
-		points: [
-			'Ruhiges, pflegendes Design statt Stock-Look',
-			'Leistungen und Buchung in wenigen Schritten erreichbar',
-			'Lokal auffindbar für Gesichtsbehandlungen und Fußpflege in Frankfurt',
+		result:
+			'Behandlungen und der Weg zum Termin sind in wenigen Schritten da. Der Auftritt wirkt nach dem Institut in Sachsenhausen, nicht nach einer Vorlage.',
+		story: [
+			'Ausgangslage: Das Kosmetikinstitut in Frankfurt-Sachsenhausen brauchte eine Website, die Behandlungen, Atmosphäre und den Weg zum Termin ruhig erklärt. Ein austauschbarer Look hätte dem Ort nicht entsprochen.',
+			'Live ist der Relaunch von de-elixier.de. Leistungen, Standort und Buchungsweg sitzen vorn. Gesichtsbehandlungen und Fußpflege sind auffindbar für Menschen, die in Frankfurt und der näheren Umgebung suchen.',
+			'Für das Institut heißt das: aus Interesse wird ein nachvollziehbarer nächster Schritt, auf dem Telefon genauso wie am Schreibtisch. Der Beweis ist die erreichbare Seite, kein versprochenes Prozent aus einer anderen Branche.',
 		],
+		points: [
+			'Ruhiges Erscheinungsbild, das zum Institut passt',
+			'Leistungen und Terminweg in wenigen Schritten',
+			'Auffindbar für Behandlungen in Frankfurt-Sachsenhausen',
+		],
+		seoTitle: 'Webdesign für Kosmetik in Frankfurt | 9to6',
+		seoDescription:
+			'Website für D&E Elixier in Frankfurt-Sachsenhausen. Behandlungen und Terminweg klar, Erscheinungsbild passend zum Institut.',
 	},
 	{
 		slug: 'sim-do',
 		name: 'sim.do',
+		kind: 'product',
 		url: 'https://sim.do',
 		urlLabel: 'sim.do',
-		place: 'International, aus Deutschland',
-		stack: 'Produktmarke, Web und Conversion',
+		place: 'aus Deutschland',
+		stack: 'Produktmarke, Web und Kaufweg',
 		role: 'eSIM für Reisen in 200+ Destinationen',
-		image: '/images/ref-simdo.png',
+		imageName: 'ref-simdo',
+		image: '/images/ref-simdo-og.jpg',
 		imageAlt: 'Startseite von sim.do mit eSIM-Datentarifen für Reisen',
 		summary:
-			'sim.do ist die eSIM-Marke von Edvinas Jurevicius (Gründer seit Oktober 2025). Günstige Datentarife, Sofortaktivierung, ohne Plastikkarte. Design, Web und Marke aus einer Hand.',
-		points: [
-			'Produktseite, die Tarife suchbar und kaufbar macht',
-			'Klare Aktivierungsstrecke für Reisende',
-			'Marke und Website zusammen gedacht, nicht nachträglich verkleidet',
+			'sim.do ist die eSIM-Marke von Edvinas Jurevicius, gestartet im Oktober 2025. Eigenes Produkt, kein Kundenauftrag. Tarife, Aktivierung und Marke aus einer Hand.',
+		result:
+			'Die Seite macht Tarife suchbar und die Aktivierung kurz. Sie ist ein Beleg für Produktbau, nicht für einen Auftrag aus Gelnhausen oder Frankfurt.',
+		story: [
+			'sim.do gehört Eddie. Es ist kein Kundenprojekt und taucht deshalb nicht in der Reihe der Aufträge auf. Die Marke verkauft eSIM-Datentarife für Reisen, mit Aktivierung ohne Plastikkarte.',
+			'An der Seite sieht man, wie eine Produktstrecke suchbar und kaufbar wird: Tarife, Ziel und der nächste Schritt stehen vorn. Dieselbe Sorgfalt gilt für Kundenaufträge, der Beweis für Handwerk und Studios bleibt Oberlerchner und Elixier.',
 		],
+		points: [
+			'Eigenes Produkt von Edvinas Jurevicius, seit Oktober 2025',
+			'Tarife suchbar, Aktivierung in einer kurzen Strecke',
+			'Marke und Website zusammen geplant',
+		],
+		seoTitle: 'sim.do, eigenes Produkt von 9to6',
+		seoDescription:
+			'Eigenes Produkt von Eddie, kein Kundenauftrag. eSIM-Seite mit suchbaren Tarifen und kurzer Aktivierung.',
 		founder: true,
 	},
 	{
 		slug: 'simtasy',
 		name: 'Simtasy',
+		kind: 'product',
 		url: 'https://simtasy.com',
 		urlLabel: 'simtasy.com',
 		place: 'B2B, weltweit',
 		stack: 'B2B-Produktplattform',
 		role: 'Wholesale-Plattform für eSIM-Reseller',
-		image: '/images/ref-simtasy.png',
+		imageName: 'ref-simtasy',
+		image: '/images/ref-simtasy-og.jpg',
 		imageAlt: 'Startseite von Simtasy, B2B-Plattform für eSIM-Wholesale',
 		summary:
-			'B2B-Plattform für Reisebüros, Entwickler und eSIM-Marken: Katalog, Preise, Wallet, API und White-Label-Shops. Ein Produktauftritt, der Technik und Vertrieb gleichermaßen ernst nimmt.',
-		points: [
-			'Produktstory für Wholesale, API und White-Label',
-			'Dashboard-Logik in der Kommunikation sichtbar, ohne das Interface zu kopieren',
-			'Englischsprachiger B2B-Ton, technische Glaubwürdigkeit',
+			'Simtasy ist die eigene B2B-Plattform von Eddie für Reisebüros, Entwickler und eSIM-Marken. Kein Kundenauftrag. Katalog, Wallet, API und White-Label.',
+		result:
+			'Die Seite erklärt Wholesale, API und White-Label in einem technischen Ton. Sie zeigt Produktbau, nicht eine Kundenreferenz aus der Region.',
+		story: [
+			'Simtasy ist das B2B-Gegenstück zu sim.do und ebenfalls ein eigenes Produkt. Katalog, Preise, Wallet, API und White-Label-Shops richten sich an Reseller, nicht an einen lokalen Betrieb.',
+			'Wer eine Plattform oder eine Produktstrecke plant, sieht hier den Maßstab. Wer eine Website für Handwerk oder ein Studio sucht, schaut bei Oberlerchner und Elixier nach. Beides entsteht im selben Prozess, es ist nicht derselbe Nachweis.',
 		],
+		points: [
+			'Eigenes Produkt, kein Kundenauftrag',
+			'Story für Wholesale, API und White-Label',
+			'Technischer Ton, der zu einem B2B-Publikum passt',
+		],
+		seoTitle: 'Simtasy, eigene B2B-Plattform von 9to6',
+		seoDescription:
+			'Eigenes B2B-Produkt von Eddie, kein Kundenauftrag. Wholesale, API und White-Label für eSIM-Reseller.',
 		founder: true,
 	},
 ];
+
+export const clientCases = cases.filter((item) => item.kind === 'client');
+export const productCases = cases.filter((item) => item.kind === 'product');
 
 export const faqs = [
 	{
@@ -219,7 +287,7 @@ export const serviceFaqs = {
 		},
 		{
 			q: 'Für wen sind die Leistungen gedacht?',
-			a: 'Für Handwerk, Studios, Produktmarken und Teams, die eine Website als Arbeitsmittel brauchen. Sitz in Gelnhausen, Arbeit in Frankfurt, Rhein-Main und darüber hinaus. Einen Eindruck geben die [Referenzen](/referenzen/).',
+			a: 'Für Handwerk, Studios und lokale Betriebe. Sitz in Gelnhausen, Projekte im Main-Kinzig-Kreis und in Frankfurt, Hanau und Offenbach. Einen Eindruck geben [Holzbau Oberlerchner](/referenzen/holzbau-oberlerchner/) und [D&E Elixier](/referenzen/de-elixier/).',
 		},
 		{
 			q: 'Wie lange dauert ein Projekt?',
@@ -251,7 +319,7 @@ export const serviceFaqs = {
 	webentwicklung: [
 		{
 			q: 'Welche Technik setzt ihr ein?',
-			a: 'Schlanke, moderne Webtechnik, die im Hintergrund bleibt. Für dich zählt das Ergebnis: kurze Ladezeiten, Formulare, die ankommen, Seiten, die in der Suche bestehen. Den Stack wählen wir nach Aufgabe, nicht nach Trend.',
+			a: 'Schlanke, moderne Webtechnik, die im Hintergrund bleibt. Für dich zählt das Ergebnis: kurze Ladezeiten, ein Anfrageweg, der ankommt, Seiten, die in der Suche bestehen. Den Stack wählen wir nach Aufgabe, nicht nach Trend.',
 		},
 		{
 			q: 'Baut ihr noch mit WordPress?',
@@ -268,6 +336,21 @@ export const serviceFaqs = {
 	],
 } as const;
 
+export const briefSteps = [
+	{
+		title: 'Gespräch',
+		text: 'Ziel, Projektart und was schon online ist. 30 Minuten, du sprichst mit Eddie. Termin im Kalender oder eine kurze E-Mail.',
+	},
+	{
+		title: 'Rahmen',
+		text: 'Umfang, Budget und Zeitraum, bevor etwas gebaut wird. Danach ein Angebot. Auf der Website steht keine Preisliste.',
+	},
+	{
+		title: 'Launch',
+		text: 'Seite live, alte Adressen leiten um, Feinschliff nach den ersten echten Anfragen.',
+	},
+] as const;
+
 export const processSteps = [
 	{
 		title: 'Gespräch',
@@ -283,7 +366,7 @@ export const processSteps = [
 	},
 	{
 		title: 'Entwicklung',
-		text: 'Tempo, Formulare, mobile Bedienung, Metadaten. Design landet in der live Website, nicht in einer weggeworfenen Datei.',
+		text: 'Tempo, Anfrageweg, mobile Bedienung, Metadaten. Design landet in der live Website, nicht in einer weggeworfenen Datei.',
 	},
 	{
 		title: 'Launch',

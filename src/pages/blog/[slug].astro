@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
+import LeadActions from '../../components/LeadActions.astro';
 import Related from '../../components/Related.astro';
 import { posts } from '../../data/blog';
 import { postRelated } from '../../data/related';
@@ -23,7 +24,7 @@ const others = posts.filter((item) => item.slug !== post.slug);
 	description={post.description}
 	schema="article"
 	datePublished={post.date}
-	dateModified={post.date}
+	dateModified={post.dateModified}
 	breadcrumbs={[
 		{ name: 'Blog', href: '/blog/' },
 		{ name: post.title, href: `/blog/${post.slug}/` },
@@ -31,9 +32,10 @@ const others = posts.filter((item) => item.slug !== post.slug);
 >
 	<section class="page-hero article-hero">
 		<div class="wrap">
-			<p class="article-meta">{post.dateLabel}</p>
+			<p class="article-meta">{post.dateLabel} · Aktualisiert {post.dateModifiedLabel}</p>
 			<h1>{post.title}</h1>
 			<p class="sub">{post.hero}</p>
+			<LeadActions align="center" />
 		</div>
 	</section>
 
@@ -78,5 +80,8 @@ const others = posts.filter((item) => item.slug !== post.slug);
 	</article>
 
 	<Related title="Passend zum Thema" links={links} />
-	<CtaDark />
+	<CtaDark
+		title="Termin oder kurze E-Mail"
+		text="Projektart, Budgetrahmen und Zeitraum. Eddie sagt dir, ob sich ein Gespräch lohnt."
+	/>
 </BaseLayout>

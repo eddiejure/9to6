@@ -1,156 +1,131 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCall from '../components/BookCall.astro';
-import CtaPhone from '../components/CtaPhone.astro';
 import CtaDark from '../components/CtaDark.astro';
 import Accordion from '../components/Accordion.astro';
 import Blob from '../components/Blob.astro';
-import { cases, site } from '../data/site';
+import Picture from '../components/Picture.astro';
+import TrustProof from '../components/TrustProof.astro';
+import ProcessBrief from '../components/ProcessBrief.astro';
+import { productCases, site } from '../data/site';
 import { posts } from '../data/blog';
 
 const pillars = [
 	{
-		title: 'Webdesign, das überzeugt',
-		text: 'Dein Unternehmen ist einzigartig und verdient eine Website, die das zeigt. Wir verbinden klares Design mit einer ruhigen Benutzerführung und legen damit den Grundstein für Anfragen, Termine und Umsatz.',
+		title: 'Webdesign, das zum Betrieb passt',
+		text: 'Struktur, Sprache und Erscheinungsbild für Handwerk, Studios und lokale Marken. Die Seite soll in Gelnhausen, Frankfurt oder der Umgebung nach dir aussehen und zur Anfrage führen.',
 		href: '/leistungen/webdesign/',
 		cta: 'Zu Webdesign',
-		visual: 'studio',
+		visual: 'studio' as const,
 	},
 	{
 		title: 'Seiten, die Anfragen bringen',
-		text: 'Besucher sollen nicht nur schauen. Sie sollen anrufen, schreiben oder buchen. Wir bauen den Weg zur Handlung so kurz, dass aus Interesse ein konkreter nächster Schritt wird.',
+		text: 'Besucher sollen schreiben oder einen Termin buchen. Der Weg dorthin ist kurz: ein klares Angebot und eine Handlung, die auf dem Handy erreichbar ist.',
 		href: '/leistungen/webentwicklung/',
 		cta: 'Zur Webentwicklung',
-		visual: 'leads',
+		visual: 'leads' as const,
 	},
 	{
-		title: 'Tempo, das Kunden hält',
-		text: 'Eine langsame Seite kostet Sichtbarkeit und Abschlüsse. Wir liefern Auftritte, die auf dem Smartphone sofort da sind, in der Suche bestehen und messbar mehr Anfragen generieren.',
+		title: 'Tempo, das Leute hält',
+		text: 'Eine schwere Seite kostet Sichtbarkeit und Abschlüsse. Bilder in der richtigen Größe, wenig Ballast, auf dem Smartphone sofort lesbar.',
 		href: '/blog/core-web-vitals-und-google-ranking/',
 		cta: 'Warum Ladezeit zählt',
-		visual: 'speed',
+		visual: 'speed' as const,
 	},
 	{
-		title: 'Gefunden werden, dann verkaufen',
-		text: 'Eine schnelle Seite ohne klare Struktur bleibt unsichtbar. Inhalte, URLs und interne Wege so setzen, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen.',
-		href: '/blog/aus-besuchern-werden-anfragen/',
-		cta: 'Wie aus Besuch Anfrage wird',
-		visual: 'laptop',
+		title: 'Gefunden werden, dann handeln',
+		text: 'Inhalte, URLs und interne Wege so setzen, dass Menschen und Suchmaschinen denselben Pfad zur Anfrage gehen. Gebiet inklusive: Main-Kinzig-Kreis, Frankfurt, Hanau, Offenbach.',
+		href: '/webdesign-gelnhausen/',
+		cta: 'Einzugsgebiet ansehen',
+		visual: 'laptop' as const,
 	},
 ];
 
 const ansatz = [
 	{
 		title: 'Ziele zuerst',
-		text: 'Bevor ein Raster entsteht, klären wir, wen du gewinnen willst und welche Handlung zählt: Anfrage, Termin, Kauf.',
+		text: 'Bevor ein Raster entsteht, klären wir, wen du gewinnen willst und welche Handlung zählt: Nachricht, Termin, Kauf.',
 	},
 	{
 		title: 'Design mit System',
 		text: 'Typografie, Farbe und Abstände sitzen. Die Seite sieht nach dir aus, nicht nach einem Theme.',
 	},
 	{
-		title: 'Technik, die unsichtbar trägt',
-		text: 'Moderne Webtechnik bleibt im Hintergrund. Du merkst das Ergebnis: Tempo, Stabilität, Formulare, die ankommen.',
+		title: 'Technik, die trägt',
+		text: 'Moderne Webtechnik bleibt im Hintergrund. Du merkst Tempo, Stabilität und einen Anfrageweg, der ankommt.',
 	},
 	{
-		title: 'Messbar schnell',
-		text: 'Ladezeit, Formulare, mobile Bedienung. Was sich messen lässt, verbessern wir nach dem Launch.',
+		title: 'Nach dem Launch',
+		text: 'Ladezeit, mobile Bedienung, echte Anfragen. Was sich beobachten lässt, schärfen wir nach.',
 	},
 	{
-		title: 'Direkt ansprechbar',
-		text: 'Ein fester Ansprechpartner. Kein Ticket-Pingpong, keine Agentur-Hierarchie zwischen dir und der fertigen Seite.',
+		title: 'Ein Ansprechpartner',
+		text: 'Eddie führt das Gespräch selbst. Kein Ticket-Pingpong zwischen dir und der fertigen Seite.',
 	},
 ];
 ---
 
 <BaseLayout
-	title="Webdesign und Webentwicklung in Frankfurt | 9to6"
-	description="9to6 in Frankfurt / Rhein-Main: Full-Service für den Webauftritt, Schwerpunkt Webdesign und Webentwicklung. Websites, die Kunden anziehen und Anfragen bringen."
+	title="Webdesign aus Gelnhausen für Frankfurt | 9to6"
+	description="Webdesign und Webentwicklung aus Gelnhausen. Für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach. Termin buchen oder per E-Mail schreiben."
 	schema="home"
+	ogImagePath="/images/ref-oberlerchner-og.jpg"
+	ogImageAlt="Website von Holzbau Oberlerchner, Kundenprojekt in Gelnhausen"
+	ogImageWidth={1200}
+	ogImageHeight={750}
 >
 	<section class="hero">
 		<div class="hero-grid">
 			<header>
 				<h1>
-					<span class="hero-line nowrap">Webdesign &amp;</span>
-					<span class="hero-line nowrap">Webentwicklung</span>
-					<span class="hero-line hero-loc">Agentur Frankfurt / Rhein-Main</span>
+					<span class="hero-line">Webdesign &amp;</span>
+					<span class="hero-line">Webentwicklung</span>
+					<span class="hero-line hero-loc">aus Gelnhausen für Frankfurt und Umgebung</span>
 				</h1>
-				<p class="lede">{site.tagline}</p>
+				<p class="lede">
+					Sitz in Gelnhausen. Seiten für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.
+				</p>
 			</header>
 			<BookCall variant="card" />
 		</div>
 	</section>
 
-	<section class="section center">
-		<div class="wrap">
-			<h2 class="grad-title">Websites, die arbeiten</h2>
-			<p class="intro">
-				{site.positioning} Sitz in Gelnhausen, Arbeit für Betriebe in Frankfurt am Main, der Region und darüber
-				hinaus. Den Überblick über den Rahmen findest du unter
-				<a href="/leistungen/">Leistungen</a>.
-			</p>
-		</div>
-	</section>
+	<TrustProof />
+	<ProcessBrief />
 
 	{
-		pillars.map((p, i) => {
-			const mediaOnRight = p.visual === 'speed';
-			return (
+		pillars.map((pillar, index) => (
 			<section class="section">
-				<div class={'wrap-wide split' + (i % 2 === 1 ? ' reverse' : '')}>
-					{i % 2 === 0 && !mediaOnRight ? (
-						<div class="media" aria-hidden={p.visual === 'leads' || p.visual === 'speed'}>
-							{p.visual === 'studio' ? (
-								<img src="/images/studio.webp" alt="" width="640" height="427" />
-							) : p.visual === 'laptop' ? (
-								<img src="/images/laptop.webp" alt="" width="640" height="427" />
-							) : (
-								<Blob label={p.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
-							)}
-						</div>
-					) : null}
+				<div class={'wrap-wide split' + (index % 2 === 1 ? ' reverse' : '')}>
 					<div class="copy">
-						<h2>{p.title}</h2>
-						<p class="body">{p.text}</p>
+						<h2>{pillar.title}</h2>
+						<p class="body">{pillar.text}</p>
 						<p>
-							<a class="btn" href={p.href} style="margin-top:18px">
-								{p.cta}
+							<a class="btn" href={pillar.href} style="margin-top:18px">
+								{pillar.cta}
 							</a>
 						</p>
 					</div>
-					{i % 2 === 1 || mediaOnRight ? (
-						<div class="media">
-							{p.visual === 'leads' || p.visual === 'speed' ? (
-								<Blob label={p.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
-							) : (
-								<img src="/images/workspace.webp" alt="" width="640" height="427" />
-							)}
-						</div>
-					) : null}
+					<div class="media" aria-hidden={pillar.visual === 'leads' || pillar.visual === 'speed'}>
+						{pillar.visual === 'studio' ? (
+							<Picture name="studio" alt="" sizes="(min-width: 900px) 560px, 92vw" />
+						) : pillar.visual === 'laptop' ? (
+							<Picture name="laptop" alt="" sizes="(min-width: 900px) 560px, 92vw" />
+						) : (
+							<Blob label={pillar.visual === 'leads' ? 'Anfragen' : 'Tempo'} />
+						)}
+					</div>
 				</div>
 			</section>
-			);
-		})
+		))
 	}
-
-	<CtaPhone
-		heading="Direkt mit Eddie sprechen"
-		text="Eddie nimmt den Call selbst. Kein Vertrieb, keine Weiterleitung."
-		cta="Zum Kalender"
-	/>
 
 	<section class="section center">
 		<div class="wrap">
-			<h2>Was macht uns besonders?</h2>
+			<h2>Was den Kern ausmacht</h2>
 			<p class="intro">
-				Viele Agenturen verkaufen Kampagnen auf einer schwachen Grundlage. 9to6 baut zuerst die Grundlage:
-				<a href="/leistungen/webdesign/">Webdesign</a> und
-				<a href="/leistungen/webentwicklung/">Webentwicklung</a> in einem Prozess. Relaunch, Hosting und der Weg zur
-				Anfrage gehören dazu, ohne den Kern zu verwässern.
-			</p>
-			<p>
-				<a class="btn" href="/kontakt/">Gespräch vereinbaren</a>
+				{site.positioning} Der Sitz ist Gelnhausen. Die Arbeit gilt Betrieben im Main-Kinzig-Kreis und in Frankfurt,
+				Hanau und Offenbach. Den Rahmen findest du unter <a href="/leistungen/">Leistungen</a>.
 			</p>
 		</div>
 	</section>
@@ -158,56 +133,52 @@ const ansatz = [
 	<section class="section">
 		<div class="wrap-wide split">
 			<div class="media">
-				<img src="/images/boost.webp" alt="Team bei der Arbeit am Webauftritt" width="640" height="586" />
+				<Picture
+					name="ref-elixier"
+					alt="Startseite von D&E Elixier, Kosmetikinstitut in Frankfurt-Sachsenhausen"
+					class="shot-img"
+					sizes="(min-width: 900px) 560px, 92vw"
+					width={1280}
+					height={800}
+				/>
 			</div>
 			<div>
-				<h2>Unser Ansatz für nachhaltige Websites</h2>
+				<h2>Ein Ansprechpartner, live Beispiele</h2>
 				<Accordion
-					items={ansatz.map((a) => ({
-						q: a.title,
-						a: a.text,
+					items={ansatz.map((item) => ({
+						q: item.title,
+						a: item.text,
 					}))}
 				/>
 			</div>
 		</div>
 	</section>
 
-	<section class="section center">
+	<section class="section" aria-labelledby="products-heading">
 		<div class="wrap">
-			<h2>Webdesign und Entwicklung, die zu deinem Alltag passen</h2>
-			<p class="intro">
-				Handwerk, Studio, Produktmarke oder interne Plattform: Wir schauen uns an, was schon da ist, und bauen das, was
-				fehlt. Ohne Theme-Zwang, ohne Ballast, der Kunden ausbremst. Ablauf und Zielgruppen stehen unter
-				<a href="/leistungen/">Leistungen</a>.
-			</p>
-			<p>
-				<a class="btn" href="/leistungen/">Leistungen ansehen</a>
-			</p>
-		</div>
-	</section>
-
-	<section class="section" aria-labelledby="cases-heading">
-		<div class="wrap">
-			<h2 id="cases-heading" class="center">Websites, die im Einsatz sind</h2>
+			<h2 id="products-heading" class="center">Eigene Produkte</h2>
 			<p class="intro center">
-				Echte Auftritte, keine Moodboards. Kundenprojekte und Gründerprodukte sind getrennt gekennzeichnet.
-				<a href="/referenzen/">Alle Referenzen</a>.
+				sim.do und Simtasy gehören Eddie. Sie sind kein Kundenauftrag aus Gelnhausen oder Frankfurt. Die Kundenprojekte
+				stehen oben.
 			</p>
 			<div class="cards" style="margin-top:36px">
 				{
-					cases.map((c) => (
-						<a class="card" href={`/referenzen/${c.slug}/`}>
+					productCases.map((item) => (
+						<a class="card" href={`/referenzen/${item.slug}/`}>
 							<div class="shot">
-								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+								<Picture
+									name={item.imageName}
+									alt={item.imageAlt}
+									class="shot-img"
+									sizes="(min-width: 900px) 540px, 92vw"
+									width={1280}
+									height={800}
+								/>
 							</div>
 							<div class="card-body">
-								<div class="meta">{c.place}</div>
-								<h3>{c.name}</h3>
-								<p>{c.role}</p>
-								<div class="pills">
-									<span class="pill">{c.stack}</span>
-									{c.founder ? <span class="pill">Gründerprojekt</span> : <span class="pill">Kundenprojekt</span>}
-								</div>
+								<div class="meta">Eigenes Produkt · {item.place}</div>
+								<h3>{item.name}</h3>
+								<p>{item.result}</p>
 							</div>
 						</a>
 					))
@@ -220,14 +191,14 @@ const ansatz = [
 		<div class="wrap">
 			<h2 id="blog-heading" class="center">Aus der Praxis</h2>
 			<p class="intro center">
-				Kurze Texte dazu, woran Anfragen scheitern und warum Tempo zählt. Der
-				<a href="/blog/">Blog</a> bleibt absichtlich ohne Framework-Talk.
+				Woran Anfragen scheitern, warum Tempo zählt, und wie aus einem Besuch eine Nachricht wird. Der
+				<a href="/blog/">Blog</a>.
 			</p>
 			<div class="blog-list">
 				{
 					posts.map((post) => (
 						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">{post.dateLabel}</div>
+							<div class="meta">Aktualisiert {post.dateModifiedLabel}</div>
 							<h3>{post.title}</h3>
 							<p>{post.description}</p>
 						</a>
@@ -237,5 +208,8 @@ const ansatz = [
 		</div>
 	</section>
 
-	<CtaDark />
+	<CtaDark
+		title="Termin oder kurze E-Mail"
+		text="Projektart, Budgetrahmen und Zeitraum reichen für den ersten Schritt. Eddie meldet sich selbst."
+	/>
 </BaseLayout>

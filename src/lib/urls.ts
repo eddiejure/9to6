@@ -22,24 +22,22 @@ export type SitemapEntry = {
 	lastmod: string;
 };
 
-export function sitemapEntries(): SitemapEntry[] {
-	const lastmod = posts.reduce((latest, post) => (post.date > latest ? post.date : latest), '2026-09-18');
-	const paths = [
-		'/',
-		'/leistungen/',
-		'/leistungen/webdesign/',
-		'/leistungen/webentwicklung/',
-		'/referenzen/',
-		...cases.map((item) => `/referenzen/${item.slug}/`),
-		'/blog/',
-		...posts.map((post) => `/blog/${post.slug}/`),
-		'/kontakt/',
-		'/impressum/',
-		'/datenschutz/',
-	];
+const contentUpdated = '2026-11-26';
 
-	return paths.map((path) => {
-		const post = posts.find((item) => path === `/blog/${item.slug}/`);
-		return { path, lastmod: post?.date ?? lastmod };
-	});
+export function sitemapEntries(): SitemapEntry[] {
+	const staticPages: SitemapEntry[] = [
+		{ path: '/', lastmod: contentUpdated },
+		{ path: '/leistungen/', lastmod: contentUpdated },
+		{ path: '/leistungen/webdesign/', lastmod: contentUpdated },
+		{ path: '/leistungen/webentwicklung/', lastmod: contentUpdated },
+		{ path: '/webdesign-gelnhausen/', lastmod: contentUpdated },
+		{ path: '/referenzen/', lastmod: contentUpdated },
+		...cases.map((item) => ({ path: `/referenzen/${item.slug}/`, lastmod: contentUpdated })),
+		{ path: '/blog/', lastmod: contentUpdated },
+		...posts.map((post) => ({ path: `/blog/${post.slug}/`, lastmod: post.dateModified })),
+		{ path: '/kontakt/', lastmod: contentUpdated },
+		{ path: '/impressum/', lastmod: '2026-09-18' },
+		{ path: '/datenschutz/', lastmod: '2026-09-18' },
+	];
+	return staticPages;
 }

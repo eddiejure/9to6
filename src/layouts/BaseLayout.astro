@@ -38,6 +38,8 @@ type Props = {
 	ogType?: 'website' | 'article';
 	ogImagePath?: string;
 	ogImageAlt?: string;
+	ogImageWidth?: number;
+	ogImageHeight?: number;
 	work?: WorkMeta;
 };
 
@@ -52,8 +54,10 @@ const {
 	dateModified,
 	faqs = [],
 	noindex = false,
-	ogImagePath = '/images/eddie.jpg',
+	ogImagePath = '/images/eddie-og.jpg',
 	ogImageAlt = 'Eddie J., Gründer von 9to6',
+	ogImageWidth = 840,
+	ogImageHeight = 840,
 	work,
 } = Astro.props;
 
@@ -86,11 +90,16 @@ const organization = {
 	url: homeUrl,
 	email: site.email,
 	telephone: '+491754045558',
-	image: new URL('/images/eddie.jpg', site.url).href,
+	image: new URL('/logos/mark.svg', site.url).href,
 	logo: new URL('/logos/mark.svg', site.url).href,
 	description: site.description,
 	foundingDate: '2019',
-	areaServed: ['Frankfurt am Main', 'Rhein-Main', 'Gelnhausen', 'Main-Kinzig-Kreis', 'Hessen', 'Deutschland'],
+	areaServed: [...site.areaServed],
+	geo: {
+		'@type': 'GeoCoordinates',
+		latitude: site.geo.latitude,
+		longitude: site.geo.longitude,
+	},
 	address,
 	founder: {
 		'@type': 'Person',
@@ -99,7 +108,7 @@ const organization = {
 		alternateName: site.person.public,
 		jobTitle: site.person.role,
 		sameAs: site.social.linkedin,
-		image: new URL('/images/eddie.jpg', site.url).href,
+		image: new URL('/images/eddie-og.jpg', site.url).href,
 		worksFor: { '@id': orgId },
 	},
 	contactPoint: {
@@ -115,10 +124,12 @@ const organization = {
 	knowsAbout: [
 		'Webdesign',
 		'Webentwicklung',
-		'Conversion',
-		'Core Web Vitals',
 		'Relaunch',
-		'Frankfurt',
+		'Gelnhausen',
+		'Main-Kinzig-Kreis',
+		'Hanau',
+		'Offenbach',
+		'Frankfurt am Main',
 		'Rhein-Main',
 	],
 	priceRange: '€€',
@@ -216,7 +227,7 @@ if (schema === 'service') {
 		name: serviceName ?? title,
 		description,
 		provider: { '@id': orgId },
-		areaServed: ['Frankfurt am Main', 'Rhein-Main', 'Gelnhausen', 'Hessen', 'Deutschland'],
+		areaServed: [...site.areaServed],
 		url: canonical,
 		serviceType: serviceName ?? 'Webdesign und Webentwicklung',
 		audience: {
@@ -313,8 +324,8 @@ const jsonLd = {
 		{isError ? null : <meta property="og:url" content={canonical} />}
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:image:alt" content={ogImageAlt} />
-		<meta property="og:image:width" content="1200" />
-		<meta property="og:image:height" content="1200" />
+		<meta property="og:image:width" content={String(ogImageWidth)} />
+		<meta property="og:image:height" content={String(ogImageHeight)} />
 		{ogType === 'article' && published ? <meta property="article:published_time" content={published} /> : null}
 		{ogType === 'article' && modified ? <meta property="article:modified_time" content={modified} /> : null}
 		{ogType === 'article' ? <meta property="article:author" content={site.person.legal} /> : null}
@@ -324,6 +335,7 @@ const jsonLd = {
 		{isError ? null : <meta name="twitter:url" content={canonical} />}
 		<meta name="twitter:image" content={ogImage} />
 		<meta name="twitter:image:alt" content={ogImageAlt} />
+		<link rel="icon" href="/favicon.ico" sizes="32x32" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/logos/mark.svg" />
 		<link rel="sitemap" type="application/xml" href="/sitemap.xml" />

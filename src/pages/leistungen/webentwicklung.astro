@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
-import CtaPhone from '../../components/CtaPhone.astro';
+import LeadActions from '../../components/LeadActions.astro';
+import Picture from '../../components/Picture.astro';
 import Blob from '../../components/Blob.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Related from '../../components/Related.astro';
@@ -12,15 +13,19 @@ const steps = [
 	{ title: 'Analyse', text: 'Technik, Inhalt, Tempo, Wettbewerb. Du bekommst klar, was bleibt und was neu muss.' },
 	{ title: 'Strategie', text: 'Seitenbaum, Ziele, Handlung. Was messbar mehr Anfragen bringt, kommt nach vorn.' },
 	{ title: 'Umsetzung', text: 'Design und Code parallel genug, dass nichts verloren geht. Reviews in kurzen Schleifen.' },
-	{ title: 'Launch', text: 'Redirects, Metadaten, Formular, Hosting. Danach messen und nachschärfen.' },
+	{ title: 'Launch', text: 'Redirects, Metadaten, Anfrageweg, Hosting. Danach beobachten und nachschärfen.' },
 ];
 
-const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 'simtasy' || item.slug === 'holzbau-oberlerchner');
+const devCases = cases.filter((item) => item.kind === 'client');
 ---
 
 <BaseLayout
-	title="Webentwicklung in Frankfurt | 9to6"
-	description="Webentwicklung von 9to6 in Frankfurt / Rhein-Main: schnelle, wartbare Websites, die Anfragen zustellen. Relaunch, Performance und messbares Wachstum. Kernkompetenz neben Webdesign."
+	title="Webentwicklung Frankfurt und Umgebung | 9to6"
+	description="Schnelle Websites und Relaunch aus Gelnhausen für Frankfurt und Rhein-Main. Ladezeit, die Anfragen nicht vertreibt. Termin oder E-Mail."
+	ogImagePath="/images/ref-oberlerchner-og.jpg"
+	ogImageAlt="Website von Holzbau Oberlerchner, schnelle lokale Seite aus Gelnhausen"
+	ogImageWidth={1200}
+	ogImageHeight={750}
 	schema="service"
 	serviceName="Webentwicklung"
 	faqs={serviceFaqs.webentwicklung}
@@ -31,9 +36,9 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 >
 	<section class="page-hero center">
 		<div class="wrap">
-			<h1>Webentwicklung</h1>
-			<p class="sub">Starke Webpräsenz. Schnell, performant, überzeugend.</p>
-			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Webentwicklung besprechen</a></p>
+			<h1>Webentwicklung für Frankfurt und Umgebung</h1>
+			<p class="sub">Aus Gelnhausen. Schnelle, wartbare Seiten für den Main-Kinzig-Kreis, Frankfurt, Hanau und Offenbach.</p>
+			<LeadActions align="center" terminLabel="Webentwicklung besprechen" />
 		</div>
 	</section>
 
@@ -54,10 +59,11 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 			<div>
 				<h2>Seiten, die verkaufen statt nur existieren</h2>
 				<p class="body">
-					Die technische Grundlage bleibt unsichtbar. Du merkst das Ergebnis: kurze Ladezeiten, Formulare, die
-					ankommen, und Seiten, die auf dem Smartphone sofort lesbar sind. Für die meisten Unternehmenswebsites ist das
-					der Hebel, der Google, Menschen und Umsatz zusammenbringt. Mehr zum Ranking-Effekt unter
-					<a href="/blog/core-web-vitals-und-google-ranking/">Core Web Vitals und Google Ranking</a>.
+					Die technische Grundlage bleibt unsichtbar. Du merkst das Ergebnis: kurze Ladezeiten, ein Anfrageweg, der
+					ankommt, und Seiten, die auf dem Smartphone sofort lesbar sind. Für die meisten Unternehmenswebsites ist das
+					der Hebel, der Sichtbarkeit und Anfragen zusammenbringt. Mehr dazu unter
+					<a href="/blog/core-web-vitals-und-google-ranking/">Ladezeit und lokale Sichtbarkeit</a>.
+					Der lokale Beleg ist <a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a> in Gelnhausen.
 				</p>
 			</div>
 		</div>
@@ -69,10 +75,9 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 				<h2>Wenn aus der Website ein Produkt wird</h2>
 				<p class="body">
 					Accounts, Kataloge, interne Abläufe, häufige Updates. Dann bauen wir eine Anwendung, die sich wie ein Produkt
-					anfühlt, nicht wie ein Baukasten. Entscheidend bleibt, dass Kunden und Teams damit arbeiten können, ohne auf
-					Ladebalken zu starren. Wie das in der Praxis aussieht:
-					<a href="/referenzen/sim-do/">sim.do</a> und
-					<a href="/referenzen/simtasy/">Simtasy</a>.
+					anfühlt. Entscheidend bleibt, dass Menschen damit arbeiten können, ohne auf einen Ladebalken zu starren.
+					sim.do und Simtasy sind eigene Produkte von Eddie und stehen unter
+					<a href="/referenzen/">Referenzen</a> getrennt von den Kundenaufträgen.
 				</p>
 			</div>
 			<Blob label="Wachstum" />
@@ -114,7 +119,7 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 				<li>ob die aktuelle Seite Anfragen kostet, weil sie langsam oder unklar ist</li>
 				<li>Ladezeiten und was sie den Umsatz kosten</li>
 				<li>Struktur und Navigation, an denen Besucher hängen bleiben</li>
-				<li>Formulare, die Anfragen wirklich zustellen</li>
+				<li>Ein Anfrageweg, der Nachrichten wirklich zustellt</li>
 				<li>Hosting, das weltweit schnell ausliefert, ohne extra Bühne</li>
 			</ul>
 			<p class="intro center" style="margin-top:28px">
@@ -126,21 +131,22 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 
 	<section class="section" aria-labelledby="dev-cases">
 		<div class="wrap">
-			<h2 id="dev-cases" class="center">Gebaut und erreichbar</h2>
+			<h2 id="dev-cases" class="center">Kundenprojekte, die live sind</h2>
 			<p class="intro center">
-				Produkt, Plattform, lokale Unternehmensseite. Alle Cases unter <a href="/referenzen/">Referenzen</a>.
+				Oberlerchner in Gelnhausen und Elixier in Frankfurt. Eigene Produkte stehen getrennt unter
+				<a href="/referenzen/">Referenzen</a>.
 			</p>
 			<div class="cards" style="margin-top:36px">
 				{
 					devCases.map((c) => (
 						<a class="card" href={`/referenzen/${c.slug}/`}>
 							<div class="shot">
-								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+								<Picture name={c.imageName} alt={c.imageAlt} class="shot-img" sizes="(min-width: 900px) 540px, 92vw" width={1280} height={800} />
 							</div>
 							<div class="card-body">
 								<div class="meta">{c.place}</div>
 								<h3>{c.name}</h3>
-								<p>{c.role}</p>
+								<p>{c.result}</p>
 							</div>
 						</a>
 					))
@@ -152,10 +158,6 @@ const devCases = cases.filter((item) => item.slug === 'sim-do' || item.slug === 
 	<FaqSection items={serviceFaqs.webentwicklung} intro="Technik, WordPress, Hosting, was nach dem Launch zählt." />
 	<Related links={related.webentwicklung} />
 
-	<CtaPhone
-		heading="Erstgespräch Webentwicklung"
-		text="Eddie prüft in 30 Minuten Ladezeit, Formulare und was nach dem Launch messbar wird. Kostenlos."
-	/>
 	<CtaDark
 		title="Technik folgt der Aufgabe"
 		text="Im Call sehen wir uns an, ob ein Relaunch, ein Neubau oder eine Produktstrecke der Hebel ist. Du bekommst eine Einschätzung zu Tempo, Umfang und nächstem Schritt."

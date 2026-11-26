@@ -1,29 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaDark from '../components/CtaDark.astro';
-import CtaPhone from '../components/CtaPhone.astro';
+import LeadActions from '../components/LeadActions.astro';
+import Picture from '../components/Picture.astro';
 import Related from '../components/Related.astro';
-import { cases } from '../data/site';
+import { cases, clientCases, productCases } from '../data/site';
 import { related } from '../data/related';
+
+const groups = [
+	{
+		id: 'kundenprojekte',
+		kicker: 'Kundenprojekte',
+		title: 'Aufträge aus Gelnhausen und Frankfurt',
+		intro: 'Zwei live Seiten. Zimmerei im Main-Kinzig-Kreis, Kosmetikinstitut in Frankfurt-Sachsenhausen.',
+		items: clientCases,
+	},
+	{
+		id: 'eigene-produkte',
+		kicker: 'Eigene Produkte',
+		title: 'sim.do und Simtasy gehören Eddie',
+		intro: 'Keine Kundenarbeit. Produktseiten, die zeigen, wie eine Strecke suchbar und kaufbar wird.',
+		items: productCases,
+	},
+];
 ---
 
 <BaseLayout
-	title="Referenzen: Websites von 9to6"
-	description="Live-Websites von 9to6: Holzbau Oberlerchner, D&E Elixier, sim.do und Simtasy. Design und Entwicklung, die du im Browser öffnen kannst: Kundenprojekte und Gründerprodukte."
+	title="Referenzen: Webdesign Frankfurt und Gelnhausen | 9to6"
+	description="Zwei Kundenprojekte: Zimmerei in Gelnhausen, Kosmetikinstitut in Frankfurt. Dazu die eigenen Produkte sim.do und Simtasy."
 	schema="references"
+	ogImagePath="/images/ref-oberlerchner-og.jpg"
+	ogImageAlt="Website von Holzbau Oberlerchner in Gelnhausen"
+	ogImageWidth={1200}
+	ogImageHeight={750}
 	breadcrumbs={[{ name: 'Referenzen', href: '/referenzen/' }]}
 >
 	<section class="page-hero center refs-hero">
 		<div class="refs-stage" aria-hidden="false">
 			{
-				cases.map((c, i) => (
-					<a class={`refs-card refs-card--${i + 1}`} href={`/referenzen/${c.slug}/`}>
+				cases.map((item, index) => (
+					<a class={`refs-card refs-card--${index + 1}`} href={`/referenzen/${item.slug}/`}>
 						<span class="refs-card-float">
 							<span class="refs-card-grow">
 								<span class="refs-card-media">
-									<img src={c.image} alt={c.imageAlt} width="1280" height="800" />
+									<Picture
+										name={item.imageName}
+										alt={item.imageAlt}
+										sizes="(min-width: 1000px) 320px, 70vw"
+										width={1280}
+										height={800}
+										loading={index < 2 ? 'eager' : 'lazy'}
+									/>
 								</span>
-								<span class="refs-card-name">{c.name}</span>
+								<span class="refs-card-kind">{item.kind === 'client' ? 'Kundenprojekt' : 'Eigenes Produkt'}</span>
+								<span class="refs-card-name">{item.name}</span>
 							</span>
 						</span>
 					</a>
@@ -31,79 +61,73 @@ import { related } from '../data/related';
 			}
 		</div>
 		<div class="wrap refs-hero-copy">
-			<h1>Referenzen</h1>
-			<p class="sub">Live im Netz. Keine erfundenen Cases, keine fremden Budgets.</p>
+			<h1>Webdesign-Referenzen aus Frankfurt und Gelnhausen</h1>
+			<p class="sub">Kundenaufträge und eigene Produkte, klar getrennt.</p>
+			<LeadActions align="center" />
 		</div>
 	</section>
 
 	<section class="section">
 		<div class="wrap">
 			<p class="intro center">
-				Hier stehen Projekte, die du öffnen kannst. Entstanden aus
-				<a href="/leistungen/webdesign/">Webdesign</a> und
-				<a href="/leistungen/webentwicklung/">Webentwicklung</a>. Kundenaufträge und Gründerprodukte sind getrennt
-				gekennzeichnet.
+				Entstanden aus <a href="/leistungen/webdesign/">Webdesign</a> und
+				<a href="/leistungen/webentwicklung/">Webentwicklung</a>. Der Sitz ist Gelnhausen, die Kundenbeispiele liegen
+				im Main-Kinzig-Kreis und in Frankfurt.
 			</p>
-			<ul class="project-index">
-				{
-					cases.map((c) => (
-						<li>
-							<a href={`/referenzen/${c.slug}/`}>{c.name}</a>
-							<span>
-								{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.role}
-							</span>
-						</li>
-					))
-				}
-			</ul>
 		</div>
 	</section>
 
 	<div class="refs-below">
 		{
-			cases.map((c, i) => (
-				<section class="section" id={c.slug}>
-					<article class={'wrap-wide split' + (i % 2 ? ' reverse' : '')}>
-						<div class="media">
-							<div class="shot">
-								<a href={`/referenzen/${c.slug}/`} aria-label={`${c.name}: Fall ansehen`}>
-									<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
-								</a>
-							</div>
-						</div>
-						<div>
-							<p class="kicker">{c.founder ? 'Gründerprojekt' : 'Kundenprojekt'} · {c.place}</p>
-							<h2>{c.name}</h2>
-							<p class="body">{c.summary}</p>
-							<ul class="icon-list">
-								{c.points.map((p) => (
-									<li>{p}</li>
-								))}
-							</ul>
-							<div class="pills">
-								<span class="pill">{c.stack}</span>
-								<span class="pill">{c.role}</span>
-							</div>
-							<p style="margin-top:22px">
-								<a class="btn" href={`/referenzen/${c.slug}/`}>
-									Fall {c.name} ansehen
-								</a>
-							</p>
-						</div>
-					</article>
+			groups.map((group) => (
+				<section class="section" id={group.id} aria-labelledby={`${group.id}-title`}>
+					<div class="wrap">
+						<p class="kicker center">{group.kicker}</p>
+						<h2 id={`${group.id}-title`} class="center">
+							{group.title}
+						</h2>
+						<p class="intro center">{group.intro}</p>
+					</div>
+					{
+						group.items.map((item, index) => (
+							<article class={'wrap-wide split section' + (index % 2 ? ' reverse' : '')}>
+								<div class="media">
+									<div class="shot">
+										<a href={`/referenzen/${item.slug}/`} aria-label={`${item.name}: Fall ansehen`}>
+											<Picture
+												name={item.imageName}
+												alt={item.imageAlt}
+												class="shot-img"
+												sizes="(min-width: 900px) 560px, 92vw"
+												width={1280}
+												height={800}
+											/>
+										</a>
+									</div>
+								</div>
+								<div>
+									<p class="kicker">
+										{item.kind === 'client' ? 'Kundenprojekt' : 'Eigenes Produkt'} · {item.place}
+									</p>
+									<h3>{item.name}</h3>
+									<p class="body">{item.result}</p>
+									<p style="margin-top:22px">
+										<a class="btn" href={`/referenzen/${item.slug}/`}>
+											Fall {item.name} ansehen
+										</a>
+									</p>
+								</div>
+							</article>
+						))
+					}
 				</section>
 			))
 		}
-
 	</div>
 
 	<Related links={related.referenzen} />
-	<CtaPhone
-		heading="Erstgespräch zum Webauftritt"
-		text="Bring die Referenz mit, die am nächsten liegt. In 30 Minuten siehst du, was davon auf dich übertragbar ist. Kostenlos."
-	/>
 	<CtaDark
 		title="Ähnliches Vorhaben?"
-		text="Im Call ordnen wir dein Projekt dem Kern zu: Design, Entwicklung, oder beides. Referenzen bleiben das, was live steht, nicht das, was wir uns wünschen."
+		text="Im Termin oder per E-Mail ordnen wir dein Projekt ein: Design, Entwicklung oder beides. Kundenprojekte bleiben das, was für andere Betriebe live steht."
 	/>
 </BaseLayout>

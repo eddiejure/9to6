@@ -3,7 +3,7 @@ export type RelatedLink = { href: string; label: string };
 export const related = {
 	leistungen: [
 		{ href: '/leistungen/webdesign/', label: 'Webdesign: Erscheinungsbild, Texte, Nutzerführung' },
-		{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung: Tempo, Formulare, Launch' },
+		{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung: Tempo, Anfrageweg, Launch' },
 		{ href: '/referenzen/', label: 'Referenzen: Live-Websites aus Design und Entwicklung' },
 		{ href: '/blog/', label: 'Blog: Conversion, Ladezeit, Anfragen' },
 		{ href: '/kontakt/', label: '30-Minuten-Call: Angebot und Umfang klären' },
@@ -12,6 +12,7 @@ export const related = {
 		{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung: damit das Design live und schnell ankommt' },
 		{ href: '/referenzen/holzbau-oberlerchner/', label: 'Holzbau Oberlerchner: Marke, Print und Website' },
 		{ href: '/referenzen/de-elixier/', label: 'D&E Elixier: Webdesign fürs Kosmetikinstitut' },
+		{ href: '/webdesign-gelnhausen/', label: 'Webdesign in Gelnhausen und im Main-Kinzig-Kreis' },
 		{ href: '/blog/warum-deine-website-keine-kunden-bringt/', label: 'Artikel: Warum Websites keine Kunden bringen' },
 		{ href: '/kontakt/', label: 'Webdesign im Erstgespräch klären' },
 	],
@@ -71,7 +72,7 @@ export const caseRelated: Record<string, RelatedLink[]> = {
 export const postRelated: Record<string, RelatedLink[]> = {
 	'warum-deine-website-keine-kunden-bringt': [
 		{ href: '/leistungen/webdesign/', label: 'Webdesign: Angebot und Handlung in der ersten Bildschirmhöhe' },
-		{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung: Tempo und Formulare, die ankommen' },
+		{ href: '/leistungen/webentwicklung/', label: 'Webentwicklung: Tempo und ein Anfrageweg, der ankommt' },
 		{ href: '/blog/aus-besuchern-werden-anfragen/', label: 'Weiterlesen: Aus Besuchern werden Anfragen' },
 		{ href: '/referenzen/', label: 'So sehen fertige Auftritte aus' },
 	],

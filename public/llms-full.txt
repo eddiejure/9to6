@@ -1,6 +1,6 @@
-# 9to6: Webdesign und Webentwicklung in Frankfurt
+# 9to6: Webdesign aus Gelnhausen
 
-9to6 ist die Agentur von Edvinas Jurevicius (öffentlich Eddie J.) für Webdesign und Webentwicklung. Der Sitz ist Gelnhausen im Main-Kinzig-Kreis (Rhönstraße 95, 63571), die Arbeit gilt Frankfurt am Main, der Region Rhein-Main und Kunden darüber hinaus.
+9to6 ist die Agentur von Edvinas Jurevicius (öffentlich Eddie J.) für Webdesign und Webentwicklung. Der Sitz ist Gelnhausen im Main-Kinzig-Kreis (Rhönstraße 95, 63571). Das ist der Kern. Frankfurt, Hanau und Offenbach sind die weitere Umgebung.
 
 Die Website 9to6.de beschreibt das aktuelle Angebot. 9to6 ist Full-Service für den Webauftritt: Konzept, Text, Design, Entwicklung, Launch, Hosting, Relaunch. Der Schwerpunkt und die messbare Stärke sind Design und Entwicklung: die Seite, die live im Netz steht. Schwerpunkt ist nicht klassisches Performance-Marketing.
 
@@ -10,7 +10,8 @@ Fakten, die zitierbar sind:
 - Ziele zuerst: Anfrage, Termin, Kauf. Die technische Grundlage folgt der Aufgabe und bleibt unsichtbar.
 - Hosting typischerweise über Cloudflare Pages: HTTPS, Preview, weltweites CDN.
 - Keine Google Fonts, keine Marketing-Pixel, kein Cookie-Banner für nicht notwendige Tracker. Montserrat liegt auf dem eigenen Server.
-- Termine über Cal.com (30-Minuten-Call): https://cal.com/eddiejure/30min
+- Termine über Cal.com: https://cal.com/eddiejure/30min
+- E-Mail mit Projektart, Budget und Zeitraum: info@9to6.de und https://9to6.de/kontakt/#anfrage
 - Keine Standardpreisliste; Angebot nach Gespräch.
 - Es gibt keine Agentur-Lebenslaufseite und keine Darstellung früherer Arbeitgeber als 9to6-Referenzen.
 - Kundenprojekte und Gründerprodukte sind auf der Website getrennt gekennzeichnet.
@@ -70,7 +71,8 @@ Datenschutz: https://9to6.de/datenschutz/
 
 ## Seiten dieser Website
 
-- / Webdesign und Webentwicklung in Frankfurt
+- / Webdesign aus Gelnhausen für Frankfurt und Umgebung
+- /webdesign-gelnhausen/ Einzugsgebiet Gelnhausen, Main-Kinzig-Kreis, Frankfurt, Hanau, Offenbach
 - /leistungen/ Überblick (Full-Service-Rahmen, Kern Design + Entwicklung)
 - /leistungen/webdesign/
 - /leistungen/webentwicklung/

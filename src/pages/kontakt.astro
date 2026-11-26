@@ -2,54 +2,108 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BookCall from '../components/BookCall.astro';
 import Accordion from '../components/Accordion.astro';
-import CtaDark from '../components/CtaDark.astro';
+import LeadActions from '../components/LeadActions.astro';
+import LeadForm from '../components/LeadForm.astro';
+import TrustProof from '../components/TrustProof.astro';
+import ProcessBrief from '../components/ProcessBrief.astro';
+import Picture from '../components/Picture.astro';
 import Related from '../components/Related.astro';
-import { allFaqs, faqs, site } from '../data/site';
+import { faqs, site } from '../data/site';
 import { related } from '../data/related';
+import { mailHref } from '../lib/mail';
 ---
 
 <BaseLayout
-	title="Kontakt und Angebot | 9to6 Frankfurt"
-	description="30-Minuten-Call mit 9to6 in Frankfurt / Rhein-Main: Webdesign und Webentwicklung, die Anfragen bringen. Termin über Cal.com oder per E-Mail."
+	title="Termin buchen oder E-Mail schreiben | 9to6"
+	description="30 Minuten mit Eddie, oder eine E-Mail mit Projektart, Budget und Zeitraum. Sitz Gelnhausen, Projekte in Frankfurt und Umgebung."
 	schema="contact"
-	faqs={allFaqs}
+	faqs={faqs.flatMap((group) => group.items)}
+	ogImagePath="/images/ref-elixier-og.jpg"
+	ogImageAlt="Website von D&E Elixier, Kundenprojekt in Frankfurt-Sachsenhausen"
+	ogImageWidth={1200}
+	ogImageHeight={750}
 	breadcrumbs={[{ name: 'Kontakt', href: '/kontakt/' }]}
 >
 	<section class="page-hero contact-hero">
 		<header class="wrap hero-kicker">
-			<h1>Erstgespräch Webdesign</h1>
+			<h1>Erstgespräch zu Webdesign und Webentwicklung</h1>
+			<p class="sub">
+				Sitz in Gelnhausen. Eddie führt das Gespräch selbst. Termin im Kalender, oder eine kurze E-Mail.
+			</p>
+			<LeadActions align="center" />
 		</header>
-		<div class="contact-grid">
+	</section>
+
+	<TrustProof
+		heading="Zuerst die Aufträge, dann der Kalender"
+		intro="Zwei Kundenprojekte mit Ort und Ergebnis. Danach der Termin oder die E-Mail."
+	/>
+	<ProcessBrief intro="Dasselbe in kurz, bevor du einen Slot buchst oder schreibst." />
+
+	<section class="section" id="termin">
+		<div class="wrap">
+			<h2 class="center">Termin oder E-Mail</h2>
+			<p class="intro center">
+				Vorher ansehen:
+				<a href="/referenzen/holzbau-oberlerchner/">Oberlerchner in Gelnhausen</a>
+				und
+				<a href="/referenzen/de-elixier/">Elixier in Frankfurt-Sachsenhausen</a>.
+				Für die E-Mail reichen Projektart, Budget und Zeitraum.
+			</p>
+			<div class="lead-grid" style="margin-top:36px">
+				<div class="lead-panel" id="anfrage">
+					<h2>Kurz schreiben</h2>
+					<p class="body">
+						Die Angaben öffnen dein E-Mail-Programm. Empfänger ist
+						<a href={mailHref()}>{site.email}</a>.
+					</p>
+					<LeadForm />
+				</div>
+				<div id="kalender">
+					<BookCall
+						heading="30 Minuten. Unverbindlich."
+						text="Eddie nimmt den Termin selbst. Kein Vertrieb dazwischen."
+					/>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section">
+		<div class="wrap-wide split">
 			<div class="profile">
-				<img
-					src="/images/eddie.webp"
-					width="210"
-					height="210"
+				<Picture
+					name="eddie"
 					alt={`${site.person.public}, ${site.person.role} bei ${site.name}`}
+					width={840}
+					height={840}
+					sizes="210px"
+					loading="lazy"
 				/>
 				<h2>{site.person.public}</h2>
 				<p class="role">{site.person.role}</p>
 				<p class="profile-lead">
-					{site.positioning} Vorher ansehen:
-					<a href="/leistungen/">Leistungen</a>
-					oder
-					<a href="/referenzen/">Referenzen</a>.
+					{site.address.street}, {site.address.zip} {site.address.city}. Projekte im Main-Kinzig-Kreis und in
+					Frankfurt, Hanau und Offenbach.
 				</p>
-				<ul class="check-list">
-					<li>Ziehe Interessenten an und mache den Betrieb im Netz erkennbar.</li>
-					<li>Führe Besucher zu Anfrage, Termin oder Kauf.</li>
-					<li>Bekomme eine Website, die nach dem Launch pflegbar bleibt.</li>
-				</ul>
 				<ul class="profile-links">
 					<li>
-						<a href={`mailto:${site.email}`}>{site.email}</a>
+						<a href={mailHref()}>{site.email}</a>
 					</li>
 					<li>
 						<a href={site.social.linkedin} rel="noopener" target="_blank">LinkedIn</a>
 					</li>
 				</ul>
 			</div>
-			<BookCall />
+			<div>
+				<p class="body">
+					Vor dem Gespräch lohnt ein Blick auf
+					<a href="/leistungen/">Leistungen</a>
+					oder die
+					<a href="/referenzen/">Referenzen</a>.
+					sim.do und Simtasy sind eigene Produkte und stehen dort getrennt.
+				</p>
+			</div>
 		</div>
 	</section>
 
@@ -71,10 +125,4 @@ import { related } from '../data/related';
 	</section>
 
 	<Related links={related.kontakt} />
-	<CtaDark
-		title="Lieber schreiben?"
-		text="Erzähl uns kurz, worum es geht. Wir antworten persönlich."
-		cta="Mail schreiben"
-		href={`mailto:${site.email}`}
-	/>
 </BaseLayout>

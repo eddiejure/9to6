@@ -4,12 +4,16 @@ type Props = {
 	text?: string;
 	cta?: string;
 	href?: string;
+	secondary?: string;
+	secondaryHref?: string;
 };
 const {
 	title = 'Aus der Website werden Anfragen',
-	text = 'Bring URL und Ziel mit. Eddie sagt dir, was zuerst gebaut werden muss.',
-	cta = 'Gespräch starten',
-	href = '/kontakt/',
+	text = 'Bring Projektart, Budgetrahmen und Zeitraum mit. Eddie antwortet persönlich.',
+	cta = 'Termin wählen',
+	href = '/kontakt/#kalender',
+	secondary = 'Kurz schreiben',
+	secondaryHref = '/kontakt/#anfrage',
 } = Astro.props;
 ---
 
@@ -18,6 +22,9 @@ const {
 		<h2>{title}</h2>
 		<p>{text}</p>
 		<hr class="rule" />
-		<a class="btn" href={href}>{cta}</a>
+		<div class="cta-row cta-row-center">
+			<a class="btn" href={href}>{cta}</a>
+			{secondary ? <a class="btn btn-ghost" href={secondaryHref}>{secondary}</a> : null}
+		</div>
 	</div>
 </section>

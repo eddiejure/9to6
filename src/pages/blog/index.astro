@@ -7,15 +7,15 @@ import { related } from '../../data/related';
 ---
 
 <BaseLayout
-	title="Blog: Webdesign, Conversion und Tempo | 9to6"
-	description="Artikel von 9to6 aus Frankfurt / Rhein-Main: warum Websites keine Kunden bringen, wie Ladezeit das Ranking beeinflusst, und wie aus Besuchern Anfragen werden."
+	title="Blog: Webdesign, Anfragen und Tempo | 9to6"
+	description="Warum Seiten keine Anfragen bringen, was Ladezeit in Gelnhausen und Frankfurt ändert, und wie aus Besuch eine Nachricht wird."
 	schema="blog"
 	breadcrumbs={[{ name: 'Blog', href: '/blog/' }]}
 >
 	<section class="page-hero center">
 		<div class="wrap">
-			<h1>Blog</h1>
-			<p class="sub">Webdesign, Conversion und Performance. Für Ergebnisse, nicht für Framework-Talk.</p>
+			<h1>Blog: Webdesign, Anfragen und Tempo</h1>
+			<p class="sub">Praxis aus Gelnhausen, dem Main-Kinzig-Kreis und Frankfurt. Ohne Framework-Talk.</p>
 		</div>
 	</section>
 
@@ -31,7 +31,7 @@ import { related } from '../../data/related';
 				{
 					posts.map((post) => (
 						<a class="blog-card" href={`/blog/${post.slug}/`}>
-							<div class="meta">{post.dateLabel}</div>
+							<div class="meta">Aktualisiert {post.dateModifiedLabel}</div>
 							<h2>{post.title}</h2>
 							<p>{post.description}</p>
 						</a>

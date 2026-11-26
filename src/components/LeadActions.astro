@@ -1,0 +1,22 @@
+---
+type Props = {
+	align?: 'start' | 'center';
+	termin?: string;
+	mail?: string;
+	terminLabel?: string;
+	mailLabel?: string;
+};
+
+const {
+	align = 'start',
+	termin = '/kontakt/#kalender',
+	mail = '/kontakt/#anfrage',
+	terminLabel = 'Termin wählen',
+	mailLabel = 'Kurz schreiben',
+} = Astro.props;
+---
+
+<div class:list={['cta-row', align === 'center' && 'cta-row-center']}>
+	<a class="btn" href={termin}>{terminLabel}</a>
+	<a class="btn btn-ghost" href={mail}>{mailLabel}</a>
+</div>

@@ -1,13 +1,14 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaDark from '../../components/CtaDark.astro';
-import CtaPhone from '../../components/CtaPhone.astro';
+import LeadActions from '../../components/LeadActions.astro';
+import Picture from '../../components/Picture.astro';
 import FaqSection from '../../components/FaqSection.astro';
 import Related from '../../components/Related.astro';
 import { cases, serviceFaqs } from '../../data/site';
 import { related } from '../../data/related';
 
-const designCases = cases.filter((item) => item.slug === 'holzbau-oberlerchner' || item.slug === 'de-elixier');
+const designCases = cases.filter((item) => item.kind === 'client');
 
 const steps = [
 	{ title: 'Hören', text: 'Wen du gewinnen willst, was danach passieren soll, was schon da ist. Kein Moodboard vor dem Ziel.' },
@@ -37,8 +38,12 @@ const outcomes = [
 ---
 
 <BaseLayout
-	title="Webdesign in Frankfurt | 9to6"
-	description="Webdesign von 9to6 in Frankfurt / Rhein-Main: Erscheinungsbild, Texte und Nutzerführung für Handwerk, Studios und Marken. Kernkompetenz neben der Webentwicklung."
+	title="Webdesign Frankfurt und Umgebung | 9to6"
+	description="Webdesign aus Gelnhausen für Frankfurt, Hanau, Offenbach und den Main-Kinzig-Kreis. Für Handwerk und Studios. Termin oder E-Mail."
+	ogImagePath="/images/ref-elixier-og.jpg"
+	ogImageAlt="Website von D&E Elixier, Webdesign für ein Kosmetikinstitut in Frankfurt"
+	ogImageWidth={1200}
+	ogImageHeight={750}
 	schema="service"
 	serviceName="Webdesign"
 	faqs={serviceFaqs.webdesign}
@@ -49,9 +54,9 @@ const outcomes = [
 >
 	<section class="page-hero center">
 		<div class="wrap">
-			<h1>Webdesign</h1>
-			<p class="sub">Ein Auftritt, der nach deinem Betrieb aussieht und zum Handeln führt.</p>
-			<p style="margin-top:28px"><a class="btn" href="/kontakt/">Webdesign besprechen</a></p>
+			<h1>Webdesign für Frankfurt und die Umgebung</h1>
+			<p class="sub">Aus Gelnhausen. Für Handwerk, Studios und Betriebe in Frankfurt, Hanau, Offenbach und im Main-Kinzig-Kreis.</p>
+			<LeadActions align="center" terminLabel="Webdesign besprechen" />
 		</div>
 	</section>
 
@@ -61,12 +66,15 @@ const outcomes = [
 				<h2>Deine Website ist oft der erste Mitarbeiter, den jemand trifft</h2>
 				<p class="body">
 					Besucher entscheiden in Sekunden, ob sie bleiben. Layout, Sprache, Tempo und mobile Bedienung gehören
-					zusammen. 9to6 gestaltet Seiten, die Qualität zeigen, ohne laut zu werden, und die den Weg zur Anfrage offen
-					halten. Webdesign ist Kernkompetenz, nicht die Folie vor einer fremden Umsetzung.
+					zusammen. 9to6 sitzt in Gelnhausen und gestaltet Seiten für Frankfurt und die Umgebung: Qualität ohne
+					Lautstärke, mit einem offenen Weg zur Anfrage. Ein Beispiel aus Sachsenhausen ist
+					<a href="/referenzen/de-elixier/">D&E Elixier</a>, eines aus dem Main-Kinzig-Kreis ist
+					<a href="/referenzen/holzbau-oberlerchner/">Holzbau Oberlerchner</a>. Das Gebiet im Überblick:
+					<a href="/webdesign-gelnhausen/">Webdesign Gelnhausen</a>.
 				</p>
 			</div>
 			<div class="media">
-				<img src="/images/studio.webp" alt="Gestaltung am Arbeitsplatz" width="640" height="427" />
+				<Picture name="studio" alt="Gestaltung am Arbeitsplatz" sizes="(min-width: 900px) 560px, 92vw" />
 			</div>
 		</div>
 	</section>
@@ -140,7 +148,7 @@ const outcomes = [
 				</p>
 			</div>
 			<div class="media">
-				<img src="/images/workspace.webp" alt="Arbeitsplatz mit Website-Entwürfen" width="640" height="427" />
+				<Picture name="workspace" alt="Arbeitsplatz mit Website-Entwürfen" sizes="(min-width: 900px) 560px, 92vw" />
 			</div>
 		</div>
 	</section>
@@ -156,12 +164,12 @@ const outcomes = [
 					designCases.map((c) => (
 						<a class="card" href={`/referenzen/${c.slug}/`}>
 							<div class="shot">
-								<img class="shot-img" src={c.image} alt={c.imageAlt} width="1280" height="800" />
+								<Picture name={c.imageName} alt={c.imageAlt} class="shot-img" sizes="(min-width: 900px) 540px, 92vw" width={1280} height={800} />
 							</div>
 							<div class="card-body">
 								<div class="meta">{c.place}</div>
 								<h3>{c.name}</h3>
-								<p>{c.role}</p>
+								<p>{c.result}</p>
 							</div>
 						</a>
 					))
@@ -173,10 +181,6 @@ const outcomes = [
 	<FaqSection items={serviceFaqs.webdesign} intro="Kosten, Umfang und Abgrenzung zur Entwicklung." />
 	<Related links={related.webdesign} />
 
-	<CtaPhone
-		heading="Erstgespräch Webdesign"
-		text="Eddie prüft in 30 Minuten, ob dein Auftritt zur Anfrage führt oder nur fertig wirkt. Kostenlos."
-	/>
 	<CtaDark
 		title="Erst das Ziel, dann das Raster"
 		text="Im Call klären wir, wen die Seite überzeugen soll und welche Handlung zählt. Danach siehst du, ob Webdesign allein reicht oder die Entwicklung mitziehen muss."

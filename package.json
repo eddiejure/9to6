@@ -14,8 +14,7 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.3.2",
     "@fontsource/montserrat": "^5.3.0",
-    "astro": "^7.3.3",
-    "three": "^0.186.0"
+    "astro": "^7.3.3"
   },
   "allowScripts": {
     "esbuild": true

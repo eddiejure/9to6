@@ -1,4 +1,6 @@
-# 9to6.de — 301-Umzug WordPress → Astro
+# 9to6.de: 301-Umzug WordPress zu Astro
+# Apex ohne Schrägstrich: Browser und Cloudflare senden beide als GET /.
+# Eine zusätzliche Kante liegt in functions/_middleware.js, falls die Roh-URL ohne Schrägstrich ankommt.
 # Kanonisch: https://9to6.de/…/  (HTTPS, Apex, Trailing Slash)
 # Statische Regeln stehen vor dynamischen. Erste passende Zeile gewinnt.
 # www → Apex und HTTP → HTTPS gehören ins Cloudflare-Dashboard
@@ -25,6 +27,7 @@
 /leistungen /leistungen/ 301
 /leistungen/webdesign /leistungen/webdesign/ 301
 /leistungen/webentwicklung /leistungen/webentwicklung/ 301
+/webdesign-gelnhausen /webdesign-gelnhausen/ 301
 /blog /blog/ 301
 /blog/warum-deine-website-keine-kunden-bringt /blog/warum-deine-website-keine-kunden-bringt/ 301
 /blog/core-web-vitals-und-google-ranking /blog/core-web-vitals-und-google-ranking/ 301
@@ -97,6 +100,10 @@
 /wp-sitemap-posts-attachment-1.xml /sitemap.xml 301
 /wp-sitemap-taxonomies-category-1.xml /sitemap.xml 301
 /wp-sitemap-users-1.xml /sitemap.xml 301
+
+# Weiche Adresse /404 nicht als 200 ausliefern
+/404 /404.html 404
+/404/ /404.html 404
 
 # Medien-Anhangseite unter der alten Startseite
 /video / 301

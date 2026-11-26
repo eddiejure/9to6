@@ -47,13 +47,16 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 					)
 				}
 			</nav>
-			<a class="btn header-cta" href="/kontakt/">Termin wählen</a>
+			<a class="header-mail" href="/kontakt/#anfrage">E-Mail</a>
+			<a class="btn header-cta" href="/kontakt/#kalender">Termin wählen</a>
 		</div>
 		<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Menü öffnen">
 			<span></span>
 		</button>
 	</div>
 	<nav class="mobile-panel" id="mobile-menu" aria-label="Mobiles Menü">
+		<a class="mobile-cta" href="/kontakt/#kalender">Termin wählen</a>
+		<a href="/kontakt/#anfrage">E-Mail schreiben</a>
 		{
 			nav.map((item) =>
 				'children' in item && item.children ? (
@@ -89,6 +92,5 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
 				)
 			)
 		}
-		<a href="/kontakt/" aria-current={isCurrent('/kontakt/') ? 'page' : undefined}>Termin wählen</a>
 	</nav>
 </header>
